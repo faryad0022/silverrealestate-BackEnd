@@ -6,5 +6,6 @@
         public string Link { get; set; }
         public string Icon { get; set; }
         public long TeamMemberId { get; set; }
+        public TeamMember TeamMember { get; set; }
     }
 }

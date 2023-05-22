@@ -14,10 +14,31 @@ namespace BackEnd_Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(RealEstateDbContext).Assembly);
+
+            modelBuilder.Entity<BlogGroup>()
+                .HasMany<BlogContent>(blogContent => blogContent.BlogContents)
+                .WithOne(blogGroup => blogGroup.blogGroup)
+                .HasForeignKey(blogContent => blogContent.BlogGroupId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Spectacularlocation>()
+                .HasMany<SpectacularLocationImages>(si => si.spectacularLocationImages)
+                .WithOne(sl => sl.Spectacularlocation)
+                .HasForeignKey(s => s.SpectacularlocationId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<TeamMember>()
+                .HasMany<TeamMemberSocial>(t => t.TeamMemberSocials)
+                .WithOne(t => t.TeamMember)
+                .HasForeignKey(t => t.TeamMemberId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
+
 
         public DbSet<BlogGroup> BlogGroups { get; set; }
         public DbSet<BlogContent> BlogContents { get; set; }
+
+
         public DbSet<AboutUs> AboutUs { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Banner> Banners { get; set; }
@@ -28,8 +49,8 @@ namespace BackEnd_Persistence
         public DbSet<Social> Socials { get; set; }
         public DbSet<TeamMember> TeamMembers { get; set; }
         public DbSet<TeamMemberSocial> TeamMemberSocials { get; set; }
-
-
+        public DbSet<Spectacularlocation> Spectacularlocations { get; set; }
+        public DbSet<SpectacularLocationImages> SpectacularLocationImages { get; set; }
 
     }
 }

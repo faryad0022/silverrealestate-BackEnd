@@ -33,7 +33,7 @@ namespace BackEnd_Persistence.Repositories.Blogs
 
         public async Task<FilterBlogContent> FilterBlogContent(FilterBlogContentDTO filter)
         {
-            var blogContentList = new List<BlogContent>();
+            //var blogContentList = new List<BlogContent>();
             var result = new FilterBlogContent()
             {
                 BlogGroupId = filter.BlogGroupId,
@@ -47,7 +47,7 @@ namespace BackEnd_Persistence.Repositories.Blogs
 
             if (filter.BlogContentList is null || filter.BlogContentList.Count < 1)
             {
-                result.BlogContentList = await GetEntitiesQuery().ToListAsync();
+                result.BlogContentList = await GetEntitiesQuery().Include(s => s.blogGroup).ToListAsync();
             }
             else
             {
@@ -70,7 +70,7 @@ namespace BackEnd_Persistence.Repositories.Blogs
             if (!string.IsNullOrEmpty(filter.BlogGroupName))
             {
                 result.BlogContentList = result.BlogContentList
-                                           .Where(x => x.BlogGroupName == filter.BlogGroupName)
+                                           .Where(x => x.blogGroup.Name == filter.BlogGroupName)
                                            .AsQueryable()
                                            .ToList();
             }

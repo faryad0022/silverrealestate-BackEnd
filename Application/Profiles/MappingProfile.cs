@@ -13,6 +13,8 @@ using Application.DTOs.GeneralSiteInformationsDTO.Social;
 using AutoMapper;
 using Domain.Entities.Blog;
 using Domain.Entities.GeneralSiteInformation;
+using System.Linq;
+using System.Xml.Linq;
 
 namespace Application.Profiles
 {
@@ -25,8 +27,12 @@ namespace Application.Profiles
             CreateMap<BlogGroup, CreateBlogGroupDTO>().ReverseMap();
             CreateMap<BlogGroup, UpdateBlogGroupDTO>().ReverseMap();
 
-            CreateMap<BlogContent, BlogContentDTO>().ReverseMap();
-            CreateMap<BlogContent, BlogContentListDTO>().ReverseMap();
+            CreateMap<BlogContent, BlogContentDTO>()
+                .ForMember(dest=>dest.BlogGroupName,opt=>opt.MapFrom(src=>src.blogGroup.Name))
+                .ReverseMap();
+            CreateMap<BlogContent, BlogContentListDTO>()
+                .ForMember(dest => dest.BlogGroupName, opt => opt.MapFrom(src => src.blogGroup.Name))
+                .ReverseMap();
             CreateMap<BlogContent, CreateBlogContentDTO>().ReverseMap();
             CreateMap<BlogContent, UpdateBlogContentDTO>().ReverseMap();
 
@@ -83,7 +89,8 @@ namespace Application.Profiles
             #endregion
 
             #region Filters
-            CreateMap<FilterBlogContent, FilterBlogContentDTO>().ReverseMap();
+            CreateMap<FilterBlogContent, FilterBlogContentDTO>()
+                .ReverseMap();
             #endregion
 
         }

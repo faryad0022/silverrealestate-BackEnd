@@ -7,6 +7,9 @@ namespace Domain.Entities.Project
     {
         #region Properties
         public string Image { get; set; }
+        public string BannerImage { get; set; }
+        public bool IsBanner { get; set; } = false;
+        public bool ForSell { get; set; } = true;
         public bool IsSold { get; set; } = false;
         public bool IsRent { get; set; } = false;
         public string OwnerPhoneNumber { get; set; }

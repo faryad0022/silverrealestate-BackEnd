@@ -35,6 +35,7 @@ namespace BackEnd_Persistence
             services.AddScoped<ICommonQuestionRepository, CommonQuestionRepository>();
             services.AddScoped<IConstructorInfromationRepository, ConstructorInfromationRepository>();
             services.AddScoped<IRealEstateServicesRepository, RealEstateServicesRepository>();
+            services.AddScoped<ISpectacularlocationRepository, SpectacularlocationRepository>();
 
 
 

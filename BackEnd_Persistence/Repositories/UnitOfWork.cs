@@ -21,6 +21,8 @@ namespace BackEnd_Persistence.Repositories
         private ICommonQuestionRepository _commonQuestionRepository;
         private IConstructorInfromationRepository _constructorInfromationRepository;
         private IRealEstateServicesRepository _realEstateServicesRepository;
+        private ISpectacularlocationRepository _spectacularlocationRepository;
+
         public UnitOfWork(RealEstateDbContext context) => _context = context;
 
 
@@ -34,6 +36,7 @@ namespace BackEnd_Persistence.Repositories
         public ICommonQuestionRepository CommonQuestionRepository => _commonQuestionRepository ??= new CommonQuestionRepository(_context);
         public IConstructorInfromationRepository ConstructorInfromationRepository => _constructorInfromationRepository ??= new ConstructorInfromationRepository(_context);
         public IRealEstateServicesRepository RealEstateServicesRepository => _realEstateServicesRepository ??= new RealEstateServicesRepository(_context);
+        public ISpectacularlocationRepository SpectacularlocationRepository => _spectacularlocationRepository ??= new SpectacularlocationRepository(_context);
 
         public void Dispose()
         {

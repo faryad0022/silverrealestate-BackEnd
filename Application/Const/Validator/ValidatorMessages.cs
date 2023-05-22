@@ -2,7 +2,7 @@
 {
     public static class ValidatorMessages
     {
-        public static string NotNull = "{PropertyName} is required";
+        public static string NotNull = "{PropertyName} must not be null";
         public static string GreaterThan = "{PropertyName} must be greater than {ComparisonValue}";
         public static string LessThan = "{PropertyName} must be Less than {ComparisonValue}";
         public static string NotEmpty = "{PropertyName} is required";

@@ -17,6 +17,7 @@ namespace Application.Contract.Persistence
         ICommonQuestionRepository CommonQuestionRepository { get; }
         IConstructorInfromationRepository ConstructorInfromationRepository { get; }
         IRealEstateServicesRepository RealEstateServicesRepository { get; } 
+        ISpectacularlocationRepository SpectacularlocationRepository { get; }
         Task SaveChangesAsync();
     }
 }

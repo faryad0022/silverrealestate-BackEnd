@@ -5,6 +5,7 @@ using Application.DTOs.GeneralSiteInformationsDTO.Social.Validators;
 using Application.features.GeneralInformations.SocialFeatures.Request.Commands;
 using Application.Reaspose;
 using AutoMapper;
+using Domain.Entities.GeneralSiteInformation;
 using MediatR;
 using System.Linq;
 using System.Threading;
@@ -45,7 +46,8 @@ namespace Application.features.GeneralInformations.SocialFeatures.Handler.Comman
                     );
             }
             #endregion
-            _unitofWork.SocialRepository.UpdateEntityAsync(social);
+            var toUpdate = _mapper.Map<Social>(request.UpdateSocialDTO);
+            _unitofWork.SocialRepository.UpdateEntityAsync(toUpdate);
             await _unitofWork.SaveChangesAsync();
             return FillRetuenData<UpdateSocialDTO>.FillByEntity(
                                 request.UpdateSocialDTO,

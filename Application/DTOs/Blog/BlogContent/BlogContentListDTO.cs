@@ -10,6 +10,6 @@ namespace Application.DTOs.Blog.BlogContent
         public string Review { get; set; }
         public long ViewCount { get; set; }
         public long BlogGroupId { get; set; }
-        public BlogGroupDTO BlogGroupDTO { get; set; }
+        public string BlogGroupName { get; set; }
     }
 }
