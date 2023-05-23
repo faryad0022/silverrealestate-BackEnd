@@ -7,10 +7,7 @@ using Application.Reaspose;
 using AutoMapper;
 using Domain.Entities.GeneralSiteInformation;
 using MediatR;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -21,7 +18,7 @@ namespace Application.features.GeneralInformations.SpectacularLocationFeatures.H
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
 
-        public UpdateSpectacularLocationRequestHandler(IMapper mapper,IUnitofWork unitofWork)
+        public UpdateSpectacularLocationRequestHandler(IMapper mapper, IUnitofWork unitofWork)
         {
             _mapper = mapper;
             _unitofWork = unitofWork;
@@ -30,7 +27,7 @@ namespace Application.features.GeneralInformations.SpectacularLocationFeatures.H
         {
             var updateSpectacularLocation = await _unitofWork.SpectacularlocationRepository.GetEntityAsync(request.updateSpectacularLocationDTO.Id);
             if (updateSpectacularLocation is null)
-                return FillRetuenData<SpectacularLocationDTO>.FillByEntity(null,ResponseStatus.NotFound,null);
+                return FillRetuenData<SpectacularLocationDTO>.FillByEntity(null, ResponseStatus.NotFound, null);
             #region Validation
             var validator = new UpdateSpectacularLocationDTOValidator();
             var validatorResult = await validator.ValidateAsync(request.updateSpectacularLocationDTO);
@@ -38,7 +35,7 @@ namespace Application.features.GeneralInformations.SpectacularLocationFeatures.H
                 return FillRetuenData<SpectacularLocationDTO>.FillByEntity(
                     _mapper.Map<SpectacularLocationDTO>(request.updateSpectacularLocationDTO),
                     ResponseStatus.ValidationError,
-                    validatorResult.Errors.Select(q=>q.ErrorMessage).ToList()
+                    validatorResult.Errors.Select(q => q.ErrorMessage).ToList()
                     );
             #endregion
 

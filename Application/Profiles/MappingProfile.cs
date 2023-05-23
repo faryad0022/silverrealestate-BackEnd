@@ -10,11 +10,10 @@ using Application.DTOs.GeneralSiteInformationsDTO.ConstructorInformations;
 using Application.DTOs.GeneralSiteInformationsDTO.Logo;
 using Application.DTOs.GeneralSiteInformationsDTO.RealEstateServicess;
 using Application.DTOs.GeneralSiteInformationsDTO.Social;
+using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocations;
 using AutoMapper;
 using Domain.Entities.Blog;
 using Domain.Entities.GeneralSiteInformation;
-using System.Linq;
-using System.Xml.Linq;
 
 namespace Application.Profiles
 {
@@ -91,6 +90,16 @@ namespace Application.Profiles
             #region Filters
             CreateMap<FilterBlogContent, FilterBlogContentDTO>()
                 .ReverseMap();
+            #endregion
+
+            #region SpectacularLocation
+            CreateMap<Spectacularlocation, SpectacularLocationDTO>().ReverseMap();
+            CreateMap<Spectacularlocation, CreateSpectacularLocationDTO>().ReverseMap();
+            CreateMap<Spectacularlocation, UpdateSpectacularLocationDTO>().ReverseMap();
+            CreateMap<SpectacularLocationDTO, UpdateSpectacularLocationDTO>().ReverseMap();
+            CreateMap<SpectacularLocationDTO, CreateSpectacularLocationDTO>().ReverseMap();
+
+
             #endregion
 
         }

@@ -29,8 +29,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackEnd_UnitTest", "BackEnd
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstateUI", "RealEstateUI\RealEstateUI.csproj", "{6C20D393-4562-467F-8FC7-07CAD9004472}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationTest", "IntegrationTest\IntegrationTest.csproj", "{FE8CB430-A42B-4FE1-8848-867F5C87E275}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,10 +63,6 @@ Global
 		{6C20D393-4562-467F-8FC7-07CAD9004472}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C20D393-4562-467F-8FC7-07CAD9004472}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C20D393-4562-467F-8FC7-07CAD9004472}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FE8CB430-A42B-4FE1-8848-867F5C87E275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FE8CB430-A42B-4FE1-8848-867F5C87E275}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FE8CB430-A42B-4FE1-8848-867F5C87E275}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FE8CB430-A42B-4FE1-8848-867F5C87E275}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,7 +79,6 @@ Global
 		{1D2B376A-8F6E-4EC9-8FCC-EA8DE340DE49} = {63927D20-9AD5-4D43-BC87-B76A39D4BAB9}
 		{5A43F389-2E66-4946-94C3-EDBAEE92DB5F} = {E0F3F531-D131-44FA-ACB9-8639A50A95E2}
 		{6C20D393-4562-467F-8FC7-07CAD9004472} = {C133D37C-6D5D-4476-8FB1-FD91E339EC29}
-		{FE8CB430-A42B-4FE1-8848-867F5C87E275} = {E0F3F531-D131-44FA-ACB9-8639A50A95E2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {210C6656-77DB-46FE-BC33-AF5C45FC332D}
