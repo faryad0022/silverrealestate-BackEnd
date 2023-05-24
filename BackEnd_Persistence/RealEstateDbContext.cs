@@ -15,10 +15,6 @@ namespace BackEnd_Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(RealEstateDbContext).Assembly);
-
-            modelBuilder.ApplyConfiguration(new BlogGroupConfiguration());
-            modelBuilder.ApplyConfiguration(new SpectacularLocationConfiguration());
-            modelBuilder.ApplyConfiguration(new TeamMemberConfiguration());
         }
 
 

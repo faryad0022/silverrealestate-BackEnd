@@ -4,14 +4,16 @@ using BackEnd_Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BackEnd_Persistence.Migrations
 {
     [DbContext(typeof(RealEstateDbContext))]
-    partial class RealEstateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230524100518_1234")]
+    partial class _1234
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,56 +72,6 @@ namespace BackEnd_Persistence.Migrations
                     b.HasIndex("BlogGroupId");
 
                     b.ToTable("BlogContents");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            BlogGroupId = 2L,
-                            BlogGroupName = "دانشگاه های قبرس",
-                            CreateDate = new DateTime(2023, 5, 24, 14, 34, 25, 506, DateTimeKind.Local).AddTicks(570),
-                            ImageName = "EMU.jpg",
-                            IsDelete = false,
-                            IsSelected = true,
-                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Status = true,
-                            Tags = "دانشگاه,قبرس",
-                            Text = "بعنوان قدیمی ترین و اولین دانشگاه دولتی در قبرس شمالی، تمامی دانشکده ها و رشته های دانشگاه مدیترانه شرقی از زمان تاسیس خود در سال 1979 مورد تایید شورای عالی آموزش عالی قبرس شمالی (YODAK) و همچنین آموزش عالی کشور ترکیه (YOK) می باشند.\r\n\r\nدانشگاه مدیترانه شرقی با بهره گیری از محوطه دانشگاهی بوسعت 110 هکتار و زیرساختی با بالاترین استاندارد اروپا مفتخر به ذکر واقعیات زیر می باشد:\r\nبزرگترین محوطه دانشگاهی در منطقه\r\n12 دانشکده و 204 رشته در تمامی مقاطع\r\nمدرسه آمادگی زبان های خارجی\r\nبیش از 1100 عضو هیات علمی از 35 کشور متفاوت\r\nمعتبرترین و بزرگترین دانشگاه انگلیسی زبان در قبرس شمالی\r\nآموزش بیش از 17500 دانشجو از 110 کشور\r\nامکان یادگیری حداقل یک زبان خارجی بغیر از زبان انگلیسی برای تمامی دانشجویان\r\nبهره مندی از بهترین و مدرنترین امکانات ورزشی و فرهنگی\r\nامکان استفاده از برنامه های متنوع تبادل دانشجو با بیش از 220 دانشگاه معتبر در سرتاسر جهان برای تمامی دانشجویان\r\nارایه مدارک فارغ التحصیلی معتبر در سرتاسر دنیا\r\nارایه مدارک مورد تایید معتبرترین نهادهای اعتبارسنجی دنیا\r\nجزو دانشگاه های برتر دنیا از نظر رتبه بندی دانشگاهی تایمز (Times Higher Education)\r\nکسب 5 ستاره QS از نظر کیفیت آموزش\r\nدانشگاه مدیترانه شرقی  از طریق آموزش مهارتهای نوآوری و تشویق به خلاقیت آینده حرفه ای دانشجویان خود را در سطح بین الملل تضمین می کند.\r\n\r\n\r\nدانشگاه مدیترانه شرقی استاندارد کیفیت آموزش را در 12 دانشکده، 108 رشته کارشناسی و 96 رشته در سطوح کارشناسی ارشد و دکتری خود تعریف نموده است.",
-                            Title = "دانشگاه مدیترانه شرقی",
-                            ViewCount = 0L
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            BlogGroupId = 2L,
-                            BlogGroupName = "دانشگاه های قبرس",
-                            CreateDate = new DateTime(2023, 5, 24, 14, 34, 25, 506, DateTimeKind.Local).AddTicks(2669),
-                            ImageName = "EMU.jpg",
-                            IsDelete = false,
-                            IsSelected = true,
-                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Status = true,
-                            Tags = "دانشگاه,قبرس",
-                            Text = "شما هم می توانید براحتی و بصورت آنلاین فرم درخواست اخذ پذیرش جهت پیوستن به خانواده بزرگ دانشگاه مدیترانه شرقی تکمیل و ارایه نمایید. برای تکمیل فرم درخواست اخذ پذیرش تنها کافی است با وارد کردن آدرس ایمیل خود در یکی از لینکهای زیر ثبت نام نمایید. دستور العمل ثبت نام و تکمیل فرم بصورت مشروح در فیلم آموزشی ذکر شده است: \r\nرشته های مقاطع کاردانی و کارشناسی\r\nرشته های مقاطع کارشناسی ارشد و دکتری\r\nنکات مهم:\r\nدانشگاه مدیترانه شرقی در ترمهای پاییز و بهار پذیرای دانشجویان جدید می باشد.\r\nهیچ گونه امتحان ورودی برای هیچ یک از رشته ها جهت اخذ پذیرش وجود ندارد.\r\nاخذ پذیرش از دانشگاه مدیترانه شرقی برای تمامی رشته ها و مقاطع کاملا رایگان می باشد. به هیچ عنوان هیچگونه وجهی جهت اخذ پذیرش به هیچ شخصی پرداخت ننمایید.\r\nشما می توانید به راحتی از بورسیه %50 درصد برای تمامی رشته های مقطع کارشناسی و کارشناسی ارشد باستثنا رشته های پزشکی و داروسازی بهره مند شوید. ",
-                            Title = "مدارک لازم جهت ثبت نام در دانشگاه های قبرس",
-                            ViewCount = 0L
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            BlogGroupId = 1L,
-                            BlogGroupName = "اخبار قبرس",
-                            CreateDate = new DateTime(2023, 5, 24, 14, 34, 25, 506, DateTimeKind.Local).AddTicks(2680),
-                            ImageName = "CYP.jpg",
-                            IsDelete = false,
-                            IsSelected = true,
-                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Status = true,
-                            Tags = "شرایط جدید اقامت در قبرس",
-                            Text = "خذ تابعیت با تولد فرزند در دنیا از دو قانون اصل خاک و اصل خون تبعیت میکند. برای مهاجرت از طریق تولد فرزند باید با قوانین آن کشور آشنا باشید. بسیار مهم است که بدانید آن کشور از کدام یک از این قوانین تبعیت میکند.\r\n\r\nقانون اصل خاک : در این قانون به دنیا آمدن و تولد فرزند در خاک کشور مورد نظر می باشد. بدون در نظر گرفتن اینکه پدر و مادر تابعیت کدام کشور را دارند.\r\n\r\nقانون اصل خون: در این اصل بسیار مهم آن است که یکی از پدر یا مادر یا هر دو، تبعه کشور مورد نظر باشند. در این حالت اینکه فرزند در کدام کشور متولد می شود اهمیتی ندارد.\r\n\r\nندا عباسیآنلاین",
-                            Title = "شرایط جدید اخذ اقامت قبرس شمالی",
-                            ViewCount = 0L
-                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Blog.BlogGroup", b =>
@@ -152,7 +104,7 @@ namespace BackEnd_Persistence.Migrations
                         new
                         {
                             Id = 1L,
-                            CreateDate = new DateTime(2023, 5, 24, 14, 34, 25, 506, DateTimeKind.Local).AddTicks(7054),
+                            CreateDate = new DateTime(2023, 5, 24, 13, 35, 17, 538, DateTimeKind.Local).AddTicks(5334),
                             IsDelete = false,
                             IsSelected = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -161,7 +113,7 @@ namespace BackEnd_Persistence.Migrations
                         new
                         {
                             Id = 2L,
-                            CreateDate = new DateTime(2023, 5, 24, 14, 34, 25, 506, DateTimeKind.Local).AddTicks(7559),
+                            CreateDate = new DateTime(2023, 5, 24, 13, 35, 17, 540, DateTimeKind.Local).AddTicks(8573),
                             IsDelete = false,
                             IsSelected = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -170,7 +122,7 @@ namespace BackEnd_Persistence.Migrations
                         new
                         {
                             Id = 3L,
-                            CreateDate = new DateTime(2023, 5, 24, 14, 34, 25, 506, DateTimeKind.Local).AddTicks(7568),
+                            CreateDate = new DateTime(2023, 5, 24, 13, 35, 17, 540, DateTimeKind.Local).AddTicks(8599),
                             IsDelete = false,
                             IsSelected = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -206,17 +158,6 @@ namespace BackEnd_Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AboutUs");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            CreateDate = new DateTime(2023, 5, 24, 14, 34, 25, 500, DateTimeKind.Local).AddTicks(8298),
-                            IsDelete = false,
-                            IsSelected = true,
-                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Text = "املاک شبکه نقره ای با بیش از 6 سال سابقه درخشان آماده ی ارائه بهترین خدمات در راستای خرید ملک،سرمایه گذاری، اخذ اقامت، ثبت شرکت ، پذیرش دانشجویی و کلیه خدمات به همراه ارایه گشت های محلی با بکار گیری راهنمایان فارسی زبان بصورت گروهی و اختصاصی برای افراد و آژانسهای مسافرتی، به شما عزیزان در قبرس شمالی میباشد."
-                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.GeneralSiteInformation.Address", b =>
@@ -256,34 +197,6 @@ namespace BackEnd_Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Addresses");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            CellPhone = "+98-9123071411",
-                            CreateDate = new DateTime(2023, 5, 24, 14, 34, 25, 505, DateTimeKind.Local).AddTicks(3614),
-                            Email = "mahancomputer49@gmail.com",
-                            IsDelete = false,
-                            IsSelected = true,
-                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Location = "کیش - شهرک صدف - خیابان سبلان - پلاک 27 - واحد6",
-                            Telephone = "00987644446503",
-                            WorkHour = "شنبه تا جمعه ساعت 8-20"
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            CellPhone = "+90-5338355243",
-                            CreateDate = new DateTime(2023, 5, 24, 14, 34, 25, 505, DateTimeKind.Local).AddTicks(3662),
-                            Email = "mahancomputer49@gmail.com",
-                            IsDelete = false,
-                            IsSelected = true,
-                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Location = "قبرس شمالی - شهرک رویال سان - پرل 105",
-                            Telephone = "00987644446503",
-                            WorkHour = "شنبه تا جمعه ساعت 8-20"
-                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.GeneralSiteInformation.Banner", b =>
@@ -356,58 +269,6 @@ namespace BackEnd_Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CommonQuestions");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            Answer = "قبرس با داشتن آب و هوای معتدل و مرطوب مدیترانه ایی مقصد مورد علاقه جهانگردان برای تعطیلات می باشد، با داشتن بیش از ۳۰۰ روز آفتابی و گرمایی مطلوب و کوهستان هایی در دل خود، از اعتدالی مدیترانه ایی برخوردار است.",
-                            CreateDate = new DateTime(2023, 5, 24, 14, 34, 25, 507, DateTimeKind.Local).AddTicks(3285),
-                            IsDelete = false,
-                            IsSelected = true,
-                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Question = "قبرس کجاست؟"
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            Answer = "قبرس شمالی با داشتن ۳۶ درصد از مساحت کل جزیره قبرس به علت داشتن شرایط مهاجرتی آسان و مالیات بسیار کم در قیاس با جمهوری قبرس و سایر کشورهای اروپایی مورد توجه سرمایه گذارانی از نقاط مختلف دنیا قرار گرفته است",
-                            CreateDate = new DateTime(2023, 5, 24, 14, 34, 25, 507, DateTimeKind.Local).AddTicks(4260),
-                            IsDelete = false,
-                            IsSelected = true,
-                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Question = "چرا قبرس شمالی؟"
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            Answer = "لیر ترکیه به عنوان ارز رایج این کشور شناخته می شود ولی خرید فروش ملک به پوند انگلستان می باشد و دلار و یورو هم در کنار این دو واحد پولی مورد استفاده قرار می گیرد.",
-                            CreateDate = new DateTime(2023, 5, 24, 14, 34, 25, 507, DateTimeKind.Local).AddTicks(4270),
-                            IsDelete = false,
-                            IsSelected = true,
-                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Question = "واحد پولی قبرس شمالی چه می باشد؟"
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            Answer = "امنیت بالای قبرس شمالی در کنار رفاه مردم این کشور می تواند برای هر خانواده ایی دلیلی مناسب برای مهاجرت به قبرس شمالی باشد، بی علت نیست اگر قبرس شمالی در فهرست پنج کشور امن دنیا قرار گرفته است.",
-                            CreateDate = new DateTime(2023, 5, 24, 14, 34, 25, 507, DateTimeKind.Local).AddTicks(4272),
-                            IsDelete = false,
-                            IsSelected = true,
-                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Question = "آیا قبرس شمالی برای زندگی خانوادگی مناسب می باشد؟"
-                        },
-                        new
-                        {
-                            Id = 5L,
-                            Answer = "برای ورود به قبرس شمالی به صورت توریستی نیازی به اخذ ویزا نخواهید داشت.  برای داشتن اقامت بیشتر، از طریق اقامت دانشجویی، خرید ملک و یا ثبت شرکت و یا اشتغال میسر خواهد بود.",
-                            CreateDate = new DateTime(2023, 5, 24, 14, 34, 25, 507, DateTimeKind.Local).AddTicks(4274),
-                            IsDelete = false,
-                            IsSelected = true,
-                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Question = "شرایط اخذ ویزا برای ورود به قبرس شمالی چگونه می باشد؟"
-                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.GeneralSiteInformation.ConstructorInformation", b =>
@@ -441,30 +302,6 @@ namespace BackEnd_Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ConstructorInformation");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            ConstructorLogo = "Noyanlar.jpg",
-                            CreateDate = new DateTime(2023, 5, 24, 14, 34, 25, 507, DateTimeKind.Local).AddTicks(9813),
-                            Description = "گروه شرکت های نویانلار که در سال 1973 تأسیس شد، خدمات با کیفیت بالا را در تمام زمینه های صنعت ساخت و ساز در قبرس شمالی ارائه می دهد. این یک شرکت خانوادگی موفق است که کیفیت و رشد قابل اعتماد را در صنعت ساخت و ساز فراهم می کند. پروژه های ما مطابق با طرح های ساختمانی معاصر انجام می شود تا رضایتمندی بالا را فراهم کند.این مسیر باتاسیس شرکت معماری و مهندسی با مسئولیت محدود Arken توسط معمار کهنه کار گوکان نویان آغاز شد که در دهه های 1970 و 1980 بسیاری از پروژه های معماری را امضا کرد. در سال ۱۹۸۶ یک مهندس عمران با تجربه به نام Mustafa Noyan به این تیم پیوست.",
-                            IsDelete = false,
-                            IsSelected = true,
-                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Noyanlar Group Constructor"
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            ConstructorLogo = "Ceaser.jpg",
-                            CreateDate = new DateTime(2023, 5, 24, 14, 34, 25, 507, DateTimeKind.Local).AddTicks(9826),
-                            Description = "اگر که به دنبال خرید ملک در قبرس شمالی بوده اید، بدون شک نام سزار ریزورت‌ به گوشتان خورده است. افیک گروپ، شرکت مادر مجتمع سزار قبرس، در سال های اخیر در قبرس ترک مشهور و به دنبال آن اولین پروژه ی این شرکت به نام سزار ریزورت بر سر زبان ها افتاد. شهرک سزار قبرس شمالی با وجود قیمت نسبتا بالا خود در مقایسه با املاک منطقه توانسته در دل فارسی زبانان جا باز کند و جمع کثیری از ایرانیان را در این شهرک گرد هم آورد.\r\nشنا در استخرهای تابستانه، نوشیدن لاته گرم در کافه پاریس در فصل پاییز، پایکوبی در مهمانی های پر زرق و برق زمستانه و در نهایت پیاده روی های سرخوشانه به مقصد ساحل لانگ بیچ در فصل بهار همگی از زیبایی های شهرک سزار قبرس شمالی هستند.\r\nآنچه مجتمع سزار قبرس را از دیگر شهرک های جزیره جدا میکند، شرایط پرداخت اقساطی واحدها می باشد.\r\nوقتی پای اقساط به میان می آید، توجه به تبصره های قرارداد از مسائل حساس و چالش برانگیز می شود. قرارداد مجتمع سزار قبرس حاوی شش تا هشت صفحه با بند ها و تبصره های مختلف به زبان انگلیسی است که عدم توجه و غفلت از هر یک از این بندها ممکن است ضرر و زیان جبران ناپذیری برای خریداران به همراه داشته باشد. امکان تغییر در جزییات تبصره ها با صحبت و رایزنی مشاور املاک شما با مدیران فروش سزار ریزورت وجود دارد. بنابراین پیش از امضای هرگونه قرارداد ملک شهرک سزار قبرس شمالی حتما با مشاور املاک مسلط به زبان انگلیسی و ترکی، مشورت کرده و راهنمایی های لازم را دریافت کنید تا در آینده با مشکلات مالی و حقوقی مواجه نشوید.",
-                            IsDelete = false,
-                            IsSelected = true,
-                            LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Ceaser Group"
-                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.GeneralSiteInformation.Logo", b =>
