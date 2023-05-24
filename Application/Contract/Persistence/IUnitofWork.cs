@@ -18,6 +18,8 @@ namespace Application.Contract.Persistence
         IConstructorInfromationRepository ConstructorInfromationRepository { get; }
         IRealEstateServicesRepository RealEstateServicesRepository { get; } 
         ISpectacularlocationRepository SpectacularlocationRepository { get; }
+        ISpectacularLocationImageRepository SpectacularLocationImageRepository { get; }
+
         Task SaveChangesAsync();
     }
 }

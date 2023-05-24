@@ -1,5 +1,4 @@
-﻿
-using Application.Contract.Persistance.EntitiesRepository.Blog;
+﻿using Application.Contract.Persistance.EntitiesRepository.Blog;
 using Application.Contract.Persistence;
 using Application.Contract.Persistence.CommonGenericRepository;
 using Application.Contract.Persistence.EntitiesRepository.GeneralInformations;
@@ -36,6 +35,7 @@ namespace BackEnd_Persistence
             services.AddScoped<IConstructorInfromationRepository, ConstructorInfromationRepository>();
             services.AddScoped<IRealEstateServicesRepository, RealEstateServicesRepository>();
             services.AddScoped<ISpectacularlocationRepository, SpectacularlocationRepository>();
+            services.AddScoped<ISpectacularLocationImageRepository, SpectacularLocationImageRepository>();
 
 
 

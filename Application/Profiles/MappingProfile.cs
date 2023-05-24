@@ -10,6 +10,7 @@ using Application.DTOs.GeneralSiteInformationsDTO.ConstructorInformations;
 using Application.DTOs.GeneralSiteInformationsDTO.Logo;
 using Application.DTOs.GeneralSiteInformationsDTO.RealEstateServicess;
 using Application.DTOs.GeneralSiteInformationsDTO.Social;
+using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocationImages;
 using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocations;
 using AutoMapper;
 using Domain.Entities.Blog;
@@ -27,7 +28,7 @@ namespace Application.Profiles
             CreateMap<BlogGroup, UpdateBlogGroupDTO>().ReverseMap();
 
             CreateMap<BlogContent, BlogContentDTO>()
-                .ForMember(dest=>dest.BlogGroupName,opt=>opt.MapFrom(src=>src.blogGroup.Name))
+                .ForMember(dest => dest.BlogGroupName, opt => opt.MapFrom(src => src.blogGroup.Name))
                 .ReverseMap();
             CreateMap<BlogContent, BlogContentListDTO>()
                 .ForMember(dest => dest.BlogGroupName, opt => opt.MapFrom(src => src.blogGroup.Name))
@@ -98,7 +99,42 @@ namespace Application.Profiles
             CreateMap<Spectacularlocation, UpdateSpectacularLocationDTO>().ReverseMap();
             CreateMap<SpectacularLocationDTO, UpdateSpectacularLocationDTO>().ReverseMap();
             CreateMap<SpectacularLocationDTO, CreateSpectacularLocationDTO>().ReverseMap();
+            #endregion
 
+            #region SpectacularLocationImage
+            CreateMap<SpectacularLocationImages, SpectacularLocationImagesDTO>()
+                .ForMember(dest => dest.SpectacularlocationName, opt =>
+                {
+                    opt.MapFrom(src => src.Spectacularlocation.Name);
+                })
+                .ForMember(dest => dest.SpectacularlocationId, opt =>
+                {
+                    opt.MapFrom(src => src.Spectacularlocation.Id);
+                });
+
+            CreateMap<SpectacularLocationImages, CreateSpectacularLocationImagesDTO>()
+                .ForMember(dest => dest.SpectacularlocationName, opt =>
+                {
+                    opt.MapFrom(src => src.Spectacularlocation.Name);
+                })
+                .ForMember(dest => dest.SpectacularlocationId, opt =>
+                {
+                    opt.MapFrom(src => src.Spectacularlocation.Id);
+                }).ReverseMap();
+
+            CreateMap<SpectacularLocationImagesDTO, CreateSpectacularLocationImagesDTO>().ReverseMap();
+
+
+            CreateMap<SpectacularLocationImages, UpdateSpectacularLocationImagesDTO>()
+                .ForMember(dest => dest.SpectacularlocationName, opt =>
+                {
+                    opt.MapFrom(src => src.Spectacularlocation.Name);
+                })
+                .ForMember(dest => dest.SpectacularlocationId, opt =>
+                {
+                    opt.MapFrom(src => src.Spectacularlocation.Id);
+                }).ReverseMap();
+            CreateMap<SpectacularLocationImagesDTO, UpdateSpectacularLocationImagesDTO>().ReverseMap();
 
             #endregion
 
