@@ -6,5 +6,6 @@ namespace Application.features.GeneralInformations.SpectacularLocationImageFeatu
 {
     public class GetSpectacularImagesListWithDetailsRequest : IRequest<ReturnData<SpectacularLocationImagesDTO>>
     {
+        public bool justSelected { get; set; } = false;
     }
 }

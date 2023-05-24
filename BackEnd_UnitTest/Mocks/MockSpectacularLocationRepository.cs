@@ -16,6 +16,7 @@ namespace BackEnd_UnitTest.Mocks
             var spectacularLocationList = SpectacularLocationModelGenerator.spectacularLocationList;
             //Get All
             _mock.Setup(s => s.GetAllAsync()).ReturnsAsync(spectacularLocationList);
+
             //Get By Id
             _mock.Setup(s => s.GetEntityAsync(It.IsAny<long>())).ReturnsAsync((long Id) => spectacularLocationList.FirstOrDefault(s => s.Id == Id));
             //Add

@@ -9,7 +9,5 @@
         public static string ValidationError = "Validation Error occured";
         public static string Error = "Error";
         public static string NoContent = "NoContent";
-
-
     }
 }
