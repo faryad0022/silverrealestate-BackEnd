@@ -1,4 +1,5 @@
-﻿using Domain.Entities.Blog;
+﻿using BackEnd_Persistence.EntityConfiguration;
+using Domain.Entities.Blog;
 using Domain.Entities.GeneralSiteInformation;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,23 +16,9 @@ namespace BackEnd_Persistence
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(RealEstateDbContext).Assembly);
 
-            modelBuilder.Entity<BlogGroup>()
-                .HasMany<BlogContent>(blogContent => blogContent.BlogContents)
-                .WithOne(blogGroup => blogGroup.blogGroup)
-                .HasForeignKey(blogContent => blogContent.BlogGroupId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<Spectacularlocation>()
-                .HasMany<SpectacularLocationImages>(si => si.spectacularLocationImages)
-                .WithOne(sl => sl.Spectacularlocation)
-                .HasForeignKey(s => s.SpectacularlocationId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<TeamMember>()
-                .HasMany<TeamMemberSocial>(t => t.TeamMemberSocials)
-                .WithOne(t => t.TeamMember)
-                .HasForeignKey(t => t.TeamMemberId)
-                .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.ApplyConfiguration(new BlogGroupConfiguration());
+            modelBuilder.ApplyConfiguration(new SpectacularLocationConfiguration());
+            modelBuilder.ApplyConfiguration(new TeamMemberConfiguration());
         }
 
 
