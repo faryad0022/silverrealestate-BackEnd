@@ -40,7 +40,7 @@ namespace BackEnd_UnitTest.Facts.Addresses.Queries
         public async Task Get_Selected_AddressList_Valid()
         {
             var handler = new GetAddressListRequestHandler(_mapper, _mock.Object);
-            var result = await handler.Handle(new GetAddressListRequest() { justShowSelected=true}, CancellationToken.None);
+            var result = await handler.Handle(new GetAddressListRequest() { justShowSelected = true }, CancellationToken.None);
 
             result.Status.ShouldBe(ResponseStatus.Success);
             result.Tentities.Count.ShouldBe(1);

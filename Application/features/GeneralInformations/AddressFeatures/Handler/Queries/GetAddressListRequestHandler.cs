@@ -1,7 +1,6 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
 using Application.DTOs.GeneralSiteInformationsDTO.Address;
-using Application.DTOs.GeneralSiteInformationsDTO.Logo;
 using Application.features.GeneralInformations.AddressFeatures.Request.Queries;
 using Application.Reaspose;
 using AutoMapper;

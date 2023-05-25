@@ -7,10 +7,6 @@ using AutoMapper;
 using BackEnd_UnitTest.Mocks;
 using Moq;
 using Shouldly;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -33,7 +29,7 @@ namespace BackEnd_UnitTest.Facts.BlogContents.Queries
         [Fact]
         public async Task GetBlogContentWithDetailsListRequestHandler_Valid()
         {
-            var handler =  new GetBlogContentWithDetailsListRequestHandler(_mapper, _mock.Object);
+            var handler = new GetBlogContentWithDetailsListRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new GetBlogContentWithDetailsListRequest(), CancellationToken.None);
 
             result.Status.ShouldBe(ResponseStatus.Success);

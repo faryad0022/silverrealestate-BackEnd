@@ -4,7 +4,7 @@ using Application.DTOs.Common;
 
 namespace Application.DTOs.Blog.BlogContent
 {
-    public class UpdateBlogContentDTO: BaseEntityDTO, IBlogcontentDTO
+    public class UpdateBlogContentDTO : BaseEntityDTO, IBlogcontentDTO
     {
         public string Title { get; set; }
         public string Tags { get; set; }

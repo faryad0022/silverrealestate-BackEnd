@@ -7,7 +7,7 @@ namespace Application.DTOs.GeneralSiteInformationsDTO.AboutUs.Validators
 
         public CreateAboutUsDTOValidator()
         {
-            Include(new IAboutUsDTOValidator()); 
+            Include(new IAboutUsDTOValidator());
         }
     }
 }

@@ -23,11 +23,11 @@ namespace BackEnd_API.Controllers
 
         [HttpGet("get-address")]
         public async Task<ActionResult<ReturnData<AddressDTO>>> GetAddress([FromQuery] long Id)
-            => await _mediator.Send(new GetAddressRequest() { Id=Id});
+            => await _mediator.Send(new GetAddressRequest() { Id = Id });
 
         [HttpPost("add-address")]
         public async Task<ActionResult<ReturnData<CreateAddressDTO>>> AddAddress([FromBody] CreateAddressDTO addressDTO)
-            => await _mediator.Send(new CreateAddressRequest() {  createAddressDTO = addressDTO });
+            => await _mediator.Send(new CreateAddressRequest() { createAddressDTO = addressDTO });
 
         [HttpPut("update-address")]
         public async Task<ActionResult<ReturnData<UpdateAddressDTO>>> UpdateAddress([FromQuery] UpdateAddressDTO addressDTO)
@@ -35,6 +35,6 @@ namespace BackEnd_API.Controllers
 
         [HttpPut("change-address-status")]
         public async Task<ActionResult<ReturnData<UpdateAddressDTO>>> ChangeAddressStatus([FromQuery] long Id)
-            => await _mediator.Send(new ChangeAddressDTOStatusRequest() {  Id = Id });
+            => await _mediator.Send(new ChangeAddressDTOStatusRequest() { Id = Id });
     }
 }

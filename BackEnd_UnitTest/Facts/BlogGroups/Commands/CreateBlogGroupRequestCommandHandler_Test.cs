@@ -1,6 +1,5 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Infrastructure;
-using Application.Contract.Persistance.EntitiesRepository.Blog;
 using Application.Contract.Persistence;
 using Application.features.Blog.Handler.Commands.BlogGroupCommands;
 using Application.features.Blog.Request.Commands.BlogGroupCommands;

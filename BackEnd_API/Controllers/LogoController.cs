@@ -1,13 +1,9 @@
-﻿using Application.DTOs.GeneralSiteInformationsDTO.Address;
-using Application.DTOs.GeneralSiteInformationsDTO.Logo;
-using Application.features.GeneralInformations.AddressFeatures.Request.Commands;
-using Application.features.GeneralInformations.AddressFeatures.Request.Queries;
+﻿using Application.DTOs.GeneralSiteInformationsDTO.Logo;
 using Application.features.GeneralInformations.LogoFeatures.Request.Commands;
 using Application.features.GeneralInformations.LogoFeatures.Request.Queries;
 using Application.Reaspose;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -33,7 +29,7 @@ namespace BackEnd_API.Controllers
 
         [HttpPost("add-logo")]
         public async Task<ActionResult<ReturnData<CreateLogoDTO>>> AddAddress([FromBody] CreateLogoDTO logoDTO)
-            => await _mediator.Send(new CreateLogoRequest() {  createLogoDTO = logoDTO });
+            => await _mediator.Send(new CreateLogoRequest() { createLogoDTO = logoDTO });
 
         [HttpPut("change-logo-selected-status")]
         public async Task<ActionResult<ReturnData<LogoDTO>>> ChangeAddressStatus([FromQuery] long Id)

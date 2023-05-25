@@ -9,7 +9,7 @@ namespace Application.DTOs.GeneralSiteInformationsDTO.Social.Validators
         private readonly ISocialRepository _socialRepository;
 
         public UpdateSocialDTOValidator(ISocialRepository socialRepository)
-        {            
+        {
             _socialRepository = socialRepository;
 
             Include(new ISocialDTOValidator());

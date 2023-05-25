@@ -31,7 +31,7 @@ namespace Application.Reaspose
         public static ReturnData<T> FillByEntity(T data, string status, List<string> errors)
         {
 
-            return  new ReturnData<T>
+            return new ReturnData<T>
             {
                 Tentities = null,
                 Tentity = data,

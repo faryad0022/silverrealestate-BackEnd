@@ -4,7 +4,7 @@ using FluentValidation;
 
 namespace Application.DTOs.GeneralSiteInformationsDTO.AboutUs.Validators
 {
-    public class UpdateAboutUsDTOValidator:AbstractValidator<UpdateAboutUsDTO>
+    public class UpdateAboutUsDTOValidator : AbstractValidator<UpdateAboutUsDTO>
     {
         private readonly IAboutUsRepository _aboutUsRepository;
 

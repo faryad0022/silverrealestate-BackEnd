@@ -23,7 +23,7 @@ namespace Application.features.Blog.Handler.Queries.BlogContent
         public async Task<ReturnData<BlogContentDTO>> Handle(GetBlogContentWithDetails request, CancellationToken cancellationToken)
         {
             var blogContent = await _unitofWork.BlogContentRepository.GetBlogContentWithDetailsAsync(request.blogContentId);
-            if(blogContent is null)
+            if (blogContent is null)
                 return FillRetuenData<BlogContentDTO>.FillByEntity(
                 null,
                 ResponseStatus.NotFound,

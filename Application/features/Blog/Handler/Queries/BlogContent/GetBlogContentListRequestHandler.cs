@@ -1,5 +1,4 @@
 ﻿using Application.Const.Response;
-using Application.Contract.Persistance.EntitiesRepository.Blog;
 using Application.Contract.Persistence;
 using Application.DTOs.Blog.BlogContent;
 using Application.features.Blog.Request.Queries.BlogContent;

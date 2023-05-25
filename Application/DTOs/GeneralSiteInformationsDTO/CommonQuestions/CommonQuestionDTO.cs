@@ -2,7 +2,7 @@
 
 namespace Application.DTOs.GeneralSiteInformationsDTO.CommonQuestions
 {
-    public class CommonQuestionDTO : BaseEntityDTO,ICommonQuestionDTO
+    public class CommonQuestionDTO : BaseEntityDTO, ICommonQuestionDTO
     {
         public string Question { get; set; }
         public string Answer { get; set; }

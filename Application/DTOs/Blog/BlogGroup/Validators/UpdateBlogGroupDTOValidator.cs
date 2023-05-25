@@ -2,7 +2,7 @@
 
 namespace Application.DTOs.Blog.BlogGroup.Validators
 {
-    public class UpdateBlogGroupDTOValidator:AbstractValidator<UpdateBlogGroupDTO>
+    public class UpdateBlogGroupDTOValidator : AbstractValidator<UpdateBlogGroupDTO>
     {
         public UpdateBlogGroupDTOValidator()
         {

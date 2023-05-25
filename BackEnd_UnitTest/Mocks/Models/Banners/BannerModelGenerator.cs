@@ -49,8 +49,8 @@ namespace BackEnd_UnitTest.Mocks.Models.Banners
             RealEstateLogo = "adfue56ujyjasdfasf",
             ShortText = "asdfsrjsrjsr5jasffadf",
             Text = "aadfasr5j65r6j5w6j5sdasfas"
-            
-            
+
+
         };
         public static CreateBannerDTO createBannerDTO_Validation_InValid = new CreateBannerDTO
         {

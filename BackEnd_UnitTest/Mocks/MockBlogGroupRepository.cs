@@ -3,7 +3,6 @@ using BackEnd_UnitTest.Mocks.Models.BlogGroups;
 using Domain.Entities.Blog;
 using Moq;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace BackEnd_UnitTest.Mocks
 {
@@ -15,8 +14,8 @@ namespace BackEnd_UnitTest.Mocks
 
             mockRepo.Setup(m => m.ExistAsync(It.IsAny<long>())).ReturnsAsync((long id) =>
             {
-                var blogGroup =  BlogGroupModelGenerator.blogGroupList.FirstOrDefault(x => x.Id == id);
-                return blogGroup!=null;
+                var blogGroup = BlogGroupModelGenerator.blogGroupList.FirstOrDefault(x => x.Id == id);
+                return blogGroup != null;
             });
 
             mockRepo.Setup(m => m.GetAllAsync())

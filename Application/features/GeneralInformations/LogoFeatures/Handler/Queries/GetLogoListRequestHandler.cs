@@ -1,11 +1,9 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
 using Application.DTOs.GeneralSiteInformationsDTO.Logo;
-using Application.DTOs.GeneralSiteInformationsDTO.Social;
 using Application.features.GeneralInformations.LogoFeatures.Request.Queries;
 using Application.Reaspose;
 using AutoMapper;
-using Domain.Entities.GeneralSiteInformation;
 using MediatR;
 using System.Collections.Generic;
 using System.Linq;

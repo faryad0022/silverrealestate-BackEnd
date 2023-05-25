@@ -15,6 +15,6 @@ namespace Application.DTOs.Project
         [MaxLength(100, ErrorMessage = "تعداد کاراکترهای {0} نمیتواند بیشتر از {1} باشد")]
         public string VideoAddress { get; set; }
         #endregion
- 
+
     }
 }

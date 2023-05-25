@@ -42,7 +42,7 @@ namespace BackEnd_UnitTest.Facts.Banners.Queries
         public async Task Get_Selected_BannerList_Valid()
         {
             var handler = new GetBannerListRequestHandler(_mapper, _mock.Object);
-            var result = await handler.Handle(new GetBannerListRequest() { justShowSelected=true}, CancellationToken.None);
+            var result = await handler.Handle(new GetBannerListRequest() { justShowSelected = true }, CancellationToken.None);
 
             result.Status.ShouldBe(ResponseStatus.Success);
             result.Tentity.ShouldBeNull();

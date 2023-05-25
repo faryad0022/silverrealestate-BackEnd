@@ -7,7 +7,7 @@ namespace Application.Contract.Persistence.CommonGenericRepository
 {
     public interface IGenericRepository<TEntity> where TEntity : BaseEntity
     {
-        
+
         IQueryable<TEntity> GetEntitiesQuery();
         Task<TEntity> GetEntityAsync(long entityId);
         Task<IReadOnlyList<TEntity>> GetAllAsync();

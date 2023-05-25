@@ -5,9 +5,7 @@ namespace Domain.Entities.Project
     public class Country : BaseEntity
     {
         #region Properties
-
         public string CountryName { get; set; }
-
         public string Icon { get; set; }
         #endregion
 

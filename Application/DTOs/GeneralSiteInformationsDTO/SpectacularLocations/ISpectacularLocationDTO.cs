@@ -1,6 +1,4 @@
-﻿using Application.DTOs.Common;
-
-namespace Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocations
+﻿namespace Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocations
 {
     public interface ISpectacularLocationDTO
     {

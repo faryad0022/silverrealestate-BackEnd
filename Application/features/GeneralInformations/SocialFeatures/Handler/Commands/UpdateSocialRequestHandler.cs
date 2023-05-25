@@ -27,7 +27,7 @@ namespace Application.features.GeneralInformations.SocialFeatures.Handler.Comman
         {
 
             var social = await _unitofWork.SocialRepository.GetEntityAsync(request.UpdateSocialDTO.Id);
-            if(social is null)
+            if (social is null)
                 return FillRetuenData<UpdateSocialDTO>.FillByEntity(
                     null,
                     ResponseStatus.NotFound,

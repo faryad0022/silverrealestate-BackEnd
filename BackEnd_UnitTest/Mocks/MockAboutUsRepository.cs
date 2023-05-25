@@ -1,7 +1,6 @@
 ﻿using Application.Contract.Persistence.EntitiesRepository.GeneralInformations;
 using BackEnd_UnitTest.Mocks.Models.About;
 using Domain.Entities.GeneralSiteInformation;
-using Microsoft.EntityFrameworkCore;
 using Moq;
 using System.Linq;
 
@@ -19,7 +18,7 @@ namespace BackEnd_UnitTest.Mocks
             _mock.Setup(m => m.GetAllAsync())
                 .ReturnsAsync(aboutUs);
             _mock.Setup(m => m.GetAboutUsCountAsync()).ReturnsAsync(() => aboutUs.Count);
-       
+
             _mock.Setup(m => m.AddEntityAsync(It.IsAny<AboutUs>()))
                 .ReturnsAsync((AboutUs about) =>
                 {

@@ -2,7 +2,7 @@
 
 namespace Domain.Entities.Project
 {
-    public class PropertyFacility:BaseEntity
+    public class PropertyFacility : BaseEntity
     {
         #region Properties
 

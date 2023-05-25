@@ -33,7 +33,7 @@ namespace BackEnd_UnitTest.Mocks.Models.Socials
 
         public static UpdateSocialDTO _updateSocialDTO_Valid = new UpdateSocialDTO
         {
-            Id=1,
+            Id = 1,
             Icon = "fa-twitter rtuu",
             Link = "twitter.com",
             Name = "Twitter"

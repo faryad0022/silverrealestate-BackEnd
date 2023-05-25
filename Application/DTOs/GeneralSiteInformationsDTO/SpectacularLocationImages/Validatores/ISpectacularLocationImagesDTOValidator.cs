@@ -17,7 +17,7 @@ namespace Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocationImages.
             RuleFor(x => x.Description)
                 .MinimumLength(5).WithMessage(ValidatorMessages.MinimumLength)
                 .NotEmpty().WithMessage(ValidatorMessages.NotEmpty)
-                .NotNull().WithMessage(ValidatorMessages.NotNull); 
+                .NotNull().WithMessage(ValidatorMessages.NotNull);
             RuleFor(x => x.SpectacularlocationId)
                 .GreaterThan(0).WithMessage(ValidatorMessages.MustSelected)
                 .NotEmpty().WithMessage(ValidatorMessages.NotEmpty)

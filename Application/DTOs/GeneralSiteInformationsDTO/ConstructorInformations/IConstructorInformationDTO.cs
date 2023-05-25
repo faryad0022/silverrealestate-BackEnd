@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Application.DTOs.GeneralSiteInformationsDTO.ConstructorInformations
+﻿namespace Application.DTOs.GeneralSiteInformationsDTO.ConstructorInformations
 {
     public interface IConstructorInformationDTO
     {

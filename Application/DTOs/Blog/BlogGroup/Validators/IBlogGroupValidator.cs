@@ -1,11 +1,10 @@
 ﻿using Application.Const.Validator;
-using Application.Contract.Persistance.EntitiesRepository.Blog;
 using Application.DTOs.Blog.BlogGroup.Common;
 using FluentValidation;
 
 namespace Application.DTOs.Blog.BlogGroup.Validators
 {
-    public class IBlogGroupValidator:AbstractValidator<IBlogGroupDTO>
+    public class IBlogGroupValidator : AbstractValidator<IBlogGroupDTO>
     {
         public IBlogGroupValidator()
         {

@@ -40,7 +40,7 @@ namespace BackEnd_API.Controllers
 
         [HttpPost("add-blog-content")]
         public async Task<ActionResult<ReturnData<CreateBlogContentDTO>>> AddBlogContentAsync([FromBody] CreateBlogContentDTO createBlogContentDTO)
-            => await _mediator.Send(new CreateBlogContentRequest() { createBlogContentDTO = createBlogContentDTO});
+            => await _mediator.Send(new CreateBlogContentRequest() { createBlogContentDTO = createBlogContentDTO });
 
 
 
@@ -50,18 +50,18 @@ namespace BackEnd_API.Controllers
 
         [HttpPut("change-blog-content-status")]
         public async Task<ActionResult<ReturnData<UpdateBlogContentDTO>>> ChangeBlogContentStatusAsync([FromBody] ChangeBlogContentStatusDTO changeBlogContentStatusDTO, [FromQuery] long Id)
-            => await _mediator.Send(new UpdateBlogcontentRequest() 
-                                                    { 
-                                                        Id=Id,
-                                                        changeBlogContentStatusDTO = changeBlogContentStatusDTO
-                                                    });
+            => await _mediator.Send(new UpdateBlogcontentRequest()
+            {
+                Id = Id,
+                changeBlogContentStatusDTO = changeBlogContentStatusDTO
+            });
 
         [HttpPut("change-blog-content-isselected")]
         public async Task<ActionResult<ReturnData<UpdateBlogContentDTO>>> ChangeBlogContentIsSelectedAsync([FromBody] ChangeBlogContentIsSelectedDTO changeBlogContentIsSelected, [FromQuery] long Id)
             => await _mediator.Send(new UpdateBlogcontentRequest()
-                                                    {
-                                                        Id = Id,
-                                                        changeBlogContentIsSelected = changeBlogContentIsSelected
-                                                     });
+            {
+                Id = Id,
+                changeBlogContentIsSelected = changeBlogContentIsSelected
+            });
     }
 }

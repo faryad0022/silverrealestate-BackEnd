@@ -1,5 +1,4 @@
-﻿using Application.DTOs.Blog.BlogGroup;
-using Application.DTOs.Common;
+﻿using Application.DTOs.Common;
 
 namespace Application.DTOs.Blog.BlogContent
 {

@@ -16,7 +16,7 @@ namespace Application.DTOs.Blog.BlogContent.Validators
             RuleFor(x => x.Id)
                 .MustAsync(async (id, token) =>
                 {
-                    var x= await _blogContentRepository.ExistAsync(id);
+                    var x = await _blogContentRepository.ExistAsync(id);
                     return x;
                 }).WithMessage(ValidatorMessages.NotExist);
         }

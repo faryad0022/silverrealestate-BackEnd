@@ -83,7 +83,7 @@ namespace BackEnd_UnitTest.Mocks.Models.SoectacularImages
             Image = "GhostCity11.jpg",
             SpectacularlocationId = 1,
             Text = "Open Recently Updated",
-            Description= "Open Recently Updated"
+            Description = "Open Recently Updated"
         };
         public static UpdateSpectacularLocationImagesDTO updateSpectacularImags_NotFound_InValid = new UpdateSpectacularLocationImagesDTO()
         {

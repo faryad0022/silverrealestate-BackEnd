@@ -1,21 +1,13 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.features.GeneralInformations.BannerFeatures.Handler.Commands;
-using Application.features.GeneralInformations.BannerFeatures.Request.Commands;
 using Application.features.GeneralInformations.ConstructorInformations.Handler.Commands;
 using Application.features.GeneralInformations.ConstructorInformations.Request.Commands;
 using Application.Profiles;
 using AutoMapper;
 using BackEnd_UnitTest.Mocks;
-using BackEnd_UnitTest.Mocks.Models.Banners;
 using BackEnd_UnitTest.Mocks.Models.ConstructorInformations;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using Moq;
 using Shouldly;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -40,7 +32,7 @@ namespace BackEnd_UnitTest.Facts.ConstructorInformations.Commands
         public async Task CreateConstructorInformation_Valid()
         {
             var handler = new CreateConstructorInformationRequestHandler(_mapper, _mock.Object);
-            var result = await handler.Handle(new CreateConstructorInformationRequest() { createConstructorInformationDTO = ConstructorInformationModelGenerator.createConstructorInformationDTO_Valid}, CancellationToken.None);
+            var result = await handler.Handle(new CreateConstructorInformationRequest() { createConstructorInformationDTO = ConstructorInformationModelGenerator.createConstructorInformationDTO_Valid }, CancellationToken.None);
 
             result.Status.ShouldBe(ResponseStatus.Success);
             result.Tentity.ShouldNotBeNull();

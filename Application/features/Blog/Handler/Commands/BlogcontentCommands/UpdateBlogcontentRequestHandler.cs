@@ -54,7 +54,7 @@ namespace Application.features.Blog.Handler.Commands.BlogcontentCommands
 
             }
             await _unitofWork.SaveChangesAsync();
-            
+
             return FillRetuenData<UpdateBlogContentDTO>.FillByEntity(null, ResponseStatus.Success, null);
         }
     }

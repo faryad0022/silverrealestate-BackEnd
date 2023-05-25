@@ -1,6 +1,8 @@
 ﻿using Application.Contract.Persistance.EntitiesRepository.Blog;
+using Application.DTOs.Blog.BlogGroup;
 using Domain.Entities.Blog;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,7 +19,7 @@ namespace BackEnd_Persistence.Repositories.Blogs
 
         public async Task<bool> IsDuplicate(string name)
         {
-            var blogGroup = await _dbContext.BlogGroups.FirstOrDefaultAsync(x=>x.Name==name);
+            var blogGroup = await _dbContext.BlogGroups.FirstOrDefaultAsync(x => x.Name == name);
             if (blogGroup == null) { return false; }
             return true;
         }

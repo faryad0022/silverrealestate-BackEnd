@@ -1,6 +1,5 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.Contract.Persistence.EntitiesRepository.GeneralInformations;
 using Application.DTOs.GeneralSiteInformationsDTO.Social;
 using Application.features.GeneralInformations.SocialFeatures.Handler.Commands;
 using Application.features.GeneralInformations.SocialFeatures.Request.Commands;

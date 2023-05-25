@@ -3,7 +3,7 @@ using Application.DTOs.Common;
 
 namespace Application.DTOs.Blog.BlogGroup
 {
-    public class UpdateBlogGroupDTO:BaseEntityDTO,IBlogGroupDTO
+    public class UpdateBlogGroupDTO : BaseEntityDTO, IBlogGroupDTO
     {
         public string Name { get; set; }
 

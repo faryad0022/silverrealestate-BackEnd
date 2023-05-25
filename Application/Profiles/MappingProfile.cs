@@ -12,6 +12,8 @@ using Application.DTOs.GeneralSiteInformationsDTO.RealEstateServicess;
 using Application.DTOs.GeneralSiteInformationsDTO.Social;
 using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocationImages;
 using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocations;
+using Application.DTOs.GeneralSiteInformationsDTO.TeamMembers;
+using Application.DTOs.GeneralSiteInformationsDTO.TeamMemberSocials;
 using AutoMapper;
 using Domain.Entities.Blog;
 using Domain.Entities.GeneralSiteInformation;
@@ -138,6 +140,44 @@ namespace Application.Profiles
 
             #endregion
 
+            #region TeamMember
+            CreateMap<TeamMember, TeamMemberDTO>().ReverseMap();
+            CreateMap<TeamMember, CreateTeamMmeberDTO>().ReverseMap();
+            CreateMap<TeamMember, UpdateTeamMemberDTO>().ReverseMap();
+            CreateMap<TeamMemberDTO, CreateTeamMmeberDTO>().ReverseMap();
+            CreateMap<TeamMemberDTO, UpdateTeamMemberDTO>().ReverseMap();
+
+
+            #endregion
+
+            #region TeamMemberSocial
+            CreateMap<TeamMemberSocial, TeamMemberSocialDTO>()
+                .ForMember(t => t.TeamMemberId, opt =>
+                {
+                    opt.MapFrom(t => t.TeamMember.Id);
+                })
+                .ForMember(t => t.TeamMemberName, opt =>
+                {
+                    opt.MapFrom(t => t.TeamMember.Name);
+                })
+                .ForMember(t => t.TeamMemberPicture, opt =>
+                {
+                    opt.MapFrom(t => t.TeamMember.MemberPicture);
+                })
+                .ForMember(t => t.TeamMemberPosition, opt =>
+                {
+                    opt.MapFrom(t => t.TeamMember.MemberPosition);
+                })
+                .ForMember(t => t.TeamMemberCellPhone, opt =>
+                {
+                    opt.MapFrom(t => t.TeamMember.CellPhone);
+                })
+                .ReverseMap();
+            CreateMap<TeamMemberSocial, CreateTeamMemberSocialDTO>().ReverseMap();
+            CreateMap<TeamMemberSocial, UpdateTeamMemberSocialDTO>().ReverseMap();
+            CreateMap<TeamMemberSocialDTO, CreateTeamMemberSocialDTO>().ReverseMap();
+            CreateMap<TeamMemberSocialDTO, UpdateTeamMemberSocialDTO>().ReverseMap();
+            #endregion
         }
     }
 }

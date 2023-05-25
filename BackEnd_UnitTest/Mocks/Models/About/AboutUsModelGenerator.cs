@@ -26,7 +26,7 @@ namespace BackEnd_UnitTest.Mocks.Models.About
         };
         public static UpdateAboutUsDTO updateAboutUsDTO_Valid = new()
         {
-            Id=1,
+            Id = 1,
             Text = "asdfasdfsfasdfasdfgsdfghdfghdfghdfghdfghddfgsfdgfsdfasdf",
             TeamImage = "asdfadfasdfasdfasdfgdfghdfghdfasdff"
         };

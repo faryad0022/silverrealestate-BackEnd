@@ -1,10 +1,7 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.DTOs.GeneralSiteInformationsDTO.Address;
 using Application.features.GeneralInformations.AddressFeatures.Handler.Commands;
-using Application.features.GeneralInformations.AddressFeatures.Handler.Queries;
 using Application.features.GeneralInformations.AddressFeatures.Request.Commands;
-using Application.features.GeneralInformations.AddressFeatures.Request.Queries;
 using Application.Profiles;
 using AutoMapper;
 using BackEnd_UnitTest.Mocks;
@@ -34,7 +31,7 @@ namespace BackEnd_UnitTest.Facts.Addresses.Commands
         public async Task CreateAddress_Valid()
         {
             var handler = new CreateAddressRequestHandler(_mapper, _mock.Object);
-            var result = await handler.Handle(new CreateAddressRequest() { createAddressDTO= AddressModelGenerator.AddressDTO }, CancellationToken.None);
+            var result = await handler.Handle(new CreateAddressRequest() { createAddressDTO = AddressModelGenerator.AddressDTO }, CancellationToken.None);
 
             result.Status.ShouldBe(ResponseStatus.Success);
             result.Tentities.ShouldBeNull();

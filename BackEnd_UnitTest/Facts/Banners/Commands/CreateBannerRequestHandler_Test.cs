@@ -1,19 +1,13 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
 using Application.features.GeneralInformations.BannerFeatures.Handler.Commands;
-using Application.features.GeneralInformations.BannerFeatures.Handler.Queries;
 using Application.features.GeneralInformations.BannerFeatures.Request.Commands;
-using Application.features.GeneralInformations.BannerFeatures.Request.Queries;
 using Application.Profiles;
 using AutoMapper;
 using BackEnd_UnitTest.Mocks;
 using BackEnd_UnitTest.Mocks.Models.Banners;
 using Moq;
 using Shouldly;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -37,7 +31,7 @@ namespace BackEnd_UnitTest.Facts.Banners.Commands
         public async Task CreateBanner_Valid()
         {
             var handler = new CreateBannerRequestHandler(_mapper, _mock.Object);
-            var result = await handler.Handle(new CreateBannerRequest() { createBannerDTO=BannerModelGenerator.createBannerDTO_Valid}, CancellationToken.None);
+            var result = await handler.Handle(new CreateBannerRequest() { createBannerDTO = BannerModelGenerator.createBannerDTO_Valid }, CancellationToken.None);
 
             result.Status.ShouldBe(ResponseStatus.Success);
             result.Tentity.ShouldNotBeNull();

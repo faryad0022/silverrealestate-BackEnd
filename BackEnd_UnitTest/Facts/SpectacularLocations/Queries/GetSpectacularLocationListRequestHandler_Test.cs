@@ -42,7 +42,7 @@ namespace BackEnd_UnitTest.Facts.SpectacularLocations.Queries
         public async Task GetSpectacularLocationList_JustShowSelected_Valid()
         {
             var handler = new GetSpectacularLocationListRequestHandler(_mapper, _unitofWork.Object);
-            var result = await handler.Handle(new GetSpectacularLocationListRequest() { justShowSelected=true}, CancellationToken.None);
+            var result = await handler.Handle(new GetSpectacularLocationListRequest() { justShowSelected = true }, CancellationToken.None);
 
             result.Tentities.ShouldNotBeNull();
             result.Tentities.Count.ShouldBe(2);

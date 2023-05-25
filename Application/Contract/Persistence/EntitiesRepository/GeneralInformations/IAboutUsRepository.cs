@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 
 namespace Application.Contract.Persistence.EntitiesRepository.GeneralInformations
 {
-    public interface IAboutUsRepository:IGenericRepository<AboutUs>
+    public interface IAboutUsRepository : IGenericRepository<AboutUs>
     {
-        Task<int> GetAboutUsCountAsync();  
+        Task<int> GetAboutUsCountAsync();
     }
 }

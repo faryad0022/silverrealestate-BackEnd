@@ -10,13 +10,13 @@ namespace Application.Exceptions
 
         public ValidationException(ValidationResult validationResult)
         {
-            foreach (var error in validationResult.Errors) 
+            foreach (var error in validationResult.Errors)
             {
                 Errors.Add(error.ErrorMessage);
             }
         }
 
-        
+
     }
 }
 

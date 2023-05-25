@@ -4,7 +4,7 @@ using FluentValidation;
 
 namespace Application.DTOs.Blog.BlogGroup.Validators
 {
-    public class CreateBlogGroupDTOValidator:AbstractValidator<CreateBlogGroupDTO>
+    public class CreateBlogGroupDTOValidator : AbstractValidator<CreateBlogGroupDTO>
     {
         private readonly IBlogGroupRepository _blogGroupRepository;
 

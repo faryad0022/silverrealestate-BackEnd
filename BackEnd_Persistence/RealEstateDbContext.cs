@@ -1,5 +1,4 @@
-﻿using BackEnd_Persistence.EntityConfiguration;
-using Domain.Entities.Blog;
+﻿using Domain.Entities.Blog;
 using Domain.Entities.GeneralSiteInformation;
 using Microsoft.EntityFrameworkCore;
 

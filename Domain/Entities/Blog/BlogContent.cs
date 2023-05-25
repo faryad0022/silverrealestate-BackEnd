@@ -1,9 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-
-namespace Domain.Entities.Blog
+﻿namespace Domain.Entities.Blog
 {
-    public class BlogContent:BaseEntity
+    public class BlogContent : BaseEntity
     {
         #region Properties
         public string BlogGroupName { get; set; }

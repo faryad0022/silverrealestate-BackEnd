@@ -7,7 +7,7 @@ namespace Application.Contract.Persistence
 {
     public interface IUnitofWork : IDisposable
     {
-        ISocialRepository SocialRepository { get; } 
+        ISocialRepository SocialRepository { get; }
         IBlogContentRepository BlogContentRepository { get; }
         IBlogGroupRepository BlogGroupRepository { get; }
         IAboutUsRepository AboutUsRepository { get; }
@@ -16,10 +16,11 @@ namespace Application.Contract.Persistence
         IBannerRepository BannerRepository { get; }
         ICommonQuestionRepository CommonQuestionRepository { get; }
         IConstructorInfromationRepository ConstructorInfromationRepository { get; }
-        IRealEstateServicesRepository RealEstateServicesRepository { get; } 
+        IRealEstateServicesRepository RealEstateServicesRepository { get; }
         ISpectacularlocationRepository SpectacularlocationRepository { get; }
         ISpectacularLocationImageRepository SpectacularLocationImageRepository { get; }
-
+        ITeamMemberRepository TeamMemberRepository { get; }
+        ITeamMemberSocialRepository TeamMemberSocialRepository { get; }
         Task SaveChangesAsync();
     }
 }

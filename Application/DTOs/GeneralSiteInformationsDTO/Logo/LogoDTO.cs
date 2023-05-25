@@ -2,7 +2,7 @@
 
 namespace Application.DTOs.GeneralSiteInformationsDTO.Logo
 {
-    public class LogoDTO : BaseEntityDTO,ILogoDTO
+    public class LogoDTO : BaseEntityDTO, ILogoDTO
     {
         public string Title { get; set; }
         public string Description { get; set; }

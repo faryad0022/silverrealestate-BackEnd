@@ -1,6 +1,4 @@
-﻿using Application.DTOs.Common;
-
-namespace Application.DTOs.GeneralSiteInformationsDTO.AboutUs
+﻿namespace Application.DTOs.GeneralSiteInformationsDTO.AboutUs
 {
     public interface IAboutusDTO
     {

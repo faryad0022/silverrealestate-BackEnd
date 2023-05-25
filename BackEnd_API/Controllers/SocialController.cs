@@ -18,12 +18,12 @@ namespace BackEnd_API.Controllers
             _mediator = mediator;
         }
         [HttpGet("get-social-list")]
-        public async Task<ActionResult<ReturnData<SocialDTO>>> GetSocialListAsync() 
+        public async Task<ActionResult<ReturnData<SocialDTO>>> GetSocialListAsync()
             => await _mediator.Send(new GetSocialListRequest());
 
 
         [HttpGet("get-social")]
-        public async Task<ActionResult<ReturnData<SocialDTO>>> GetSocialAsync([FromQuery] long Id) 
+        public async Task<ActionResult<ReturnData<SocialDTO>>> GetSocialAsync([FromQuery] long Id)
             => await _mediator.Send(new GetSocialRequest { Id = Id });
 
 
@@ -33,6 +33,6 @@ namespace BackEnd_API.Controllers
 
         [HttpPut("update-social")]
         public async Task<ActionResult<ReturnData<UpdateSocialDTO>>> UpdateSocialAsync([FromQuery] UpdateSocialDTO updateSocialDTO)
-            => await _mediator.Send(new UpdateSocialRequest { UpdateSocialDTO = updateSocialDTO }); 
+            => await _mediator.Send(new UpdateSocialRequest { UpdateSocialDTO = updateSocialDTO });
     }
 }

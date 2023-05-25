@@ -1,5 +1,4 @@
 ﻿using Application.Const.Response;
-using Application.Contract.Persistance.EntitiesRepository.Blog;
 using Application.Contract.Persistence;
 using Application.DTOs.Blog.BlogGroup;
 using Application.features.Blog.Handler.Queries.BlogGroup;
@@ -36,7 +35,7 @@ namespace BackEnd_UnitTest.Facts.BlogGroups.Queries
             var result = await handler.Handle(new GetBlogGroupListRequest(), CancellationToken.None);
 
             result.ShouldBeOfType<ReturnData<BlogGroupDTO>>();
-           // result.Tentities.Count.ShouldBe(3);
+            // result.Tentities.Count.ShouldBe(3);
             result.Status.ShouldBe(ResponseStatus.Success);
 
         }

@@ -6,12 +6,8 @@ using Application.features.GeneralInformations.AddressFeatures.Request.Commands;
 using Application.Reaspose;
 using AutoMapper;
 using Domain.Entities.GeneralSiteInformation;
-using FluentValidation.Results;
 using MediatR;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -22,7 +18,7 @@ namespace Application.features.GeneralInformations.AddressFeatures.Handler.Comma
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
 
-        public CreateAddressRequestHandler(IMapper mapper,IUnitofWork unitofWork)
+        public CreateAddressRequestHandler(IMapper mapper, IUnitofWork unitofWork)
         {
             _mapper = mapper;
             _unitofWork = unitofWork;
@@ -36,12 +32,12 @@ namespace Application.features.GeneralInformations.AddressFeatures.Handler.Comma
                 return FillRetuenData<CreateAddressDTO>.FillByEntity(
                                 request.createAddressDTO,
                                 ResponseStatus.ValidationError,
-                                validationResult.Errors.Select(q=>q.ErrorMessage).ToList());
+                                validationResult.Errors.Select(q => q.ErrorMessage).ToList());
             #endregion
             var address = _mapper.Map<Address>(request.createAddressDTO);
             await _unitofWork.AddressRepository.AddEntityAsync(address);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<CreateAddressDTO>.FillByEntity(request.createAddressDTO,ResponseStatus.Success,null);
+            return FillRetuenData<CreateAddressDTO>.FillByEntity(request.createAddressDTO, ResponseStatus.Success, null);
         }
     }
 }

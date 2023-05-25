@@ -15,17 +15,17 @@ namespace BackEnd_Persistence.Repositories.Blogs
     {
         private readonly RealEstateDbContext _dbContext;
 
-        public BlogContentRepository(RealEstateDbContext dbContext):base(dbContext)
+        public BlogContentRepository(RealEstateDbContext dbContext) : base(dbContext)
         {
             _dbContext = dbContext;
         }
-        public async Task ChangeBlogContentIsSelected(BlogContent blogContent )
+        public async Task ChangeBlogContentIsSelected(BlogContent blogContent)
         {
             blogContent.IsSelected = !blogContent.IsSelected;
             blogContent.LastUpdateDate = DateTime.Now;
         }
 
-        public async Task ChangeBlogContentStatus(BlogContent blogContent )
+        public async Task ChangeBlogContentStatus(BlogContent blogContent)
         {
             blogContent.Status = !blogContent.Status;
             blogContent.LastUpdateDate = DateTime.Now;
@@ -98,7 +98,7 @@ namespace BackEnd_Persistence.Repositories.Blogs
             return blogContents;
         }
 
-        public  List<BlogContent> MappingBlogContent(List<BlogContentDTO> blogContents)
+        public List<BlogContent> MappingBlogContent(List<BlogContentDTO> blogContents)
         {
             var blogContentList = new List<BlogContent>();
             foreach (var item in blogContents)

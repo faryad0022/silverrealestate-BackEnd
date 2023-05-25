@@ -22,7 +22,7 @@ namespace Application.features.Blog.Handler.Commands.BlogcontentCommands
         private readonly IEmailSender _emailSender;
         private readonly IUnitofWork _unitofWork;
 
-        public CreateBlogContentRequestHandler(IMapper mapper, IEmailSender emailSender,IUnitofWork unitofWork)
+        public CreateBlogContentRequestHandler(IMapper mapper, IEmailSender emailSender, IUnitofWork unitofWork)
         {
             _mapper = mapper;
             _emailSender = emailSender;

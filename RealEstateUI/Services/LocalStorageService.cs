@@ -15,7 +15,7 @@ namespace RealEstateUI.Services
                 AutoSave = true,
                 Filename = "SilverNet_Estate"
             };
-            _storage = new LocalStorage(config);    
+            _storage = new LocalStorage(config);
         }
         public void CleareStorage(List<string> keys)
         {
@@ -27,7 +27,7 @@ namespace RealEstateUI.Services
 
         public bool Exist(string key)
         {
-            return _storage.Exists(key);    
+            return _storage.Exists(key);
         }
 
         public T GetStorageValue<T>(string key)

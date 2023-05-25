@@ -3,7 +3,7 @@ using Domain.Entities.Project;
 
 namespace Application.Contract.Persistance.EntitiesRepository.Project
 {
-    public interface ICountryRepository :  IGenericRepository<Country>
+    public interface ICountryRepository : IGenericRepository<Country>
     {
     }
 }

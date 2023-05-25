@@ -1,5 +1,4 @@
 ﻿using Application.Contract.Persistence.EntitiesRepository.GeneralInformations;
-using BackEnd_Persistence.Repositories.GeneralInformations;
 using BackEnd_UnitTest.Mocks.Models.Addresses;
 using Domain.Entities.GeneralSiteInformation;
 using Moq;

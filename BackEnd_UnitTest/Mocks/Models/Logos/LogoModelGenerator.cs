@@ -31,7 +31,7 @@ namespace BackEnd_UnitTest.Mocks.Models.Logos
         };
         public static CreateLogoDTO createDTO_Valid = new CreateLogoDTO
         {
-            Description="jhjhgjhgjhgjj",
+            Description = "jhjhgjhgjhgjj",
             ImageName = "asdasdasdsdasd",
             Title = "asdfadfasdfadf"
         };

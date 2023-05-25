@@ -1,6 +1,5 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.Contract.Persistence.EntitiesRepository.GeneralInformations;
 using Application.DTOs.GeneralSiteInformationsDTO.Social;
 using Application.features.GeneralInformations.SocialFeatures.Handler.Queries;
 using Application.features.GeneralInformations.SocialFeatures.Request.Queries;
@@ -36,8 +35,8 @@ namespace BackEnd_UnitTest.Facts.Socials.Queries
         {
             var handler = new GetSocialListRequestHandler(_mapper, _mockRepository.Object);
             var result = await handler.Handle(new GetSocialListRequest(), CancellationToken.None);
-            
-            
+
+
             result.ShouldBeOfType<ReturnData<SocialDTO>>();
             result.Tentities.Count.ShouldBe(2);
             result.Tentities.ShouldBeOfType<List<SocialDTO>>();
@@ -48,7 +47,7 @@ namespace BackEnd_UnitTest.Facts.Socials.Queries
         public async Task GetSelectedSocialList()
         {
             var handler = new GetSocialListRequestHandler(_mapper, _mockRepository.Object);
-            var result = await handler.Handle(new GetSocialListRequest() { justShowSelected=true}, CancellationToken.None);
+            var result = await handler.Handle(new GetSocialListRequest() { justShowSelected = true }, CancellationToken.None);
 
 
             result.ShouldBeOfType<ReturnData<SocialDTO>>();

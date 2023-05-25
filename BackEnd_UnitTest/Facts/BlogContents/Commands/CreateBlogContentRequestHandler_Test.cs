@@ -1,6 +1,5 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Infrastructure;
-using Application.Contract.Persistance.EntitiesRepository.Blog;
 using Application.Contract.Persistence;
 using Application.features.Blog.Handler.Commands.BlogcontentCommands;
 using Application.features.Blog.Request.Commands.BlogContentCommands;
@@ -37,7 +36,7 @@ namespace BackEnd_UnitTest.Facts.BlogContents.Commands
         [Fact]
         public async Task Create_BlogContent_Valid()
         {
-            var handler = new CreateBlogContentRequestHandler( _mapper,_mockEmail.Object, _mockUOW.Object);
+            var handler = new CreateBlogContentRequestHandler(_mapper, _mockEmail.Object, _mockUOW.Object);
             var result = await handler.Handle(new CreateBlogContentRequest() { createBlogContentDTO = BlogContentModelGenerator._createBlogContentDTO_Valid }, CancellationToken.None);
 
 

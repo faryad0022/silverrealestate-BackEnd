@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Application.DTOs.Blog.BlogGroup
 {
-    public class BlogGroupDTO : BaseEntityDTO, IBlogGroupDTO    
+    public class BlogGroupDTO : BaseEntityDTO, IBlogGroupDTO
     {
         #region Properties
         public string Name { get; set; }

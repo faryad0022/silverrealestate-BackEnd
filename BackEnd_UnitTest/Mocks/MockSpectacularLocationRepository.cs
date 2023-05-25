@@ -1,7 +1,6 @@
 ﻿using Application.Contract.Persistence.EntitiesRepository.GeneralInformations;
 using BackEnd_UnitTest.Mocks.Models.SpectacularLocations;
 using Domain.Entities.GeneralSiteInformation;
-using Microsoft.EntityFrameworkCore;
 using Moq;
 using System;
 using System.Linq;

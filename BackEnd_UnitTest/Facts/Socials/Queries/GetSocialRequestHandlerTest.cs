@@ -1,6 +1,5 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.Contract.Persistence.EntitiesRepository.GeneralInformations;
 using Application.DTOs.GeneralSiteInformationsDTO.Social;
 using Application.features.GeneralInformations.SocialFeatures.Handler.Queries;
 using Application.features.GeneralInformations.SocialFeatures.Request.Queries;
@@ -34,8 +33,8 @@ namespace BackEnd_UnitTest.Facts.Socials.Queries
         {
             var handler = new GetSocialRequestHandler(_mapper, _mockSocialRepository.Object);
             var result = await handler.Handle(new GetSocialRequest() { Id = 2 }, CancellationToken.None);
-            
-            
+
+
             result.ShouldBeOfType<ReturnData<SocialDTO>>();
             result.Tentity.ShouldBeOfType<SocialDTO>();
             result.Status.ShouldBe(ResponseStatus.Success);
@@ -45,7 +44,7 @@ namespace BackEnd_UnitTest.Facts.Socials.Queries
         {
             var handler = new GetSocialRequestHandler(_mapper, _mockSocialRepository.Object);
             var result = await handler.Handle(new GetSocialRequest() { Id = -2 }, CancellationToken.None);
-            
+
             result.ShouldBeOfType<ReturnData<SocialDTO>>();
             result.Tentity.ShouldBe(null);
             result.Tentities.ShouldBe(null);

@@ -28,7 +28,7 @@ namespace Application.features.GeneralInformations.SocialFeatures.Handler.Querie
         public async Task<ReturnData<SocialDTO>> Handle(GetSocialListRequest request, CancellationToken cancellationToken)
         {
             var social = await _unitofWork.SocialRepository.GetAllAsync();
-            if(request.justShowSelected)
+            if (request.justShowSelected)
             {
                 var selectedSocial = social.Where(x => x.IsSelected).ToList();
                 var SelectedSocialDTo = _mapper.Map<List<SocialDTO>>(selectedSocial);

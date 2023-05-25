@@ -23,6 +23,8 @@ namespace BackEnd_Persistence.Repositories
         private IRealEstateServicesRepository _realEstateServicesRepository;
         private ISpectacularlocationRepository _spectacularlocationRepository;
         private ISpectacularLocationImageRepository _spectacularLocationImageRepository;
+        private ITeamMemberRepository _teamMemberRepository;
+        private ITeamMemberSocialRepository _teamMemberSocialRepository;
 
         public UnitOfWork(RealEstateDbContext context) => _context = context;
 
@@ -39,6 +41,9 @@ namespace BackEnd_Persistence.Repositories
         public IRealEstateServicesRepository RealEstateServicesRepository => _realEstateServicesRepository ??= new RealEstateServicesRepository(_context);
         public ISpectacularlocationRepository SpectacularlocationRepository => _spectacularlocationRepository ??= new SpectacularlocationRepository(_context);
         public ISpectacularLocationImageRepository SpectacularLocationImageRepository => _spectacularLocationImageRepository ??= new SpectacularLocationImageRepository(_context);
+        public ITeamMemberRepository TeamMemberRepository => _teamMemberRepository ??= new TeamMemberRepository(_context);
+        public ITeamMemberSocialRepository TeamMemberSocialRepository => _teamMemberSocialRepository ??= new TeamMemberSocialRepository(_context);
+
 
         public void Dispose()
         {
