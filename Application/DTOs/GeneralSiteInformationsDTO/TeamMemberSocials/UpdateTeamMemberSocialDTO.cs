@@ -1,6 +1,8 @@
-﻿namespace Application.DTOs.GeneralSiteInformationsDTO.TeamMemberSocials
+﻿using Application.DTOs.Common;
+
+namespace Application.DTOs.GeneralSiteInformationsDTO.TeamMemberSocials
 {
-    public class UpdateTeamMemberSocialDTO : ITeamMemberSocialDTO
+    public class UpdateTeamMemberSocialDTO :BaseEntityDTO, ITeamMemberSocialDTO
     {
         public long TeamMemberId { get; set; }
         public string Name { get; set; }

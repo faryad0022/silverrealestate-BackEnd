@@ -20,6 +20,8 @@ namespace BackEnd_UnitTest.Mocks
             var _mockrRealEstateServiceepository = MockRealEstateServices.GetRealEstateServicesRepository();
             var _mockrSpectacularLocationRepository = MockSpectacularLocationRepository.GetSpectacularLocationRepositories();
             var _mockrSpectacularLocationImagesRepository = MockSpectacularImagesRepository.GetSpectacularImagesRepository();
+            var _mockTeamMemberRepository = MockTeamMemberRepository.GetTeamMemberRepository();
+            var _mockTeamMemberSocialRepository = MockTeamMemberSocialRepository.GetTeamMemberSocialRepository();
 
 
             //var _mockAboutSocialRepository = Mock
@@ -35,6 +37,9 @@ namespace BackEnd_UnitTest.Mocks
             _mockUOW.Setup(s => s.RealEstateServicesRepository).Returns(() => _mockrRealEstateServiceepository.Object);
             _mockUOW.Setup(s => s.SpectacularlocationRepository).Returns(() => _mockrSpectacularLocationRepository.Object);
             _mockUOW.Setup(s => s.SpectacularLocationImageRepository).Returns(() => _mockrSpectacularLocationImagesRepository.Object);
+            _mockUOW.Setup(s => s.TeamMemberRepository).Returns(() => _mockTeamMemberRepository.Object);
+            _mockUOW.Setup(s => s.TeamMemberSocialRepository).Returns(() => _mockTeamMemberSocialRepository.Object);
+
 
             return _mockUOW;
         }

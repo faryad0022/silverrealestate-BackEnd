@@ -1,20 +1,15 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.DTOs.GeneralSiteInformationsDTO.TeamMembers.Validators;
-using Application.DTOs.GeneralSiteInformationsDTO.TeamMembers;
 using Application.DTOs.GeneralSiteInformationsDTO.TeamMemberSocials;
+using Application.DTOs.GeneralSiteInformationsDTO.TeamMemberSocials.Validators;
 using Application.features.GeneralInformations.TeamMemberSocialFeatures.Request.Commands;
 using Application.Reaspose;
 using AutoMapper;
 using Domain.Entities.GeneralSiteInformation;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Application.DTOs.GeneralSiteInformationsDTO.TeamMemberSocials.Validators;
-using System.Linq;
 
 namespace Application.features.GeneralInformations.TeamMemberSocialFeatures.Handler.Commands
 {
@@ -23,7 +18,7 @@ namespace Application.features.GeneralInformations.TeamMemberSocialFeatures.Hand
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
 
-        public UpdateTeamMemberSocialRequestHandler(IMapper mapper,IUnitofWork unitofWork)
+        public UpdateTeamMemberSocialRequestHandler(IMapper mapper, IUnitofWork unitofWork)
         {
             _mapper = mapper;
             _unitofWork = unitofWork;

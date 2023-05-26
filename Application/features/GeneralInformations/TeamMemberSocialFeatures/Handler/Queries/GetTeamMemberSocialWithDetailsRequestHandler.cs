@@ -25,7 +25,7 @@ namespace Application.features.GeneralInformations.TeamMemberSocialFeatures.Hand
         {
             var teamMemberSocial = await _unitofWork.TeamMemberSocialRepository.GetTeamMemberSocialWithDetails(request.Id);
             if (teamMemberSocial is null)
-                return FillRetuenData<TeamMemberSocialDTO>.FillByEntity(null, ResponseStatus.NoContent, null);
+                return FillRetuenData<TeamMemberSocialDTO>.FillByEntity(null, ResponseStatus.NotFound, null);
 
             return FillRetuenData<TeamMemberSocialDTO>.FillByEntity(
                     _mapper.Map<TeamMemberSocialDTO>(teamMemberSocial),
