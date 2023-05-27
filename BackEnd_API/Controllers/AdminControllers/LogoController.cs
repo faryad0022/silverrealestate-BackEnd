@@ -7,10 +7,10 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace BackEnd_API.Controllers
+namespace BackEnd_API.Controllers.AdminControllers
 {
 
-    public class LogoController : SiteBaseController
+    public class LogoController : AdminBaseController
     {
         private readonly IMediator _mediator;
 

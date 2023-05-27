@@ -8,10 +8,10 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace BackEnd_API.Controllers
+namespace BackEnd_API.Controllers.AdminControllers
 {
 
-    public class BlogContentController : SiteBaseController
+    public class BlogContentController : AdminBaseController
     {
         private readonly IMediator _mediator;
 

@@ -2,14 +2,15 @@
 using Application.features.GeneralInformations.SocialFeatures.Request.Commands;
 using Application.features.GeneralInformations.SocialFeatures.Request.Queries;
 using Application.Reaspose;
+using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace BackEnd_API.Controllers
+namespace BackEnd_API.Controllers.AdminControllers
 {
 
-    public class SocialController : ControllerBase
+    public class SocialController : AdminBaseController
     {
         private readonly IMediator _mediator;
 

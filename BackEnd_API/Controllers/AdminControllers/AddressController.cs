@@ -7,9 +7,9 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace BackEnd_API.Controllers
+namespace BackEnd_API.Controllers.AdminControllers
 {
-    public class AddressController : SiteBaseController
+    public class AddressController : AdminBaseController
     {
         private readonly IMediator _mediator;
         public AddressController(IMediator mediator)

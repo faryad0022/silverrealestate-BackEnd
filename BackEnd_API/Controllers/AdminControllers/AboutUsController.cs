@@ -2,14 +2,15 @@
 using Application.features.GeneralInformations.AboutUsFeatures.Request.Commands;
 using Application.features.GeneralInformations.AboutUsFeatures.Request.Queries;
 using Application.Reaspose;
+using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace BackEnd_API.Controllers
+namespace BackEnd_API.Controllers.AdminControllers
 {
 
-    public class AboutUsController : ControllerBase
+    public class AboutUsController : AdminBaseController
     {
         private readonly IMediator _mediator;
 
