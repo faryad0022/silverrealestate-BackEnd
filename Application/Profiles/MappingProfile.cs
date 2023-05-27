@@ -152,9 +152,9 @@ namespace Application.Profiles
 
             #region TeamMemberSocial
             CreateMap<TeamMemberSocial, TeamMemberSocialDTO>()
-                .ForMember(t => t.TeamMemberId, opt =>
+                .ForMember(dest => dest.TeamMemberId, opt =>
                 {
-                    opt.MapFrom(t => t.TeamMember.Id);
+                    opt.MapFrom(src => src.TeamMember.Id);
                 })
                 .ForMember(t => t.TeamMemberName, opt =>
                 {

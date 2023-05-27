@@ -24,15 +24,15 @@ namespace BackEnd_API.Controllers.AdminControllers
             => await _mediator.Send(new GetLogoListRequest());
 
         [HttpGet("get-logo")]
-        public async Task<ActionResult<ReturnData<LogoDTO>>> GetAddress([FromQuery] long Id)
+        public async Task<ActionResult<ReturnData<LogoDTO>>> GetLogo([FromQuery] long Id)
             => await _mediator.Send(new GetLogoRequest() { Id = Id });
 
         [HttpPost("add-logo")]
-        public async Task<ActionResult<ReturnData<CreateLogoDTO>>> AddAddress([FromBody] CreateLogoDTO logoDTO)
+        public async Task<ActionResult<ReturnData<CreateLogoDTO>>> AddLogo([FromBody] CreateLogoDTO logoDTO)
             => await _mediator.Send(new CreateLogoRequest() { createLogoDTO = logoDTO });
 
         [HttpPut("change-logo-selected-status")]
-        public async Task<ActionResult<ReturnData<LogoDTO>>> ChangeAddressStatus([FromQuery] long Id)
+        public async Task<ActionResult<ReturnData<LogoDTO>>> ChangeLogoStatus([FromQuery] long Id)
             => await _mediator.Send(new ChangeLogoSelectStatusRequest() { Id = Id });
 
     }

@@ -19,7 +19,7 @@ namespace BackEnd_API.Controllers.AdminControllers
         {
             _mediator = mediator;
         }
-        [HttpGet]
+        [HttpGet("get-blog-group-list")]
         public async Task<ActionResult<ReturnData<BlogGroupDTO>>> GetBlogGroupListAsync()
             => await _mediator.Send(new GetBlogGroupListRequest());
 
@@ -28,7 +28,7 @@ namespace BackEnd_API.Controllers.AdminControllers
             => await _mediator.Send(new GetBlogGroupRequest { blogGroupId = id });
 
 
-        [HttpPost]
+        [HttpPost("add-blog-group")]
         public async Task<ActionResult<ReturnData<CreateBlogGroupDTO>>> AddBlogGroupAsync([FromBody] CreateBlogGroupDTO blogGroupDTO)
             => await _mediator.Send(new CreateBlogGroupRequestCommand { createBlogGroupDTO = blogGroupDTO });
     }

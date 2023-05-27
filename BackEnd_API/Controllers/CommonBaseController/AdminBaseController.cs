@@ -2,7 +2,7 @@
 
 namespace BackEnd_API.Controllers.CommonBaseController
 {
-    [Route("admin/[controller]")]
+    [Route("admin")]
     [ApiController]
     public class AdminBaseController : ControllerBase
     {

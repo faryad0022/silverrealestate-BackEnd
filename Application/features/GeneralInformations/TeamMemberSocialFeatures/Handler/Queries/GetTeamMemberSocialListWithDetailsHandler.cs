@@ -25,7 +25,7 @@ namespace Application.features.GeneralInformations.TeamMemberSocialFeatures.Hand
 
         public async Task<ReturnData<TeamMemberSocialDTO>> Handle(GetTeamMemberSocialListWithDetails request, CancellationToken cancellationToken)
         {
-            var teamMemberSocialList = await _unitofWork.TeamMemberSocialRepository.GetAllAsync();
+            var teamMemberSocialList = await _unitofWork.TeamMemberSocialRepository.GetTeamMemberSocialListWithDetails();
             if (teamMemberSocialList is null || teamMemberSocialList.Count < 1)
                 return FillRetuenData<TeamMemberSocialDTO>.FillByListEntity(null, ResponseStatus.NoContent, null);
             if (request.justSelected)

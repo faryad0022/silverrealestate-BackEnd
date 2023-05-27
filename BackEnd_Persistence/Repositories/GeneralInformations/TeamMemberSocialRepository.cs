@@ -21,7 +21,7 @@ namespace BackEnd_Persistence.Repositories.GeneralInformations
 
 
         public async Task<TeamMemberSocial> GetTeamMemberSocialWithDetails(long Id)
-            => await _dbContext.TeamMemberSocials.Include(t => t.TeamMember).Where(t => t.Id == Id).FirstOrDefaultAsync();
+            => await _dbContext.TeamMemberSocials.Include(t => t.TeamMember).FirstOrDefaultAsync(t => t.Id == Id);
 
     }
 }
