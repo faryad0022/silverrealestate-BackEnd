@@ -5,7 +5,6 @@ namespace Domain.Entities
 {
     public abstract class BaseEntity
     {
-        [Key]
         public long Id { get; set; }
         public bool IsDelete { get; set; }
         public bool IsSelected { get; set; }
