@@ -1,29 +1,29 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace RealEstateUI.Controllers
+namespace RealEstateUI.Controllers.RealEstateService
 {
-    public class BlogController : Controller
+    public class RealEstateServiceController : Controller
     {
-        // GET: BlogController
+        // GET: RealEstateServiceController
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: BlogController/Details/5
+        // GET: RealEstateServiceController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: BlogController/Create
+        // GET: RealEstateServiceController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: BlogController/Create
+        // POST: RealEstateServiceController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -38,13 +38,13 @@ namespace RealEstateUI.Controllers
             }
         }
 
-        // GET: BlogController/Edit/5
+        // GET: RealEstateServiceController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: BlogController/Edit/5
+        // POST: RealEstateServiceController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -59,13 +59,13 @@ namespace RealEstateUI.Controllers
             }
         }
 
-        // GET: BlogController/Delete/5
+        // GET: RealEstateServiceController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: BlogController/Delete/5
+        // POST: RealEstateServiceController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

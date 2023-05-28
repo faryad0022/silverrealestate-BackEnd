@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace RealEstateUI.Controllers
+namespace RealEstateUI.Controllers.About
 {
     public class AboutController : Controller
     {

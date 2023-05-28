@@ -1,29 +1,32 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace RealEstateUI.Controllers
+namespace RealEstateUI.Controllers.Project
 {
-    public class RealEstateServiceController : Controller
+    public class ProjectController : Controller
     {
-        // GET: RealEstateServiceController
+        // GET: ProjectController
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: RealEstateServiceController/Details/5
+        // GET: ProjectController/Details/5
         public ActionResult Details(int id)
         {
+            //image address must be set in html code
+
             return View();
         }
 
-        // GET: RealEstateServiceController/Create
+        // GET: ProjectController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: RealEstateServiceController/Create
+        // POST: ProjectController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -38,13 +41,13 @@ namespace RealEstateUI.Controllers
             }
         }
 
-        // GET: RealEstateServiceController/Edit/5
+        // GET: ProjectController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: RealEstateServiceController/Edit/5
+        // POST: ProjectController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -59,13 +62,13 @@ namespace RealEstateUI.Controllers
             }
         }
 
-        // GET: RealEstateServiceController/Delete/5
+        // GET: ProjectController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: RealEstateServiceController/Delete/5
+        // POST: ProjectController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
