@@ -76,7 +76,7 @@
                     <div class="main-box clearfix">
                         <div class="pull-right logo-outer">
                             <div class="logo">
-                                <a href="index.html">
+                                <a asp-controller="Home" asp-action="Index">
                                     <img src="images/icons/empty.png"
                                          data-src="images/logo.svg"
                                          alt=""
@@ -100,12 +100,12 @@
                                         <li class="current dropdown">
                                             <a asp-controller="Home" asp-action="Index">خانه</a>
                                         </li>
-                                        <li class="dropdown">
+                                        <li>
                                             <a asp-controller="About" asp-action="Index">درباره ما</a>
                                         </li>
                                         <li><a asp-controller="RealEstateService" asp-action="Index">خدمات</a></li>
-
-                                        <li class="dropdown">
+                                        <li><a asp-controller="Project" asp-action="Index">پروژه ها</a></li>
+                                        <li>
                                             <a asp-controller="Blog" asp-action="Index">وبلاگ</a>
 
                                         </li>
@@ -125,7 +125,7 @@
                 <div class="auto-container clearfix">
                     <!--Logo-->
                     <div class="logo pull-right">
-                        <a href="index.html" title="">
+                        <a asp-controller="Home" asp-action="Index" title="">
                             <img src="images/icons/empty.png"
                                  data-src="images/logo-small.svg"
                                  alt=""
