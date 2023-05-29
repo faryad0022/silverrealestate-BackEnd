@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace RealEstateUI.Controllers.Home.Components
+namespace RealEstateUI.Components.Components
 {
-    [ViewComponent(Name = "LatestProperty")]
-    public class LatestPropertyViewComponent:ViewComponent
+    [ViewComponent(Name = "Banner")]
+    public class BannerViewComponent : ViewComponent
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {

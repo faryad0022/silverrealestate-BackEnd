@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace RealEstateUI.Controllers.Home.Components
+namespace RealEstateUI.Components.Layout
 {
-    [ViewComponent(Name ="TeamMember")]
-    public class TeamMemberViewComponent:ViewComponent
+    [ViewComponent(Name = "FooterAddress")]
+    public class FooterAddressViewComponent:ViewComponent
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
