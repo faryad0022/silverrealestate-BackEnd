@@ -2,7 +2,7 @@
 
 namespace RealEstateUI.Services.Base
 {
-    public class Response<T> where T : class
+    public class ApiResponse<T> where T : class
     {
         public long Id { get; set; }
         public string Status { get; set; }

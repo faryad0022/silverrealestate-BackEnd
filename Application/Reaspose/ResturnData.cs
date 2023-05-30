@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Application.Reaspose
 {
 
     public class ReturnData<T> where T : class
     {
-        public long Id { get; set; }
         public string Status { get; set; }
         public List<string> Errors { get; set; }
         public List<T> Tentities { get; set; }
@@ -21,8 +22,8 @@ namespace Application.Reaspose
 
             return new ReturnData<T>
             {
-                Tentities = data,
                 Tentity = null,
+                Tentities = data,
                 Status = status,
                 Errors = errors
             };
@@ -33,7 +34,7 @@ namespace Application.Reaspose
 
             return new ReturnData<T>
             {
-                Tentities = null,
+                Tentities = default,
                 Tentity = data,
                 Status = status,
                 Errors = errors
