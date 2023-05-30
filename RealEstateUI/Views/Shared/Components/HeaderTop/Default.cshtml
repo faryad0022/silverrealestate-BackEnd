@@ -3,6 +3,7 @@
 *@
 @{
 }
+@model AddressVM
 <div class="header-top">
     <div class="auto-container">
         <div class="inner-container clearfix">
@@ -10,10 +11,10 @@
                 <ul class="contact-list clearfix">
                     <li>
                         <i class="fa fa-phone-volume"></i>
-                        <a href="tel:021-12345678">021-12345678</a>
+                        <a href="tel:@Model?.CellPhone">@Model?.CellPhone</a>
                     </li>
                     <li>
-                        <i class="fa fa-envelope"></i><a href="mailto:admin@revel.com">admin@revel.com</a>
+                        <i class="fa fa-envelope"></i><a href="@Model?.Email">@Model?.Email</a>
                     </li>
                 </ul>
             </div>

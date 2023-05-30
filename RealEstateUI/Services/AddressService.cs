@@ -20,15 +20,20 @@ namespace RealEstateUI.Services
             _localStorage = localStorage;
             _mapper = mapper;
         }
-        public async Task<IReadOnlyList<AddressVM>> GetAllAsync()
+
+ 
+
+        public async Task<IReadOnlyList<AddressVM>> GetAllAddressAsync()
         {
-            var x = await _httpClient.GetallAsync();
+            var x = await _httpClient.GetAllAddressAsync();
             return _mapper.Map<List<AddressVM>>(x.Tentities);
         }
-        public async Task<AddressVM> GetEntityAsync(long entityId)
+        public async Task<AddressVM> GetAddressEntityAsync(long entityId)
         {
-            var x = await _httpClient.GetAsync();
+            var x = await _httpClient.GetAddressAsync();
             return _mapper.Map<AddressVM>(x.Tentity);
         }
+
+   
     }
 }

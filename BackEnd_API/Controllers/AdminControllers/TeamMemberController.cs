@@ -20,23 +20,23 @@ namespace BackEnd_API.Controllers.AdminControllers
             _mediator = mediator;
         }
 
-        [HttpGet(ApiRouteV1.TeamMember_GetAll)]
+        [HttpGet(ApiRouteV1.TeamMember_GetAll,Name = "GetAllTeamMembers")]
         public async Task<ActionResult<ReturnData<TeamMemberDTO>>> GetAllTeamMembers()
             => await _mediator.Send(new GetTeamMemberListRequest());
 
-        [HttpGet(ApiRouteV1.TeamMember_Get)]
+        [HttpGet(ApiRouteV1.TeamMember_Get, Name = "GetTeamMember")]
         public async Task<ActionResult<ReturnData<TeamMemberDTO>>> GetTeamMember([FromQuery] long Id)
             => await _mediator.Send(new GetTeamMemberRequest() { Id = Id });
 
-        [HttpPost(ApiRouteV1.TeamMember_Add)]
+        [HttpPost(ApiRouteV1.TeamMember_Add, Name = "AddTeamMember")]
         public async Task<ActionResult<ReturnData<TeamMemberDTO>>> AddTeamMember([FromBody] CreateTeamMmeberDTO teammemberDTO)
             => await _mediator.Send(new CreateTeamMemberRequest() { createTeamMmeberDTO = teammemberDTO });
 
-        [HttpPut(ApiRouteV1.TeamMember_ChangeStatus)]
+        [HttpPut(ApiRouteV1.TeamMember_ChangeStatus, Name = "ChangeTeamMemberStatus")]
         public async Task<ActionResult<ReturnData<TeamMemberDTO>>> ChangeTeamMemberStatus([FromQuery] long Id)
             => await _mediator.Send(new ChangeTeamMemberSelectedStatusRequest() { Id = Id });
 
-        [HttpPut(ApiRouteV1.TeamMember_Update)]
+        [HttpPut(ApiRouteV1.TeamMember_Update, Name = "UpdateTeamMemberStatus")]
         public async Task<ActionResult<ReturnData<TeamMemberDTO>>> UpdateTeamMemberStatus([FromQuery] UpdateTeamMemberDTO updateTeamMemberDTO)
             => await _mediator.Send(new UpdateTeamMemberRequest() { updateTeamMemberDTO = updateTeamMemberDTO });
     }

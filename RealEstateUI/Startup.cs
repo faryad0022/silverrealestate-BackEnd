@@ -35,6 +35,8 @@ namespace RealEstateUI
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddSingleton<ILocalStorageService, LocalStorageService>();
             services.AddScoped<IAddressService, AddressService>();
+            services.AddScoped<IConstructorInformationService, ConstructorInformationService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

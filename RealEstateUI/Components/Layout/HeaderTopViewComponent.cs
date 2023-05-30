@@ -14,6 +14,6 @@ namespace RealEstateUI.Components.Layout
             _addressService = addressService;
         }
         public async Task<IViewComponentResult> InvokeAsync()
-            => View(await _addressService.GetEntityAsync(1));
+            => View(await _addressService.GetAddressEntityAsync(1));
     }
 }

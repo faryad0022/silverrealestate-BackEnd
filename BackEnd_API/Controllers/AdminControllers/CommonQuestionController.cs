@@ -19,23 +19,23 @@ namespace BackEnd_API.Controllers.AdminControllers
         {
             _mediator = mediator;
         }
-        [HttpGet(ApiRouteV1.CommonQuestiom_GetAll)]
+        [HttpGet(ApiRouteV1.CommonQuestiom_GetAll,Name = "GetAllCommonQuestion")]
         public async Task<ActionResult<ReturnData<CommonQuestionDTO>>> GetAllCommonQuestion()
             => await _mediator.Send(new GetCommonQuestionListRequest());
 
-        [HttpGet(ApiRouteV1.CommonQuestiom_Get)]
+        [HttpGet(ApiRouteV1.CommonQuestiom_Get, Name = "GetCommonQuestion")]
         public async Task<ActionResult<ReturnData<CommonQuestionDTO>>> GetCommonQuestion([FromQuery] long Id)
             => await _mediator.Send(new GetCommonQuestionRequest() { Id = Id });
 
-        [HttpPost(ApiRouteV1.CommonQuestiom_Add)]
+        [HttpPost(ApiRouteV1.CommonQuestiom_Add, Name = "AddCommonQuestion")]
         public async Task<ActionResult<ReturnData<CreateCommonQuestionDTO>>> AddCommonQuestion([FromBody] CreateCommonQuestionDTO commonquestionDTO)
             => await _mediator.Send(new CreateCommonQuestionRequest() { createCommonQuestionDTO = commonquestionDTO });
 
-        [HttpPut(ApiRouteV1.CommonQuestiom_Update)]
+        [HttpPut(ApiRouteV1.CommonQuestiom_Update, Name = "UpdateCommonQuestion")]
         public async Task<ActionResult<ReturnData<UpdateCommonQuestionDTO>>> UpdateCommonQuestion([FromQuery] UpdateCommonQuestionDTO commonquestionDTO)
             => await _mediator.Send(new UpdateCommonQuestionRequest() { updateCommonQuestionDTO = commonquestionDTO });
 
-        [HttpPut(ApiRouteV1.CommonQuestiom_ChangeStatus)]
+        [HttpPut(ApiRouteV1.CommonQuestiom_ChangeStatus, Name = "ChangeCommonQuestionStatus")]
         public async Task<ActionResult<ReturnData<CommonQuestionDTO>>> ChangeCommonQuestionStatus([FromQuery] long Id)
             => await _mediator.Send(new ChangeCommonQuestionSelectedStatusRequest() { Id = Id });
     }

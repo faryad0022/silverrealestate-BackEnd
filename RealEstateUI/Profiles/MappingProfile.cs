@@ -9,6 +9,8 @@ namespace RealEstateUI.Profiles
         public MappingProfile()
         {
             CreateMap<AddressDTO, AddressVM>().ReverseMap();
+            CreateMap<ConstructorInformationDTO, ConstructorVM>().ReverseMap();
+
         }
     }
 }

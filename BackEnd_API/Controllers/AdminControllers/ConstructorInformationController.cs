@@ -19,23 +19,23 @@ namespace BackEnd_API.Controllers.AdminControllers
         {
             _mediator = mediator;
         }
-        [HttpGet(ApiRouteV1.ConstructorInformation_GetAll)]
+        [HttpGet(ApiRouteV1.ConstructorInformation_GetAll,Name = "GetAllConstructorInformation")]
         public async Task<ActionResult<ReturnData<ConstructorInformationDTO>>> GetAllConstructorInformation()
             => await _mediator.Send(new GetConstructorInformationListRequest());
 
-        [HttpGet(ApiRouteV1.ConstructorInformation_Get)]
+        [HttpGet(ApiRouteV1.ConstructorInformation_Get, Name = "GetConstructorInformation")]
         public async Task<ActionResult<ReturnData<ConstructorInformationDTO>>> GetConstructorInformation([FromQuery] long Id)
             => await _mediator.Send(new GetConstructorInformationRequest() { Id = Id });
 
-        [HttpPost(ApiRouteV1.ConstructorInformation_Add)]
+        [HttpPost(ApiRouteV1.ConstructorInformation_Add, Name = "AddConstructorInformation")]
         public async Task<ActionResult<ReturnData<CreateConstructorInformationDTO>>> AddConstructorInformation([FromBody] CreateConstructorInformationDTO createConstructorInformationDTO)
             => await _mediator.Send(new CreateConstructorInformationRequest() { createConstructorInformationDTO = createConstructorInformationDTO });
 
-        [HttpPut(ApiRouteV1.ConstructorInformation_Update)]
+        [HttpPut(ApiRouteV1.ConstructorInformation_Update, Name = "UpdateConstructorInformation")]
         public async Task<ActionResult<ReturnData<UpdateConstructorInformationDTO>>> UpdateConstructorInformation([FromQuery] UpdateConstructorInformationDTO updateConstructorInformationDTO)
             => await _mediator.Send(new UpdateConstructorInformationRequest() { updateConstructorInformationDTO = updateConstructorInformationDTO });
 
-        [HttpPut(ApiRouteV1.ConstructorInformation_ChangeStatus)]
+        [HttpPut(ApiRouteV1.ConstructorInformation_ChangeStatus, Name = "ChangeConstructorInformationStatus")]
         public async Task<ActionResult<ReturnData<ConstructorInformationDTO>>> ChangeConstructorInformationStatus([FromQuery] long Id)
             => await _mediator.Send(new ChangeConstructorInformationSelectedStatusRequest() { Id = Id });
     }

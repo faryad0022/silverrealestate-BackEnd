@@ -20,23 +20,23 @@ namespace BackEnd_API.Controllers.AdminControllers
             _mediator = mediator;
         }
 
-        [HttpGet(ApiRouteV1.SpectacularLocation_GetAll)]
+        [HttpGet(ApiRouteV1.SpectacularLocation_GetAll,Name = "GetAllSpectacularLocations")]
         public async Task<ActionResult<ReturnData<SpectacularLocationDTO>>> GetAllSpectacularLocations()
             => await _mediator.Send(new GetSpectacularLocationListRequest());
 
-        [HttpGet(ApiRouteV1.SpectacularLocation_Get)]
+        [HttpGet(ApiRouteV1.SpectacularLocation_Get, Name = "GetSpectacularLocation")]
         public async Task<ActionResult<ReturnData<SpectacularLocationDTO>>> GetSpectacularLocation([FromQuery] long Id)
             => await _mediator.Send(new GetSpectacularLocationRequest() { Id = Id });
 
-        [HttpPost(ApiRouteV1.SpectacularLocation_Add)]
+        [HttpPost(ApiRouteV1.SpectacularLocation_Add, Name = "AddSpectacularLocation")]
         public async Task<ActionResult<ReturnData<SpectacularLocationDTO>>> AddSpectacularLocation([FromBody] CreateSpectacularLocationDTO createSpectacularLocationDTO)
             => await _mediator.Send(new CreateSpectacularLocationRequest() { createSpectacularLocationDTO = createSpectacularLocationDTO });
 
-        [HttpPut(ApiRouteV1.SpectacularLocation_ChangeStatus)]
+        [HttpPut(ApiRouteV1.SpectacularLocation_ChangeStatus, Name = "ChangeSpectacularLocationStatus")]
         public async Task<ActionResult<ReturnData<SpectacularLocationDTO>>> ChangeSpectacularLocationStatus([FromQuery] long Id)
             => await _mediator.Send(new ChnageSpectacularLocationSelectedStatusRequest() { Id = Id });
 
-        [HttpPut(ApiRouteV1.SpectacularLocation_Update)]
+        [HttpPut(ApiRouteV1.SpectacularLocation_Update, Name = "UpdateSpectacularLocationStatus")]
         public async Task<ActionResult<ReturnData<SpectacularLocationDTO>>> UpdateSpectacularLocationStatus([FromQuery] UpdateSpectacularLocationDTO updateSpectacularLocationDTO)
             => await _mediator.Send(new UpdateSpectacularLocationRequest() { updateSpectacularLocationDTO = updateSpectacularLocationDTO });
     }

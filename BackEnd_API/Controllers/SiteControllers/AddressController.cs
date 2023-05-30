@@ -1,6 +1,7 @@
 ﻿using Application.DTOs.GeneralSiteInformationsDTO.Address;
 using Application.features.GeneralInformations.AddressFeatures.Request.Queries;
 using Application.Reaspose;
+using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -18,11 +19,11 @@ namespace BackEnd_API.Controllers.SiteControllers
         {
             _mediator = mediator;
         }
-        [HttpGet("address/getall")]
+        [HttpGet(ApiRouteV1.Address_GetAll,Name ="GetAllAddressAsync")]
         public async Task<ActionResult<ReturnData<AddressDTO>>> GetAll()
             => await _mediator.Send(new GetAddressListRequest() { justShowSelected = true });
 
-        [HttpGet("address/get")]
+        [HttpGet(ApiRouteV1.Address_Get,Name ="GetAddressAsync")]
         public async Task<ActionResult<ReturnData<AddressDTO>>> GetById()
             => await _mediator.Send(new GetAddressRequest());
 

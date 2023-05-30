@@ -6,7 +6,7 @@ namespace RealEstateUI.Contract
 {
     public interface IAddressService
     {
-        Task<AddressVM> GetEntityAsync(long Id);
-        Task<IReadOnlyList<AddressVM>> GetAllAsync();
+        Task<AddressVM> GetAddressEntityAsync(long Id);
+        Task<IReadOnlyList<AddressVM>> GetAllAddressAsync();
     }
 }
