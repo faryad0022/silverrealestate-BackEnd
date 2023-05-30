@@ -3,10 +3,12 @@ using BackEnd_Infrastructure;
 using BackEnd_Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System;
 using System.Linq;
 
 namespace BackEnd_API
@@ -39,7 +41,26 @@ namespace BackEnd_API
             });
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "BackEnd_API", Version = "v1" });
+                c.SwaggerDoc("Admin", new OpenApiInfo { 
+                    Title = "Admin Controller Actions", 
+                    Version = "V1",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Shayne Boyer",
+                        Email = string.Empty,
+                        Url = new Uri("https://twitter.com/spboyer"),
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "Use under LICX",
+                        Url = new Uri("https://example.com/license"),
+                    }
+
+                });
+            });
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("Site", new OpenApiInfo { Title = "Site Controller Actions", Version = "V1" });
             });
         }
 
@@ -50,7 +71,10 @@ namespace BackEnd_API
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BackEnd_API v1"));
+                app.UseSwaggerUI(c => {
+                    c.SwaggerEndpoint("/swagger/Admin/swagger.json", "Admin");
+                    c.SwaggerEndpoint("/swagger/Site/swagger.json", "Site");
+                });
             }
 
             app.UseHttpsRedirection();

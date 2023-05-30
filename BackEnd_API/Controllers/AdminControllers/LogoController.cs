@@ -2,6 +2,7 @@
 using Application.features.GeneralInformations.LogoFeatures.Request.Commands;
 using Application.features.GeneralInformations.LogoFeatures.Request.Queries;
 using Application.Reaspose;
+using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -19,19 +20,19 @@ namespace BackEnd_API.Controllers.AdminControllers
             _mediator = mediator;
         }
 
-        [HttpGet("get-all-logos")]
+        [HttpGet(ApiRouteV1.Logo_GetAll)]
         public async Task<ActionResult<ReturnData<LogoDTO>>> GetAllLogo()
             => await _mediator.Send(new GetLogoListRequest());
 
-        [HttpGet("get-logo")]
+        [HttpGet(ApiRouteV1.Logo_Get)]
         public async Task<ActionResult<ReturnData<LogoDTO>>> GetLogo([FromQuery] long Id)
             => await _mediator.Send(new GetLogoRequest() { Id = Id });
 
-        [HttpPost("add-logo")]
+        [HttpPost(ApiRouteV1.Logo_Add)]
         public async Task<ActionResult<ReturnData<CreateLogoDTO>>> AddLogo([FromBody] CreateLogoDTO logoDTO)
             => await _mediator.Send(new CreateLogoRequest() { createLogoDTO = logoDTO });
 
-        [HttpPut("change-logo-selected-status")]
+        [HttpPut(ApiRouteV1.Logo_ChangeStatus)]
         public async Task<ActionResult<ReturnData<LogoDTO>>> ChangeLogoStatus([FromQuery] long Id)
             => await _mediator.Send(new ChangeLogoSelectStatusRequest() { Id = Id });
 

@@ -2,6 +2,7 @@
 using Application.features.GeneralInformations.AddressFeatures.Request.Commands;
 using Application.features.GeneralInformations.AddressFeatures.Request.Queries;
 using Application.Reaspose;
+using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -17,23 +18,23 @@ namespace BackEnd_API.Controllers.AdminControllers
             _mediator = mediator;
         }
 
-        [HttpGet("get-all-address")]
+        [HttpGet(ApiRouteV1.Address_GetAll)]
         public async Task<ActionResult<ReturnData<AddressDTO>>> GetAllAddress()
             => await _mediator.Send(new GetAddressListRequest());
 
-        [HttpGet("get-address")]
+        [HttpGet(ApiRouteV1.Address_Get)]
         public async Task<ActionResult<ReturnData<AddressDTO>>> GetAddress([FromQuery] long Id)
             => await _mediator.Send(new GetAddressRequest() { Id = Id });
 
-        [HttpPost("add-address")]
+        [HttpPost(ApiRouteV1.Address_Add)]
         public async Task<ActionResult<ReturnData<CreateAddressDTO>>> AddAddress([FromBody] CreateAddressDTO addressDTO)
             => await _mediator.Send(new CreateAddressRequest() { createAddressDTO = addressDTO });
 
-        [HttpPut("update-address")]
+        [HttpPut(ApiRouteV1.Address_Update)]
         public async Task<ActionResult<ReturnData<UpdateAddressDTO>>> UpdateAddress([FromQuery] UpdateAddressDTO addressDTO)
             => await _mediator.Send(new UpdateAddressRequest() { updateAddressDTO = addressDTO });
 
-        [HttpPut("change-address-status")]
+        [HttpPut(ApiRouteV1.Address_ChangeStatus)]
         public async Task<ActionResult<ReturnData<UpdateAddressDTO>>> ChangeAddressStatus([FromQuery] long Id)
             => await _mediator.Send(new ChangeAddressDTOStatusRequest() { Id = Id });
     }

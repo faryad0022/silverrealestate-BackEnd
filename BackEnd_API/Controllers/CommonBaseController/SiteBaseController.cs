@@ -2,8 +2,11 @@
 
 namespace BackEnd_API.Controllers.CommonBaseController
 {
-    [Route("site/[controller]")]
+    [Route("site")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "Site")]
+    [Produces("application/json")]
+
     public class SiteBaseController : ControllerBase
     {
     }

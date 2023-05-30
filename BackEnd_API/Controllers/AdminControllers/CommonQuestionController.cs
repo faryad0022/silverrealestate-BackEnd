@@ -2,6 +2,7 @@
 using Application.features.GeneralInformations.CommonQuestionFeatures.Request.Command;
 using Application.features.GeneralInformations.CommonQuestionFeatures.Request.Queries;
 using Application.Reaspose;
+using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -18,23 +19,23 @@ namespace BackEnd_API.Controllers.AdminControllers
         {
             _mediator = mediator;
         }
-        [HttpGet("get-all-commonquestion")]
+        [HttpGet(ApiRouteV1.CommonQuestiom_GetAll)]
         public async Task<ActionResult<ReturnData<CommonQuestionDTO>>> GetAllCommonQuestion()
             => await _mediator.Send(new GetCommonQuestionListRequest());
 
-        [HttpGet("get-commonquestion")]
+        [HttpGet(ApiRouteV1.CommonQuestiom_Get)]
         public async Task<ActionResult<ReturnData<CommonQuestionDTO>>> GetCommonQuestion([FromQuery] long Id)
             => await _mediator.Send(new GetCommonQuestionRequest() { Id = Id });
 
-        [HttpPost("add-commonquestion")]
+        [HttpPost(ApiRouteV1.CommonQuestiom_Add)]
         public async Task<ActionResult<ReturnData<CreateCommonQuestionDTO>>> AddCommonQuestion([FromBody] CreateCommonQuestionDTO commonquestionDTO)
             => await _mediator.Send(new CreateCommonQuestionRequest() { createCommonQuestionDTO = commonquestionDTO });
 
-        [HttpPut("update-commonquestion")]
+        [HttpPut(ApiRouteV1.CommonQuestiom_Update)]
         public async Task<ActionResult<ReturnData<UpdateCommonQuestionDTO>>> UpdateCommonQuestion([FromQuery] UpdateCommonQuestionDTO commonquestionDTO)
             => await _mediator.Send(new UpdateCommonQuestionRequest() { updateCommonQuestionDTO = commonquestionDTO });
 
-        [HttpPut("change-commonquestion-status")]
+        [HttpPut(ApiRouteV1.CommonQuestiom_ChangeStatus)]
         public async Task<ActionResult<ReturnData<CommonQuestionDTO>>> ChangeCommonQuestionStatus([FromQuery] long Id)
             => await _mediator.Send(new ChangeCommonQuestionSelectedStatusRequest() { Id = Id });
     }

@@ -3,6 +3,7 @@ using Application.DTOs.Filters;
 using Application.features.Blog.Request.Commands.BlogContentCommands;
 using Application.features.Blog.Request.Queries.BlogContent;
 using Application.Reaspose;
+using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -20,43 +21,36 @@ namespace BackEnd_API.Controllers.AdminControllers
             _mediator = mediator;
         }
 
-        [HttpGet("get-filter-blogcontents")]
+        [HttpGet(ApiRouteV1.BlogContent_Get_Filter)]
         public async Task<ActionResult<ReturnData<FilterBlogContentDTO>>> GetByFilter([FromQuery] FilterBlogContentDTO filter)
         {
             return await _mediator.Send(new GetBlogContentByFilterRequest { filter = filter });
         }
 
-        [HttpGet("get-with-details-blogcontents")]
+        [HttpGet(ApiRouteV1.BlogContent_Get_WithDetails)]
         public async Task<ActionResult<ReturnData<BlogContentDTO>>> GetWithDetails([FromQuery] long id)
         {
             return await _mediator.Send(new GetBlogContentWithDetails { blogContentId = id });
         }
 
-        [HttpGet("get-with-details-list-blogcontents")]
+        [HttpGet(ApiRouteV1.BlogContent_GetAll_WithDetails)]
         public async Task<ActionResult<ReturnData<BlogContentDTO>>> GetWithDetailsList()
         {
             return await _mediator.Send(new GetBlogContentWithDetailsListRequest());
         }
 
-        [HttpPost("add-blog-content")]
+        [HttpPost(ApiRouteV1.BlogContent_Add)]
         public async Task<ActionResult<ReturnData<CreateBlogContentDTO>>> AddBlogContentAsync([FromBody] CreateBlogContentDTO createBlogContentDTO)
             => await _mediator.Send(new CreateBlogContentRequest() { createBlogContentDTO = createBlogContentDTO });
 
 
 
-        [HttpPut("update-blog-content")]
+        [HttpPut(ApiRouteV1.BlogContent_Update)]
         public async Task<ActionResult<ReturnData<UpdateBlogContentDTO>>> UpdateBlogContentAsync([FromBody] UpdateBlogContentDTO updateBlogContentDTO)
             => await _mediator.Send(new UpdateBlogcontentRequest() { updateBlogContentDTO = updateBlogContentDTO });
 
-        [HttpPut("change-blog-content-status")]
-        public async Task<ActionResult<ReturnData<UpdateBlogContentDTO>>> ChangeBlogContentStatusAsync([FromBody] ChangeBlogContentStatusDTO changeBlogContentStatusDTO, [FromQuery] long Id)
-            => await _mediator.Send(new UpdateBlogcontentRequest()
-            {
-                Id = Id,
-                changeBlogContentStatusDTO = changeBlogContentStatusDTO
-            });
 
-        [HttpPut("change-blog-content-isselected")]
+        [HttpPut(ApiRouteV1.BlogContent_ChangeStatus)]
         public async Task<ActionResult<ReturnData<UpdateBlogContentDTO>>> ChangeBlogContentIsSelectedAsync([FromBody] ChangeBlogContentIsSelectedDTO changeBlogContentIsSelected, [FromQuery] long Id)
             => await _mediator.Send(new UpdateBlogcontentRequest()
             {

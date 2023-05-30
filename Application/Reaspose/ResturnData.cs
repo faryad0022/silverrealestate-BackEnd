@@ -1,16 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace Application.Reaspose
 {
 
-    public class ReturnData<T> where T : class
+    public class ReturnData< T> where T : class
     {
         public string Status { get; set; }
         public List<string> Errors { get; set; }
         public List<T> Tentities { get; set; }
-        public T Tentity { get; set; }
+        [MaybeNull]
+        public  T Tentity { get; set; }
 
     }
 
@@ -19,7 +21,6 @@ namespace Application.Reaspose
     {
         public static ReturnData<T> FillByListEntity(List<T> data, string status, List<string> errors)
         {
-
             return new ReturnData<T>
             {
                 Tentity = null,
@@ -34,7 +35,7 @@ namespace Application.Reaspose
 
             return new ReturnData<T>
             {
-                Tentities = default,
+                Tentities = null,
                 Tentity = data,
                 Status = status,
                 Errors = errors

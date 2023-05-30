@@ -2,6 +2,7 @@
 using Application.features.GeneralInformations.TeamMemberSocialFeatures.Request.Commands;
 using Application.features.GeneralInformations.TeamMemberSocialFeatures.Request.Queries;
 using Application.Reaspose;
+using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -18,23 +19,23 @@ namespace BackEnd_API.Controllers.AdminControllers
         {
             _mediator = mediator;
         }
-        [HttpGet("get-all-team-member-social")]
+        [HttpGet(ApiRouteV1.TeamMemberSocial_GetAll_WithDetails)]
         public async Task<ActionResult<ReturnData<TeamMemberSocialDTO>>> GetAllTeamMemberSocialWithDetails()
             => await _mediator.Send(new GetTeamMemberSocialListWithDetails());
 
-        [HttpGet("get-team-member-social")]
+        [HttpGet(ApiRouteV1.TeamMemberSocial_Get_WithDetails)]
         public async Task<ActionResult<ReturnData<TeamMemberSocialDTO>>> GetTeamMemberSocialWithDetails([FromQuery] long Id)
             => await _mediator.Send(new GetTeamMemberSocialWithDetailsRequest() { Id = Id });
 
-        [HttpPost("add-team-member-social")]
+        [HttpPost(ApiRouteV1.TeamMemberSocial_Add)]
         public async Task<ActionResult<ReturnData<TeamMemberSocialDTO>>> AddTeamMemberSocial([FromBody] CreateTeamMemberSocialDTO teammembersocialDTO)
             => await _mediator.Send(new CreateTeamMemberSocialRequest() { createTeamMemberSocialDTO = teammembersocialDTO });
 
-        [HttpPut("update-team-member-social")]
+        [HttpPut(ApiRouteV1.TeamMemberSocial_Update)]
         public async Task<ActionResult<ReturnData<TeamMemberSocialDTO>>> UpdateTeamMemberSocial([FromQuery] UpdateTeamMemberSocialDTO teammembersocialDTO)
             => await _mediator.Send(new UpdateTeamMemberSocialRequest() { updateTeamMemberSocialDTO = teammembersocialDTO });
 
-        [HttpPut("change-team-member-social-status")]
+        [HttpPut(ApiRouteV1.TeamMemberSocial_ChangeStatus)]
         public async Task<ActionResult<ReturnData<TeamMemberSocialDTO>>> ChangeTeamMemberSocialStatus([FromQuery] long Id)
             => await _mediator.Send(new ChangeTeamMemberSocialSelectedStatusRequest() { Id = Id });
     }

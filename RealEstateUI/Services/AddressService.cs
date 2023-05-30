@@ -22,12 +22,13 @@ namespace RealEstateUI.Services
         }
         public async Task<IReadOnlyList<AddressVM>> GetAllAsync()
         {
-            var x = await _httpClient.GetAllAddressAsync();
+            var x = await _httpClient.GetallAsync();
             return _mapper.Map<List<AddressVM>>(x.Tentities);
         }
-        public Task<AddressVM> GetEntityAsync(long entityId)
+        public async Task<AddressVM> GetEntityAsync(long entityId)
         {
-            throw new System.NotImplementedException();
+            var x = await _httpClient.GetAsync();
+            return _mapper.Map<AddressVM>(x.Tentity);
         }
     }
 }
