@@ -27,15 +27,19 @@ namespace BackEnd_API.Controllers.AdminControllers
             => await _mediator.Send(new GetAddressRequest() { Id = Id });
 
         [HttpPost(ApiRouteV1.Address_Add, Name = "AddAddress")]
-        public async Task<ActionResult<ReturnData<CreateAddressDTO>>> AddAddress([FromBody] CreateAddressDTO addressDTO)
+        public async Task<ActionResult<ReturnData<AddressDTO>>> AddAddress([FromBody] CreateAddressDTO addressDTO)
             => await _mediator.Send(new CreateAddressRequest() { createAddressDTO = addressDTO });
 
         [HttpPut(ApiRouteV1.Address_Update, Name = "UpdateAddress")]
-        public async Task<ActionResult<ReturnData<UpdateAddressDTO>>> UpdateAddress([FromQuery] UpdateAddressDTO addressDTO)
+        public async Task<ActionResult<ReturnData<AddressDTO>>> UpdateAddress([FromBody] UpdateAddressDTO addressDTO)
             => await _mediator.Send(new UpdateAddressRequest() { updateAddressDTO = addressDTO });
 
+        [HttpPut(ApiRouteV1.Address_Delete, Name = "DeleteAddress")]
+        public async Task<ActionResult<ReturnData<AddressDTO>>> DeleteAddress([FromBody] long Id)
+    => await _mediator.Send(new DeleteAddressRequest() { Id = Id });
+
         [HttpPut(ApiRouteV1.Address_ChangeStatus, Name = "ChangeAddressStatus")]
-        public async Task<ActionResult<ReturnData<UpdateAddressDTO>>> ChangeAddressStatus([FromQuery] long Id)
+        public async Task<ActionResult<ReturnData<AddressDTO>>> ChangeAddressStatus([FromBody] long Id)
             => await _mediator.Send(new ChangeAddressDTOStatusRequest() { Id = Id });
     }
 }

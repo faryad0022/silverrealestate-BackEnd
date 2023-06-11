@@ -37,6 +37,8 @@ namespace BackEnd_Persistence.Repositories
         {
             entity.LastUpdateDate = DateTime.Now;
             entity.IsDelete = true;
+            _dbContext.Set<TEntity>().Update(entity);
+
         }
 
         public async Task<bool> ExistAsync(long entityId)
@@ -47,7 +49,7 @@ namespace BackEnd_Persistence.Repositories
 
         public async Task<IReadOnlyList<TEntity>> GetAllAsync()
         {
-            return await _dbContext.Set<TEntity>().ToListAsync();
+            return await _dbContext.Set<TEntity>().Where(t=>!t.IsDelete).ToListAsync();
         }
 
         public IQueryable<TEntity> GetEntitiesQuery()

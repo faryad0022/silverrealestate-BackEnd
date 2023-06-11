@@ -25,13 +25,13 @@ namespace RealEstateUI.Services
 
         public async Task<IReadOnlyList<AddressVM>> GetAllAddressAsync()
         {
-            var x = await _httpClient.GetAllAddressAsync();
-            return _mapper.Map<List<AddressVM>>(x.Tentities);
+            var addressList = await _httpClient.GetAllAddressAsync();
+            return _mapper.Map<List<AddressVM>>(addressList.Tentities);
         }
         public async Task<AddressVM> GetAddressEntityAsync(long entityId)
         {
-            var x = await _httpClient.GetAddressAsync();
-            return _mapper.Map<AddressVM>(x.Tentity);
+            var address = await _httpClient.GetAddressAsync();
+            return _mapper.Map<AddressVM>(address.Tentity);
         }
 
    

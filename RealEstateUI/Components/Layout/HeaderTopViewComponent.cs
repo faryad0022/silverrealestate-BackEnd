@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RealEstateUI.Contract;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace RealEstateUI.Components.Layout
@@ -14,6 +15,10 @@ namespace RealEstateUI.Components.Layout
             _addressService = addressService;
         }
         public async Task<IViewComponentResult> InvokeAsync()
-            => View(await _addressService.GetAddressEntityAsync(1));
+        {
+            var addressList = await _addressService.GetAllAddressAsync();
+            var address = addressList.FirstOrDefault();
+            return View(address);
+        }
     }
 }

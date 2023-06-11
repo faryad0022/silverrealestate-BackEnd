@@ -16,6 +16,7 @@ namespace BackEnd_UnitTest.Mocks.Models.TeamMembers
                     MemberPicture = "faryad.jpg",
                     MemberPosition = "CEO",
                     Name = "Faryad",
+                    Email="mahancomputer49@gmail.com",
                     CreateDate = DateTime.Now,
                     IsSelected = true,
                     IsDelete = false
@@ -27,6 +28,7 @@ namespace BackEnd_UnitTest.Mocks.Models.TeamMembers
                     MemberPicture = "farzad.jpg",
                     MemberPosition = "CEO",
                     Name = "Farzad",
+                    Email="mahancomputer49@gmail.com",
                     CreateDate = DateTime.Now,
                     IsSelected = true,
                     IsDelete = false
@@ -38,6 +40,7 @@ namespace BackEnd_UnitTest.Mocks.Models.TeamMembers
                     MemberPicture = "mojgan.jpg",
                     MemberPosition = "Sell Manager",
                     Name = "Mojgan",
+                    Email="mahancomputer49@gmail.com",
                     CreateDate = DateTime.Now,
                     IsSelected = true,
                     IsDelete = false
@@ -49,6 +52,7 @@ namespace BackEnd_UnitTest.Mocks.Models.TeamMembers
                     MemberPicture = "payam.jpg",
                     MemberPosition = "Sell Manager",
                     Name = "Payam",
+                    Email="mahancomputer49@gmail.com",
                     CreateDate = DateTime.Now,
                     IsSelected = false,
                     IsDelete = false
@@ -62,6 +66,7 @@ namespace BackEnd_UnitTest.Mocks.Models.TeamMembers
             MemberPicture = "asghar.jpg",
             MemberPosition = "CEO",
             Name = "Asghar",
+            Email = "mahancomputer49@gmail.com",
         };
         public static CreateTeamMmeberDTO CreateTeamMmeberDTO_ValidationError_InValid = new()
         {
@@ -78,6 +83,7 @@ namespace BackEnd_UnitTest.Mocks.Models.TeamMembers
             MemberPicture = "payam.jpg",
             MemberPosition = "Sell Manager",
             Name = "Payam Abolhassani",
+            Email = "mahancomputer49@gmail.com",
         };
         public static UpdateTeamMemberDTO UpdateTeamMemberDTO_NotFound_InValid = new()
         {

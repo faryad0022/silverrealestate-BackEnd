@@ -19,4 +19,12 @@
     <ProjectReference Include="..\BackEnd_Persistence\BackEnd_Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\about\origin\" />
+    <Folder Include="wwwroot\images\blogs\origin\" />
+    <Folder Include="wwwroot\images\constructor\origin\" />
+    <Folder Include="wwwroot\images\spectacular\origin\" />
+    <Folder Include="wwwroot\images\team\compressed\" />
+  </ItemGroup>
+
 </Project>

@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.features.GeneralInformations.AddressFeatures.Request.Commands
 {
-    public class CreateAddressRequest : IRequest<ReturnData<CreateAddressDTO>>
+    public class CreateAddressRequest : IRequest<ReturnData<AddressDTO>>
     {
         public CreateAddressDTO createAddressDTO { get; set; }
     }

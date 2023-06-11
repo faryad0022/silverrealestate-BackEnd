@@ -19,6 +19,10 @@ namespace Application.DTOs.GeneralSiteInformationsDTO.TeamMembers.Validators
             RuleFor(x => x.MemberPosition)
                 .NotNull().WithMessage(ValidatorMessages.NotNull)
                 .NotEmpty().WithMessage(ValidatorMessages.NotEmpty);
+            RuleFor(x => x.Email)
+                .EmailAddress().WithMessage(ValidatorMessages.EmailFormat)
+                .NotNull().WithMessage(ValidatorMessages.NotNull)
+                .NotEmpty().WithMessage(ValidatorMessages.NotEmpty);
         }
     }
 }

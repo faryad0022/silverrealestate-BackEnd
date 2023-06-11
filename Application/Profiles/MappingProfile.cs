@@ -28,6 +28,8 @@ namespace Application.Profiles
             CreateMap<BlogGroup, BlogGroupDTO>().ReverseMap();
             CreateMap<BlogGroup, CreateBlogGroupDTO>().ReverseMap();
             CreateMap<BlogGroup, UpdateBlogGroupDTO>().ReverseMap();
+            CreateMap<BlogGroupDTO, UpdateBlogGroupDTO>().ReverseMap();
+            CreateMap<BlogGroupDTO, CreateBlogGroupDTO>().ReverseMap();
 
             CreateMap<BlogContent, BlogContentDTO>()
                 .ForMember(dest => dest.BlogGroupName, opt => opt.MapFrom(src => src.blogGroup.Name))
@@ -37,6 +39,8 @@ namespace Application.Profiles
                 .ReverseMap();
             CreateMap<BlogContent, CreateBlogContentDTO>().ReverseMap();
             CreateMap<BlogContent, UpdateBlogContentDTO>().ReverseMap();
+            CreateMap<BlogContentDTO, UpdateBlogContentDTO>().ReverseMap();
+            CreateMap<BlogContentDTO, CreateBlogContentDTO>().ReverseMap();
 
             #endregion
 
@@ -44,6 +48,8 @@ namespace Application.Profiles
             CreateMap<AboutUs, AboutUsDTO>().ReverseMap();
             CreateMap<AboutUs, CreateAboutUsDTO>().ReverseMap();
             CreateMap<AboutUs, UpdateAboutUsDTO>().ReverseMap();
+            CreateMap<AboutUsDTO, UpdateAboutUsDTO>().ReverseMap();
+            CreateMap<AboutUsDTO, CreateAboutUsDTO>().ReverseMap();
 
             #endregion
 
@@ -51,6 +57,8 @@ namespace Application.Profiles
             CreateMap<Address, AddressDTO>().ReverseMap();
             CreateMap<Address, UpdateAddressDTO>().ReverseMap();
             CreateMap<Address, CreateAddressDTO>().ReverseMap();
+            CreateMap<AddressDTO, UpdateAddressDTO>().ReverseMap();
+            CreateMap<AddressDTO, CreateAddressDTO>().ReverseMap();
 
             #endregion
 
@@ -58,36 +66,48 @@ namespace Application.Profiles
             CreateMap<Social, SocialDTO>().ReverseMap();
             CreateMap<Social, CreateSocialDTO>().ReverseMap();
             CreateMap<Social, UpdateSocialDTO>().ReverseMap();
+            CreateMap<SocialDTO, CreateSocialDTO>().ReverseMap();
+            CreateMap<SocialDTO, UpdateSocialDTO>().ReverseMap();
             #endregion
 
             #region ConstructorInformatio
             CreateMap<ConstructorInformation, ConstructorInformationDTO>().ReverseMap();
             CreateMap<ConstructorInformation, CreateConstructorInformationDTO>().ReverseMap();
             CreateMap<ConstructorInformation, UpdateConstructorInformationDTO>().ReverseMap();
+            CreateMap<ConstructorInformationDTO, CreateConstructorInformationDTO>().ReverseMap();
+            CreateMap<ConstructorInformationDTO, UpdateConstructorInformationDTO>().ReverseMap();
             #endregion
 
             #region CommonQuestion
             CreateMap<CommonQuestion, CommonQuestionDTO>().ReverseMap();
             CreateMap<CommonQuestion, CreateCommonQuestionDTO>().ReverseMap();
             CreateMap<CommonQuestion, UpdateCommonQuestionDTO>().ReverseMap();
+            CreateMap<CommonQuestionDTO, CreateCommonQuestionDTO>().ReverseMap();
+            CreateMap<CommonQuestionDTO, UpdateCommonQuestionDTO>().ReverseMap();
             #endregion
 
             #region RealEsateServices
             CreateMap<RealEstateServices, RealEstateServicesDTO>().ReverseMap();
             CreateMap<RealEstateServices, CreateRealEstateServicesDTO>().ReverseMap();
             CreateMap<RealEstateServices, UpdateRealEstateServicesDTO>().ReverseMap();
+            CreateMap<RealEstateServicesDTO, CreateRealEstateServicesDTO>().ReverseMap();
+            CreateMap<RealEstateServicesDTO, UpdateRealEstateServicesDTO>().ReverseMap();
             #endregion
 
             #region Banner
             CreateMap<Banner, BannerDTO>().ReverseMap();
             CreateMap<Banner, CreateBannerDTO>().ReverseMap();
             CreateMap<Banner, UpdateBannerDTO>().ReverseMap();
+            CreateMap<BannerDTO, CreateBannerDTO>().ReverseMap();
+            CreateMap<BannerDTO, UpdateBannerDTO>().ReverseMap();
             #endregion
 
             #region Logo
             CreateMap<Logo, LogoDTO>().ReverseMap();
             CreateMap<Logo, CreateLogoDTO>().ReverseMap();
             CreateMap<Logo, UpdateLogoDTO>().ReverseMap();
+            CreateMap<LogoDTO, CreateLogoDTO>().ReverseMap();
+            CreateMap<LogoDTO, UpdateLogoDTO>().ReverseMap();
             #endregion
 
             #region Filters

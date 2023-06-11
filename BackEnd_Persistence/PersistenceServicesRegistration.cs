@@ -20,6 +20,8 @@ namespace BackEnd_Persistence
             {
                 //options.EnableSensitiveDataLogging();
                 options.UseSqlServer(configuration.GetConnectionString("RealEstateDbContext"));
+                options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+
             });
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IUnitofWork, UnitOfWork>();

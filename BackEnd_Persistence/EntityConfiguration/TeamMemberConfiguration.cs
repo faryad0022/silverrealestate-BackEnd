@@ -11,7 +11,9 @@ namespace BackEnd_Persistence.EntityConfiguration
             builder.HasMany<TeamMemberSocial>(t => t.TeamMemberSocials)
                    .WithOne(t => t.TeamMember)
                    .HasForeignKey(t => t.TeamMemberId)
+                   
                    .OnDelete(DeleteBehavior.Restrict);
+            
         }
     }
 }

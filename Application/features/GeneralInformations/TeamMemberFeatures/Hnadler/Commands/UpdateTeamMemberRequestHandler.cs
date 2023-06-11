@@ -1,7 +1,9 @@
-﻿using Application.Const.Response;
+﻿using Application.Const.PathUtility;
+using Application.Const.Response;
 using Application.Contract.Persistence;
 using Application.DTOs.GeneralSiteInformationsDTO.TeamMembers;
 using Application.DTOs.GeneralSiteInformationsDTO.TeamMembers.Validators;
+using Application.Extensions;
 using Application.features.GeneralInformations.TeamMemberFeatures.Request.Commands;
 using Application.Reaspose;
 using AutoMapper;
@@ -45,7 +47,22 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Co
                     );
             }
             #endregion
+            #region Upload Image
+            var createdImageName = ImageUploaderExtensions.UploadImage(
+                request.updateTeamMemberDTO.MemberPicture,
+                PathTools.TeamServernPath,
+                teamMember.MemberPicture
+                );
+            if (string.IsNullOrEmpty(createdImageName))
+                return FillRetuenData<TeamMemberDTO>.FillByEntity(
+                    null,
+                    ResponseStatus.UploadError,
+                    null
+                    );
+            #endregion
             var toUpdate = _mapper.Map<TeamMember>(request.updateTeamMemberDTO);
+            request.updateTeamMemberDTO.MemberPicture = createdImageName;
+            toUpdate.MemberPicture = createdImageName;
             _unitofWork.TeamMemberRepository.UpdateEntityAsync(toUpdate);
             await _unitofWork.SaveChangesAsync();
             return FillRetuenData<TeamMemberDTO>.FillByEntity(

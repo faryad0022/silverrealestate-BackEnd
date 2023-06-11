@@ -10,6 +10,7 @@ namespace Application.DTOs.GeneralSiteInformationsDTO.TeamMembers
         public string CellPhone { get; set; }
         public string MemberPosition { get; set; }
         public string MemberPicture { get; set; }
+        public string Email { get; set; }
         public ICollection<TeamMemberSocialDTO> TeamMemberSocials { get; set; }
     }
 }

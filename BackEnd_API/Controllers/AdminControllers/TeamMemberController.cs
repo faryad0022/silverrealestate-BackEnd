@@ -36,8 +36,11 @@ namespace BackEnd_API.Controllers.AdminControllers
         public async Task<ActionResult<ReturnData<TeamMemberDTO>>> ChangeTeamMemberStatus([FromQuery] long Id)
             => await _mediator.Send(new ChangeTeamMemberSelectedStatusRequest() { Id = Id });
 
-        [HttpPut(ApiRouteV1.TeamMember_Update, Name = "UpdateTeamMemberStatus")]
-        public async Task<ActionResult<ReturnData<TeamMemberDTO>>> UpdateTeamMemberStatus([FromQuery] UpdateTeamMemberDTO updateTeamMemberDTO)
+        [HttpPut(ApiRouteV1.TeamMember_Update, Name = "UpdateTeamMember")]
+        public async Task<ActionResult<ReturnData<TeamMemberDTO>>> UpdateTeamMember([FromBody] UpdateTeamMemberDTO updateTeamMemberDTO)
             => await _mediator.Send(new UpdateTeamMemberRequest() { updateTeamMemberDTO = updateTeamMemberDTO });
+        [HttpPut(ApiRouteV1.TeamMember_Delete, Name = "DeleteTeamMember")]
+        public async Task<ActionResult<ReturnData<TeamMemberDTO>>> DeleteTeamMember([FromBody] long id)
+            => await _mediator.Send(new RemoveTeamMemberRequest() { Id = id });
     }
 }

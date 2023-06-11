@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.features.GeneralInformations.AddressFeatures.Request.Commands
 {
-    public class UpdateAddressRequest : IRequest<ReturnData<UpdateAddressDTO>>
+    public class UpdateAddressRequest : IRequest<ReturnData<AddressDTO>>
     {
         public UpdateAddressDTO updateAddressDTO { get; set; }
     }

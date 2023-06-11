@@ -17,6 +17,7 @@ namespace BackEnd_Persistence.SeedData
                     MemberPicture = "faryad.jpg",
                     MemberPosition = "CEO",
                     Name = "Faryad",
+                    Email = "mahancomputer49@gmail.com",
                     CreateDate = DateTime.Now,
                     IsSelected = true,
                     IsDelete = false
@@ -28,6 +29,7 @@ namespace BackEnd_Persistence.SeedData
                     MemberPicture = "farzad.jpg",
                     MemberPosition = "CEO",
                     Name = "Farzad",
+                    Email="faryad.abolhassani@yahoo.com",
                     CreateDate = DateTime.Now,
                     IsSelected = true,
                     IsDelete = false
@@ -39,6 +41,7 @@ namespace BackEnd_Persistence.SeedData
                     MemberPicture = "mojgan.jpg",
                     MemberPosition = "Sell Manager",
                     Name = "Mojgan",
+                    Email="Mojgan.Nazari@gmail.com",
                     CreateDate = DateTime.Now,
                     IsSelected = true,
                     IsDelete = false

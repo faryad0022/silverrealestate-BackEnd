@@ -81,6 +81,8 @@ namespace BackEnd_API
 
             app.UseRouting();
 
+            app.UseStaticFiles();
+
             app.UseAuthorization();
 
             app.UseCors("CorsPolicy");

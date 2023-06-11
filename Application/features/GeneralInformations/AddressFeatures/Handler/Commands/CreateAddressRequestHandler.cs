@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.AddressFeatures.Handler.Commands
 {
-    public class CreateAddressRequestHandler : IRequestHandler<CreateAddressRequest, ReturnData<CreateAddressDTO>>
+    public class CreateAddressRequestHandler : IRequestHandler<CreateAddressRequest, ReturnData<AddressDTO>>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -23,21 +23,22 @@ namespace Application.features.GeneralInformations.AddressFeatures.Handler.Comma
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ReturnData<CreateAddressDTO>> Handle(CreateAddressRequest request, CancellationToken cancellationToken)
+        public async Task<ReturnData<AddressDTO>> Handle(CreateAddressRequest request, CancellationToken cancellationToken)
         {
+            var toAddressDTO = _mapper.Map<AddressDTO>(request.createAddressDTO);
             #region Validation
             var validator = new CreateAddressValidator();
             var validationResult = await validator.ValidateAsync(request.createAddressDTO);
             if (!validationResult.IsValid)
-                return FillRetuenData<CreateAddressDTO>.FillByEntity(
-                                request.createAddressDTO,
+                return FillRetuenData<AddressDTO>.FillByEntity(
+                                toAddressDTO,
                                 ResponseStatus.ValidationError,
                                 validationResult.Errors.Select(q => q.ErrorMessage).ToList());
             #endregion
             var address = _mapper.Map<Address>(request.createAddressDTO);
             await _unitofWork.AddressRepository.AddEntityAsync(address);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<CreateAddressDTO>.FillByEntity(request.createAddressDTO, ResponseStatus.Success, null);
+            return FillRetuenData<AddressDTO>.FillByEntity(toAddressDTO, ResponseStatus.Success, null);
         }
     }
 }

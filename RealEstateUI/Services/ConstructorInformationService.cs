@@ -23,7 +23,8 @@ namespace RealEstateUI.Services
 
         public async Task<IReadOnlyList<ConstructorVM>> GetAllConstructorAsync()
         {
-            return _mapper.Map<List<ConstructorVM>>(await _httpClient.GetAllConstructorInformationAsync());
+            var constructorList = await _httpClient.GetAllConstructorInformationAsync();
+            return _mapper.Map<List<ConstructorVM>>(constructorList.Tentities);
         }
     }
 }
