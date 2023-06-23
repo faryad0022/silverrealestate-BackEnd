@@ -97,7 +97,7 @@ namespace BackEnd_UnitTest.Mocks.Models.TeamMembers
         {
             Id = 4,
             CellPhone = "00905338355243",
-            MemberPicture = "payam.jpg",
+            MemberPicture = "",
             MemberPosition = "",
             Name = "Payam Abolhassani",
         };

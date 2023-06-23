@@ -13,7 +13,7 @@ namespace BackEnd_UnitTest.Mocks
             var _mockRepo = new Mock<IConstructorInfromationRepository>();
             var constructorList = ConstructorInformationModelGenerator.constructorInformationList;
 
-            _mockRepo.Setup(m => m.GetAllAsync()).ReturnsAsync(constructorList);
+            _mockRepo.Setup(m => m.GetAllAsync()).ReturnsAsync(constructorList.Where(t => !t.IsDelete).ToList());
             _mockRepo.Setup(m => m.GetEntityAsync(It.IsAny<long>()))
                 .ReturnsAsync((long id) => constructorList.FirstOrDefault(x => x.Id == id));
             _mockRepo.Setup(m => m.AddEntityAsync(It.IsAny<ConstructorInformation>()))

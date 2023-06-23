@@ -12,7 +12,7 @@ namespace BackEnd_UnitTest.Mocks
         {
             var _mock = new Mock<IRealEstateServicesRepository>();
 
-            _mock.Setup(r => r.GetAllAsync()).ReturnsAsync(RealEstateServicesModelGenerator.RealEstateServicesList);
+            _mock.Setup(r => r.GetAllAsync()).ReturnsAsync(RealEstateServicesModelGenerator.RealEstateServicesList.Where(t => !t.IsDelete).ToList());
             _mock.Setup(r => r.GetEntityAsync(It.IsAny<long>()))
                 .ReturnsAsync((long id) => RealEstateServicesModelGenerator.RealEstateServicesList.FirstOrDefault(x => x.Id == id));
             _mock.Setup(r => r.AddEntityAsync(It.IsAny<RealEstateServices>()))

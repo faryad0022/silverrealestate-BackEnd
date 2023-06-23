@@ -15,7 +15,7 @@ namespace BackEnd_UnitTest.Mocks
 
             var spectacularLocationImageList = SpectacularLocationImageModelGenerator.SpectacularLocationImagesList;
             //Get All
-            _mock.Setup(s => s.GetAllAsync()).ReturnsAsync(spectacularLocationImageList);
+            _mock.Setup(s => s.GetAllAsync()).ReturnsAsync(spectacularLocationImageList.Where(t => !t.IsDelete).ToList());
             //Get All WithDetails
             _mock.Setup(s => s.GetSpectacularLocationImagesListWithDetails()).ReturnsAsync(spectacularLocationImageList);
             //Get By Id WithDetails

@@ -25,17 +25,12 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Qu
         public async Task<ReturnData<TeamMemberDTO>> Handle(GetTeamMemberListRequest request, CancellationToken cancellationToken)
         {
             var teamMemberList = await _unitofWork.TeamMemberRepository.GetAllAsync();
+            if (request.justSelected)
+                teamMemberList = teamMemberList.Where(s => s.IsSelected).ToList();
+           
             if (teamMemberList is null || teamMemberList.Count < 1)
                 return FillRetuenData<TeamMemberDTO>.FillByListEntity(null, ResponseStatus.NoContent, null);
-            if (request.justSelected)
-            {
-                var selectedTeamMember = teamMemberList.Where(s => s.IsSelected).ToList();
-                return FillRetuenData<TeamMemberDTO>.FillByListEntity(
-                    _mapper.Map<List<TeamMemberDTO>>(selectedTeamMember),
-                    ResponseStatus.Success,
-                    null
-                    );
-            }
+
             return FillRetuenData<TeamMemberDTO>.FillByListEntity(
                     _mapper.Map<List<TeamMemberDTO>>(teamMemberList),
                     ResponseStatus.Success,

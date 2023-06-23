@@ -1,0 +1,25 @@
+﻿using Application.DTOs.GeneralSiteInformationsDTO.Social;
+using Application.features.GeneralInformations.SocialFeatures.Request.Queries;
+using Application.Reaspose;
+using BackEnd_API.Const;
+using BackEnd_API.Controllers.CommonBaseController;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+
+namespace BackEnd_API.Controllers.SiteControllers
+{
+    public class SocialController : SiteBaseController
+    {
+        private readonly IMediator _mediator;
+
+        public SocialController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+        [HttpGet(ApiRouteV1.Social_GetAll, Name = "GetSocialListAsync")]
+        public async Task<ActionResult<ReturnData<SocialDTO>>> GetSocialListAsync()
+             => await _mediator.Send(new GetSocialListRequest() { justShowSelected = true });
+
+    }
+}

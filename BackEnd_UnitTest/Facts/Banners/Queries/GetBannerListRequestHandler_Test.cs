@@ -48,7 +48,7 @@ namespace BackEnd_UnitTest.Facts.Banners.Queries
             result.Tentity.ShouldBeNull();
             result.Errors.ShouldBeNull();
             result.Tentities.ShouldNotBeNull();
-            result.Tentities.Count.ShouldBe(3);
+            result.Tentities.Count.ShouldBe(2);
 
 
         }

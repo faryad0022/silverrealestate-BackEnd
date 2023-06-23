@@ -5,7 +5,7 @@ using MediatR;
 namespace Application.features.GeneralInformations.SocialFeatures.Request.Commands
 {
 
-    public class CreateSocialRequest : IRequest<ReturnData<CreateSocialDTO>>
+    public class CreateSocialRequest : IRequest<ReturnData<SocialDTO>>
     {
         public CreateSocialDTO createSocialDTO { get; set; }
     }

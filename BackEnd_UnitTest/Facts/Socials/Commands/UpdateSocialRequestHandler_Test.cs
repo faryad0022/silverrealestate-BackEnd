@@ -29,6 +29,34 @@ namespace BackEnd_UnitTest.Facts.Socials.Commands
         }
 
         [Fact]
+        public async Task UpdateSocial_ValidationError_InValid()
+        {
+            var handler = new UpdateSocialRequestHandler(_mock.Object, _mapper);
+            var result = await handler.Handle(new UpdateSocialRequest()
+            {
+                UpdateSocialDTO = SocialModelGenerator._updateSocialDTO_ValidationError_InValid
+            }, CancellationToken.None);
+
+            result.Status.ShouldBe(ResponseStatus.ValidationError);
+            result.Errors.ShouldNotBeNull();
+
+        }
+        [Fact]
+        public async Task UpdateSocial_NotFound_InValid()
+        {
+            var handler = new UpdateSocialRequestHandler(_mock.Object, _mapper);
+            var result = await handler.Handle(new UpdateSocialRequest()
+            {
+                UpdateSocialDTO = SocialModelGenerator._updateSocialDTO_NotFound_InValid
+            }, CancellationToken.None);
+
+            result.Status.ShouldBe(ResponseStatus.NotFound);
+            result.Tentities.ShouldBeNull();
+            result.Tentity.ShouldBeNull();
+            result.Errors.ShouldBeNull();
+
+        }
+        [Fact]
         public async Task UpdateSocial_Valid()
         {
             var handler = new UpdateSocialRequestHandler(_mock.Object, _mapper);

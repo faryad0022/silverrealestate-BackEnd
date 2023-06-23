@@ -38,5 +38,20 @@ namespace BackEnd_UnitTest.Mocks.Models.Socials
             Link = "twitter.com",
             Name = "Twitter"
         };
+        public static UpdateSocialDTO _updateSocialDTO_ValidationError_InValid = new UpdateSocialDTO
+        {
+            Id = 1,
+            Icon = "",
+            Link = "twitter.com",
+            Name = "Twitter"
+        };
+        public static UpdateSocialDTO _updateSocialDTO_NotFound_InValid = new UpdateSocialDTO
+        {
+            Id = 100,
+            Icon = "fa-facebook",
+            Link = "twitter.com",
+            Name = "Twitter"
+        };
+
     }
 }

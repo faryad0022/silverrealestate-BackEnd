@@ -13,7 +13,7 @@ namespace BackEnd_UnitTest.Mocks
             var _mock = new Mock<IBannerRepository>();
             var bannerList = BannerModelGenerator.bannerList;
 
-            _mock.Setup(m => m.GetAllAsync()).ReturnsAsync(bannerList);
+            _mock.Setup(m => m.GetAllAsync()).ReturnsAsync(bannerList.Where(t=>!t.IsDelete).ToList());
             _mock.Setup(m => m.GetEntityAsync(It.IsAny<long>()))
                 .ReturnsAsync((long id) => bannerList.FirstOrDefault(x => x.Id == id));
             _mock.Setup(m => m.AddEntityAsync(It.IsAny<Banner>()))

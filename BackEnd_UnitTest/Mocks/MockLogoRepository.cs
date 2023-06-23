@@ -13,7 +13,7 @@ namespace BackEnd_UnitTest.Mocks
             var _mock = new Mock<ILogoRepository>();
 
 
-            _mock.Setup(r => r.GetAllAsync()).ReturnsAsync(LogoModelGenerator.LogoList);
+            _mock.Setup(r => r.GetAllAsync()).ReturnsAsync(LogoModelGenerator.LogoList.Where(t => !t.IsDelete).ToList());
             _mock.Setup(r => r.GetEntityAsync(It.IsAny<long>()))
                 .ReturnsAsync((long id) => LogoModelGenerator.LogoList.FirstOrDefault(x => x.Id == id));
             _mock.Setup(r => r.AddEntityAsync(It.IsAny<Logo>()))

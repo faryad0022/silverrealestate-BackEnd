@@ -15,7 +15,7 @@ namespace BackEnd_UnitTest.Mocks
             _mock.Setup(m => m.GetEntityAsync(It.IsAny<long>()))
                 .ReturnsAsync((long id) => AddressModelGenerator.AddressList.FirstOrDefault(x => x.Id == id));
             _mock.Setup(m => m.GetAllAsync())
-                .ReturnsAsync(AddressModelGenerator.AddressList);
+                .ReturnsAsync(AddressModelGenerator.AddressList.Where(t => !t.IsDelete).ToList());
             _mock.Setup(m => m.AddEntityAsync(It.IsAny<Address>()))
                 .ReturnsAsync((Address address) =>
                             {

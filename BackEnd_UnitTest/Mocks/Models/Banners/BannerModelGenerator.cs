@@ -13,7 +13,8 @@ namespace BackEnd_UnitTest.Mocks.Models.Banners
                 Id=1,
                 BannerImage="Banner1.jpg",
                 Link="bannner/banner",
-                IsSelected=true
+                IsSelected=true,
+                IsDelete=true,
             },
             new Banner
             {
@@ -28,6 +29,21 @@ namespace BackEnd_UnitTest.Mocks.Models.Banners
                 BannerImage="Banner3.jpg",
                 Link="bannner/banner",
                 IsSelected=true
+            },
+            new Banner
+            {
+                Id=4,
+                BannerImage="Banner4.jpg",
+                Link="bannner/banner",
+                IsSelected=false
+            },
+            new Banner
+            {
+                Id=5,
+                BannerImage="Banner5.jpg",
+                Link="bannner/banner",
+                IsSelected=true,
+                IsDelete=true
             },
         };
         public static CreateBannerDTO createBannerDTO_Valid = new CreateBannerDTO

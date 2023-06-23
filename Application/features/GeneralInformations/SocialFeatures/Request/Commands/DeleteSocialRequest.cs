@@ -4,8 +4,8 @@ using MediatR;
 
 namespace Application.features.GeneralInformations.SocialFeatures.Request.Commands
 {
-    public class UpdateSocialRequest : IRequest<ReturnData<SocialDTO>>
+    public class DeleteSocialRequest : IRequest<ReturnData<SocialDTO>>
     {
-        public UpdateSocialDTO UpdateSocialDTO { get; set; }
+        public long Id { get; set; }
     }
 }

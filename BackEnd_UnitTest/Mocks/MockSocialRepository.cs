@@ -21,7 +21,7 @@ namespace BackEnd_UnitTest.Mocks
             });
 
             //GetAll
-            mockRepo.Setup(r => r.GetAllAsync()).ReturnsAsync(socialList);
+            mockRepo.Setup(r => r.GetAllAsync()).ReturnsAsync(socialList.Where(t => !t.IsDelete).ToList());
 
 
             //Get

@@ -16,7 +16,7 @@ namespace BackEnd_UnitTest.Mocks
             var teamMemberList = TeamMemberModelGenerator.TeamMemberList;
 
             //Get All
-            _mock.Setup(s => s.GetAllAsync()).ReturnsAsync(teamMemberList);
+            _mock.Setup(s => s.GetAllAsync()).ReturnsAsync(teamMemberList.Where(t => !t.IsDelete).ToList());
 
             //Get By Id
             _mock.Setup(s => s.GetEntityAsync(It.IsAny<long>())).ReturnsAsync((long Id) =>

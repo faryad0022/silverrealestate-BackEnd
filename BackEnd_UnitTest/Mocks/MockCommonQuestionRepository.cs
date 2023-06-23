@@ -16,7 +16,7 @@ namespace BackEnd_UnitTest.Mocks
             _mock.Setup(m => m.GetEntityAsync(It.IsAny<long>()))
                 .ReturnsAsync((long id) => commonQuestionList.FirstOrDefault(x => x.Id == id));
             _mock.Setup(m => m.GetAllAsync())
-                .ReturnsAsync(commonQuestionList);
+                .ReturnsAsync(commonQuestionList.Where(t => !t.IsDelete).ToList());
             _mock.Setup(m => m.AddEntityAsync(It.IsAny<CommonQuestion>()))
                 .ReturnsAsync((CommonQuestion common) =>
                 {

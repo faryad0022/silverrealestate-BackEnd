@@ -19,22 +19,26 @@ namespace BackEnd_API.Controllers.AdminControllers
         {
             _mediator = mediator;
         }
-        [HttpGet(ApiRouteV1.Social_GetAll,Name = "GetSocialListAsync")]
+        [HttpGet(ApiRouteV1.Social_GetAll, Name = "GetSocialListAsync")]
         public async Task<ActionResult<ReturnData<SocialDTO>>> GetSocialListAsync()
             => await _mediator.Send(new GetSocialListRequest());
 
 
         [HttpGet(ApiRouteV1.Social_Get, Name = "GetSocialAsync")]
-        public async Task<ActionResult<ReturnData<SocialDTO>>> GetSocialAsync([FromQuery] long Id)
+        public async Task<ActionResult<ReturnData<SocialDTO>>> GetSocialAsync([FromBody] long Id)
             => await _mediator.Send(new GetSocialRequest { Id = Id });
 
 
         [HttpPost(ApiRouteV1.Social_Add, Name = "AddSocialAsync")]
-        public async Task<ActionResult<ReturnData<CreateSocialDTO>>> AddSocialAsync([FromBody] CreateSocialDTO createSocialDTO)
+        public async Task<ActionResult<ReturnData<SocialDTO>>> AddSocialAsync([FromBody] CreateSocialDTO createSocialDTO)
             => await _mediator.Send(new CreateSocialRequest { createSocialDTO = createSocialDTO });
 
         [HttpPut(ApiRouteV1.Social_Update, Name = "UpdateSocialAsync")]
-        public async Task<ActionResult<ReturnData<UpdateSocialDTO>>> UpdateSocialAsync([FromQuery] UpdateSocialDTO updateSocialDTO)
+        public async Task<ActionResult<ReturnData<SocialDTO>>> UpdateSocialAsync([FromBody] UpdateSocialDTO updateSocialDTO)
             => await _mediator.Send(new UpdateSocialRequest { UpdateSocialDTO = updateSocialDTO });
+
+        [HttpPut(ApiRouteV1.Social_Delete, Name = "DeleteSocialAsync")]
+        public async Task<ActionResult<ReturnData<SocialDTO>>> DeleteSocialAsync([FromBody] long Id)
+            => await _mediator.Send(new DeleteSocialRequest { Id = Id });
     }
 }

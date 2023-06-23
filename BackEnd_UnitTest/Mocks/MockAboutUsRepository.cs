@@ -16,7 +16,7 @@ namespace BackEnd_UnitTest.Mocks
             _mock.Setup(m => m.GetEntityAsync(It.IsAny<long>()))
                 .ReturnsAsync((long id) => aboutUs.FirstOrDefault(x => x.Id == id));
             _mock.Setup(m => m.GetAllAsync())
-                .ReturnsAsync(aboutUs);
+                .ReturnsAsync(aboutUs.Where(t => !t.IsDelete).ToList());
             _mock.Setup(m => m.GetAboutUsCountAsync()).ReturnsAsync(() => aboutUs.Count);
 
             _mock.Setup(m => m.AddEntityAsync(It.IsAny<AboutUs>()))

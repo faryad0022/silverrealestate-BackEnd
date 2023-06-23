@@ -25,15 +25,13 @@ namespace Application.features.GeneralInformations.BannerFeatures.Handler.Querie
         public async Task<ReturnData<BannerDTO>> Handle(GetBannerListRequest request, CancellationToken cancellationToken)
         {
             var bannerList = await _unitofWork.BannerRepository.GetAllAsync();
+            if (request.justShowSelected)
+                bannerList = bannerList.Where(x => x.IsSelected).ToList();
+
             if (bannerList is null || bannerList.Count == 0)
                 return FillRetuenData<BannerDTO>.FillByEntity(null, ResponseStatus.NoContent, null);
-            if (request.justShowSelected)
-            {
-                var selectedBanner = bannerList.Where(x => x.IsSelected).ToList();
-                var SelectedBannerDTo = _mapper.Map<List<BannerDTO>>(selectedBanner);
-                return FillRetuenData<BannerDTO>.FillByListEntity(SelectedBannerDTo, ResponseStatus.Success, null);
-            }
-            var bannerListDTO = _mapper.Map<List<BannerDTO>>(bannerList.Where(b=>b.IsSelected).OrderByDescending(date=>date.LastUpdateDate));
+            var bannerListDTO = _mapper.Map<List<BannerDTO>>(bannerList.OrderByDescending(date => date.LastUpdateDate));
+
             return FillRetuenData<BannerDTO>.FillByListEntity(bannerListDTO, ResponseStatus.Success, null);
         }
     }

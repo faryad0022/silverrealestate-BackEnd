@@ -15,6 +15,7 @@ namespace BackEnd_UnitTest.Mocks.Models.RealEstateService
                 Description="adsadasdad",
                 CreateDate=DateTime.Now,
                 IsDelete=false,
+                IsSelected=false,
                 ImageName="asdasdasdasd",
                 Name="asdasdsadfwefwe"
             },
@@ -43,7 +44,7 @@ namespace BackEnd_UnitTest.Mocks.Models.RealEstateService
                 Id=4,
                 Description="adsadasdad",
                 CreateDate=DateTime.Now,
-                IsDelete=true,
+                IsDelete=false,
                 ImageName="asdasdmojasdasd",
                 IsSelected=true,
                 Name="asdasdsadfwefweFARYAD"

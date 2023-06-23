@@ -19,7 +19,7 @@ namespace BackEnd_UnitTest.Mocks
             });
 
             mockRepo.Setup(m => m.GetAllAsync())
-                .ReturnsAsync(BlogGroupModelGenerator.blogGroupList);
+                .ReturnsAsync(BlogGroupModelGenerator.blogGroupList.Where(t => !t.IsDelete).ToList());
 
 
             mockRepo.Setup(m => m.GetEntityAsync(It.IsAny<long>()))
