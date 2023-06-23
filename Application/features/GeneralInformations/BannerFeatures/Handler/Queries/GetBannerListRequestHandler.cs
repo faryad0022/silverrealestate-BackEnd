@@ -33,7 +33,7 @@ namespace Application.features.GeneralInformations.BannerFeatures.Handler.Querie
                 var SelectedBannerDTo = _mapper.Map<List<BannerDTO>>(selectedBanner);
                 return FillRetuenData<BannerDTO>.FillByListEntity(SelectedBannerDTo, ResponseStatus.Success, null);
             }
-            var bannerListDTO = _mapper.Map<List<BannerDTO>>(bannerList);
+            var bannerListDTO = _mapper.Map<List<BannerDTO>>(bannerList.Where(b=>b.IsSelected).OrderByDescending(date=>date.LastUpdateDate));
             return FillRetuenData<BannerDTO>.FillByListEntity(bannerListDTO, ResponseStatus.Success, null);
         }
     }

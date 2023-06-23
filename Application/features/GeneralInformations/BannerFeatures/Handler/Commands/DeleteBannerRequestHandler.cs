@@ -10,26 +10,25 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.BannerFeatures.Handler.Commands
 {
-    public class ChangeBannerSelectedStatusRequestHandler : IRequestHandler<ChangeBannerSelectedStatusRequest, ReturnData<BannerDTO>>
+    public class DeleteBannerRequestHandler : IRequestHandler<DeleteBannerRequest, ReturnData<BannerDTO>>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
 
-        public ChangeBannerSelectedStatusRequestHandler(IMapper mapper, IUnitofWork unitofWork)
+        public DeleteBannerRequestHandler(IMapper mapper, IUnitofWork unitofWork)
         {
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ReturnData<BannerDTO>> Handle(ChangeBannerSelectedStatusRequest request, CancellationToken cancellationToken)
+        public async Task<ReturnData<BannerDTO>> Handle(DeleteBannerRequest request, CancellationToken cancellationToken)
         {
             var banner = await _unitofWork.BannerRepository.GetEntityAsync(request.Id);
             if (banner is null)
                 return FillRetuenData<BannerDTO>.FillByEntity(null, ResponseStatus.NotFound, null);
-            _unitofWork.BannerRepository.ChangeSelectedStatusAsync(banner);
-            await _unitofWork.SaveChangesAsync();
             var bannerDTO = _mapper.Map<BannerDTO>(banner);
+            _unitofWork.BannerRepository.DeleteEntityAsync(banner);
+            await _unitofWork.SaveChangesAsync();
             return FillRetuenData<BannerDTO>.FillByEntity(bannerDTO, ResponseStatus.Success, null);
-
         }
     }
 }

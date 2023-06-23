@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.features.GeneralInformations.BannerFeatures.Request.Commands
 {
-    public class ChangeBannerSelectedStatusRequest : IRequest<ReturnData<BannerDTO>>
+    public class DeleteBannerRequest : IRequest<ReturnData<BannerDTO>>
     {
         public long Id { get; set; }
     }

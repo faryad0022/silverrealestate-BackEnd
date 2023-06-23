@@ -13,16 +13,11 @@ namespace Application.DTOs.GeneralSiteInformationsDTO.TeamMembers.Validators
             RuleFor(x => x.MemberPicture)
                 .NotNull().WithMessage(ValidatorMessages.NotNull)
                 .NotEmpty().WithMessage(ValidatorMessages.NotEmpty);
-            RuleFor(x => x.CellPhone)
-                .NotNull().WithMessage(ValidatorMessages.NotNull)
-                .NotEmpty().WithMessage(ValidatorMessages.NotEmpty);
             RuleFor(x => x.MemberPosition)
                 .NotNull().WithMessage(ValidatorMessages.NotNull)
                 .NotEmpty().WithMessage(ValidatorMessages.NotEmpty);
             RuleFor(x => x.Email)
-                .EmailAddress().WithMessage(ValidatorMessages.EmailFormat)
-                .NotNull().WithMessage(ValidatorMessages.NotNull)
-                .NotEmpty().WithMessage(ValidatorMessages.NotEmpty);
+                .EmailAddress().WithMessage(ValidatorMessages.EmailFormat);
         }
     }
 }

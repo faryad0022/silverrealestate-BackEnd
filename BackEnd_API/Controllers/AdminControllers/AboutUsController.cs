@@ -21,7 +21,7 @@ namespace BackEnd_API.Controllers.AdminControllers
         }
         [HttpGet(ApiRouteV1.AboutUs_GetAll,Name = "GetAboutUsListAsync")]
         public async Task<ActionResult<ReturnData<AboutUsDTO>>> GetAboutUsListAsync()
-            => await _mediator.Send(new GetAboutUsListRequest());
+            =>  await _mediator.Send(new GetAboutUsListRequest());
 
 
         [HttpGet(ApiRouteV1.AboutUs_Get, Name = "GetAboutUsAsync")]

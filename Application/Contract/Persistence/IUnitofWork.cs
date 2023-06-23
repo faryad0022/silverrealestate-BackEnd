@@ -20,7 +20,6 @@ namespace Application.Contract.Persistence
         ISpectacularlocationRepository SpectacularlocationRepository { get; }
         ISpectacularLocationImageRepository SpectacularLocationImageRepository { get; }
         ITeamMemberRepository TeamMemberRepository { get; }
-        ITeamMemberSocialRepository TeamMemberSocialRepository { get; }
         Task SaveChangesAsync();
     }
 }

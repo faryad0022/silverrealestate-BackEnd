@@ -39,9 +39,6 @@ namespace BackEnd_Persistence
             services.AddScoped<ISpectacularlocationRepository, SpectacularlocationRepository>();
             services.AddScoped<ISpectacularLocationImageRepository, SpectacularLocationImageRepository>();
             services.AddScoped<ITeamMemberRepository, TeamMemberRepository>();
-            services.AddScoped<ITeamMemberSocialRepository, TeamMemberSocialRepository>();
-
-
 
             return services;
         }

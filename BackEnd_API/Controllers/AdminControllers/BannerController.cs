@@ -24,15 +24,19 @@ namespace BackEnd_API.Controllers.AdminControllers
             => await _mediator.Send(new GetBannerListRequest());
 
         [HttpGet(ApiRouteV1.Banner_Get, Name = "GetBanner")]
-        public async Task<ActionResult<ReturnData<BannerDTO>>> GetBanner([FromQuery] long Id)
+        public async Task<ActionResult<ReturnData<BannerDTO>>> GetBanner([FromBody] long Id)
             => await _mediator.Send(new GetBannerRequest() { Id = Id });
 
         [HttpPost(ApiRouteV1.Banner_Add, Name = "AddBanner")]
-        public async Task<ActionResult<ReturnData<CreateBannerDTO>>> AddBanner([FromBody] CreateBannerDTO bannerDTO)
+        public async Task<ActionResult<ReturnData<BannerDTO>>> AddBanner([FromBody] CreateBannerDTO bannerDTO)
             => await _mediator.Send(new CreateBannerRequest() { createBannerDTO = bannerDTO });
 
         [HttpPut(ApiRouteV1.Banner_ChangeStatus, Name = "ChangeBannerStatus")]
-        public async Task<ActionResult<ReturnData<UpdateBannerDTO>>> ChangeBannerStatus([FromQuery] long Id)
+        public async Task<ActionResult<ReturnData<BannerDTO>>> ChangeBannerStatus([FromBody] long Id)
             => await _mediator.Send(new ChangeBannerSelectedStatusRequest() { Id = Id });
+
+        [HttpPut(ApiRouteV1.Banner_Delete, Name = "DeleteBanner")]
+        public async Task<ActionResult<ReturnData<BannerDTO>>> DeleteBanner([FromBody] long Id)
+            => await _mediator.Send(new DeleteBannerRequest() { Id = Id });
     }
 }

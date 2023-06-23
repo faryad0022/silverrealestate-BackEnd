@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Domain.Entities.GeneralSiteInformation
+﻿namespace Domain.Entities.GeneralSiteInformation
 {
     public class TeamMember : BaseEntity
     {
@@ -9,6 +7,11 @@ namespace Domain.Entities.GeneralSiteInformation
         public string MemberPosition { get; set; }
         public string MemberPicture { get; set; }
         public string Email { get; set; }
-        public ICollection<TeamMemberSocial> TeamMemberSocials { get; set; }
+        public string Instagram { get; set; }
+        public string Telegram { get; set; }
+        public string Facebook { get; set; }
+        public string Twitter { get; set; }
+
+
     }
 }

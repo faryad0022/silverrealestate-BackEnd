@@ -30,7 +30,6 @@ namespace BackEnd_Persistence
         public DbSet<RealEstateServices> RealEstateServices { get; set; }
         public DbSet<Social> Socials { get; set; }
         public DbSet<TeamMember> TeamMembers { get; set; }
-        public DbSet<TeamMemberSocial> TeamMemberSocials { get; set; }
         public DbSet<Spectacularlocation> Spectacularlocations { get; set; }
         public DbSet<SpectacularLocationImages> SpectacularLocationImages { get; set; }
 

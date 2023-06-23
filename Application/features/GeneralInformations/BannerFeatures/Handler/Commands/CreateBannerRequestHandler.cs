@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.BannerFeatures.Handler.Commands
 {
-    public class CreateBannerRequestHandler : IRequestHandler<CreateBannerRequest, ReturnData<CreateBannerDTO>>
+    public class CreateBannerRequestHandler : IRequestHandler<CreateBannerRequest, ReturnData<BannerDTO>>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -23,13 +23,13 @@ namespace Application.features.GeneralInformations.BannerFeatures.Handler.Comman
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ReturnData<CreateBannerDTO>> Handle(CreateBannerRequest request, CancellationToken cancellationToken)
+        public async Task<ReturnData<BannerDTO>> Handle(CreateBannerRequest request, CancellationToken cancellationToken)
         {
             #region Validation
             var validator = new CreateBannerValidator();
             var validatorResult = await validator.ValidateAsync(request.createBannerDTO);
             if (!validatorResult.IsValid)
-                return FillRetuenData<CreateBannerDTO>.FillByEntity(
+                return FillRetuenData<BannerDTO>.FillByEntity(
                     null,
                     ResponseStatus.ValidationError,
                     validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
@@ -37,7 +37,7 @@ namespace Application.features.GeneralInformations.BannerFeatures.Handler.Comman
             var banner = _mapper.Map<Banner>(request.createBannerDTO);
             await _unitofWork.BannerRepository.AddEntityAsync(banner);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<CreateBannerDTO>.FillByEntity(request.createBannerDTO, ResponseStatus.Success, null);
+            return FillRetuenData<BannerDTO>.FillByEntity(_mapper.Map<BannerDTO>(banner), ResponseStatus.Success, null);
         }
     }
 }

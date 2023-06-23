@@ -7,24 +7,10 @@ namespace Application.DTOs.GeneralSiteInformationsDTO.Banner.Validator
     {
         public IBannerDTOValidator()
         {
-            RuleFor(x => x.Header)
+            RuleFor(x => x.BannerImage)
                 .NotNull().WithMessage(ValidatorMessages.NotNull)
                 .NotEmpty().WithMessage(ValidatorMessages.NotEmpty);
-            RuleFor(x => x.ShortText)
-                .NotNull().WithMessage(ValidatorMessages.NotNull)
-                .NotEmpty().WithMessage(ValidatorMessages.NotEmpty);
-            RuleFor(x => x.RealEstateLogo)
-                .NotNull().WithMessage(ValidatorMessages.NotNull)
-                .NotEmpty().WithMessage(ValidatorMessages.NotEmpty);
-            RuleFor(x => x.PhoneLogo)
-                .NotNull().WithMessage(ValidatorMessages.NotNull)
-                .NotEmpty().WithMessage(ValidatorMessages.NotEmpty);
-            RuleFor(x => x.Description)
-                .NotNull().WithMessage(ValidatorMessages.NotNull)
-                .NotEmpty().WithMessage(ValidatorMessages.NotEmpty);
-            RuleFor(x => x.Text)
-                .NotNull().WithMessage(ValidatorMessages.NotNull)
-                .NotEmpty().WithMessage(ValidatorMessages.NotEmpty);
+
         }
     }
 }
