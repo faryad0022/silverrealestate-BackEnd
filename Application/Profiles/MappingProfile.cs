@@ -1,5 +1,4 @@
-﻿using Application.Const.Filters;
-using Application.DTOs.Blog.BlogContent;
+﻿using Application.DTOs.Blog.BlogContent;
 using Application.DTOs.Blog.BlogGroup;
 using Application.DTOs.Filters;
 using Application.DTOs.GeneralSiteInformationsDTO.AboutUs;
@@ -13,6 +12,7 @@ using Application.DTOs.GeneralSiteInformationsDTO.Social;
 using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocationImages;
 using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocations;
 using Application.DTOs.GeneralSiteInformationsDTO.TeamMembers;
+using Application.Filters;
 using AutoMapper;
 using Domain.Entities.Blog;
 using Domain.Entities.GeneralSiteInformation;
@@ -40,6 +40,13 @@ namespace Application.Profiles
             CreateMap<BlogContent, UpdateBlogContentDTO>().ReverseMap();
             CreateMap<BlogContentDTO, UpdateBlogContentDTO>().ReverseMap();
             CreateMap<BlogContentDTO, CreateBlogContentDTO>().ReverseMap();
+            CreateMap<FilterBlogContent, FilterBlogContentDTO>()
+                .ForMember(dest => dest.BlogContentList, opt =>
+                {
+                    opt.MapFrom(src => src.BlogContentList);
+                })
+                .ReverseMap();
+
 
             #endregion
 
@@ -99,6 +106,13 @@ namespace Application.Profiles
             CreateMap<Banner, UpdateBannerDTO>().ReverseMap();
             CreateMap<BannerDTO, CreateBannerDTO>().ReverseMap();
             CreateMap<BannerDTO, UpdateBannerDTO>().ReverseMap();
+            CreateMap<FilterBanner, FilterBannerDTO>()
+                .ForMember(dest => dest.BannerDTOs, opt =>
+                {
+                    opt.MapFrom(src => src.Banners);
+                })
+                .ReverseMap();
+
             #endregion
 
             #region Logo
@@ -107,11 +121,6 @@ namespace Application.Profiles
             CreateMap<Logo, UpdateLogoDTO>().ReverseMap();
             CreateMap<LogoDTO, CreateLogoDTO>().ReverseMap();
             CreateMap<LogoDTO, UpdateLogoDTO>().ReverseMap();
-            #endregion
-
-            #region Filters
-            CreateMap<FilterBlogContent, FilterBlogContentDTO>()
-                .ReverseMap();
             #endregion
 
             #region SpectacularLocation

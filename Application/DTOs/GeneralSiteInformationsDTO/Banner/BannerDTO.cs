@@ -1,4 +1,5 @@
 ﻿using Application.DTOs.Common;
+using System;
 
 namespace Application.DTOs.GeneralSiteInformationsDTO.Banner
 {
@@ -6,6 +7,5 @@ namespace Application.DTOs.GeneralSiteInformationsDTO.Banner
     {
         public string BannerImage { get; set; }
         public string Link { get; set; }
-
     }
 }

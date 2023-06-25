@@ -24,6 +24,7 @@ namespace BackEnd_API.Const
 
         #region Banner
         public const string Banner_GetAll = "v1/banner/getall";
+        public const string Banner_GetFilter = "v1/banner/filter-banner";
         public const string Banner_Get = "v1/banner/get";
         public const string Banner_Add = "v1/banner/add";
         public const string Banner_Update = "v1/banner/update";

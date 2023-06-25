@@ -1,7 +1,7 @@
-﻿using Application.Const.Filters;
-using Application.Contract.Persistance.EntitiesRepository.Blog;
+﻿using Application.Contract.Persistance.EntitiesRepository.Blog;
 using Application.DTOs.Blog.BlogContent;
 using Application.DTOs.Filters;
+using Application.Filters;
 using Domain.Entities.Blog;
 using Microsoft.EntityFrameworkCore;
 using System;

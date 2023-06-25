@@ -1,7 +1,7 @@
 ﻿using Domain.Entities.Blog;
 using System.Collections.Generic;
 
-namespace Application.Const.Filters
+namespace Application.Filters
 {
     public class FilterBlogContent
     {

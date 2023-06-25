@@ -1,6 +1,6 @@
-﻿using Application.Const.Filters;
-using Application.Contract.Persistence.CommonGenericRepository;
+﻿using Application.Contract.Persistence.CommonGenericRepository;
 using Application.DTOs.Filters;
+using Application.Filters;
 using Domain.Entities.Blog;
 using System.Collections.Generic;
 using System.Threading.Tasks;

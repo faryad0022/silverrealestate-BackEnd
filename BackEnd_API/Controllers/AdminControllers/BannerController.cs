@@ -1,4 +1,5 @@
-﻿using Application.DTOs.GeneralSiteInformationsDTO.Banner;
+﻿using Application.DTOs.Filters;
+using Application.DTOs.GeneralSiteInformationsDTO.Banner;
 using Application.features.GeneralInformations.BannerFeatures.Request.Commands;
 using Application.features.GeneralInformations.BannerFeatures.Request.Queries;
 using Application.Reaspose;
@@ -19,7 +20,11 @@ namespace BackEnd_API.Controllers.AdminControllers
         {
             _mediator = mediator;
         }
-        [HttpGet(ApiRouteV1.Banner_GetAll,Name = "GetAllBanner")]
+        [HttpGet(ApiRouteV1.Banner_GetFilter,Name = "GetFilterBanner")]
+        public async Task<ActionResult<ReturnData<FilterBannerDTO>>> GetFilterBanner([FromQuery]FilterBannerDTO filter)
+            => await _mediator.Send(new GetFilterBannerRequest() { filter = filter});
+
+        [HttpGet(ApiRouteV1.Banner_GetAll, Name = "GetAllBanner")]
         public async Task<ActionResult<ReturnData<BannerDTO>>> GetAllBanner()
             => await _mediator.Send(new GetBannerListRequest());
 

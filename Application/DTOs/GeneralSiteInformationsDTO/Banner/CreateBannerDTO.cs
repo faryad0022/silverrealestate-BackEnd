@@ -1,4 +1,6 @@
-﻿namespace Application.DTOs.GeneralSiteInformationsDTO.Banner
+﻿using System;
+
+namespace Application.DTOs.GeneralSiteInformationsDTO.Banner
 {
     public class CreateBannerDTO : IBannerDTO
     {
