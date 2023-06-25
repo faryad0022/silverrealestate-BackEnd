@@ -1,6 +1,6 @@
-﻿using Application.Const.Filters;
-using Application.Contract.Persistance.EntitiesRepository.Blog;
-using Application.DTOs.Filters;
+﻿using Application.Contract.Persistance.EntitiesRepository.Blog;
+using Application.DTOs.Blog.BlogContent;
+using Application.Models.FilterModels;
 using BackEnd_UnitTest.Mocks.Models.BlogContents;
 using Domain.Entities.Blog;
 using Moq;

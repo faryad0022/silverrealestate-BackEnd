@@ -27,7 +27,7 @@ namespace Application.features.Blog.Handler.Commands.BlogcontentCommands
             var blogContent = await _unitofWork.BlogContentRepository.GetEntityAsync(request.Id);
 
             if (blogContent is null)
-                return FillRetuenData<UpdateBlogContentDTO>.FillByEntity(null, ResponseStatus.NotFound, null);
+                return SetReturnData<UpdateBlogContentDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
 
             if (request.updateBlogContentDTO != null)
             {
@@ -36,7 +36,7 @@ namespace Application.features.Blog.Handler.Commands.BlogcontentCommands
                 var validatorResult = await validator.ValidateAsync(request.updateBlogContentDTO);
                 if (!validatorResult.IsValid)
                 {
-                    return FillRetuenData<UpdateBlogContentDTO>.FillByEntity(request.updateBlogContentDTO, ResponseStatus.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
+                    return SetReturnData<UpdateBlogContentDTO>.SetTEntity(request.updateBlogContentDTO, ResponseStatus.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
                 }
                 #endregion
 
@@ -55,7 +55,7 @@ namespace Application.features.Blog.Handler.Commands.BlogcontentCommands
             }
             await _unitofWork.SaveChangesAsync();
 
-            return FillRetuenData<UpdateBlogContentDTO>.FillByEntity(null, ResponseStatus.Success, null);
+            return SetReturnData<UpdateBlogContentDTO>.SetTEntity(null, ResponseStatus.Success, null);
         }
     }
 }

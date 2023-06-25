@@ -1,8 +1,7 @@
 ﻿using Application.Contract.Persistence.EntitiesRepository.GeneralInformations;
-using Application.DTOs.Filters;
 using Application.DTOs.Paging;
 using Application.Extensions;
-using Application.Filters;
+using Application.Models.FilterModels;
 using Domain.Entities.GeneralSiteInformation;
 using Microsoft.EntityFrameworkCore;
 using System;

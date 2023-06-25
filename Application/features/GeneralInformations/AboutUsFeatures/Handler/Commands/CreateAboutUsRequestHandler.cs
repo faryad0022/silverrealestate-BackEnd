@@ -30,20 +30,20 @@ namespace Application.features.GeneralInformations.AboutUsFeatures.Handler.Comma
             var validatorResult = await validator.ValidateAsync(request.createAboutUsDTO);
             if (!validatorResult.IsValid)
             {
-                return FillRetuenData<CreateAboutUsDTO>.FillByEntity(null, ResponseStatus.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
+                return SetReturnData<CreateAboutUsDTO>.SetTEntity(null, ResponseStatus.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
 
             }
             #endregion
             var aboutUsCount = await _unitofWork.AboutUsRepository.GetAboutUsCountAsync();
             if (aboutUsCount > 0)
             {
-                return FillRetuenData<CreateAboutUsDTO>.FillByEntity(null, ResponseStatus.NotAllow, null);
+                return SetReturnData<CreateAboutUsDTO>.SetTEntity(null, ResponseStatus.NotAllow, null);
 
             }
             var aboutUs = _mapper.Map<AboutUs>(request.createAboutUsDTO);
             await _unitofWork.AboutUsRepository.AddEntityAsync(aboutUs);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<CreateAboutUsDTO>.FillByEntity(request.createAboutUsDTO, ResponseStatus.Success, null);
+            return SetReturnData<CreateAboutUsDTO>.SetTEntity(request.createAboutUsDTO, ResponseStatus.Success, null);
 
         }
     }

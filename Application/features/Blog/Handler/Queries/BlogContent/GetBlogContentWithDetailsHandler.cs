@@ -24,11 +24,11 @@ namespace Application.features.Blog.Handler.Queries.BlogContent
         {
             var blogContent = await _unitofWork.BlogContentRepository.GetBlogContentWithDetailsAsync(request.blogContentId);
             if (blogContent is null)
-                return FillRetuenData<BlogContentDTO>.FillByEntity(
+                return SetReturnData<BlogContentDTO>.SetTEntity(
                 null,
                 ResponseStatus.NotFound,
                 null);
-            return FillRetuenData<BlogContentDTO>.FillByEntity(
+            return SetReturnData<BlogContentDTO>.SetTEntity(
                 _mapper.Map<BlogContentDTO>(blogContent),
                 ResponseStatus.Success,
                 null);

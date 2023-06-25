@@ -24,8 +24,8 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Qu
         {
             var teamMember = await _unitofWork.TeamMemberRepository.GetEntityAsync(request.Id);
             if (teamMember is null)
-                return FillRetuenData<TeamMemberDTO>.FillByEntity(null, ResponseStatus.NotFound, null);
-            return FillRetuenData<TeamMemberDTO>.FillByEntity(
+                return SetReturnData<TeamMemberDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
+            return SetReturnData<TeamMemberDTO>.SetTEntity(
                 _mapper.Map<TeamMemberDTO>(teamMember),
                 ResponseStatus.Success,
                 null

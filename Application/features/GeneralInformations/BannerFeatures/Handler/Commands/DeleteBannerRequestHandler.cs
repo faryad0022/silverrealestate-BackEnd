@@ -24,11 +24,11 @@ namespace Application.features.GeneralInformations.BannerFeatures.Handler.Comman
         {
             var banner = await _unitofWork.BannerRepository.GetEntityAsync(request.Id);
             if (banner is null)
-                return FillRetuenData<BannerDTO>.FillByEntity(null, ResponseStatus.NotFound, null);
+                return SetReturnData<BannerDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
             var bannerDTO = _mapper.Map<BannerDTO>(banner);
             _unitofWork.BannerRepository.DeleteEntityAsync(banner);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<BannerDTO>.FillByEntity(bannerDTO, ResponseStatus.Success, null);
+            return SetReturnData<BannerDTO>.SetTEntity(bannerDTO, ResponseStatus.Success, null);
         }
     }
 }

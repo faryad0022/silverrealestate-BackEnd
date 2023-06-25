@@ -24,9 +24,9 @@ namespace Application.features.GeneralInformations.CommonQuestionFeatures.Handle
         {
             var commonQuestion = await _unitofWork.CommonQuestionRepository.GetEntityAsync(request.Id);
             if (commonQuestion is null)
-                return FillRetuenData<CommonQuestionDTO>.FillByEntity(null, ResponseStatus.NotFound, null);
+                return SetReturnData<CommonQuestionDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
             var commonQuestionDTO = _mapper.Map<CommonQuestionDTO>(commonQuestion);
-            return FillRetuenData<CommonQuestionDTO>.FillByEntity(commonQuestionDTO, ResponseStatus.Success, null);
+            return SetReturnData<CommonQuestionDTO>.SetTEntity(commonQuestionDTO, ResponseStatus.Success, null);
 
         }
     }

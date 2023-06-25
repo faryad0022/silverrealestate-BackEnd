@@ -24,12 +24,12 @@ namespace Application.features.GeneralInformations.SocialFeatures.Handler.Querie
         public async Task<ReturnData<SocialDTO>> Handle(GetSocialRequest request, CancellationToken cancellationToken)
         {
             if (request.Id < 0)
-                return FillRetuenData<SocialDTO>.FillByEntity(null, ResponseStatus.ValidationError, null);
+                return SetReturnData<SocialDTO>.SetTEntity(null, ResponseStatus.ValidationError, null);
 
             var social = await _unitofWork.SocialRepository.GetEntityAsync(request.Id);
             if (social is null)
-                return FillRetuenData<SocialDTO>.FillByEntity(null, ResponseStatus.NotFound, null);
-            return FillRetuenData<SocialDTO>.FillByEntity(_mapper.Map<SocialDTO>(social), ResponseStatus.Success, null);
+                return SetReturnData<SocialDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
+            return SetReturnData<SocialDTO>.SetTEntity(_mapper.Map<SocialDTO>(social), ResponseStatus.Success, null);
         }
     }
 

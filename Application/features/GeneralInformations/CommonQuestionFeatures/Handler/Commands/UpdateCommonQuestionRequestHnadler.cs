@@ -27,12 +27,12 @@ namespace Application.features.GeneralInformations.CommonQuestionFeatures.Handle
         {
             var commonQuestion = await _unitofWork.CommonQuestionRepository.GetEntityAsync(request.updateCommonQuestionDTO.Id);
             if (commonQuestion is null)
-                return FillRetuenData<UpdateCommonQuestionDTO>.FillByEntity(request.updateCommonQuestionDTO, ResponseStatus.NotFound, null);
+                return SetReturnData<UpdateCommonQuestionDTO>.SetTEntity(request.updateCommonQuestionDTO, ResponseStatus.NotFound, null);
             #region Validation
             var validator = new UpdateCommonQuestionValidator();
             var validatorResult = await validator.ValidateAsync(request.updateCommonQuestionDTO);
             if (!validatorResult.IsValid)
-                return FillRetuenData<UpdateCommonQuestionDTO>.FillByEntity(
+                return SetReturnData<UpdateCommonQuestionDTO>.SetTEntity(
                     request.updateCommonQuestionDTO,
                     ResponseStatus.ValidationError,
                     validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
@@ -40,7 +40,7 @@ namespace Application.features.GeneralInformations.CommonQuestionFeatures.Handle
             var toUpdate = _mapper.Map<CommonQuestion>(request.updateCommonQuestionDTO);
             _unitofWork.CommonQuestionRepository.UpdateEntityAsync(toUpdate);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<UpdateCommonQuestionDTO>.FillByEntity(request.updateCommonQuestionDTO, ResponseStatus.Success, null);
+            return SetReturnData<UpdateCommonQuestionDTO>.SetTEntity(request.updateCommonQuestionDTO, ResponseStatus.Success, null);
         }
     }
 }

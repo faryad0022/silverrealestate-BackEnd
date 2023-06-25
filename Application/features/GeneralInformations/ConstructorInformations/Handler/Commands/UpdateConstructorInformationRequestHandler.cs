@@ -27,12 +27,12 @@ namespace Application.features.GeneralInformations.ConstructorInformations.Handl
         {
             var constructor = await _unitofWork.ConstructorInfromationRepository.GetEntityAsync(request.updateConstructorInformationDTO.Id);
             if (constructor is null)
-                return FillRetuenData<UpdateConstructorInformationDTO>.FillByEntity(request.updateConstructorInformationDTO, ResponseStatus.NotFound, null);
+                return SetReturnData<UpdateConstructorInformationDTO>.SetTEntity(request.updateConstructorInformationDTO, ResponseStatus.NotFound, null);
             #region Validation
             var validator = new UpdateConstructorInformationValidator();
             var validatorResult = await validator.ValidateAsync(request.updateConstructorInformationDTO);
             if (!validatorResult.IsValid)
-                return FillRetuenData<UpdateConstructorInformationDTO>.FillByEntity(
+                return SetReturnData<UpdateConstructorInformationDTO>.SetTEntity(
                     null,
                     ResponseStatus.ValidationError,
                     validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
@@ -40,7 +40,7 @@ namespace Application.features.GeneralInformations.ConstructorInformations.Handl
             var toUpdate = _mapper.Map<ConstructorInformation>(request.updateConstructorInformationDTO);
             _unitofWork.ConstructorInfromationRepository.UpdateEntityAsync(toUpdate);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<UpdateConstructorInformationDTO>.FillByEntity(request.updateConstructorInformationDTO, ResponseStatus.Success, null);
+            return SetReturnData<UpdateConstructorInformationDTO>.SetTEntity(request.updateConstructorInformationDTO, ResponseStatus.Success, null);
         }
     }
 }

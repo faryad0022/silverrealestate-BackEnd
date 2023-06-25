@@ -20,9 +20,13 @@ namespace BackEnd_API.Controllers.AdminControllers
             _mediator = mediator;
         }
 
-        [HttpGet(ApiRouteV1.TeamMember_GetAll,Name = "GetAllTeamMembers")]
+        [HttpGet(ApiRouteV1.TeamMember_GetAll, Name = "GetAllTeamMembers")]
         public async Task<ActionResult<ReturnData<TeamMemberDTO>>> GetAllTeamMembers()
             => await _mediator.Send(new GetTeamMemberListRequest());
+
+        [HttpGet(ApiRouteV1.TeamMember_GetFilter, Name = "GetFiltereTeamMembers")]
+        public async Task<ActionResult<ReturnData<FilterTeamMemberDTO>>> GetFiltereTeamMembers([FromQuery] FilterTeamMemberDTO filter)
+            => await _mediator.Send(new GetFilterTeamMemberRequest() { filter = filter });
 
         [HttpGet(ApiRouteV1.TeamMember_Get, Name = "GetTeamMember")]
         public async Task<ActionResult<ReturnData<TeamMemberDTO>>> GetTeamMember([FromQuery] long Id)

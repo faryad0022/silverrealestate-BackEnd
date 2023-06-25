@@ -24,10 +24,10 @@ namespace Application.features.Blog.Handler.Commands.BlogcontentCommands
         {
             var blogContent = await _unitofWork.BlogContentRepository.GetEntityAsync(request.blogContentDTO.Id);
             if (blogContent is null)
-                return FillRetuenData<BlogContentDTO>.FillByEntity(null, ResponseStatus.NotFound, null);
+                return SetReturnData<BlogContentDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
             _unitofWork.BlogContentRepository.DeleteEntityAsync(blogContent);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<BlogContentDTO>.FillByEntity(_mapper.Map<BlogContentDTO>(blogContent), ResponseStatus.Success, null);
+            return SetReturnData<BlogContentDTO>.SetTEntity(_mapper.Map<BlogContentDTO>(blogContent), ResponseStatus.Success, null);
 
         }
     }

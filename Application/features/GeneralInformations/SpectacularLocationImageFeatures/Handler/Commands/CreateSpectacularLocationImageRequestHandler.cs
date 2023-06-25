@@ -30,14 +30,14 @@ namespace Application.features.GeneralInformations.SpectacularLocationImageFeatu
             var validator = new CreateSpectacularLocationImagesDTOValidator();
             var validatorResult = await validator.ValidateAsync(request.createSpectacularLocationImagesDTO);
             if (!validatorResult.IsValid)
-                return FillRetuenData<SpectacularLocationImagesDTO>.FillByEntity(
+                return SetReturnData<SpectacularLocationImagesDTO>.SetTEntity(
                     null,
                     ResponseStatus.ValidationError,
                     validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
             #endregion
             var created = await _unitofWork.SpectacularLocationImageRepository.AddEntityAsync(toCreate);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<SpectacularLocationImagesDTO>.FillByEntity(
+            return SetReturnData<SpectacularLocationImagesDTO>.SetTEntity(
                 _mapper.Map<SpectacularLocationImagesDTO>(created),
                 ResponseStatus.Success,
                 null

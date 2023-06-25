@@ -29,7 +29,7 @@ namespace Application.features.GeneralInformations.LogoFeatures.Handler.Commands
             var validator = new CreateLogoValidator();
             var validatorResult = await validator.ValidateAsync(request.createLogoDTO);
             if (!validatorResult.IsValid)
-                return FillRetuenData<CreateLogoDTO>.FillByEntity(
+                return SetReturnData<CreateLogoDTO>.SetTEntity(
                     null,
                     ResponseStatus.ValidationError,
                     validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
@@ -37,7 +37,7 @@ namespace Application.features.GeneralInformations.LogoFeatures.Handler.Commands
             var logo = _mapper.Map<Logo>(request.createLogoDTO);
             await _unitofWork.LogoRepository.AddEntityAsync(logo);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<CreateLogoDTO>.FillByEntity(request.createLogoDTO, ResponseStatus.Success, null);
+            return SetReturnData<CreateLogoDTO>.SetTEntity(request.createLogoDTO, ResponseStatus.Success, null);
         }
     }
 }

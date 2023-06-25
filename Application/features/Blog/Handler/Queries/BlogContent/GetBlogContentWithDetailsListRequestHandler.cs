@@ -24,7 +24,7 @@ namespace Application.features.Blog.Handler.Queries.BlogContent
         public async Task<ReturnData<BlogContentDTO>> Handle(GetBlogContentWithDetailsListRequest request, CancellationToken cancellationToken)
         {
             var blogContentWithDetails = await _unitofWork.BlogContentRepository.GetBlogContentWithDetailsListAsync();
-            return FillRetuenData<BlogContentDTO>.FillByListEntity(
+            return SetReturnData<BlogContentDTO>.SetTEntities(
                 _mapper.Map<List<BlogContentDTO>>(blogContentWithDetails),
                 ResponseStatus.Success,
                 null);

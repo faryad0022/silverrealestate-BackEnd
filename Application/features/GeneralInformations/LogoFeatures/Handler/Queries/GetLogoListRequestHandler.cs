@@ -26,15 +26,15 @@ namespace Application.features.GeneralInformations.LogoFeatures.Handler.Queries
         {
             var logoList = await _unitofWork.LogoRepository.GetAllAsync();
             if (logoList is null || logoList.Count == 0)
-                return FillRetuenData<LogoDTO>.FillByEntity(null, ResponseStatus.NoContent, null);
+                return SetReturnData<LogoDTO>.SetTEntity(null, ResponseStatus.NoContent, null);
             if (request.justShowSelected)
             {
                 var selectedLogo = logoList.Where(x => x.IsSelected).ToList();
                 var SelectedLogoDTo = _mapper.Map<List<LogoDTO>>(selectedLogo);
-                return FillRetuenData<LogoDTO>.FillByListEntity(SelectedLogoDTo, ResponseStatus.Success, null);
+                return SetReturnData<LogoDTO>.SetTEntities(SelectedLogoDTo, ResponseStatus.Success, null);
             }
             var logoListDTO = _mapper.Map<List<LogoDTO>>(logoList);
-            return FillRetuenData<LogoDTO>.FillByListEntity(logoListDTO, ResponseStatus.Success, null);
+            return SetReturnData<LogoDTO>.SetTEntities(logoListDTO, ResponseStatus.Success, null);
         }
     }
 }

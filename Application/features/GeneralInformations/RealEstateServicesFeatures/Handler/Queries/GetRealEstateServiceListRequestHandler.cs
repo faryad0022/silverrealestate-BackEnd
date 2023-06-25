@@ -26,11 +26,11 @@ namespace Application.features.GeneralInformations.RealEstateServicesFeatures.Ha
         {
             var realEstateServiceList = await _unitofWork.RealEstateServicesRepository.GetAllAsync();
             if (realEstateServiceList is null || realEstateServiceList.Count < 1)
-                return FillRetuenData<RealEstateServicesDTO>.FillByListEntity(null, ResponseStatus.NoContent, null);
+                return SetReturnData<RealEstateServicesDTO>.SetTEntities(null, ResponseStatus.NoContent, null);
             if (request.justShowSelected)
                 realEstateServiceList = realEstateServiceList.Where(q => q.IsSelected).ToList();
             var realEstateServiceListDTO = _mapper.Map<List<RealEstateServicesDTO>>(realEstateServiceList);
-            return FillRetuenData<RealEstateServicesDTO>.FillByListEntity(realEstateServiceListDTO, ResponseStatus.Success, null);
+            return SetReturnData<RealEstateServicesDTO>.SetTEntities(realEstateServiceListDTO, ResponseStatus.Success, null);
         }
     }
 }

@@ -27,15 +27,15 @@ namespace Application.features.GeneralInformations.SpectacularLocationFeatures.H
             var specatularLocationList = await _unitofWork.SpectacularlocationRepository.GetAllAsync();
 
             if (specatularLocationList is null || specatularLocationList.Count < 1)
-                FillRetuenData<SpectacularLocationDTO>.FillByListEntity(null, ResponseStatus.NoContent, null);
+                SetReturnData<SpectacularLocationDTO>.SetTEntities(null, ResponseStatus.NoContent, null);
             if (request.justShowSelected)
             {
                 var selectedSpectacularLocation = specatularLocationList.Where(s => s.IsSelected).ToList();
                 var selectedSpectacularLocationDTO = _mapper.Map<List<SpectacularLocationDTO>>(selectedSpectacularLocation);
-                return FillRetuenData<SpectacularLocationDTO>.FillByListEntity(selectedSpectacularLocationDTO, ResponseStatus.Success, null);
+                return SetReturnData<SpectacularLocationDTO>.SetTEntities(selectedSpectacularLocationDTO, ResponseStatus.Success, null);
             }
             var specatularLocationListDTO = _mapper.Map<List<SpectacularLocationDTO>>(specatularLocationList);
-            return FillRetuenData<SpectacularLocationDTO>.FillByListEntity(specatularLocationListDTO, ResponseStatus.Success, null);
+            return SetReturnData<SpectacularLocationDTO>.SetTEntities(specatularLocationListDTO, ResponseStatus.Success, null);
         }
     }
 }

@@ -24,8 +24,8 @@ namespace Application.features.GeneralInformations.SpectacularLocationImageFeatu
         {
             var spectacularImage = await _unitofWork.SpectacularLocationImageRepository.GetSpectacularLocationImagesWithDetails(request.Id);
             if (spectacularImage is null)
-                return FillRetuenData<SpectacularLocationImagesDTO>.FillByEntity(null, ResponseStatus.NotFound, null);
-            return FillRetuenData<SpectacularLocationImagesDTO>.FillByEntity(
+                return SetReturnData<SpectacularLocationImagesDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
+            return SetReturnData<SpectacularLocationImagesDTO>.SetTEntity(
                 _mapper.Map<SpectacularLocationImagesDTO>(spectacularImage),
                 ResponseStatus.Success,
                 null

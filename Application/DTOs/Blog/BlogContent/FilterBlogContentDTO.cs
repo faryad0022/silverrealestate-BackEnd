@@ -1,15 +1,14 @@
-﻿using Domain.Entities.Blog;
+﻿using Application.DTOs.Paging;
 using System.Collections.Generic;
 
-namespace Application.Filters
+namespace Application.DTOs.Blog.BlogContent
 {
-    public class FilterBlogContent
+    public class FilterBlogContentDTO : BasePaging
     {
-        public List<BlogContent> BlogContentList { get; set; }
+        public List<BlogContentDTO> BlogContentList { get; set; }
         public string BlogGroupName { get; set; }
         public string Title { get; set; }
-        public string Review { get; set; }
-        public bool Status { get; set; }
+        public bool IsDelete { get; set; }
         public bool IsSelected { get; set; }
         public long ViewCount { get; set; }
         public long BlogGroupId { get; set; }

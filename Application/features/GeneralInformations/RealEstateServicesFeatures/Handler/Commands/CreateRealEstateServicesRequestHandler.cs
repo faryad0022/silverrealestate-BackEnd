@@ -29,7 +29,7 @@ namespace Application.features.GeneralInformations.RealEstateServicesFeatures.Ha
             var validator = new CreateRealEstateServicesDTOValidator();
             var validatorResult = await validator.ValidateAsync(request.createRealEstateServicesDTO);
             if (!validatorResult.IsValid)
-                return FillRetuenData<CreateRealEstateServicesDTO>.FillByEntity(
+                return SetReturnData<CreateRealEstateServicesDTO>.SetTEntity(
                     null,
                     ResponseStatus.ValidationError,
                     validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
@@ -37,7 +37,7 @@ namespace Application.features.GeneralInformations.RealEstateServicesFeatures.Ha
             var realEstateServices = _mapper.Map<RealEstateServices>(request.createRealEstateServicesDTO);
             await _unitofWork.RealEstateServicesRepository.AddEntityAsync(realEstateServices);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<CreateRealEstateServicesDTO>.FillByEntity(request.createRealEstateServicesDTO, ResponseStatus.Success, null);
+            return SetReturnData<CreateRealEstateServicesDTO>.SetTEntity(request.createRealEstateServicesDTO, ResponseStatus.Success, null);
         }
     }
 }

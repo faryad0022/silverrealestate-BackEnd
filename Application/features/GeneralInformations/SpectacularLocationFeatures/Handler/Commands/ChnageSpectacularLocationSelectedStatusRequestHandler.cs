@@ -24,10 +24,10 @@ namespace Application.features.GeneralInformations.SpectacularLocationFeatures.H
         {
             var spectacularLocation = await _unitofWork.SpectacularlocationRepository.GetEntityAsync(request.Id);
             if (spectacularLocation is null)
-                return FillRetuenData<SpectacularLocationDTO>.FillByEntity(null, ResponseStatus.NotFound, null);
+                return SetReturnData<SpectacularLocationDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
             _unitofWork.SpectacularlocationRepository.ChangeSelectedStatusAsync(spectacularLocation);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<SpectacularLocationDTO>.FillByEntity(
+            return SetReturnData<SpectacularLocationDTO>.SetTEntity(
                 _mapper.Map<SpectacularLocationDTO>(spectacularLocation),
                 ResponseStatus.Success,
                 null

@@ -28,12 +28,12 @@ namespace Application.features.GeneralInformations.AddressFeatures.Handler.Comma
             var address = await _unitofWork.AddressRepository.GetEntityAsync(request.updateAddressDTO.Id);
             var toAddressDTO = _mapper.Map<AddressDTO>(request.updateAddressDTO);
             if (address is null)
-                return FillRetuenData<AddressDTO>.FillByEntity(toAddressDTO, ResponseStatus.NotFound, null);
+                return SetReturnData<AddressDTO>.SetTEntity(toAddressDTO, ResponseStatus.NotFound, null);
             #region Validation
             var validator = new UpdateAddressValidator();
             var validatorResult = await validator.ValidateAsync(request.updateAddressDTO);
             if (!validatorResult.IsValid)
-                return FillRetuenData<AddressDTO>.FillByEntity(
+                return SetReturnData<AddressDTO>.SetTEntity(
                     toAddressDTO,
                     ResponseStatus.ValidationError,
                     validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
@@ -41,7 +41,7 @@ namespace Application.features.GeneralInformations.AddressFeatures.Handler.Comma
             var toUpdate = _mapper.Map<Address>(request.updateAddressDTO);
             _unitofWork.AddressRepository.UpdateEntityAsync(toUpdate);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<AddressDTO>.FillByEntity(toAddressDTO, ResponseStatus.Success, null);
+            return SetReturnData<AddressDTO>.SetTEntity(toAddressDTO, ResponseStatus.Success, null);
         }
     }
 }

@@ -30,7 +30,7 @@ namespace Application.features.GeneralInformations.AddressFeatures.Handler.Comma
             var validator = new CreateAddressValidator();
             var validationResult = await validator.ValidateAsync(request.createAddressDTO);
             if (!validationResult.IsValid)
-                return FillRetuenData<AddressDTO>.FillByEntity(
+                return SetReturnData<AddressDTO>.SetTEntity(
                                 toAddressDTO,
                                 ResponseStatus.ValidationError,
                                 validationResult.Errors.Select(q => q.ErrorMessage).ToList());
@@ -38,7 +38,7 @@ namespace Application.features.GeneralInformations.AddressFeatures.Handler.Comma
             var address = _mapper.Map<Address>(request.createAddressDTO);
             await _unitofWork.AddressRepository.AddEntityAsync(address);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<AddressDTO>.FillByEntity(toAddressDTO, ResponseStatus.Success, null);
+            return SetReturnData<AddressDTO>.SetTEntity(toAddressDTO, ResponseStatus.Success, null);
         }
     }
 }

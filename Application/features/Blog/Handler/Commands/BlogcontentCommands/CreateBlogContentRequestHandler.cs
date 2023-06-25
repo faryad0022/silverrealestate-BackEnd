@@ -36,7 +36,7 @@ namespace Application.features.Blog.Handler.Commands.BlogcontentCommands
             var validatorResult = await validator.ValidateAsync(request.createBlogContentDTO);
             if (!validatorResult.IsValid)
             {
-                return FillRetuenData<CreateBlogContentDTO>.FillByEntity(null, ResponseStatus.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
+                return SetReturnData<CreateBlogContentDTO>.SetTEntity(null, ResponseStatus.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
             }
             #endregion
 
@@ -61,7 +61,7 @@ namespace Application.features.Blog.Handler.Commands.BlogcontentCommands
                 throw e;
             }
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<CreateBlogContentDTO>.FillByEntity(request.createBlogContentDTO, ResponseStatus.Success, null);
+            return SetReturnData<CreateBlogContentDTO>.SetTEntity(request.createBlogContentDTO, ResponseStatus.Success, null);
 
         }
     }

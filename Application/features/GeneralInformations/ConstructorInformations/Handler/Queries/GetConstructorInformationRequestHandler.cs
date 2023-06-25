@@ -24,9 +24,9 @@ namespace Application.features.GeneralInformations.ConstructorInformations.Handl
         {
             var constructor = await _unitofWork.ConstructorInfromationRepository.GetEntityAsync(request.Id);
             if (constructor is null)
-                return FillRetuenData<ConstructorInformationDTO>.FillByEntity(null, ResponseStatus.NotFound, null);
+                return SetReturnData<ConstructorInformationDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
             var constructorDTO = _mapper.Map<ConstructorInformationDTO>(constructor);
-            return FillRetuenData<ConstructorInformationDTO>.FillByEntity(constructorDTO, ResponseStatus.Success, null);
+            return SetReturnData<ConstructorInformationDTO>.SetTEntity(constructorDTO, ResponseStatus.Success, null);
         }
     }
 }

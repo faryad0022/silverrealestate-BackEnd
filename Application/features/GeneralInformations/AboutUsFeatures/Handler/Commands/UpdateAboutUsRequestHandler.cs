@@ -28,20 +28,20 @@ namespace Application.features.GeneralInformations.AboutUsFeatures.Handler.Comma
 
             if (about is null)
             {
-                return FillRetuenData<UpdateAboutUsDTO>.FillByEntity(null, ResponseStatus.NotFound, null);
+                return SetReturnData<UpdateAboutUsDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
             }
             #region Validation
             var validator = new UpdateAboutUsDTOValidator(_unitofWork.AboutUsRepository);
             var validatorResult = await validator.ValidateAsync(request.updateAboutUsDTO);
             if (!validatorResult.IsValid)
             {
-                return FillRetuenData<UpdateAboutUsDTO>.FillByEntity(null, ResponseStatus.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
+                return SetReturnData<UpdateAboutUsDTO>.SetTEntity(null, ResponseStatus.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
             }
             #endregion
 
             _unitofWork.AboutUsRepository.UpdateEntityAsync(about);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<UpdateAboutUsDTO>.FillByEntity(request.updateAboutUsDTO, ResponseStatus.Success, null);
+            return SetReturnData<UpdateAboutUsDTO>.SetTEntity(request.updateAboutUsDTO, ResponseStatus.Success, null);
 
         }
     }

@@ -27,7 +27,7 @@ namespace Application.features.GeneralInformations.AddressFeatures.Handler.Comma
         {
             var address = await _unitofWork.AddressRepository.GetEntityAsync(request.Id);
             if (address is null)
-                return FillRetuenData<AddressDTO>.FillByEntity(
+                return SetReturnData<AddressDTO>.SetTEntity(
                     null,
                     ResponseStatus.NotFound,
                     null
@@ -35,7 +35,7 @@ namespace Application.features.GeneralInformations.AddressFeatures.Handler.Comma
             var addressDTO = _mapper.Map<AddressDTO>(address);
             _unitofWork.AddressRepository.DeleteEntityAsync(address);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<AddressDTO>.FillByEntity(
+            return SetReturnData<AddressDTO>.SetTEntity(
                 addressDTO,
                 ResponseStatus.Success,
                 null

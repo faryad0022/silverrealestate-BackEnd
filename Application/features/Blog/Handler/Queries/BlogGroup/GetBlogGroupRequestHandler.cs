@@ -24,8 +24,8 @@ namespace Application.features.Blog.Handler.Queries.BlogGroup
         {
             var blogGroup = await _unitofWork.BlogGroupRepository.GetEntityAsync(request.blogGroupId);
             if (blogGroup is null)
-                return FillRetuenData<BlogGroupDTO>.FillByEntity(null, ResponseStatus.NotFound, null);
-            return FillRetuenData<BlogGroupDTO>.FillByEntity(_mapper.Map<BlogGroupDTO>(blogGroup), ResponseStatus.Success, null);
+                return SetReturnData<BlogGroupDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
+            return SetReturnData<BlogGroupDTO>.SetTEntity(_mapper.Map<BlogGroupDTO>(blogGroup), ResponseStatus.Success, null);
         }
     }
 }

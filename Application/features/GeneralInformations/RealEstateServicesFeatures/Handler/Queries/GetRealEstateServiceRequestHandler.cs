@@ -24,9 +24,9 @@ namespace Application.features.GeneralInformations.RealEstateServicesFeatures.Ha
         {
             var realEstateService = await _unitofWork.RealEstateServicesRepository.GetEntityAsync(request.Id);
             if (realEstateService is null)
-                return FillRetuenData<RealEstateServicesDTO>.FillByEntity(null, ResponseStatus.NotFound, null);
+                return SetReturnData<RealEstateServicesDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
             var realEstateServiceDTO = _mapper.Map<RealEstateServicesDTO>(realEstateService);
-            return FillRetuenData<RealEstateServicesDTO>.FillByEntity(realEstateServiceDTO, ResponseStatus.Success, null);
+            return SetReturnData<RealEstateServicesDTO>.SetTEntity(realEstateServiceDTO, ResponseStatus.Success, null);
         }
     }
 }

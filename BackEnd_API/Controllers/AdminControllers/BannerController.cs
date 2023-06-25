@@ -1,5 +1,4 @@
-﻿using Application.DTOs.Filters;
-using Application.DTOs.GeneralSiteInformationsDTO.Banner;
+﻿using Application.DTOs.GeneralSiteInformationsDTO.Banner;
 using Application.features.GeneralInformations.BannerFeatures.Request.Commands;
 using Application.features.GeneralInformations.BannerFeatures.Request.Queries;
 using Application.Reaspose;

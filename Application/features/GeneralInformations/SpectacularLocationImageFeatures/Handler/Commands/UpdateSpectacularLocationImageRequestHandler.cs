@@ -27,7 +27,7 @@ namespace Application.features.GeneralInformations.SpectacularLocationImageFeatu
         {
             var spectaculraImage = await _unitofWork.SpectacularLocationImageRepository.GetEntityAsync(request.updateSpectacularLocationImagesDTO.Id);
             if (spectaculraImage is null)
-                return FillRetuenData<SpectacularLocationImagesDTO>.FillByEntity(
+                return SetReturnData<SpectacularLocationImagesDTO>.SetTEntity(
                     null,
                     ResponseStatus.NotFound,
                     null
@@ -36,7 +36,7 @@ namespace Application.features.GeneralInformations.SpectacularLocationImageFeatu
             var validator = new UpdateSpectacularLocationImagesDTOValidator();
             var validatorResult = await validator.ValidateAsync(request.updateSpectacularLocationImagesDTO);
             if (!validatorResult.IsValid)
-                return FillRetuenData<SpectacularLocationImagesDTO>.FillByEntity(
+                return SetReturnData<SpectacularLocationImagesDTO>.SetTEntity(
                     _mapper.Map<SpectacularLocationImagesDTO>(request.updateSpectacularLocationImagesDTO),
                     ResponseStatus.ValidationError,
                     validatorResult.Errors.Select(q => q.ErrorMessage).ToList()
@@ -47,7 +47,7 @@ namespace Application.features.GeneralInformations.SpectacularLocationImageFeatu
             _unitofWork.SpectacularLocationImageRepository.UpdateEntityAsync(toUpdate);
             await _unitofWork.SaveChangesAsync();
 
-            return FillRetuenData<SpectacularLocationImagesDTO>.FillByEntity(
+            return SetReturnData<SpectacularLocationImagesDTO>.SetTEntity(
                 _mapper.Map<SpectacularLocationImagesDTO>(request.updateSpectacularLocationImagesDTO),
                 ResponseStatus.Success,
                 null

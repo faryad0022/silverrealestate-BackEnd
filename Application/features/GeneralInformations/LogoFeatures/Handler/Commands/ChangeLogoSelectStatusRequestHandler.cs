@@ -24,11 +24,11 @@ namespace Application.features.GeneralInformations.LogoFeatures.Handler.Commands
         {
             var logo = await _unitofWork.LogoRepository.GetEntityAsync(request.Id);
             if (logo is null)
-                return FillRetuenData<LogoDTO>.FillByEntity(null, ResponseStatus.NotFound, null);
+                return SetReturnData<LogoDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
             _unitofWork.LogoRepository.ChangeSelectedStatusAsync(logo);
             await _unitofWork.SaveChangesAsync();
             var logoDTO = _mapper.Map<LogoDTO>(logo);
-            return FillRetuenData<LogoDTO>.FillByEntity(logoDTO, ResponseStatus.Success, null);
+            return SetReturnData<LogoDTO>.SetTEntity(logoDTO, ResponseStatus.Success, null);
         }
     }
 }

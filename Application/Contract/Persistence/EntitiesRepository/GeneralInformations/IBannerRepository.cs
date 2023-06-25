@@ -1,6 +1,5 @@
 ﻿using Application.Contract.Persistence.CommonGenericRepository;
-using Application.DTOs.Filters;
-using Application.Filters;
+using Application.Models.FilterModels;
 using Domain.Entities.GeneralSiteInformation;
 using System.Threading.Tasks;
 

@@ -1,6 +1,5 @@
 ﻿using Application.DTOs.Blog.BlogContent;
 using Application.DTOs.Blog.BlogGroup;
-using Application.DTOs.Filters;
 using Application.DTOs.GeneralSiteInformationsDTO.AboutUs;
 using Application.DTOs.GeneralSiteInformationsDTO.Address;
 using Application.DTOs.GeneralSiteInformationsDTO.Banner;
@@ -12,7 +11,7 @@ using Application.DTOs.GeneralSiteInformationsDTO.Social;
 using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocationImages;
 using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocations;
 using Application.DTOs.GeneralSiteInformationsDTO.TeamMembers;
-using Application.Filters;
+using Application.Models.FilterModels;
 using AutoMapper;
 using Domain.Entities.Blog;
 using Domain.Entities.GeneralSiteInformation;
@@ -174,8 +173,12 @@ namespace Application.Profiles
             CreateMap<TeamMember, UpdateTeamMemberDTO>().ReverseMap();
             CreateMap<TeamMemberDTO, CreateTeamMmeberDTO>().ReverseMap();
             CreateMap<TeamMemberDTO, UpdateTeamMemberDTO>().ReverseMap();
-
-
+            CreateMap<FilterTeamMember, FilterTeamMemberDTO>()
+                .ForMember(dest => dest.TeamMembersDTO, opt =>
+                {
+                    opt.MapFrom(src => src.TeamMembers);
+                })
+                .ReverseMap();
             #endregion
 
 

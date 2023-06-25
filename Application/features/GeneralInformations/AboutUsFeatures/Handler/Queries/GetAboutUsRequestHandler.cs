@@ -25,8 +25,8 @@ namespace Application.features.GeneralInformations.AboutUsFeatures.Handler.Queri
         {
             var aboutUs = await _unitofWork.AboutUsRepository.GetEntityAsync(request.Id);
             if (aboutUs is null)
-                return FillRetuenData<AboutUsDTO>.FillByEntity(null, ResponseStatus.NotFound, null);
-            return FillRetuenData<AboutUsDTO>.FillByEntity(_mapper.Map<AboutUsDTO>(aboutUs), ResponseStatus.Success, null);
+                return SetReturnData<AboutUsDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
+            return SetReturnData<AboutUsDTO>.SetTEntity(_mapper.Map<AboutUsDTO>(aboutUs), ResponseStatus.Success, null);
         }
     }
 }

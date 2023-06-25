@@ -1,4 +1,4 @@
-﻿using Application.DTOs.Filters;
+﻿using Application.DTOs.Blog.BlogContent;
 using Application.Reaspose;
 using MediatR;
 

@@ -24,9 +24,9 @@ namespace Application.features.GeneralInformations.SpectacularLocationFeatures.H
         {
             var spectacularLocation = await _unitofWork.SpectacularlocationRepository.GetEntityAsync(request.Id);
             if (spectacularLocation is null)
-                return FillRetuenData<SpectacularLocationDTO>.FillByEntity(null, ResponseStatus.NotFound, null);
+                return SetReturnData<SpectacularLocationDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
             var spectacularLocationDTO = _mapper.Map<SpectacularLocationDTO>(spectacularLocation);
-            return FillRetuenData<SpectacularLocationDTO>.FillByEntity(spectacularLocationDTO, ResponseStatus.Success, null);
+            return SetReturnData<SpectacularLocationDTO>.SetTEntity(spectacularLocationDTO, ResponseStatus.Success, null);
         }
     }
 }

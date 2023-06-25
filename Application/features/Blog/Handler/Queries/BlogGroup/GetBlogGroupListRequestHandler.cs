@@ -24,7 +24,7 @@ namespace Application.features.Blog.Handler.Queries.BlogGroup
         public async Task<ReturnData<BlogGroupDTO>> Handle(GetBlogGroupListRequest request, CancellationToken cancellationToken)
         {
             var blogGroupList = await _unitofWork.BlogGroupRepository.GetAllAsync();
-            return FillRetuenData<BlogGroupDTO>.FillByListEntity(
+            return SetReturnData<BlogGroupDTO>.SetTEntities(
                             _mapper.Map<List<BlogGroupDTO>>(blogGroupList),
                             ResponseStatus.Success,
                             null);

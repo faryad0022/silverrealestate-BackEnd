@@ -32,12 +32,12 @@ namespace Application.features.GeneralInformations.SocialFeatures.Handler.Querie
             {
                 var selectedSocial = social.Where(x => x.IsSelected).ToList();
                 var SelectedSocialDTo = _mapper.Map<List<SocialDTO>>(selectedSocial);
-                return FillRetuenData<SocialDTO>.FillByListEntity(SelectedSocialDTo, ResponseStatus.Success, null);
+                return SetReturnData<SocialDTO>.SetTEntities(SelectedSocialDTo, ResponseStatus.Success, null);
 
 
             }
             var socialDTo = _mapper.Map<List<SocialDTO>>(social);
-            return FillRetuenData<SocialDTO>.FillByListEntity(socialDTo, ResponseStatus.Success, null);
+            return SetReturnData<SocialDTO>.SetTEntities(socialDTo, ResponseStatus.Success, null);
         }
     }
 

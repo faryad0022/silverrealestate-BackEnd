@@ -27,12 +27,12 @@ namespace Application.features.GeneralInformations.SpectacularLocationFeatures.H
         {
             var updateSpectacularLocation = await _unitofWork.SpectacularlocationRepository.GetEntityAsync(request.updateSpectacularLocationDTO.Id);
             if (updateSpectacularLocation is null)
-                return FillRetuenData<SpectacularLocationDTO>.FillByEntity(null, ResponseStatus.NotFound, null);
+                return SetReturnData<SpectacularLocationDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
             #region Validation
             var validator = new UpdateSpectacularLocationDTOValidator();
             var validatorResult = await validator.ValidateAsync(request.updateSpectacularLocationDTO);
             if (!validatorResult.IsValid)
-                return FillRetuenData<SpectacularLocationDTO>.FillByEntity(
+                return SetReturnData<SpectacularLocationDTO>.SetTEntity(
                     _mapper.Map<SpectacularLocationDTO>(request.updateSpectacularLocationDTO),
                     ResponseStatus.ValidationError,
                     validatorResult.Errors.Select(q => q.ErrorMessage).ToList()
@@ -42,7 +42,7 @@ namespace Application.features.GeneralInformations.SpectacularLocationFeatures.H
             var toUpdate = _mapper.Map<Spectacularlocation>(request.updateSpectacularLocationDTO);
             _unitofWork.SpectacularlocationRepository.UpdateEntityAsync(toUpdate);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<SpectacularLocationDTO>.FillByEntity(
+            return SetReturnData<SpectacularLocationDTO>.SetTEntity(
                 _mapper.Map<SpectacularLocationDTO>(request.updateSpectacularLocationDTO),
                 ResponseStatus.Success,
                 null

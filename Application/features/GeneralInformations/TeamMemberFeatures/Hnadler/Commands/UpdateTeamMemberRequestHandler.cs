@@ -29,7 +29,7 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Co
         {
             var teamMember = await _unitofWork.TeamMemberRepository.GetEntityAsync(request.updateTeamMemberDTO.Id);
             if (teamMember is null)
-                return FillRetuenData<TeamMemberDTO>.FillByEntity(
+                return SetReturnData<TeamMemberDTO>.SetTEntity(
                     null,
                     ResponseStatus.NotFound,
                     null
@@ -39,7 +39,7 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Co
             {
                 var createdImageName = ImageUploaderExtensions.UploadImage(request.updateTeamMemberDTO.MemberPicture, PathTools.TeamServernPath, teamMember.MemberPicture);
                 if (string.IsNullOrEmpty(createdImageName))
-                    return FillRetuenData<TeamMemberDTO>.FillByEntity(null, ResponseStatus.UploadError, null);
+                    return SetReturnData<TeamMemberDTO>.SetTEntity(null, ResponseStatus.UploadError, null);
                 request.updateTeamMemberDTO.MemberPicture = createdImageName;
             }
             else
@@ -54,14 +54,14 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Co
             var validatorResult = await validator.ValidateAsync(request.updateTeamMemberDTO);
             if (!validatorResult.IsValid)
             {
-                return FillRetuenData<TeamMemberDTO>.FillByEntity(null,ResponseStatus.ValidationError,validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
+                return SetReturnData<TeamMemberDTO>.SetTEntity(null,ResponseStatus.ValidationError,validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
             }
             #endregion
       
             var toUpdate = _mapper.Map<TeamMember>(request.updateTeamMemberDTO);
             _unitofWork.TeamMemberRepository.UpdateEntityAsync(toUpdate);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<TeamMemberDTO>.FillByEntity(
+            return SetReturnData<TeamMemberDTO>.SetTEntity(
                                 _mapper.Map<TeamMemberDTO>(request.updateTeamMemberDTO),
                                 ResponseStatus.Success,
                                 null);

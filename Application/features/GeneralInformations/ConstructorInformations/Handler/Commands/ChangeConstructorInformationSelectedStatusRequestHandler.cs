@@ -24,10 +24,10 @@ namespace Application.features.GeneralInformations.ConstructorInformations.Handl
         {
             var constructor = await _unitofWork.ConstructorInfromationRepository.GetEntityAsync(request.Id);
             if (constructor is null)
-                return FillRetuenData<ConstructorInformationDTO>.FillByEntity(null, ResponseStatus.NotFound, null);
+                return SetReturnData<ConstructorInformationDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
             _unitofWork.ConstructorInfromationRepository.ChangeSelectedStatusAsync(constructor);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<ConstructorInformationDTO>.FillByEntity(_mapper.Map<ConstructorInformationDTO>(constructor), ResponseStatus.Success, null);
+            return SetReturnData<ConstructorInformationDTO>.SetTEntity(_mapper.Map<ConstructorInformationDTO>(constructor), ResponseStatus.Success, null);
         }
     }
 }

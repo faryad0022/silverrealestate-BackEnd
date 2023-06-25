@@ -26,15 +26,15 @@ namespace Application.features.GeneralInformations.ConstructorInformations.Handl
         {
             var constructorInformatiList = await _unitofWork.ConstructorInfromationRepository.GetAllAsync();
             if (constructorInformatiList is null || constructorInformatiList.Count == 0)
-                return FillRetuenData<ConstructorInformationDTO>.FillByEntity(null, ResponseStatus.NoContent, null);
+                return SetReturnData<ConstructorInformationDTO>.SetTEntity(null, ResponseStatus.NoContent, null);
             if (request.justShowSelected)
             {
                 var selectedConstructorInformation = constructorInformatiList.Where(x => x.IsSelected).ToList();
                 var selectedConstructorInformationDTO = _mapper.Map<List<ConstructorInformationDTO>>(selectedConstructorInformation);
-                return FillRetuenData<ConstructorInformationDTO>.FillByListEntity(selectedConstructorInformationDTO, ResponseStatus.Success, null);
+                return SetReturnData<ConstructorInformationDTO>.SetTEntities(selectedConstructorInformationDTO, ResponseStatus.Success, null);
             }
             var constructorInformatiListDTO = _mapper.Map<List<ConstructorInformationDTO>>(constructorInformatiList);
-            return FillRetuenData<ConstructorInformationDTO>.FillByListEntity(constructorInformatiListDTO, ResponseStatus.Success, null);
+            return SetReturnData<ConstructorInformationDTO>.SetTEntities(constructorInformatiListDTO, ResponseStatus.Success, null);
         }
     }
 }

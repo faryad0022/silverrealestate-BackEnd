@@ -24,10 +24,10 @@ namespace Application.features.GeneralInformations.AddressFeatures.Handler.Comma
         {
             var address = await _unitofWork.AddressRepository.GetEntityAsync(request.Id);
             if (address is null)
-                return FillRetuenData<AddressDTO>.FillByEntity(null, ResponseStatus.NotFound, null);
+                return SetReturnData<AddressDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
             _unitofWork.AddressRepository.ChangeSelectedStatusAsync(address);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<AddressDTO>.FillByEntity(_mapper.Map<AddressDTO>(address), ResponseStatus.Success, null);
+            return SetReturnData<AddressDTO>.SetTEntity(_mapper.Map<AddressDTO>(address), ResponseStatus.Success, null);
         }
     }
 }

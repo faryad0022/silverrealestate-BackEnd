@@ -1,6 +1,6 @@
 ﻿using Application.Contract.Persistence.CommonGenericRepository;
-using Application.DTOs.Filters;
-using Application.Filters;
+using Application.DTOs.Blog.BlogContent;
+using Application.Models.FilterModels;
 using Domain.Entities.Blog;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -13,6 +13,6 @@ namespace Application.Contract.Persistance.EntitiesRepository.Blog
         Task<BlogContent> GetBlogContentWithDetailsAsync(long BlogcontentId);
         Task ChangeBlogContentStatus(BlogContent blogContent);
         Task ChangeBlogContentIsSelected(BlogContent blogContent);
-        Task<FilterBlogContent> FilterBlogContent(FilterBlogContentDTO filter);
+        Task<FilterBlogContent> FilterBlogContent(FilterBlogContent filter);
     }
 }

@@ -27,12 +27,12 @@ namespace Application.features.GeneralInformations.RealEstateServicesFeatures.Ha
         {
             var realEstateService = await _unitofWork.RealEstateServicesRepository.GetEntityAsync(request.updateRealEstateServicesDTO.Id);
             if (realEstateService is null)
-                return FillRetuenData<UpdateRealEstateServicesDTO>.FillByEntity(null, ResponseStatus.NotFound, null);
+                return SetReturnData<UpdateRealEstateServicesDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
             #region Validation
             var validator = new UpdateRealEstateServicesDTOValidator();
             var validatorResult = await validator.ValidateAsync(request.updateRealEstateServicesDTO);
             if (!validatorResult.IsValid)
-                return FillRetuenData<UpdateRealEstateServicesDTO>.FillByEntity(
+                return SetReturnData<UpdateRealEstateServicesDTO>.SetTEntity(
                     null,
                     ResponseStatus.ValidationError,
                     validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
@@ -40,7 +40,7 @@ namespace Application.features.GeneralInformations.RealEstateServicesFeatures.Ha
             var toUpdate = _mapper.Map<RealEstateServices>(request.updateRealEstateServicesDTO);
             _unitofWork.RealEstateServicesRepository.UpdateEntityAsync(toUpdate);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<UpdateRealEstateServicesDTO>.FillByEntity(request.updateRealEstateServicesDTO, ResponseStatus.Success, null);
+            return SetReturnData<UpdateRealEstateServicesDTO>.SetTEntity(request.updateRealEstateServicesDTO, ResponseStatus.Success, null);
 
         }
     }

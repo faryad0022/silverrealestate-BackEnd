@@ -38,7 +38,7 @@ namespace Application.features.Blog.Handler.Commands.BlogGroupCommands
             var validatorResult = await validator.ValidateAsync(request.createBlogGroupDTO);
             if (!validatorResult.IsValid)
             {
-                return FillRetuenData<CreateBlogGroupDTO>.FillByEntity(null, ResponseStatus.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
+                return SetReturnData<CreateBlogGroupDTO>.SetTEntity(null, ResponseStatus.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
 
             }
             #endregion
@@ -65,7 +65,7 @@ namespace Application.features.Blog.Handler.Commands.BlogGroupCommands
                 //// Log or handle error, but don't throw...
             }
 
-            return FillRetuenData<CreateBlogGroupDTO>.FillByEntity(request.createBlogGroupDTO, ResponseStatus.Success, null);
+            return SetReturnData<CreateBlogGroupDTO>.SetTEntity(request.createBlogGroupDTO, ResponseStatus.Success, null);
             #endregion
 
         }

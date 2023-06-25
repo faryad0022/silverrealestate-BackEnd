@@ -26,15 +26,15 @@ namespace Application.features.GeneralInformations.CommonQuestionFeatures.Handle
         {
             var CommonQuestionList = await _unitofWork.CommonQuestionRepository.GetAllAsync();
             if (CommonQuestionList is null || CommonQuestionList.Count == 0)
-                return FillRetuenData<CommonQuestionDTO>.FillByListEntity(null, ResponseStatus.NoContent, null);
+                return SetReturnData<CommonQuestionDTO>.SetTEntities(null, ResponseStatus.NoContent, null);
             if (request.justShowSelected)
             {
                 var selectedCommonQuestion = CommonQuestionList.Where(x => x.IsSelected).ToList();
                 var SelectedCommonQuestionDTo = _mapper.Map<List<CommonQuestionDTO>>(selectedCommonQuestion);
-                return FillRetuenData<CommonQuestionDTO>.FillByListEntity(SelectedCommonQuestionDTo, ResponseStatus.Success, null);
+                return SetReturnData<CommonQuestionDTO>.SetTEntities(SelectedCommonQuestionDTo, ResponseStatus.Success, null);
             }
             var commonQuestionListDTO = _mapper.Map<List<CommonQuestionDTO>>(CommonQuestionList);
-            return FillRetuenData<CommonQuestionDTO>.FillByListEntity(commonQuestionListDTO, ResponseStatus.Success, null);
+            return SetReturnData<CommonQuestionDTO>.SetTEntities(commonQuestionListDTO, ResponseStatus.Success, null);
         }
     }
 }

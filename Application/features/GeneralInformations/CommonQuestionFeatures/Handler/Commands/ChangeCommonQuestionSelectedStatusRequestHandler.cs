@@ -24,10 +24,10 @@ namespace Application.features.GeneralInformations.CommonQuestionFeatures.Handle
         {
             var common = await _unitofWork.CommonQuestionRepository.GetEntityAsync(request.Id);
             if (common is null)
-                return FillRetuenData<CommonQuestionDTO>.FillByEntity(null, ResponseStatus.NotFound, null);
+                return SetReturnData<CommonQuestionDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
             _unitofWork.CommonQuestionRepository.ChangeSelectedStatusAsync(common);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<CommonQuestionDTO>.FillByEntity(_mapper.Map<CommonQuestionDTO>(common), ResponseStatus.Success, null);
+            return SetReturnData<CommonQuestionDTO>.SetTEntity(_mapper.Map<CommonQuestionDTO>(common), ResponseStatus.Success, null);
         }
     }
 }

@@ -29,12 +29,12 @@ namespace Application.features.GeneralInformations.CommonQuestionFeatures.Handle
             var validator = new CreateCommonQuestionValidator();
             var validatorResult = await validator.ValidateAsync(request.createCommonQuestionDTO);
             if (!validatorResult.IsValid)
-                return FillRetuenData<CreateCommonQuestionDTO>.FillByEntity(null, ResponseStatus.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
+                return SetReturnData<CreateCommonQuestionDTO>.SetTEntity(null, ResponseStatus.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
             #endregion
             var commonDTO = _mapper.Map<CommonQuestion>(request.createCommonQuestionDTO);
             await _unitofWork.CommonQuestionRepository.AddEntityAsync(commonDTO);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<CreateCommonQuestionDTO>.FillByEntity(request.createCommonQuestionDTO, ResponseStatus.Success, null);
+            return SetReturnData<CreateCommonQuestionDTO>.SetTEntity(request.createCommonQuestionDTO, ResponseStatus.Success, null);
 
         }
     }

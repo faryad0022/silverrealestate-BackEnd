@@ -29,7 +29,7 @@ namespace Application.features.GeneralInformations.BannerFeatures.Handler.Comman
             var validator = new CreateBannerValidator();
             var validatorResult = await validator.ValidateAsync(request.createBannerDTO);
             if (!validatorResult.IsValid)
-                return FillRetuenData<BannerDTO>.FillByEntity(
+                return SetReturnData<BannerDTO>.SetTEntity(
                     null,
                     ResponseStatus.ValidationError,
                     validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
@@ -37,7 +37,7 @@ namespace Application.features.GeneralInformations.BannerFeatures.Handler.Comman
             var banner = _mapper.Map<Banner>(request.createBannerDTO);
             await _unitofWork.BannerRepository.AddEntityAsync(banner);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<BannerDTO>.FillByEntity(_mapper.Map<BannerDTO>(banner), ResponseStatus.Success, null);
+            return SetReturnData<BannerDTO>.SetTEntity(_mapper.Map<BannerDTO>(banner), ResponseStatus.Success, null);
         }
     }
 }

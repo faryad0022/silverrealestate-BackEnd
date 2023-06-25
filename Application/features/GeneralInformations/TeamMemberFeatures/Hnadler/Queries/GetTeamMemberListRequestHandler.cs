@@ -29,9 +29,9 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Qu
                 teamMemberList = teamMemberList.Where(s => s.IsSelected).ToList();
            
             if (teamMemberList is null || teamMemberList.Count < 1)
-                return FillRetuenData<TeamMemberDTO>.FillByListEntity(null, ResponseStatus.NoContent, null);
+                return SetReturnData<TeamMemberDTO>.SetTEntities(null, ResponseStatus.NoContent, null);
 
-            return FillRetuenData<TeamMemberDTO>.FillByListEntity(
+            return SetReturnData<TeamMemberDTO>.SetTEntities(
                     _mapper.Map<List<TeamMemberDTO>>(teamMemberList),
                     ResponseStatus.Success,
                     null

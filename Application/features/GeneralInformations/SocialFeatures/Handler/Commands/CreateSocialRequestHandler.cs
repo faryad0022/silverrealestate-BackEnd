@@ -31,7 +31,7 @@ namespace Application.features.GeneralInformations.SocialFeatures.Handler.Comman
             var validatorResult = await validator.ValidateAsync(request.createSocialDTO);
             if (!validatorResult.IsValid)
             {
-                return FillRetuenData<SocialDTO>.FillByEntity(
+                return SetReturnData<SocialDTO>.SetTEntity(
                     _mapper.Map<SocialDTO>(social),
                     ResponseStatus.ValidationError,
                     validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
@@ -40,7 +40,7 @@ namespace Application.features.GeneralInformations.SocialFeatures.Handler.Comman
 
             social = await _unitofWork.SocialRepository.AddEntityAsync(social);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<SocialDTO>.FillByEntity(
+            return SetReturnData<SocialDTO>.SetTEntity(
                      _mapper.Map<SocialDTO>(social),
                      ResponseStatus.Success,
                      null);

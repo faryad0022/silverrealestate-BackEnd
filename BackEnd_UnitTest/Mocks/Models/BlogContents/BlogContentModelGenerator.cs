@@ -1,5 +1,4 @@
 ﻿using Application.DTOs.Blog.BlogContent;
-using Application.DTOs.Filters;
 using Domain.Entities.Blog;
 using System.Collections.Generic;
 

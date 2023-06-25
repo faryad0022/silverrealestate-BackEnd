@@ -1,6 +1,4 @@
-﻿using Domain.Entities.GeneralSiteInformation;
-
-namespace BackEnd_API.Const
+﻿namespace BackEnd_API.Const
 {
     public static class ApiRouteV1
     {
@@ -37,7 +35,7 @@ namespace BackEnd_API.Const
         public const string BlogContent_GetAll_WithDetails = "v1/blogcontent/getall/withdetails";
         public const string BlogContent_Get = "v1/blogcontent/get";
         public const string BlogContent_Get_WithDetails = "v1/blogcontent/get/withdetails";
-        public const string BlogContent_Get_Filter = "v1/blogcontent/getbyfilter";
+        public const string BlogContent_Get_Filter = "v1/blogcontent/filter-blogcontents";
         public const string BlogContent_Add = "v1/blogcontent/add";
         public const string BlogContent_Update = "v1/blogcontent/update";
         public const string BlogContent_Delete = "v1/blogcontent/delete";
@@ -121,6 +119,7 @@ namespace BackEnd_API.Const
 
         #region TeamMember
         public const string TeamMember_GetAll = "v1/teammember/getall";
+        public const string TeamMember_GetFilter = "v1/banner/filter-teammember";
         public const string TeamMember_Get = "v1/teammember/get";
         public const string TeamMember_Add = "v1/teammember/add";
         public const string TeamMember_Update = "v1/teammember/update";

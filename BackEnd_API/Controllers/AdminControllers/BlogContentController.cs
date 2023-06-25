@@ -1,5 +1,4 @@
 ﻿using Application.DTOs.Blog.BlogContent;
-using Application.DTOs.Filters;
 using Application.features.Blog.Request.Commands.BlogContentCommands;
 using Application.features.Blog.Request.Queries.BlogContent;
 using Application.Reaspose;
@@ -21,23 +20,19 @@ namespace BackEnd_API.Controllers.AdminControllers
             _mediator = mediator;
         }
 
-        [HttpGet(ApiRouteV1.BlogContent_Get_Filter,Name = "GetByFilter")]
+        [HttpGet(ApiRouteV1.BlogContent_Get_Filter,Name = "GetBlogContentFilter")]
         public async Task<ActionResult<ReturnData<FilterBlogContentDTO>>> GetByFilter([FromQuery] FilterBlogContentDTO filter)
-        {
-            return await _mediator.Send(new GetBlogContentByFilterRequest { filter = filter });
-        }
+            => await _mediator.Send(new GetBlogContentByFilterRequest { filter = filter });
+ 
 
         [HttpGet(ApiRouteV1.BlogContent_Get_WithDetails, Name = "GetWithDetails")]
         public async Task<ActionResult<ReturnData<BlogContentDTO>>> GetWithDetails([FromQuery] long id)
-        {
-            return await _mediator.Send(new GetBlogContentWithDetails { blogContentId = id });
-        }
+            => await _mediator.Send(new GetBlogContentWithDetails { blogContentId = id });
+
 
         [HttpGet(ApiRouteV1.BlogContent_GetAll_WithDetails, Name = "GetWithDetailsList")]
         public async Task<ActionResult<ReturnData<BlogContentDTO>>> GetWithDetailsList()
-        {
-            return await _mediator.Send(new GetBlogContentWithDetailsListRequest());
-        }
+            => await _mediator.Send(new GetBlogContentWithDetailsListRequest());
 
         [HttpPost(ApiRouteV1.BlogContent_Add, Name = "AddBlogContentAsync")]
         public async Task<ActionResult<ReturnData<CreateBlogContentDTO>>> AddBlogContentAsync([FromBody] CreateBlogContentDTO createBlogContentDTO)

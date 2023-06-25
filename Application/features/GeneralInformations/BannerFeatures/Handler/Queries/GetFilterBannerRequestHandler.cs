@@ -1,8 +1,8 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.DTOs.Filters;
+using Application.DTOs.GeneralSiteInformationsDTO.Banner;
 using Application.features.GeneralInformations.BannerFeatures.Request.Queries;
-using Application.Filters;
+using Application.Models.FilterModels;
 using Application.Reaspose;
 using AutoMapper;
 using MediatR;
@@ -30,9 +30,9 @@ namespace Application.features.GeneralInformations.BannerFeatures.Handler.Querie
             var filterredBanner = await _unitofWork.BannerRepository.FilterBanners(filter);
             var filteredBannerDTO = _mapper.Map<FilterBannerDTO>(filterredBanner);
             if (filterredBanner.Banners is null || filterredBanner.Banners.Count < 1)
-                return FillRetuenData<FilterBannerDTO>.FillByEntity(filteredBannerDTO, ResponseStatus.NoContent, null);
+                return SetReturnData<FilterBannerDTO>.SetTEntity(filteredBannerDTO, ResponseStatus.NoContent, null);
 
-            return FillRetuenData<FilterBannerDTO>.FillByEntity(filteredBannerDTO, ResponseStatus.Success, null);
+            return SetReturnData<FilterBannerDTO>.SetTEntity(filteredBannerDTO, ResponseStatus.Success, null);
         }
     }
 }

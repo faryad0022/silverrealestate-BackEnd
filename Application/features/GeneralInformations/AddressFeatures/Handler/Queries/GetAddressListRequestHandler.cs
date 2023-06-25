@@ -26,15 +26,15 @@ namespace Application.features.GeneralInformations.AddressFeatures.Handler.Queri
         {
             var addressList = await _unitofWork.AddressRepository.GetAllAsync();
             if (addressList is null || addressList.Count == 0)
-                return FillRetuenData<AddressDTO>.FillByListEntity(null, ResponseStatus.NoContent, null);
+                return SetReturnData<AddressDTO>.SetTEntities(null, ResponseStatus.NoContent, null);
             if (request.justShowSelected)
             {
                 var selectedAddress = addressList.Where(x => x.IsSelected).ToList();
                 var SelectedAddressDTo = _mapper.Map<List<AddressDTO>>(selectedAddress);
-                return FillRetuenData<AddressDTO>.FillByListEntity(SelectedAddressDTo, ResponseStatus.Success, null);
+                return SetReturnData<AddressDTO>.SetTEntities(SelectedAddressDTo, ResponseStatus.Success, null);
             }
             var addressListDTO = _mapper.Map<List<AddressDTO>>(addressList);
-            return FillRetuenData<AddressDTO>.FillByListEntity(addressListDTO, ResponseStatus.Success, null);
+            return SetReturnData<AddressDTO>.SetTEntities(addressListDTO, ResponseStatus.Success, null);
 
         }
     }

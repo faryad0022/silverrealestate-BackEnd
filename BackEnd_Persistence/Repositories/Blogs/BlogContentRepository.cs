@@ -1,7 +1,8 @@
 ﻿using Application.Contract.Persistance.EntitiesRepository.Blog;
 using Application.DTOs.Blog.BlogContent;
-using Application.DTOs.Filters;
-using Application.Filters;
+using Application.DTOs.Paging;
+using Application.Extensions;
+using Application.Models.FilterModels;
 using Domain.Entities.Blog;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -31,57 +32,33 @@ namespace BackEnd_Persistence.Repositories.Blogs
             blogContent.LastUpdateDate = DateTime.Now;
         }
 
-        public async Task<FilterBlogContent> FilterBlogContent(FilterBlogContentDTO filter)
+        public async Task<FilterBlogContent> FilterBlogContent(FilterBlogContent filter)
         {
-            //var blogContentList = new List<BlogContent>();
-            var result = new FilterBlogContent()
-            {
-                BlogGroupId = filter.BlogGroupId,
-                BlogGroupName = filter.BlogGroupName,
-                IsSelected = filter.IsSelected,
-                Review = filter.Review,
-                Status = filter.Status,
-                Title = filter.Title,
-                ViewCount = filter.ViewCount
-            };
-
-            if (filter.BlogContentList is null || filter.BlogContentList.Count < 1)
-            {
-                result.BlogContentList = await GetEntitiesQuery().Include(s => s.blogGroup).ToListAsync();
-            }
-            else
-            {
-                result.BlogContentList = MappingBlogContent(filter.BlogContentList);
-            }
+            var blogContentQuery = GetEntitiesQuery().Include(x=>x.blogGroup).AsQueryable();
             if (!string.IsNullOrEmpty(filter.Title))
             {
-                result.BlogContentList = result.BlogContentList
-                                           .Where(x => x.Title.Contains(filter.Title))
-                                           .AsQueryable()
-                                           .ToList();
+                blogContentQuery = blogContentQuery.Where(x => x.Title.Contains(filter.Title));
+
             }
             if (filter.BlogGroupId > 0)
             {
-                result.BlogContentList = result.BlogContentList
-                                           .Where(x => x.BlogGroupId == filter.BlogGroupId)
-                                           .AsQueryable()
-                                           .ToList();
+                blogContentQuery = blogContentQuery.Where(x => x.BlogGroupId == filter.BlogGroupId);
             }
             if (!string.IsNullOrEmpty(filter.BlogGroupName))
             {
-                result.BlogContentList = result.BlogContentList
-                                           .Where(x => x.blogGroup.Name == filter.BlogGroupName)
-                                           .AsQueryable()
-                                           .ToList();
+                blogContentQuery = blogContentQuery.Where(x => x.blogGroup.Name.Contains(filter.BlogGroupName));
             }
             if (filter.ViewCount > 0)
             {
-                result.BlogContentList = result.BlogContentList
-                                           .Where(x => x.ViewCount == filter.ViewCount)
-                                           .AsQueryable()
-                                           .ToList();
+                blogContentQuery = blogContentQuery.Where(x => x.ViewCount == filter.ViewCount);
             }
-            return result;
+            blogContentQuery = blogContentQuery.Where(x => x.IsDelete == filter.IsDelete);
+            blogContentQuery = blogContentQuery.Where(x => x.IsSelected == filter.IsSelected);
+
+            var count = (int)Math.Ceiling(blogContentQuery.Count() / (double)filter.TakeEntity);
+            var pager = Pager.Build(count, filter.PageId, filter.TakeEntity);
+            var bloContents = await blogContentQuery.Paging(pager).ToListAsync();
+            return filter.SetPaging(pager).SetBlogContents(bloContents);
         }
 
         public async Task<BlogContent> GetBlogContentWithDetailsAsync(long BlogcontentId)

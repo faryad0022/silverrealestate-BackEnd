@@ -24,10 +24,10 @@ namespace Application.features.GeneralInformations.SpectacularLocationImageFeatu
         {
             var spectacularLocationImage = await _unitofWork.SpectacularLocationImageRepository.GetEntityAsync(request.Id);
             if (spectacularLocationImage is null)
-                return FillRetuenData<SpectacularLocationImagesDTO>.FillByEntity(null, ResponseStatus.NotFound, null);
+                return SetReturnData<SpectacularLocationImagesDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
             _unitofWork.SpectacularLocationImageRepository.ChangeSelectedStatusAsync(spectacularLocationImage);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<SpectacularLocationImagesDTO>.FillByEntity(
+            return SetReturnData<SpectacularLocationImagesDTO>.SetTEntity(
                 _mapper.Map<SpectacularLocationImagesDTO>(spectacularLocationImage),
                 ResponseStatus.Success,
                 null

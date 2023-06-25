@@ -24,8 +24,8 @@ namespace Application.features.GeneralInformations.AddressFeatures.Handler.Queri
         {
             var address = await _unitofWork.AddressRepository.GetEntityAsync(request.Id);
             if (address is null)
-                return FillRetuenData<AddressDTO>.FillByEntity(null, ResponseStatus.NotFound, null);
-            return FillRetuenData<AddressDTO>.FillByEntity(_mapper.Map<AddressDTO>(address), ResponseStatus.Success, null);
+                return SetReturnData<AddressDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
+            return SetReturnData<AddressDTO>.SetTEntity(_mapper.Map<AddressDTO>(address), ResponseStatus.Success, null);
         }
     }
 }

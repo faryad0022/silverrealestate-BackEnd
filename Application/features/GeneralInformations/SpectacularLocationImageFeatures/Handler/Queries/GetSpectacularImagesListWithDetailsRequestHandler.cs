@@ -26,17 +26,17 @@ namespace Application.features.GeneralInformations.SpectacularLocationImageFeatu
         {
             var spectacularImagesList = await _unitofWork.SpectacularLocationImageRepository.GetSpectacularLocationImagesListWithDetails();
             if (spectacularImagesList is null || spectacularImagesList.Count < 1)
-                return FillRetuenData<SpectacularLocationImagesDTO>.FillByListEntity(null, ResponseStatus.NoContent, null);
+                return SetReturnData<SpectacularLocationImagesDTO>.SetTEntities(null, ResponseStatus.NoContent, null);
             if (request.justSelected)
             {
                 var spectacularImageSelected = spectacularImagesList.Where(s => s.IsSelected).ToList();
-                return FillRetuenData<SpectacularLocationImagesDTO>.FillByListEntity(
+                return SetReturnData<SpectacularLocationImagesDTO>.SetTEntities(
                 _mapper.Map<List<SpectacularLocationImagesDTO>>(spectacularImageSelected),
                 ResponseStatus.Success,
                 null
                 );
             }
-            return FillRetuenData<SpectacularLocationImagesDTO>.FillByListEntity(
+            return SetReturnData<SpectacularLocationImagesDTO>.SetTEntities(
                 _mapper.Map<List<SpectacularLocationImagesDTO>>(spectacularImagesList),
                 ResponseStatus.Success,
                 null

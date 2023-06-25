@@ -26,15 +26,15 @@ namespace Application.features.GeneralInformations.AboutUsFeatures.Handler.Queri
         {
             var aboutus = await _unitofWork.AboutUsRepository.GetAllAsync();
             if (aboutus is null || aboutus.Count == 0)
-                return FillRetuenData<AboutUsDTO>.FillByListEntity(null, ResponseStatus.NoContent, null);
+                return SetReturnData<AboutUsDTO>.SetTEntities(null, ResponseStatus.NoContent, null);
             if (request.justShowSelected)
             {
                 var selectedAboutus = aboutus.Where(x => x.IsSelected).ToList();
                 var SelectedAboutusDTo = _mapper.Map<List<AboutUsDTO>>(selectedAboutus);
-                return FillRetuenData<AboutUsDTO>.FillByListEntity(SelectedAboutusDTo, ResponseStatus.Success, null);
+                return SetReturnData<AboutUsDTO>.SetTEntities(SelectedAboutusDTo, ResponseStatus.Success, null);
             }
             var aboutUsDTO = _mapper.Map<List<AboutUsDTO>>(aboutus);
-            return FillRetuenData<AboutUsDTO>.FillByListEntity(
+            return SetReturnData<AboutUsDTO>.SetTEntities(
                 aboutUsDTO,
                 ResponseStatus.Success,
                 null

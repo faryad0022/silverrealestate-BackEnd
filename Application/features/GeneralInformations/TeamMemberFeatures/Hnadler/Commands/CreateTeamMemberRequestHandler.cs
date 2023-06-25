@@ -33,7 +33,7 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Co
             var validatorResult = await validator.ValidateAsync(request.createTeamMmeberDTO);
             if (!validatorResult.IsValid)
             {
-                return FillRetuenData<TeamMemberDTO>.FillByEntity(
+                return SetReturnData<TeamMemberDTO>.SetTEntity(
                     null,
                     ResponseStatus.ValidationError,
                     validatorResult.Errors.Select(q => q.ErrorMessage).ToList()
@@ -46,7 +46,7 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Co
                 PathTools.TeamServernPath
                 );
             if (string.IsNullOrEmpty(createdImageName))
-                return FillRetuenData<TeamMemberDTO>.FillByEntity(
+                return SetReturnData<TeamMemberDTO>.SetTEntity(
                     null,
                     ResponseStatus.UploadError,
                     null
@@ -55,7 +55,7 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Co
             toCreate.MemberPicture = createdImageName;
             var created = await _unitofWork.TeamMemberRepository.AddEntityAsync(toCreate);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<TeamMemberDTO>.FillByEntity(
+            return SetReturnData<TeamMemberDTO>.SetTEntity(
                 _mapper.Map<TeamMemberDTO>(created),
                 ResponseStatus.Success,
                 null

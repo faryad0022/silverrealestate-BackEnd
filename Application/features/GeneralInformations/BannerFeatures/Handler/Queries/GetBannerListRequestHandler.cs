@@ -29,10 +29,10 @@ namespace Application.features.GeneralInformations.BannerFeatures.Handler.Querie
                 bannerList = bannerList.Where(x => x.IsSelected).ToList();
 
             if (bannerList is null || bannerList.Count == 0)
-                return FillRetuenData<BannerDTO>.FillByEntity(null, ResponseStatus.NoContent, null);
+                return SetReturnData<BannerDTO>.SetTEntity(null, ResponseStatus.NoContent, null);
             var bannerListDTO = _mapper.Map<List<BannerDTO>>(bannerList.OrderByDescending(date => date.LastUpdateDate));
 
-            return FillRetuenData<BannerDTO>.FillByListEntity(bannerListDTO, ResponseStatus.Success, null);
+            return SetReturnData<BannerDTO>.SetTEntities(bannerListDTO, ResponseStatus.Success, null);
         }
     }
 }

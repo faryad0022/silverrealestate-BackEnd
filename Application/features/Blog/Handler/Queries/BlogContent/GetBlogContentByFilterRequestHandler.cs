@@ -1,7 +1,8 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.DTOs.Filters;
+using Application.DTOs.Blog.BlogContent;
 using Application.features.Blog.Request.Queries.BlogContent;
+using Application.Models.FilterModels;
 using Application.Reaspose;
 using AutoMapper;
 using MediatR;
@@ -22,12 +23,13 @@ namespace Application.features.Blog.Handler.Queries.BlogContent
         }
         public async Task<ReturnData<FilterBlogContentDTO>> Handle(GetBlogContentByFilterRequest request, CancellationToken cancellationToken)
         {
-            var blogContent = await _unitofWork.BlogContentRepository.FilterBlogContent(request.filter);
-            if (blogContent.BlogContentList is null || blogContent.BlogContentList.Count == 0)
-                return FillRetuenData<FilterBlogContentDTO>.FillByEntity(null, ResponseStatus.NotFound, null);
-
+            var filterDTO = _mapper.Map<FilterBlogContent>(request.filter);
+            var blogContent = await _unitofWork.BlogContentRepository.FilterBlogContent(filterDTO);
             var filterBlogContentDTO = _mapper.Map<FilterBlogContentDTO>(blogContent);
-            return FillRetuenData<FilterBlogContentDTO>.FillByEntity(filterBlogContentDTO, ResponseStatus.Success, null);
+            if (blogContent.BlogContentList is null || blogContent.BlogContentList.Count == 0)
+                return SetReturnData<FilterBlogContentDTO>.SetTEntity(filterBlogContentDTO, ResponseStatus.NoContent, null);
+
+            return SetReturnData<FilterBlogContentDTO>.SetTEntity(filterBlogContentDTO, ResponseStatus.Success, null);
         }
     }
 }

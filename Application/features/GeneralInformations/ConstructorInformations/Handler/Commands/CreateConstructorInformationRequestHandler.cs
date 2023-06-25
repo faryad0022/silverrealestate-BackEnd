@@ -29,7 +29,7 @@ namespace Application.features.GeneralInformations.ConstructorInformations.Handl
             var validator = new CreateConstructorInformationValidator();
             var validationResult = await validator.ValidateAsync(request.createConstructorInformationDTO);
             if (!validationResult.IsValid)
-                return FillRetuenData<CreateConstructorInformationDTO>.FillByEntity(
+                return SetReturnData<CreateConstructorInformationDTO>.SetTEntity(
                                 null,
                                 ResponseStatus.ValidationError,
                                 validationResult.Errors.Select(q => q.ErrorMessage).ToList());
@@ -37,7 +37,7 @@ namespace Application.features.GeneralInformations.ConstructorInformations.Handl
             var constructor = _mapper.Map<ConstructorInformation>(request.createConstructorInformationDTO);
             await _unitofWork.ConstructorInfromationRepository.AddEntityAsync(constructor);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<CreateConstructorInformationDTO>.FillByEntity(request.createConstructorInformationDTO, ResponseStatus.Success, null);
+            return SetReturnData<CreateConstructorInformationDTO>.SetTEntity(request.createConstructorInformationDTO, ResponseStatus.Success, null);
         }
     }
 }

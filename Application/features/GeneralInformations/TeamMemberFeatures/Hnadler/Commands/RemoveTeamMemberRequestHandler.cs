@@ -29,7 +29,7 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Co
             var teamMemberDTO = _mapper.Map<TeamMemberDTO>(teamMember);
             if (teamMember is null)
             {
-                return FillRetuenData<TeamMemberDTO>.FillByEntity(
+                return SetReturnData<TeamMemberDTO>.SetTEntity(
                     null,
                     ResponseStatus.NotFound,
                     null
@@ -37,7 +37,7 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Co
             }
             _unitofWork.TeamMemberRepository.DeleteEntityAsync(teamMember);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<TeamMemberDTO>.FillByEntity(
+            return SetReturnData<TeamMemberDTO>.SetTEntity(
                 teamMemberDTO,
                 ResponseStatus.Success,
                 null

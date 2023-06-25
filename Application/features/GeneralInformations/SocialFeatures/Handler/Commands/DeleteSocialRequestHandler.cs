@@ -24,11 +24,11 @@ namespace Application.features.GeneralInformations.SocialFeatures.Handler.Comman
         {
             var social = await _unitofWork.SocialRepository.GetEntityAsync(request.Id);
             if (social is null)
-                return FillRetuenData<SocialDTO>.FillByEntity(null, ResponseStatus.NotFound, null);
+                return SetReturnData<SocialDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
             var socialDTO = _mapper.Map<SocialDTO>(social);
             _unitofWork.SocialRepository.DeleteEntityAsync(social);
             await _unitofWork.SaveChangesAsync();
-            return FillRetuenData<SocialDTO>.FillByEntity(socialDTO, ResponseStatus.Success, null);
+            return SetReturnData<SocialDTO>.SetTEntity(socialDTO, ResponseStatus.Success, null);
         }
     }
 }

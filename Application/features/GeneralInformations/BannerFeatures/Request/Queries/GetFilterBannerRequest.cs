@@ -1,4 +1,4 @@
-﻿using Application.DTOs.Filters;
+﻿using Application.DTOs.GeneralSiteInformationsDTO.Banner;
 using Application.Reaspose;
 using MediatR;
 
