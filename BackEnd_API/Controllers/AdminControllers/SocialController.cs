@@ -19,7 +19,7 @@ namespace BackEnd_API.Controllers.AdminControllers
         {
             _mediator = mediator;
         }
-        [HttpGet(ApiRouteV1.Social_GetAll, Name = "GetSocialListAsync")]
+        [HttpGet(ApiRouteV1.Social_GetAll, Name = "GetSocialList")]
         public async Task<ActionResult<ReturnData<SocialDTO>>> GetSocialListAsync()
             => await _mediator.Send(new GetSocialListRequest());
 
