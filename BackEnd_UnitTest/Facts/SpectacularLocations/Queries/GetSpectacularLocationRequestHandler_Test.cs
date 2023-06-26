@@ -33,11 +33,9 @@ namespace BackEnd_UnitTest.Facts.SpectacularLocations.Queries
             var handler = new GetSpectacularLocationRequestHandler(_unitofWork.Object, _mapper);
             var result = await handler.Handle(new GetSpectacularLocationRequest() { Id = 1 }, CancellationToken.None);
 
-            result.Tentities.ShouldBeNull();
-            result.Tentity.Name.ShouldBe("Ghost City");
-            result.Tentity.ShouldBeOfType(typeof(SpectacularLocationDTO));
+            
             result.Errors.ShouldBeNull();
-            result.Status.ShouldBe(ResponseStatus.Success);
+            result.Status.ShouldBe(StatusMessage.Success);
         }
         [Fact]
         public async Task GetSpectacularLocation_NotFound_Invalid()
@@ -45,10 +43,10 @@ namespace BackEnd_UnitTest.Facts.SpectacularLocations.Queries
             var handler = new GetSpectacularLocationRequestHandler(_unitofWork.Object, _mapper);
             var result = await handler.Handle(new GetSpectacularLocationRequest() { Id = 10 }, CancellationToken.None);
 
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldBeNull();
+            
+            
             result.Errors.ShouldBeNull();
-            result.Status.ShouldBe(ResponseStatus.NotFound);
+            result.Status.ShouldBe(StatusMessage.NotFound);
         }
     }
 }

@@ -32,10 +32,10 @@ namespace BackEnd_UnitTest.Facts.Logos.Commands
             var handler = new ChangeLogoSelectStatusRequestHandler(_mapper, _mockRepo.Object);
             var result = await handler.Handle(new ChangeLogoSelectStatusRequest() { Id = 1 }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
+            result.Status.ShouldBe(StatusMessage.Success);
             result.Errors.ShouldBeNull();
-            result.Tentity.ShouldNotBeNull();
-            result.Tentities.ShouldBeNull();
+            
+            
         }
         [Fact]
         public async Task ChangeLogoSelected_NotFound_InValid()
@@ -43,10 +43,10 @@ namespace BackEnd_UnitTest.Facts.Logos.Commands
             var handler = new ChangeLogoSelectStatusRequestHandler(_mapper, _mockRepo.Object);
             var result = await handler.Handle(new ChangeLogoSelectStatusRequest() { Id = 6 }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.NotFound);
+            result.Status.ShouldBe(StatusMessage.NotFound);
             result.Errors.ShouldBeNull();
-            result.Tentity.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
+            
+            
         }
     }
 }

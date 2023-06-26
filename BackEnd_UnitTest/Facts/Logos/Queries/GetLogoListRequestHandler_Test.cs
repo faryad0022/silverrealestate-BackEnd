@@ -32,10 +32,10 @@ namespace BackEnd_UnitTest.Facts.Logos.Queries
             var handler = new GetLogoListRequestHandler(_mapper, _mockRepo.Object);
             var result = await handler.Handle(new GetLogoListRequest(), CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
+            result.Status.ShouldBe(StatusMessage.Success);
             result.Errors.ShouldBeNull();
-            result.Tentity.ShouldBeNull();
-            result.Tentities.ShouldNotBeNull();
+            
+            
         }
         [Fact]
         public async Task GetSelectedLogoList_Valid()
@@ -43,11 +43,10 @@ namespace BackEnd_UnitTest.Facts.Logos.Queries
             var handler = new GetLogoListRequestHandler(_mapper, _mockRepo.Object);
             var result = await handler.Handle(new GetLogoListRequest() { justShowSelected = true }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
+            result.Status.ShouldBe(StatusMessage.Success);
             result.Errors.ShouldBeNull();
-            result.Tentity.ShouldBeNull();
-            result.Tentities.ShouldNotBeNull();
-            result.Tentities.Count.ShouldBe(1);
+            
+            
         }
     }
 

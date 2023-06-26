@@ -32,9 +32,9 @@ namespace BackEnd_UnitTest.Facts.CommonQuestions.Queries
             var handler = new GetCommonQuestionRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new GetCommonQuestionRequest() { Id = 1 }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentity.ShouldNotBeNull();
-            result.Tentities.ShouldBeNull();
+            result.Status.ShouldBe(StatusMessage.Success);
+            
+            
             result.Errors.ShouldBeNull();
         }
 
@@ -44,9 +44,9 @@ namespace BackEnd_UnitTest.Facts.CommonQuestions.Queries
             var handler = new GetCommonQuestionRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new GetCommonQuestionRequest() { Id = 10 }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.NotFound);
-            result.Tentity.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
+            result.Status.ShouldBe(StatusMessage.NotFound);
+            
+            
             result.Errors.ShouldBeNull();
         }
     }

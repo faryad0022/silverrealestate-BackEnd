@@ -1,10 +1,10 @@
-﻿using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocationImages;
-using Application.Reaspose;
+﻿using Application.Const.Response;
+using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocationImages;
 using MediatR;
 
 namespace Application.features.GeneralInformations.SpectacularLocationImageFeatures.Request.Commands
 {
-    public class UpdateSpectacularLocationImageRequest : IRequest<ReturnData<SpectacularLocationImagesDTO>>
+    public class UpdateSpectacularLocationImageRequest : IRequest<ResponseResult>
     {
         public UpdateSpectacularLocationImagesDTO updateSpectacularLocationImagesDTO { get; set; }
     }

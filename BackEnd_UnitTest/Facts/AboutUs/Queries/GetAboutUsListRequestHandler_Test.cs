@@ -33,9 +33,9 @@ namespace BackEnd_UnitTest.Facts.AboutUs.Queries
             var result = await handler.Handle(new GetAboutUsListRequest(), CancellationToken.None);
 
             result.Errors.ShouldBeNull();
-            result.Tentity.ShouldBeNull();
-            result.Tentities.ShouldNotBeNull();
-            result.Status.ShouldBe(ResponseStatus.Success);
+            
+            
+            result.Status.ShouldBe(StatusMessage.Success);
 
         }
 
@@ -46,10 +46,8 @@ namespace BackEnd_UnitTest.Facts.AboutUs.Queries
             var result = await handler.Handle(new GetAboutUsListRequest() { justShowSelected = true }, CancellationToken.None);
 
             result.Errors.ShouldBeNull();
-            result.Tentity.ShouldBeNull();
-            result.Tentities.ShouldNotBeNull();
-            result.Tentities.Count.ShouldBe(1);
-            result.Status.ShouldBe(ResponseStatus.Success);
+            
+            result.Status.ShouldBe(StatusMessage.Success);
 
         }
     }

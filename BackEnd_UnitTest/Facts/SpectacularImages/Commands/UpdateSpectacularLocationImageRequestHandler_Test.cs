@@ -34,11 +34,10 @@ namespace BackEnd_UnitTest.Facts.SpectacularImages.Commands
             var handler = new UpdateSpectacularLocationImageRequestHandler(_mapper, _unitOfWork.Object);
             var result = await handler.Handle(new UpdateSpectacularLocationImageRequest() { updateSpectacularLocationImagesDTO = SpectacularLocationImageModelGenerator.updateSpectacularImags_Valid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
+            result.Status.ShouldBe(StatusMessage.Success);
             result.Errors.ShouldBeNull();
-            result.Tentity.ShouldNotBeNull();
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldBeOfType(typeof(SpectacularLocationImagesDTO));
+            
+            
         }
         [Fact]
         public async Task UpdateSpectacularLocationImage_ValidationError_InValid()
@@ -46,11 +45,10 @@ namespace BackEnd_UnitTest.Facts.SpectacularImages.Commands
             var handler = new UpdateSpectacularLocationImageRequestHandler(_mapper, _unitOfWork.Object);
             var result = await handler.Handle(new UpdateSpectacularLocationImageRequest() { updateSpectacularLocationImagesDTO = SpectacularLocationImageModelGenerator.updateSpectacularImags_ValidationError_InValid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.ValidationError);
+            result.Status.ShouldBe(StatusMessage.ValidationError);
             result.Errors.ShouldNotBeNull();
-            result.Tentity.ShouldNotBeNull();
-            result.Tentity.ShouldBeOfType(typeof(SpectacularLocationImagesDTO));
-            result.Tentities.ShouldBeNull();
+            
+            
         }
         [Fact]
         public async Task UpdateSpectacularLocationImage_NotFound_InValid()
@@ -58,10 +56,10 @@ namespace BackEnd_UnitTest.Facts.SpectacularImages.Commands
             var handler = new UpdateSpectacularLocationImageRequestHandler(_mapper, _unitOfWork.Object);
             var result = await handler.Handle(new UpdateSpectacularLocationImageRequest() { updateSpectacularLocationImagesDTO = SpectacularLocationImageModelGenerator.updateSpectacularImags_NotFound_InValid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.NotFound);
+            result.Status.ShouldBe(StatusMessage.NotFound);
             result.Errors.ShouldBeNull();
-            result.Tentity.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
+            
+            
         }
         [Fact]
         public async Task UpdateSpectacularLocationImage_MustSelectedParent_ValidationError_InValid()
@@ -69,11 +67,10 @@ namespace BackEnd_UnitTest.Facts.SpectacularImages.Commands
             var handler = new UpdateSpectacularLocationImageRequestHandler(_mapper, _unitOfWork.Object);
             var result = await handler.Handle(new UpdateSpectacularLocationImageRequest() { updateSpectacularLocationImagesDTO = SpectacularLocationImageModelGenerator.updateSpectacularImags_MustSelected_ValidationError_InValid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.ValidationError);
+            result.Status.ShouldBe(StatusMessage.ValidationError);
             result.Errors.ShouldNotBeNull();
-            result.Tentity.ShouldNotBeNull();
-            result.Tentity.ShouldBeOfType(typeof(SpectacularLocationImagesDTO));
-            result.Tentities.ShouldBeNull();
+            
+            
         }
     }
 }

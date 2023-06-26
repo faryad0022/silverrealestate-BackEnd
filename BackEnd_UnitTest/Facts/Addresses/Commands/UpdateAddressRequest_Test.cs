@@ -33,9 +33,9 @@ namespace BackEnd_UnitTest.Facts.Addresses.Commands
             var handler = new UpdateAddressRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new UpdateAddressRequest() { updateAddressDTO = AddressModelGenerator.updateAddressDTO_Valid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldNotBeNull();
+            result.Status.ShouldBe(StatusMessage.Success);
+            
+            
         }
         [Fact]
         public async Task UpdateAddress_Validation_InValid()
@@ -43,10 +43,10 @@ namespace BackEnd_UnitTest.Facts.Addresses.Commands
             var handler = new UpdateAddressRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new UpdateAddressRequest() { updateAddressDTO = AddressModelGenerator.updateAddressDTO_InValid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.ValidationError);
+            result.Status.ShouldBe(StatusMessage.ValidationError);
             result.Errors.ShouldNotBeNull();
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldNotBeNull();
+            
+            
         }
 
         [Fact]
@@ -55,10 +55,10 @@ namespace BackEnd_UnitTest.Facts.Addresses.Commands
             var handler = new UpdateAddressRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new UpdateAddressRequest() { updateAddressDTO = AddressModelGenerator.updateAddressDTO_NotFound_InValid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.NotFound);
+            result.Status.ShouldBe(StatusMessage.NotFound);
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldNotBeNull();
+            
+            
         }
     }
 }

@@ -1,10 +1,10 @@
-﻿using Application.DTOs.GeneralSiteInformationsDTO.Banner;
-using Application.Reaspose;
+﻿using Application.Const.Response;
+using Application.DTOs.GeneralSiteInformationsDTO.Banner;
 using MediatR;
 
 namespace Application.features.GeneralInformations.BannerFeatures.Request.Commands
 {
-    public class DeleteBannerRequest : IRequest<ReturnData<BannerDTO>>
+    public class DeleteBannerRequest : IRequest<ResponseResult>
     {
         public long Id { get; set; }
     }

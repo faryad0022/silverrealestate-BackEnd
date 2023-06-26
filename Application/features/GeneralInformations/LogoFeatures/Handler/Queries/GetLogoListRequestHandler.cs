@@ -2,7 +2,6 @@
 using Application.Contract.Persistence;
 using Application.DTOs.GeneralSiteInformationsDTO.Logo;
 using Application.features.GeneralInformations.LogoFeatures.Request.Queries;
-using Application.Reaspose;
 using AutoMapper;
 using MediatR;
 using System.Collections.Generic;
@@ -12,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.LogoFeatures.Handler.Queries
 {
-    public class GetLogoListRequestHandler : IRequestHandler<GetLogoListRequest, ReturnData<LogoDTO>>
+    public class GetLogoListRequestHandler : IRequestHandler<GetLogoListRequest, ResponseResult>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -22,19 +21,19 @@ namespace Application.features.GeneralInformations.LogoFeatures.Handler.Queries
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ReturnData<LogoDTO>> Handle(GetLogoListRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResult> Handle(GetLogoListRequest request, CancellationToken cancellationToken)
         {
             var logoList = await _unitofWork.LogoRepository.GetAllAsync();
             if (logoList is null || logoList.Count == 0)
-                return SetReturnData<LogoDTO>.SetTEntity(null, ResponseStatus.NoContent, null);
+                return ResponseResult.SetResult(null, StatusMessage.NoContent, null);
             if (request.justShowSelected)
             {
                 var selectedLogo = logoList.Where(x => x.IsSelected).ToList();
                 var SelectedLogoDTo = _mapper.Map<List<LogoDTO>>(selectedLogo);
-                return SetReturnData<LogoDTO>.SetTEntities(SelectedLogoDTo, ResponseStatus.Success, null);
+                return ResponseResult.SetResult(SelectedLogoDTo, StatusMessage.Success, null);
             }
             var logoListDTO = _mapper.Map<List<LogoDTO>>(logoList);
-            return SetReturnData<LogoDTO>.SetTEntities(logoListDTO, ResponseStatus.Success, null);
+            return ResponseResult.SetResult(logoListDTO, StatusMessage.Success, null);
         }
     }
 }

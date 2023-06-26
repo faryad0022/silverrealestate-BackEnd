@@ -37,7 +37,7 @@ namespace BackEnd_UnitTest.Facts.Socials.Commands
                 UpdateSocialDTO = SocialModelGenerator._updateSocialDTO_ValidationError_InValid
             }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.ValidationError);
+            result.Status.ShouldBe(StatusMessage.ValidationError);
             result.Errors.ShouldNotBeNull();
 
         }
@@ -50,9 +50,9 @@ namespace BackEnd_UnitTest.Facts.Socials.Commands
                 UpdateSocialDTO = SocialModelGenerator._updateSocialDTO_NotFound_InValid
             }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.NotFound);
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldBeNull();
+            result.Status.ShouldBe(StatusMessage.NotFound);
+            
+            
             result.Errors.ShouldBeNull();
 
         }
@@ -65,7 +65,7 @@ namespace BackEnd_UnitTest.Facts.Socials.Commands
                 UpdateSocialDTO = SocialModelGenerator._updateSocialDTO_Valid
             }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
+            result.Status.ShouldBe(StatusMessage.Success);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Application.Const.Validator;
+﻿using Application.Const.Response;
 using Application.DTOs.Blog.BlogContent.Common;
 using FluentValidation;
 

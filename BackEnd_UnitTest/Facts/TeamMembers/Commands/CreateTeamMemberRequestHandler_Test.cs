@@ -38,12 +38,10 @@ namespace BackEnd_UnitTest.Facts.TeamMembers.Commands
             var handler = new CreateTeamMemberRequestHandler(_mapper,_unitOfWork.Object);
             var result = await handler.Handle(new CreateTeamMemberRequest() { createTeamMmeberDTO = TeamMemberModelGenerator.CreateTeamMmeberDTO_Valid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentity.ShouldNotBeNull();
+            result.Status.ShouldBe(StatusMessage.Success);
+            
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
-            result.Tentity.Name.ShouldBe("Asghar");
-            result.Tentity.ShouldBeOfType(typeof(TeamMemberDTO));
+
         }
         [Fact]
         public async Task CreateTeamMember_ValidationError_InValid()
@@ -51,10 +49,10 @@ namespace BackEnd_UnitTest.Facts.TeamMembers.Commands
             var handler = new CreateTeamMemberRequestHandler(_mapper, _unitOfWork.Object);
             var result = await handler.Handle(new CreateTeamMemberRequest() { createTeamMmeberDTO = TeamMemberModelGenerator.CreateTeamMmeberDTO_ValidationError_InValid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.ValidationError);
-            result.Tentity.ShouldBeNull();
+            result.Status.ShouldBe(StatusMessage.ValidationError);
+            
             result.Errors.ShouldNotBeNull();
-            result.Tentities.ShouldBeNull();
+            
         }
     }
 }

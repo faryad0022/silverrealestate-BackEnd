@@ -1,6 +1,6 @@
-﻿using Application.DTOs.GeneralSiteInformationsDTO.ConstructorInformations;
+﻿using Application.Const.Response;
+using Application.DTOs.GeneralSiteInformationsDTO.ConstructorInformations;
 using Application.features.GeneralInformations.ConstructorInformations.Request.Queries;
-using Application.Reaspose;
 using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;
@@ -19,7 +19,7 @@ namespace BackEnd_API.Controllers.SiteControllers
             _mediator = mediator;
         }
         [HttpGet(ApiRouteV1.ConstructorInformation_GetAll,Name ="GetAllConstructorInformationAsync")]
-        public async Task<ActionResult<ReturnData<ConstructorInformationDTO>>> GetAllConstructor()
+        public async Task<ActionResult<ResponseResult>> GetAllConstructor()
             => await _mediator.Send(new GetConstructorInformationListRequest() { justShowSelected=true});
     }
 }

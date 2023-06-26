@@ -34,9 +34,9 @@ namespace BackEnd_UnitTest.Facts.ConstructorInformations.Commands
             var handler = new UpdateConstructorInformationRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new UpdateConstructorInformationRequest() { updateConstructorInformationDTO = ConstructorInformationModelGenerator.updateConstructorInformationDTO_Valid }, CancellationToken.None);
 
-            result.Tentity.ShouldNotBeNull();
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentities.ShouldBeNull();
+            
+            result.Status.ShouldBe(StatusMessage.Success);
+            
             result.Errors.ShouldBeNull();
         }
         [Fact]
@@ -45,9 +45,9 @@ namespace BackEnd_UnitTest.Facts.ConstructorInformations.Commands
             var handler = new UpdateConstructorInformationRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new UpdateConstructorInformationRequest() { updateConstructorInformationDTO = ConstructorInformationModelGenerator.updateConstructorInformationDTO_Validation_InValid }, CancellationToken.None);
 
-            result.Tentity.ShouldBeNull();
-            result.Status.ShouldBe(ResponseStatus.ValidationError);
-            result.Tentities.ShouldBeNull();
+            
+            result.Status.ShouldBe(StatusMessage.ValidationError);
+            
             result.Errors.ShouldNotBeNull();
         }
         [Fact]
@@ -56,9 +56,9 @@ namespace BackEnd_UnitTest.Facts.ConstructorInformations.Commands
             var handler = new UpdateConstructorInformationRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new UpdateConstructorInformationRequest() { updateConstructorInformationDTO = ConstructorInformationModelGenerator.updateConstructorInformationDTO_Notfound_InValid }, CancellationToken.None);
 
-            result.Tentity.ShouldNotBeNull();
-            result.Status.ShouldBe(ResponseStatus.NotFound);
-            result.Tentities.ShouldBeNull();
+            
+            result.Status.ShouldBe(StatusMessage.NotFound);
+            
             result.Errors.ShouldBeNull();
         }
 

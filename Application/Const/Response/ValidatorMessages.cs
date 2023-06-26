@@ -1,4 +1,4 @@
-﻿namespace Application.Const.Validator
+﻿namespace Application.Const.Response
 {
     public static class ValidatorMessages
     {

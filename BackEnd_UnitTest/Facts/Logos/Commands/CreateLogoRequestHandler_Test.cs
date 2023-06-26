@@ -33,10 +33,10 @@ namespace BackEnd_UnitTest.Facts.Logos.Commands
             var handler = new CreateLogoRequestHandler(_mapper, _mockRepo.Object);
             var result = await handler.Handle(new CreateLogoRequest() { createLogoDTO = LogoModelGenerator.createDTO_Valid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
+            result.Status.ShouldBe(StatusMessage.Success);
             result.Errors.ShouldBeNull();
-            result.Tentity.ShouldNotBeNull();
-            result.Tentities.ShouldBeNull();
+            
+            
         }
         [Fact]
         public async Task CreateLogo_ValidationError_InValid()
@@ -44,10 +44,10 @@ namespace BackEnd_UnitTest.Facts.Logos.Commands
             var handler = new CreateLogoRequestHandler(_mapper, _mockRepo.Object);
             var result = await handler.Handle(new CreateLogoRequest() { createLogoDTO = LogoModelGenerator.createDTO_InValid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.ValidationError);
+            result.Status.ShouldBe(StatusMessage.ValidationError);
             result.Errors.ShouldNotBeNull();
-            result.Tentity.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
+            
+            
         }
     }
 }

@@ -3,7 +3,6 @@ using Application.Contract.Persistence;
 using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocationImages;
 using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocationImages.Validatores;
 using Application.features.GeneralInformations.SpectacularLocationImageFeatures.Request.Commands;
-using Application.Reaspose;
 using AutoMapper;
 using Domain.Entities.GeneralSiteInformation;
 using MediatR;
@@ -13,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.SpectacularLocationImageFeatures.Handler.Commands
 {
-    public class CreateSpectacularLocationImageRequestHandler : IRequestHandler<CreateSpectacularLocationImageRequest, ReturnData<SpectacularLocationImagesDTO>>
+    public class CreateSpectacularLocationImageRequestHandler : IRequestHandler<CreateSpectacularLocationImageRequest, ResponseResult>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -23,23 +22,23 @@ namespace Application.features.GeneralInformations.SpectacularLocationImageFeatu
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ReturnData<SpectacularLocationImagesDTO>> Handle(CreateSpectacularLocationImageRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResult> Handle(CreateSpectacularLocationImageRequest request, CancellationToken cancellationToken)
         {
             var toCreate = _mapper.Map<SpectacularLocationImages>(request.createSpectacularLocationImagesDTO);
             #region Validator
             var validator = new CreateSpectacularLocationImagesDTOValidator();
             var validatorResult = await validator.ValidateAsync(request.createSpectacularLocationImagesDTO);
             if (!validatorResult.IsValid)
-                return SetReturnData<SpectacularLocationImagesDTO>.SetTEntity(
+                return ResponseResult.SetResult(
                     null,
-                    ResponseStatus.ValidationError,
+                    StatusMessage.ValidationError,
                     validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
             #endregion
             var created = await _unitofWork.SpectacularLocationImageRepository.AddEntityAsync(toCreate);
             await _unitofWork.SaveChangesAsync();
-            return SetReturnData<SpectacularLocationImagesDTO>.SetTEntity(
+            return ResponseResult.SetResult(
                 _mapper.Map<SpectacularLocationImagesDTO>(created),
-                ResponseStatus.Success,
+                StatusMessage.Success,
                 null
                 );
         }

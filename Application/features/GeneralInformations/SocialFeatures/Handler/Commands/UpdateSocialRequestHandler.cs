@@ -3,7 +3,6 @@ using Application.Contract.Persistence;
 using Application.DTOs.GeneralSiteInformationsDTO.Social;
 using Application.DTOs.GeneralSiteInformationsDTO.Social.Validators;
 using Application.features.GeneralInformations.SocialFeatures.Request.Commands;
-using Application.Reaspose;
 using AutoMapper;
 using Domain.Entities.GeneralSiteInformation;
 using MediatR;
@@ -13,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.SocialFeatures.Handler.Commands
 {
-    public class UpdateSocialRequestHandler : IRequestHandler<UpdateSocialRequest, ReturnData<SocialDTO>>
+    public class UpdateSocialRequestHandler : IRequestHandler<UpdateSocialRequest, ResponseResult>
     {
         private readonly IUnitofWork _unitofWork;
         private readonly IMapper _mapper;
@@ -23,21 +22,21 @@ namespace Application.features.GeneralInformations.SocialFeatures.Handler.Comman
             _unitofWork = unitofWork;
             _mapper = mapper;
         }
-        public async Task<ReturnData<SocialDTO>> Handle(UpdateSocialRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResult> Handle(UpdateSocialRequest request, CancellationToken cancellationToken)
         {
 
             var social = await _unitofWork.SocialRepository.GetEntityAsync(request.UpdateSocialDTO.Id);
             if (social is null)
-                return SetReturnData<SocialDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
+                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
 
             #region Validation
             var validator = new UpdateSocialDTOValidator(_unitofWork.SocialRepository);
             var validatorResult = await validator.ValidateAsync(request.UpdateSocialDTO);
             if (!validatorResult.IsValid)
             {
-                return SetReturnData<SocialDTO>.SetTEntity(
+                return ResponseResult.SetResult(
                     _mapper.Map<SocialDTO>(social),
-                    ResponseStatus.ValidationError,
+                    StatusMessage.ValidationError,
                     validatorResult.Errors.Select(q => q.ErrorMessage).ToList()
                     );
             }
@@ -45,9 +44,9 @@ namespace Application.features.GeneralInformations.SocialFeatures.Handler.Comman
             var toUpdate = _mapper.Map<Social>(request.UpdateSocialDTO);
             _unitofWork.SocialRepository.UpdateEntityAsync(toUpdate);
             await _unitofWork.SaveChangesAsync();
-            return SetReturnData<SocialDTO>.SetTEntity(
+            return ResponseResult.SetResult(
                                 _mapper.Map<SocialDTO>(social),
-                                ResponseStatus.Success,
+                                StatusMessage.Success,
                                 null);
 
         }

@@ -34,12 +34,10 @@ namespace BackEnd_UnitTest.Facts.TeamMembers.Commands
             var handler = new UpdateTeamMemberRequestHandler(_mapper, _unitOfWork.Object);
             var result = await handler.Handle(new UpdateTeamMemberRequest() { updateTeamMemberDTO = TeamMemberModelGenerator.UpdateTeamMemberDTO_Valid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentity.ShouldNotBeNull();
+            result.Status.ShouldBe(StatusMessage.Success);
+            
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
-            result.Tentity.CellPhone.ShouldBe("00905338355243");
-            result.Tentity.ShouldBeOfType(typeof(TeamMemberDTO));
+
         }
         [Fact]
         public async Task UpdateTeamMember_ValidationError_InValid()
@@ -47,10 +45,10 @@ namespace BackEnd_UnitTest.Facts.TeamMembers.Commands
             var handler = new UpdateTeamMemberRequestHandler(_mapper, _unitOfWork.Object);
             var result = await handler.Handle(new UpdateTeamMemberRequest() { updateTeamMemberDTO = TeamMemberModelGenerator.UpdateTeamMemberDTO_ValidationError_InValid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.ValidationError);
-            result.Tentity.ShouldBeNull();
+            result.Status.ShouldBe(StatusMessage.ValidationError);
+            
             result.Errors.ShouldNotBeNull();
-            result.Tentities.ShouldBeNull();
+            
         }
         [Fact]
         public async Task UpdateTeamMember_Notfound_InValid()
@@ -58,10 +56,10 @@ namespace BackEnd_UnitTest.Facts.TeamMembers.Commands
             var handler = new UpdateTeamMemberRequestHandler(_mapper, _unitOfWork.Object);
             var result = await handler.Handle(new UpdateTeamMemberRequest() { updateTeamMemberDTO = TeamMemberModelGenerator.UpdateTeamMemberDTO_NotFound_InValid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.NotFound);
-            result.Tentity.ShouldBeNull();
+            result.Status.ShouldBe(StatusMessage.NotFound);
+            
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
+            
         }
     }
 }

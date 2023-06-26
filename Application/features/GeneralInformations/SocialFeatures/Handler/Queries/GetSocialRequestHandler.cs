@@ -2,7 +2,6 @@
 using Application.Contract.Persistence;
 using Application.DTOs.GeneralSiteInformationsDTO.Social;
 using Application.features.GeneralInformations.SocialFeatures.Request.Queries;
-using Application.Reaspose;
 using AutoMapper;
 using MediatR;
 using System.Threading;
@@ -10,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.SocialFeatures.Handler.Queries
 {
-    public class GetSocialRequestHandler : IRequestHandler<GetSocialRequest, ReturnData<SocialDTO>>
+    public class GetSocialRequestHandler : IRequestHandler<GetSocialRequest, ResponseResult>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -21,15 +20,15 @@ namespace Application.features.GeneralInformations.SocialFeatures.Handler.Querie
             _unitofWork = unitofWork;
         }
 
-        public async Task<ReturnData<SocialDTO>> Handle(GetSocialRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResult> Handle(GetSocialRequest request, CancellationToken cancellationToken)
         {
             if (request.Id < 0)
-                return SetReturnData<SocialDTO>.SetTEntity(null, ResponseStatus.ValidationError, null);
+                return ResponseResult.SetResult(null, StatusMessage.ValidationError, null);
 
             var social = await _unitofWork.SocialRepository.GetEntityAsync(request.Id);
             if (social is null)
-                return SetReturnData<SocialDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
-            return SetReturnData<SocialDTO>.SetTEntity(_mapper.Map<SocialDTO>(social), ResponseStatus.Success, null);
+                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
+            return ResponseResult.SetResult(_mapper.Map<SocialDTO>(social), StatusMessage.Success, null);
         }
     }
 

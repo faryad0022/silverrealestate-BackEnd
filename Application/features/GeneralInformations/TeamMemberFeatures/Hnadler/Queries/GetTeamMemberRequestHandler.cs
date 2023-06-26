@@ -2,7 +2,6 @@
 using Application.Contract.Persistence;
 using Application.DTOs.GeneralSiteInformationsDTO.TeamMembers;
 using Application.features.GeneralInformations.TeamMemberFeatures.Request.Queries;
-using Application.Reaspose;
 using AutoMapper;
 using MediatR;
 using System.Threading;
@@ -10,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Queries
 {
-    public class GetTeamMemberRequestHandler : IRequestHandler<GetTeamMemberRequest, ReturnData<TeamMemberDTO>>
+    public class GetTeamMemberRequestHandler : IRequestHandler<GetTeamMemberRequest, ResponseResult>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -20,14 +19,14 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Qu
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ReturnData<TeamMemberDTO>> Handle(GetTeamMemberRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResult> Handle(GetTeamMemberRequest request, CancellationToken cancellationToken)
         {
             var teamMember = await _unitofWork.TeamMemberRepository.GetEntityAsync(request.Id);
             if (teamMember is null)
-                return SetReturnData<TeamMemberDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
-            return SetReturnData<TeamMemberDTO>.SetTEntity(
+                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
+            return ResponseResult.SetResult(
                 _mapper.Map<TeamMemberDTO>(teamMember),
-                ResponseStatus.Success,
+                StatusMessage.Success,
                 null
                 );
         }

@@ -5,7 +5,6 @@ using Application.DTOs.GeneralSiteInformationsDTO.TeamMembers;
 using Application.DTOs.GeneralSiteInformationsDTO.TeamMembers.Validators;
 using Application.Extensions;
 using Application.features.GeneralInformations.TeamMemberFeatures.Request.Commands;
-using Application.Reaspose;
 using AutoMapper;
 using Domain.Entities.GeneralSiteInformation;
 using MediatR;
@@ -15,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Commands
 {
-    public class CreateTeamMemberRequestHandler : IRequestHandler<CreateTeamMemberRequest, ReturnData<TeamMemberDTO>>
+    public class CreateTeamMemberRequestHandler : IRequestHandler<CreateTeamMemberRequest, ResponseResult>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -25,7 +24,7 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Co
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ReturnData<TeamMemberDTO>> Handle(CreateTeamMemberRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResult> Handle(CreateTeamMemberRequest request, CancellationToken cancellationToken)
         {
             var toCreate = _mapper.Map<TeamMember>(request.createTeamMmeberDTO);
             #region Validator
@@ -33,9 +32,9 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Co
             var validatorResult = await validator.ValidateAsync(request.createTeamMmeberDTO);
             if (!validatorResult.IsValid)
             {
-                return SetReturnData<TeamMemberDTO>.SetTEntity(
+                return ResponseResult.SetResult(
                     null,
-                    ResponseStatus.ValidationError,
+                    StatusMessage.ValidationError,
                     validatorResult.Errors.Select(q => q.ErrorMessage).ToList()
                     );
             }
@@ -46,18 +45,18 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Co
                 PathTools.TeamServernPath
                 );
             if (string.IsNullOrEmpty(createdImageName))
-                return SetReturnData<TeamMemberDTO>.SetTEntity(
+                return ResponseResult.SetResult(
                     null,
-                    ResponseStatus.UploadError,
+                    StatusMessage.UploadError,
                     null
                     );
             #endregion
             toCreate.MemberPicture = createdImageName;
             var created = await _unitofWork.TeamMemberRepository.AddEntityAsync(toCreate);
             await _unitofWork.SaveChangesAsync();
-            return SetReturnData<TeamMemberDTO>.SetTEntity(
+            return ResponseResult.SetResult(
                 _mapper.Map<TeamMemberDTO>(created),
-                ResponseStatus.Success,
+                StatusMessage.Success,
                 null
                 );
         }

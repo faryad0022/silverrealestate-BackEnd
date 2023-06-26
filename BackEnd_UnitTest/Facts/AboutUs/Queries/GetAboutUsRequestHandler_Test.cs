@@ -34,9 +34,9 @@ namespace BackEnd_UnitTest.Facts.AboutUs.Queries
             var result = await handler.Handle(new GetAboutUsRequest() { Id = 1 }, CancellationToken.None);
 
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldNotBeNull();
-            result.Status.ShouldBe(ResponseStatus.Success);
+            
+            
+            result.Status.ShouldBe(StatusMessage.Success);
         }
 
         [Fact]
@@ -46,9 +46,9 @@ namespace BackEnd_UnitTest.Facts.AboutUs.Queries
             var result = await handler.Handle(new GetAboutUsRequest() { Id = 10 }, CancellationToken.None);
 
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldBeNull();
-            result.Status.ShouldBe(ResponseStatus.NotFound);
+            
+            
+            result.Status.ShouldBe(StatusMessage.NotFound);
         }
     }
 }

@@ -34,10 +34,8 @@ namespace BackEnd_UnitTest.Facts.SpectacularLocations.Commands
             var handler = new CreateSpectacularLocationRequestHandler(_mapper, _unitofWork.Object);
             var result = await handler.Handle(new CreateSpectacularLocationRequest() { createSpectacularLocationDTO = SpectacularLocationModelGenerator.CreateSpectacularLocationDTO_Valid }, CancellationToken.None);
 
-            result.Tentities.ShouldBeNull();
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentity.ShouldBeOfType(typeof(SpectacularLocationDTO));
-            result.Tentity.Name.ShouldBe("Girne");
+            
+            result.Status.ShouldBe(StatusMessage.Success);
         }
         [Fact]
         public async Task CreateSpectacularLocation_InValid()
@@ -45,9 +43,9 @@ namespace BackEnd_UnitTest.Facts.SpectacularLocations.Commands
             var handler = new CreateSpectacularLocationRequestHandler(_mapper, _unitofWork.Object);
             var result = await handler.Handle(new CreateSpectacularLocationRequest() { createSpectacularLocationDTO = SpectacularLocationModelGenerator.CreateSpectacularLocationDTO_ValidationError_InValid }, CancellationToken.None);
 
-            result.Tentities.ShouldBeNull();
-            result.Status.ShouldBe(ResponseStatus.ValidationError);
-            result.Tentity.ShouldBeNull();
+            
+            result.Status.ShouldBe(StatusMessage.ValidationError);
+            
             result.Errors.ShouldNotBeNull();
         }
     }

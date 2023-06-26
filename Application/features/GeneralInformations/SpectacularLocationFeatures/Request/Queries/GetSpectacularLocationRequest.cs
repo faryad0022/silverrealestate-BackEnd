@@ -1,10 +1,10 @@
-﻿using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocations;
-using Application.Reaspose;
+﻿using Application.Const.Response;
+using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocations;
 using MediatR;
 
 namespace Application.features.GeneralInformations.SpectacularLocationFeatures.Request.Queries
 {
-    public class GetSpectacularLocationRequest : IRequest<ReturnData<SpectacularLocationDTO>>
+    public class GetSpectacularLocationRequest : IRequest<ResponseResult>
     {
         public long Id { get; set; }
     }

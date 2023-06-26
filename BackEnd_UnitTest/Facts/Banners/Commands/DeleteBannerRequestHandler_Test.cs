@@ -36,10 +36,10 @@ namespace BackEnd_UnitTest.Facts.Banners.Commands
             var handler = new DeleteBannerRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new DeleteBannerRequest() { Id = 2 }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentity.ShouldNotBeNull();
+            result.Status.ShouldBe(StatusMessage.Success);
+            
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
+            
 
         }
         [Fact]
@@ -48,10 +48,10 @@ namespace BackEnd_UnitTest.Facts.Banners.Commands
             var handler = new DeleteBannerRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new DeleteBannerRequest() { Id = 7 }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.NotFound);
-            result.Tentity.ShouldBeNull();
+            result.Status.ShouldBe(StatusMessage.NotFound);
+            
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
+            
 
         }
     }

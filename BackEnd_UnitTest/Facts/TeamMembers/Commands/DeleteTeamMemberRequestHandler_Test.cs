@@ -36,9 +36,9 @@ namespace BackEnd_UnitTest.Facts.TeamMembers.Commands
             var handler = new RemoveTeamMemberRequestHandler(_mapper, _unitOfWork.Object);
             var result = await handler.Handle(new RemoveTeamMemberRequest() { Id = 1 }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldNotBeNull();
+            result.Status.ShouldBe(StatusMessage.Success);
+            
+            
             result.Errors.ShouldBeNull();
         }
 
@@ -48,9 +48,9 @@ namespace BackEnd_UnitTest.Facts.TeamMembers.Commands
             var handler = new RemoveTeamMemberRequestHandler(_mapper, _unitOfWork.Object);
             var result = await handler.Handle(new RemoveTeamMemberRequest() { Id = 10 }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.NotFound);
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldBeNull();
+            result.Status.ShouldBe(StatusMessage.NotFound);
+            
+            
             result.Errors.ShouldBeNull();
         }
     }

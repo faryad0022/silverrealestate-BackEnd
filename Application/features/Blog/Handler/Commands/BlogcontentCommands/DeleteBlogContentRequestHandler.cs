@@ -2,7 +2,6 @@
 using Application.Contract.Persistence;
 using Application.DTOs.Blog.BlogContent;
 using Application.features.Blog.Request.Commands.BlogContentCommands;
-using Application.Reaspose;
 using AutoMapper;
 using MediatR;
 using System.Threading;
@@ -10,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.Blog.Handler.Commands.BlogcontentCommands
 {
-    public class DeleteBlogContentRequestHandler : IRequestHandler<DeleteBlogContentRequest, ReturnData<BlogContentDTO>>
+    public class DeleteBlogContentRequestHandler : IRequestHandler<DeleteBlogContentRequest, ResponseResult>
     {
         private readonly IUnitofWork _unitofWork;
         private readonly IMapper _mapper;
@@ -20,14 +19,14 @@ namespace Application.features.Blog.Handler.Commands.BlogcontentCommands
             _unitofWork = unitofWork;
             _mapper = mapper;
         }
-        public async Task<ReturnData<BlogContentDTO>> Handle(DeleteBlogContentRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResult> Handle(DeleteBlogContentRequest request, CancellationToken cancellationToken)
         {
             var blogContent = await _unitofWork.BlogContentRepository.GetEntityAsync(request.blogContentDTO.Id);
             if (blogContent is null)
-                return SetReturnData<BlogContentDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
+                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
             _unitofWork.BlogContentRepository.DeleteEntityAsync(blogContent);
             await _unitofWork.SaveChangesAsync();
-            return SetReturnData<BlogContentDTO>.SetTEntity(_mapper.Map<BlogContentDTO>(blogContent), ResponseStatus.Success, null);
+            return ResponseResult.SetResult(_mapper.Map<BlogContentDTO>(blogContent), StatusMessage.Success, null);
 
         }
     }

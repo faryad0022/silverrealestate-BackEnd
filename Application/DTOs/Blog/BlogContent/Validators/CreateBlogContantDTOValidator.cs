@@ -1,4 +1,4 @@
-﻿using Application.Const.Validator;
+﻿using Application.Const.Response;
 using Application.Contract.Persistance.EntitiesRepository.Blog;
 using FluentValidation;
 

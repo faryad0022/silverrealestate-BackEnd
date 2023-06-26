@@ -1,12 +1,10 @@
-﻿
-using Application.Const.Response;
+﻿using Application.Const.Response;
 using Application.Contract.Infrastructure;
 using Application.Contract.Persistence;
 using Application.DTOs.Blog.BlogGroup;
 using Application.DTOs.Blog.BlogGroup.Validators;
 using Application.features.Blog.Request.Commands.BlogGroupCommands;
 using Application.Models;
-using Application.Reaspose;
 using AutoMapper;
 using Domain.Entities.Blog;
 using MediatR;
@@ -17,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.Blog.Handler.Commands.BlogGroupCommands
 {
-    public class CreateBlogGroupRequestCommandHandler : IRequestHandler<CreateBlogGroupRequestCommand, ReturnData<CreateBlogGroupDTO>>
+    public class CreateBlogGroupRequestCommandHandler : IRequestHandler<CreateBlogGroupRequestCommand, ResponseResult>
     {
         private readonly IUnitofWork _unitofWork;
         private readonly IMapper _mapper;
@@ -29,7 +27,7 @@ namespace Application.features.Blog.Handler.Commands.BlogGroupCommands
             _unitofWork = unitofWork;
             _mapper = mapper;
         }
-        public async Task<ReturnData<CreateBlogGroupDTO>> Handle(CreateBlogGroupRequestCommand request, CancellationToken cancellationToken)
+        public async Task<ResponseResult> Handle(CreateBlogGroupRequestCommand request, CancellationToken cancellationToken)
         {
             var blogGroup = _mapper.Map<BlogGroup>(request.createBlogGroupDTO);
 
@@ -38,7 +36,7 @@ namespace Application.features.Blog.Handler.Commands.BlogGroupCommands
             var validatorResult = await validator.ValidateAsync(request.createBlogGroupDTO);
             if (!validatorResult.IsValid)
             {
-                return SetReturnData<CreateBlogGroupDTO>.SetTEntity(null, ResponseStatus.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
+                return ResponseResult.SetResult(null, StatusMessage.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
 
             }
             #endregion
@@ -65,7 +63,7 @@ namespace Application.features.Blog.Handler.Commands.BlogGroupCommands
                 //// Log or handle error, but don't throw...
             }
 
-            return SetReturnData<CreateBlogGroupDTO>.SetTEntity(request.createBlogGroupDTO, ResponseStatus.Success, null);
+            return ResponseResult.SetResult(request.createBlogGroupDTO, StatusMessage.Success, null);
             #endregion
 
         }

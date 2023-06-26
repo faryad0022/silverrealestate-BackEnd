@@ -2,7 +2,6 @@
 using Application.Contract.Persistence;
 using Application.DTOs.GeneralSiteInformationsDTO.AboutUs;
 using Application.features.GeneralInformations.AboutUsFeatures.Request.Queries;
-using Application.Reaspose;
 using AutoMapper;
 using MediatR;
 using System.Collections.Generic;
@@ -12,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.AboutUsFeatures.Handler.Queries
 {
-    public class GetAboutUsListRequestHandler : IRequestHandler<GetAboutUsListRequest, ReturnData<AboutUsDTO>>
+    public class GetAboutUsListRequestHandler : IRequestHandler<GetAboutUsListRequest, ResponseResult>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -22,21 +21,21 @@ namespace Application.features.GeneralInformations.AboutUsFeatures.Handler.Queri
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ReturnData<AboutUsDTO>> Handle(GetAboutUsListRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResult> Handle(GetAboutUsListRequest request, CancellationToken cancellationToken)
         {
             var aboutus = await _unitofWork.AboutUsRepository.GetAllAsync();
             if (aboutus is null || aboutus.Count == 0)
-                return SetReturnData<AboutUsDTO>.SetTEntities(null, ResponseStatus.NoContent, null);
+                return ResponseResult.SetResult(null, StatusMessage.NoContent, null);
             if (request.justShowSelected)
             {
                 var selectedAboutus = aboutus.Where(x => x.IsSelected).ToList();
                 var SelectedAboutusDTo = _mapper.Map<List<AboutUsDTO>>(selectedAboutus);
-                return SetReturnData<AboutUsDTO>.SetTEntities(SelectedAboutusDTo, ResponseStatus.Success, null);
+                return ResponseResult.SetResult(SelectedAboutusDTo, StatusMessage.Success, null);
             }
             var aboutUsDTO = _mapper.Map<List<AboutUsDTO>>(aboutus);
-            return SetReturnData<AboutUsDTO>.SetTEntities(
+            return ResponseResult.SetResult(
                 aboutUsDTO,
-                ResponseStatus.Success,
+                StatusMessage.Success,
                 null
                 );
 

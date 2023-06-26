@@ -33,10 +33,9 @@ namespace BackEnd_UnitTest.Facts.SpectacularLocations.Commands
             var handler = new ChnageSpectacularLocationSelectedStatusRequestHandler(_mapper, _unitOfWorf.Object);
             var result = await handler.Handle(new ChnageSpectacularLocationSelectedStatusRequest() { Id = 1 }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldNotBeNull();
-            result.Tentity.ShouldBeOfType(typeof(SpectacularLocationDTO));
+            result.Status.ShouldBe(StatusMessage.Success);
+            
+            
 
         }
         [Fact]
@@ -45,9 +44,9 @@ namespace BackEnd_UnitTest.Facts.SpectacularLocations.Commands
             var handler = new ChnageSpectacularLocationSelectedStatusRequestHandler(_mapper, _unitOfWorf.Object);
             var result = await handler.Handle(new ChnageSpectacularLocationSelectedStatusRequest() { Id = 10 }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.NotFound);
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldBeNull();
+            result.Status.ShouldBe(StatusMessage.NotFound);
+            
+            
 
         }
     }

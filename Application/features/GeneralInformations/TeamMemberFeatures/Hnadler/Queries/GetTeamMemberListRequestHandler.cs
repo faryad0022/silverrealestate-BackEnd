@@ -2,7 +2,6 @@
 using Application.Contract.Persistence;
 using Application.DTOs.GeneralSiteInformationsDTO.TeamMembers;
 using Application.features.GeneralInformations.TeamMemberFeatures.Request.Queries;
-using Application.Reaspose;
 using AutoMapper;
 using MediatR;
 using System.Collections.Generic;
@@ -12,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Queries
 {
-    public class GetTeamMemberListRequestHandler : IRequestHandler<GetTeamMemberListRequest, ReturnData<TeamMemberDTO>>
+    public class GetTeamMemberListRequestHandler : IRequestHandler<GetTeamMemberListRequest, ResponseResult>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -22,18 +21,18 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Qu
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ReturnData<TeamMemberDTO>> Handle(GetTeamMemberListRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResult> Handle(GetTeamMemberListRequest request, CancellationToken cancellationToken)
         {
             var teamMemberList = await _unitofWork.TeamMemberRepository.GetAllAsync();
             if (request.justSelected)
                 teamMemberList = teamMemberList.Where(s => s.IsSelected).ToList();
            
             if (teamMemberList is null || teamMemberList.Count < 1)
-                return SetReturnData<TeamMemberDTO>.SetTEntities(null, ResponseStatus.NoContent, null);
+                return ResponseResult.SetResult(null, StatusMessage.NoContent, null);
 
-            return SetReturnData<TeamMemberDTO>.SetTEntities(
+            return ResponseResult.SetResult(
                     _mapper.Map<List<TeamMemberDTO>>(teamMemberList),
-                    ResponseStatus.Success,
+                    StatusMessage.Success,
                     null
                     );
         }

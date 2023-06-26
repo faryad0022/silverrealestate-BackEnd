@@ -2,7 +2,6 @@
 using Application.Contract.Persistence;
 using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocations;
 using Application.features.GeneralInformations.SpectacularLocationFeatures.Request.Queries;
-using Application.Reaspose;
 using AutoMapper;
 using MediatR;
 using System.Threading;
@@ -10,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.SpectacularLocationFeatures.Handler.Queries
 {
-    public class GetSpectacularLocationRequestHandler : IRequestHandler<GetSpectacularLocationRequest, ReturnData<SpectacularLocationDTO>>
+    public class GetSpectacularLocationRequestHandler : IRequestHandler<GetSpectacularLocationRequest, ResponseResult>
     {
         private readonly IUnitofWork _unitofWork;
         private readonly IMapper _mapper;
@@ -20,13 +19,13 @@ namespace Application.features.GeneralInformations.SpectacularLocationFeatures.H
             _unitofWork = unitofWork;
             _mapper = mapper;
         }
-        public async Task<ReturnData<SpectacularLocationDTO>> Handle(GetSpectacularLocationRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResult> Handle(GetSpectacularLocationRequest request, CancellationToken cancellationToken)
         {
             var spectacularLocation = await _unitofWork.SpectacularlocationRepository.GetEntityAsync(request.Id);
             if (spectacularLocation is null)
-                return SetReturnData<SpectacularLocationDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
+                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
             var spectacularLocationDTO = _mapper.Map<SpectacularLocationDTO>(spectacularLocation);
-            return SetReturnData<SpectacularLocationDTO>.SetTEntity(spectacularLocationDTO, ResponseStatus.Success, null);
+            return ResponseResult.SetResult(spectacularLocationDTO, StatusMessage.Success, null);
         }
     }
 }

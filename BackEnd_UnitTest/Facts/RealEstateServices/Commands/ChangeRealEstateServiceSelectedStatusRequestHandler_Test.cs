@@ -32,9 +32,9 @@ namespace BackEnd_UnitTest.Facts.RealEstateServices.Commands
             var handler = new ChangeRealEstateServiceSelectedStatusRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new ChangeRealEstateServiceSelectedStatusRequest() { Id = 1 }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldNotBeNull();
+            result.Status.ShouldBe(StatusMessage.Success);
+            
+            
         }
 
         [Fact]
@@ -43,9 +43,9 @@ namespace BackEnd_UnitTest.Facts.RealEstateServices.Commands
             var handler = new ChangeRealEstateServiceSelectedStatusRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new ChangeRealEstateServiceSelectedStatusRequest() { Id = 5 }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.NotFound);
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldBeNull();
+            result.Status.ShouldBe(StatusMessage.NotFound);
+            
+            
         }
     }
 }

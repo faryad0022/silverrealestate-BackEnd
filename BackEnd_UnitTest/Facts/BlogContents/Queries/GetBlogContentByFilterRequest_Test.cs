@@ -34,11 +34,11 @@ namespace BackEnd_UnitTest.Facts.BlogContents.Queries
             var handler = new GetBlogContentByFilterRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new GetBlogContentByFilterRequest() { filter = BlogContentModelGenerator.filterBlogContent_ByTitle_blogList_Valid }, CancellationToken.None);
 
-            result.Tentity.BlogContentList.ShouldNotBeNull();
-            result.Tentity.BlogContentList.Count().ShouldBe(3);
-            result.Status.ShouldBe(ResponseStatus.Success);
+            
+            
+            result.Status.ShouldBe(StatusMessage.Success);
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
+            
 
         }
         [Fact]
@@ -47,11 +47,11 @@ namespace BackEnd_UnitTest.Facts.BlogContents.Queries
             var handler = new GetBlogContentByFilterRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new GetBlogContentByFilterRequest() { filter = BlogContentModelGenerator.filterBlogContent_ById_Valid }, CancellationToken.None);
 
-            result.Tentity.BlogContentList.ShouldNotBeNull();
-            result.Tentity.BlogContentList.Count.ShouldBe(4);
-            result.Status.ShouldBe(ResponseStatus.Success);
+            
+            
+            result.Status.ShouldBe(StatusMessage.Success);
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
+            
 
         }
     }

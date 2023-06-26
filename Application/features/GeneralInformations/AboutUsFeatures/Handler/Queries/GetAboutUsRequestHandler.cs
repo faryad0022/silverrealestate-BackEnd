@@ -2,7 +2,6 @@
 using Application.Contract.Persistence;
 using Application.DTOs.GeneralSiteInformationsDTO.AboutUs;
 using Application.features.GeneralInformations.AboutUsFeatures.Request.Queries;
-using Application.Reaspose;
 using AutoMapper;
 using MediatR;
 using System.Threading;
@@ -10,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.AboutUsFeatures.Handler.Queries
 {
-    public class GetAboutUsRequestHandler : IRequestHandler<GetAboutUsRequest, ReturnData<AboutUsDTO>>
+    public class GetAboutUsRequestHandler : IRequestHandler<GetAboutUsRequest, ResponseResult>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -21,12 +20,12 @@ namespace Application.features.GeneralInformations.AboutUsFeatures.Handler.Queri
             _unitofWork = unitofWork;
         }
 
-        public async Task<ReturnData<AboutUsDTO>> Handle(GetAboutUsRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResult> Handle(GetAboutUsRequest request, CancellationToken cancellationToken)
         {
             var aboutUs = await _unitofWork.AboutUsRepository.GetEntityAsync(request.Id);
             if (aboutUs is null)
-                return SetReturnData<AboutUsDTO>.SetTEntity(null, ResponseStatus.NotFound, null);
-            return SetReturnData<AboutUsDTO>.SetTEntity(_mapper.Map<AboutUsDTO>(aboutUs), ResponseStatus.Success, null);
+                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
+            return ResponseResult.SetResult(_mapper.Map<AboutUsDTO>(aboutUs), StatusMessage.Success, null);
         }
     }
 }

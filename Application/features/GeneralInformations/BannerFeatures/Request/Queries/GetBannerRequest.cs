@@ -1,10 +1,10 @@
-﻿using Application.DTOs.GeneralSiteInformationsDTO.Banner;
-using Application.Reaspose;
+﻿using Application.Const.Response;
+using Application.DTOs.GeneralSiteInformationsDTO.Banner;
 using MediatR;
 
 namespace Application.features.GeneralInformations.BannerFeatures.Request.Queries
 {
-    public class GetBannerRequest : IRequest<ReturnData<BannerDTO>>
+    public class GetBannerRequest : IRequest<ResponseResult>
     {
         public long Id { get; set; }
     }

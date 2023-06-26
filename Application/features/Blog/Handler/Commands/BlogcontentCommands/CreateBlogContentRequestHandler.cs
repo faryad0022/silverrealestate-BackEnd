@@ -5,7 +5,6 @@ using Application.DTOs.Blog.BlogContent;
 using Application.DTOs.Blog.BlogContent.Validators;
 using Application.features.Blog.Request.Commands.BlogContentCommands;
 using Application.Models;
-using Application.Reaspose;
 using AutoMapper;
 using Domain.Entities.Blog;
 using MediatR;
@@ -16,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.Blog.Handler.Commands.BlogcontentCommands
 {
-    public class CreateBlogContentRequestHandler : IRequestHandler<CreateBlogContentRequest, ReturnData<CreateBlogContentDTO>>
+    public class CreateBlogContentRequestHandler : IRequestHandler<CreateBlogContentRequest, ResponseResult>
     {
         private readonly IMapper _mapper;
         private readonly IEmailSender _emailSender;
@@ -28,7 +27,7 @@ namespace Application.features.Blog.Handler.Commands.BlogcontentCommands
             _emailSender = emailSender;
             _unitofWork = unitofWork;
         }
-        public async Task<ReturnData<CreateBlogContentDTO>> Handle(CreateBlogContentRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResult> Handle(CreateBlogContentRequest request, CancellationToken cancellationToken)
         {
 
             #region Validator
@@ -36,7 +35,7 @@ namespace Application.features.Blog.Handler.Commands.BlogcontentCommands
             var validatorResult = await validator.ValidateAsync(request.createBlogContentDTO);
             if (!validatorResult.IsValid)
             {
-                return SetReturnData<CreateBlogContentDTO>.SetTEntity(null, ResponseStatus.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
+                return ResponseResult.SetResult(null, StatusMessage.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
             }
             #endregion
 
@@ -61,7 +60,7 @@ namespace Application.features.Blog.Handler.Commands.BlogcontentCommands
                 throw e;
             }
             await _unitofWork.SaveChangesAsync();
-            return SetReturnData<CreateBlogContentDTO>.SetTEntity(request.createBlogContentDTO, ResponseStatus.Success, null);
+            return ResponseResult.SetResult(request.createBlogContentDTO, StatusMessage.Success, null);
 
         }
     }

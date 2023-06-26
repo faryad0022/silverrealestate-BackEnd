@@ -37,8 +37,8 @@ namespace BackEnd_UnitTest.Facts.BlogContents.Commands
                 updateBlogContentDTO = BlogContentModelGenerator._updateBlogContentDTO_Valid
             }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentity.ShouldBeNull();
+            result.Status.ShouldBe(StatusMessage.Success);
+            
             result.Errors.ShouldBeNull();
         }
         [Fact]
@@ -51,8 +51,8 @@ namespace BackEnd_UnitTest.Facts.BlogContents.Commands
                 updateBlogContentDTO = BlogContentModelGenerator._updateBlogContentDTO_Valid
             }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.NotFound);
-            result.Tentity.ShouldBeNull();
+            result.Status.ShouldBe(StatusMessage.NotFound);
+            
             result.Errors.ShouldBeNull();
         }
 
@@ -66,10 +66,10 @@ namespace BackEnd_UnitTest.Facts.BlogContents.Commands
                 changeBlogContentStatusDTO = BlogContentModelGenerator.changeBlogContentStatusDTO_Valid
             }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentity.ShouldBeNull();
+            result.Status.ShouldBe(StatusMessage.Success);
+            
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
+            
         }
 
         [Fact]
@@ -82,10 +82,10 @@ namespace BackEnd_UnitTest.Facts.BlogContents.Commands
                 changeBlogContentIsSelected = BlogContentModelGenerator.changeBlogContentIsSelectedDTO_Valid
             }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentity.ShouldBeNull();
+            result.Status.ShouldBe(StatusMessage.Success);
+            
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
+            
         }
     }
 }

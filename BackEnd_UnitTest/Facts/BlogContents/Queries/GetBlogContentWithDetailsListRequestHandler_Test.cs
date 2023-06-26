@@ -32,10 +32,10 @@ namespace BackEnd_UnitTest.Facts.BlogContents.Queries
             var handler = new GetBlogContentWithDetailsListRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new GetBlogContentWithDetailsListRequest(), CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
+            result.Status.ShouldBe(StatusMessage.Success);
             result.Errors.ShouldBeNull();
-            result.Tentities.Count.ShouldBe(6);
-            result.Tentity.ShouldBeNull();
+
+            
 
 
         }

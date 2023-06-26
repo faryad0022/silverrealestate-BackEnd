@@ -41,10 +41,10 @@ namespace BackEnd_UnitTest.Facts.BlogContents.Commands
 
 
 
-            result.Status.ShouldBe(ResponseStatus.Success);
+            result.Status.ShouldBe(StatusMessage.Success);
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldNotBeNull();
+            
+            
         }
 
         [Fact]
@@ -53,9 +53,9 @@ namespace BackEnd_UnitTest.Facts.BlogContents.Commands
             var handler = new CreateBlogContentRequestHandler(_mapper, _mockEmail.Object, _mockUOW.Object);
             var result = await handler.Handle(new CreateBlogContentRequest() { createBlogContentDTO = BlogContentModelGenerator._createBlogContentDTO_EmptyBlogGroupId_InValid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.ValidationError);
+            result.Status.ShouldBe(StatusMessage.ValidationError);
             result.Errors.ShouldNotBeNull();
-            result.Tentities.ShouldBeNull();
+            
         }
 
         [Fact]
@@ -66,9 +66,9 @@ namespace BackEnd_UnitTest.Facts.BlogContents.Commands
 
 
 
-            result.Status.ShouldBe(ResponseStatus.ValidationError);
+            result.Status.ShouldBe(StatusMessage.ValidationError);
             result.Errors.ShouldNotBeNull();
-            result.Tentities.ShouldBeNull();
+            
         }
     }
 }

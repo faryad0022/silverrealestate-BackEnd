@@ -33,11 +33,9 @@ namespace BackEnd_UnitTest.Facts.TeamMembers.Queries
             var handler = new GetTeamMemberRequestHandler(_mapper, _unitOfWork.Object);
             var result = await handler.Handle(new GetTeamMemberRequest { Id = 1 }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentities.ShouldBeNull();
+            result.Status.ShouldBe(StatusMessage.Success);
+            
             result.Errors.ShouldBeNull();
-            result.Tentity.Name.ShouldBe("Faryad");
-            result.Tentity.ShouldBeOfType(typeof(TeamMemberDTO));
         }
         [Fact]
         public async Task GetTeamMember_Notfound_InValid()
@@ -45,10 +43,10 @@ namespace BackEnd_UnitTest.Facts.TeamMembers.Queries
             var handler = new GetTeamMemberRequestHandler(_mapper, _unitOfWork.Object);
             var result = await handler.Handle(new GetTeamMemberRequest { Id = 10 }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.NotFound);
-            result.Tentities.ShouldBeNull();
+            result.Status.ShouldBe(StatusMessage.NotFound);
+            
             result.Errors.ShouldBeNull();
-            result.Tentity.ShouldBeNull();
+            
         }
     }
 }

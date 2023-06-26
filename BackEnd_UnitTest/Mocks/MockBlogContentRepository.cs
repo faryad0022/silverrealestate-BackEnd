@@ -36,7 +36,7 @@ namespace BackEnd_UnitTest.Mocks
             _mock.Setup(m => m.GetEntitiesQuery())
                 .Returns(() => BlogContentModelGenerator.blogContentList.AsQueryable());
 
-            _mock.Setup(m => m.FilterBlogContent(It.IsAny<FilterBlogContentDTO>()))
+            _mock.Setup(m => m.FilterBlogContent(It.IsAny<FilterBlogContent>()))
                 .ReturnsAsync((FilterBlogContentDTO filter) =>
             {
                 var blogContentList = new List<BlogContent>();
@@ -45,8 +45,6 @@ namespace BackEnd_UnitTest.Mocks
                     BlogGroupId = filter.BlogGroupId,
                     BlogGroupName = filter.BlogGroupName,
                     IsSelected = filter.IsSelected,
-                    Review = filter.Review,
-                    Status = filter.Status,
                     Title = filter.Title,
                     ViewCount = filter.ViewCount
                 };

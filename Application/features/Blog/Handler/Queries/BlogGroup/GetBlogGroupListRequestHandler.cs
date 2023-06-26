@@ -2,7 +2,6 @@
 using Application.Contract.Persistence;
 using Application.DTOs.Blog.BlogGroup;
 using Application.features.Blog.Request.Queries.BlogGroup;
-using Application.Reaspose;
 using AutoMapper;
 using MediatR;
 using System.Collections.Generic;
@@ -11,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.Blog.Handler.Queries.BlogGroup
 {
-    public class GetBlogGroupListRequestHandler : IRequestHandler<GetBlogGroupListRequest, ReturnData<BlogGroupDTO>>
+    public class GetBlogGroupListRequestHandler : IRequestHandler<GetBlogGroupListRequest, ResponseResult>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -21,12 +20,12 @@ namespace Application.features.Blog.Handler.Queries.BlogGroup
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ReturnData<BlogGroupDTO>> Handle(GetBlogGroupListRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResult> Handle(GetBlogGroupListRequest request, CancellationToken cancellationToken)
         {
             var blogGroupList = await _unitofWork.BlogGroupRepository.GetAllAsync();
-            return SetReturnData<BlogGroupDTO>.SetTEntities(
+            return ResponseResult.SetResult(
                             _mapper.Map<List<BlogGroupDTO>>(blogGroupList),
-                            ResponseStatus.Success,
+                            StatusMessage.Success,
                             null);
         }
     }

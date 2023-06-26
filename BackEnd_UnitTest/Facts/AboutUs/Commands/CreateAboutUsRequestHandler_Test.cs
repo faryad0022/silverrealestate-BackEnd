@@ -34,9 +34,9 @@ namespace BackEnd_UnitTest.Facts.AboutUs.Commands
             var result = await handler.Handle(new CreateAboutUsRequest() { createAboutUsDTO = AboutUsModelGenerator.createAboutUsDTO_Valid }, CancellationToken.None);
 
             result.Errors.ShouldBeNull();
-            result.Tentity.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
-            result.Status.ShouldBe(ResponseStatus.NotAllow);
+            
+      
+            result.Status.ShouldBe(StatusMessage.NotAllow);
 
         }
         [Fact]
@@ -46,9 +46,9 @@ namespace BackEnd_UnitTest.Facts.AboutUs.Commands
             var result = await handler.Handle(new CreateAboutUsRequest() { createAboutUsDTO = AboutUsModelGenerator.createAboutUsDTO_Validation_InValid }, CancellationToken.None);
 
             result.Errors.ShouldNotBeNull();
-            result.Tentity.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
-            result.Status.ShouldBe(ResponseStatus.ValidationError);
+            
+            
+            result.Status.ShouldBe(StatusMessage.ValidationError);
         }
     }
 }

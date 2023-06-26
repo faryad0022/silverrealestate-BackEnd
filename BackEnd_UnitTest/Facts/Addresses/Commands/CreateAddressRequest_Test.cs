@@ -33,9 +33,9 @@ namespace BackEnd_UnitTest.Facts.Addresses.Commands
             var handler = new CreateAddressRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new CreateAddressRequest() { createAddressDTO = AddressModelGenerator.AddressDTO }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldNotBeNull();
+            result.Status.ShouldBe(StatusMessage.Success);
+            
+            
         }
         [Fact]
         public async Task CreateAddress_Email_InValid()
@@ -43,9 +43,9 @@ namespace BackEnd_UnitTest.Facts.Addresses.Commands
             var handler = new CreateAddressRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new CreateAddressRequest() { createAddressDTO = AddressModelGenerator.AddressDTO_Invalid_Email }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.ValidationError);
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldNotBeNull();
+            result.Status.ShouldBe(StatusMessage.ValidationError);
+            
+            
             result.Errors.ShouldNotBeNull();
         }
     }

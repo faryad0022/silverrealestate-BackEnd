@@ -1,6 +1,6 @@
 ﻿namespace Application.Const.Response
 {
-    public static class ResponseStatus
+    public static class StatusMessage
     {
         public static string Success = "Success";
         public static string NotFound = "NotFound";

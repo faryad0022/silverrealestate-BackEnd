@@ -4,7 +4,6 @@ using Application.DTOs.GeneralSiteInformationsDTO.Social;
 using Application.features.GeneralInformations.SocialFeatures.Handler.Queries;
 using Application.features.GeneralInformations.SocialFeatures.Request.Queries;
 using Application.Profiles;
-using Application.Reaspose;
 using AutoMapper;
 using BackEnd_UnitTest.Mocks;
 using Moq;
@@ -37,10 +36,8 @@ namespace BackEnd_UnitTest.Facts.Socials.Queries
             var result = await handler.Handle(new GetSocialListRequest(), CancellationToken.None);
 
 
-            result.ShouldBeOfType<ReturnData<SocialDTO>>();
-            result.Tentities.Count.ShouldBe(2);
-            result.Tentities.ShouldBeOfType<List<SocialDTO>>();
-            result.Status.ShouldBe(ResponseStatus.Success);
+            result.ShouldBeOfType<ResponseResult>();
+            result.Status.ShouldBe(StatusMessage.Success);
 
         }
         [Fact]
@@ -50,10 +47,8 @@ namespace BackEnd_UnitTest.Facts.Socials.Queries
             var result = await handler.Handle(new GetSocialListRequest() { justShowSelected = true }, CancellationToken.None);
 
 
-            result.ShouldBeOfType<ReturnData<SocialDTO>>();
-            result.Tentities.Count.ShouldBe(1);
-            result.Tentities.ShouldBeOfType<List<SocialDTO>>();
-            result.Status.ShouldBe(ResponseStatus.Success);
+            result.ShouldBeOfType<ResponseResult>();
+            result.Status.ShouldBe(StatusMessage.Success);
 
         }
 

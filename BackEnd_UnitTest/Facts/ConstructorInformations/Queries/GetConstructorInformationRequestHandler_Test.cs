@@ -32,10 +32,10 @@ namespace BackEnd_UnitTest.Facts.ConstructorInformations.Queries
             var handler = new GetConstructorInformationRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new GetConstructorInformationRequest() { Id = 1 }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentity.ShouldNotBeNull();
+            result.Status.ShouldBe(StatusMessage.Success);
+            
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
+            
 
         }
         [Fact]
@@ -44,10 +44,10 @@ namespace BackEnd_UnitTest.Facts.ConstructorInformations.Queries
             var handler = new GetConstructorInformationRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new GetConstructorInformationRequest() { Id = 10 }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.NotFound);
-            result.Tentity.ShouldBeNull();
+            result.Status.ShouldBe(StatusMessage.NotFound);
+            
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
+            
 
         }
     }

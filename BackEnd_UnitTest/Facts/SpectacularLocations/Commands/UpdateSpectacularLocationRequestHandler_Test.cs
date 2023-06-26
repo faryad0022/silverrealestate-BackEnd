@@ -34,11 +34,10 @@ namespace BackEnd_UnitTest.Facts.SpectacularLocations.Commands
             var handler = new UpdateSpectacularLocationRequestHandler(_mapper, _unitOfWork.Object);
             var result = await handler.Handle(new UpdateSpectacularLocationRequest() { updateSpectacularLocationDTO = SpectacularLocationModelGenerator.UpdateSpectacularLocationDTO_Valid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentities.ShouldBeNull();
+            result.Status.ShouldBe(StatusMessage.Success);
+            
             result.Errors.ShouldBeNull();
-            result.Tentity.ShouldBeOfType(typeof(SpectacularLocationDTO));
-            result.Tentity.ShouldNotBeNull();
+            
         }
 
         [Fact]
@@ -47,10 +46,10 @@ namespace BackEnd_UnitTest.Facts.SpectacularLocations.Commands
             var handler = new UpdateSpectacularLocationRequestHandler(_mapper, _unitOfWork.Object);
             var result = await handler.Handle(new UpdateSpectacularLocationRequest() { updateSpectacularLocationDTO = SpectacularLocationModelGenerator.UpdateSpectacularLocationDTO_NotFound_InValid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.NotFound);
-            result.Tentities.ShouldBeNull();
+            result.Status.ShouldBe(StatusMessage.NotFound);
+            
             result.Errors.ShouldBeNull();
-            result.Tentity.ShouldBeNull();
+            
         }
 
         [Fact]
@@ -59,11 +58,10 @@ namespace BackEnd_UnitTest.Facts.SpectacularLocations.Commands
             var handler = new UpdateSpectacularLocationRequestHandler(_mapper, _unitOfWork.Object);
             var result = await handler.Handle(new UpdateSpectacularLocationRequest() { updateSpectacularLocationDTO = SpectacularLocationModelGenerator.UpdateSpectacularLocationDTO_ValidationError_InValid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.ValidationError);
-            result.Tentities.ShouldBeNull();
+            result.Status.ShouldBe(StatusMessage.ValidationError);
+            
             result.Errors.ShouldNotBeNull();
-            result.Tentity.ShouldBeOfType(typeof(SpectacularLocationDTO));
-            result.Tentity.ShouldNotBeNull();
+            
         }
 
     }

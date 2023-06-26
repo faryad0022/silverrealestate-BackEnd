@@ -3,7 +3,6 @@ using Application.Contract.Persistence;
 using Application.DTOs.GeneralSiteInformationsDTO.ConstructorInformations;
 using Application.DTOs.GeneralSiteInformationsDTO.ConstructorInformations.Validators;
 using Application.features.GeneralInformations.ConstructorInformations.Request.Commands;
-using Application.Reaspose;
 using AutoMapper;
 using Domain.Entities.GeneralSiteInformation;
 using MediatR;
@@ -13,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.ConstructorInformations.Handler.Commands
 {
-    public class UpdateConstructorInformationRequestHandler : IRequestHandler<UpdateConstructorInformationRequest, ReturnData<UpdateConstructorInformationDTO>>
+    public class UpdateConstructorInformationRequestHandler : IRequestHandler<UpdateConstructorInformationRequest, ResponseResult>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -23,24 +22,24 @@ namespace Application.features.GeneralInformations.ConstructorInformations.Handl
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ReturnData<UpdateConstructorInformationDTO>> Handle(UpdateConstructorInformationRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResult> Handle(UpdateConstructorInformationRequest request, CancellationToken cancellationToken)
         {
             var constructor = await _unitofWork.ConstructorInfromationRepository.GetEntityAsync(request.updateConstructorInformationDTO.Id);
             if (constructor is null)
-                return SetReturnData<UpdateConstructorInformationDTO>.SetTEntity(request.updateConstructorInformationDTO, ResponseStatus.NotFound, null);
+                return ResponseResult.SetResult(request.updateConstructorInformationDTO, StatusMessage.NotFound, null);
             #region Validation
             var validator = new UpdateConstructorInformationValidator();
             var validatorResult = await validator.ValidateAsync(request.updateConstructorInformationDTO);
             if (!validatorResult.IsValid)
-                return SetReturnData<UpdateConstructorInformationDTO>.SetTEntity(
+                return ResponseResult.SetResult(
                     null,
-                    ResponseStatus.ValidationError,
+                    StatusMessage.ValidationError,
                     validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
             #endregion
             var toUpdate = _mapper.Map<ConstructorInformation>(request.updateConstructorInformationDTO);
             _unitofWork.ConstructorInfromationRepository.UpdateEntityAsync(toUpdate);
             await _unitofWork.SaveChangesAsync();
-            return SetReturnData<UpdateConstructorInformationDTO>.SetTEntity(request.updateConstructorInformationDTO, ResponseStatus.Success, null);
+            return ResponseResult.SetResult(request.updateConstructorInformationDTO, StatusMessage.Success, null);
         }
     }
 }

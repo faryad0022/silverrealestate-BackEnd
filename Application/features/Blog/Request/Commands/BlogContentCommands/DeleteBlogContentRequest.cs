@@ -1,10 +1,10 @@
-﻿using Application.DTOs.Blog.BlogContent;
-using Application.Reaspose;
+﻿using Application.Const.Response;
+using Application.DTOs.Blog.BlogContent;
 using MediatR;
 
 namespace Application.features.Blog.Request.Commands.BlogContentCommands
 {
-    public class DeleteBlogContentRequest : IRequest<ReturnData<BlogContentDTO>>
+    public class DeleteBlogContentRequest : IRequest<ResponseResult>
     {
         public BlogContentDTO blogContentDTO { get; set; }
     }

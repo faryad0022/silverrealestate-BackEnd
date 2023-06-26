@@ -1,4 +1,4 @@
-﻿using Application.Const.Validator;
+﻿using Application.Const.Response;
 using FluentValidation;
 
 namespace Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocationImages.Validatores

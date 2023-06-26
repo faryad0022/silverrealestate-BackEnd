@@ -32,11 +32,8 @@ namespace BackEnd_UnitTest.Facts.SpectacularLocations.Queries
             var handler = new GetSpectacularLocationListRequestHandler(_mapper, _unitofWork.Object);
             var result = await handler.Handle(new GetSpectacularLocationListRequest(), CancellationToken.None);
 
-            result.Tentities.ShouldNotBeNull();
-            result.Tentities.Count.ShouldBe(4);
-            result.Tentity.ShouldBeNull();
             result.Errors.ShouldBeNull();
-            result.Status.ShouldBe(ResponseStatus.Success);
+            result.Status.ShouldBe(StatusMessage.Success);
         }
         [Fact]
         public async Task GetSpectacularLocationList_JustShowSelected_Valid()
@@ -44,11 +41,8 @@ namespace BackEnd_UnitTest.Facts.SpectacularLocations.Queries
             var handler = new GetSpectacularLocationListRequestHandler(_mapper, _unitofWork.Object);
             var result = await handler.Handle(new GetSpectacularLocationListRequest() { justShowSelected = true }, CancellationToken.None);
 
-            result.Tentities.ShouldNotBeNull();
-            result.Tentities.Count.ShouldBe(2);
-            result.Tentity.ShouldBeNull();
             result.Errors.ShouldBeNull();
-            result.Status.ShouldBe(ResponseStatus.Success);
+            result.Status.ShouldBe(StatusMessage.Success);
         }
     }
 }

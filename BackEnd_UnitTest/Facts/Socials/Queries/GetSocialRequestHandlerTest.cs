@@ -4,7 +4,6 @@ using Application.DTOs.GeneralSiteInformationsDTO.Social;
 using Application.features.GeneralInformations.SocialFeatures.Handler.Queries;
 using Application.features.GeneralInformations.SocialFeatures.Request.Queries;
 using Application.Profiles;
-using Application.Reaspose;
 using AutoMapper;
 using BackEnd_UnitTest.Mocks;
 using Moq;
@@ -33,11 +32,8 @@ namespace BackEnd_UnitTest.Facts.Socials.Queries
         {
             var handler = new GetSocialRequestHandler(_mapper, _mockSocialRepository.Object);
             var result = await handler.Handle(new GetSocialRequest() { Id = 2 }, CancellationToken.None);
-
-
-            result.ShouldBeOfType<ReturnData<SocialDTO>>();
-            result.Tentity.ShouldBeOfType<SocialDTO>();
-            result.Status.ShouldBe(ResponseStatus.Success);
+            result.ShouldBeOfType<ResponseResult>();
+            result.Status.ShouldBe(StatusMessage.Success);
         }
         [Fact]
         public async Task InvalidValid_GetSocial_Validationerror()
@@ -45,20 +41,16 @@ namespace BackEnd_UnitTest.Facts.Socials.Queries
             var handler = new GetSocialRequestHandler(_mapper, _mockSocialRepository.Object);
             var result = await handler.Handle(new GetSocialRequest() { Id = -2 }, CancellationToken.None);
 
-            result.ShouldBeOfType<ReturnData<SocialDTO>>();
-            result.Tentity.ShouldBe(null);
-            result.Tentities.ShouldBe(null);
-            result.Status.ShouldBe(ResponseStatus.ValidationError);
+            result.ShouldBeOfType<ResponseResult>();
+            result.Status.ShouldBe(StatusMessage.ValidationError);
         }
         [Fact]
         public async Task InvalidValid_GetSocial_NotFound()
         {
             var handler = new GetSocialRequestHandler(_mapper, _mockSocialRepository.Object);
             var result = await handler.Handle(new GetSocialRequest() { Id = 3 }, CancellationToken.None);
-            result.ShouldBeOfType<ReturnData<SocialDTO>>();
-            result.Tentity.ShouldBe(null);
-            result.Tentities.ShouldBe(null);
-            result.Status.ShouldBe(ResponseStatus.NotFound);
+            result.ShouldBeOfType<ResponseResult>();
+            result.Status.ShouldBe(StatusMessage.NotFound);
         }
     }
 }

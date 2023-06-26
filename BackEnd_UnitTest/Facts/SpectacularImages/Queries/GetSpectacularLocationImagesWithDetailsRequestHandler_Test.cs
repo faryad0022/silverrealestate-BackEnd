@@ -32,9 +32,9 @@ namespace BackEnd_UnitTest.Facts.SpectacularImages.Queries
             var handler = new GetSpectacularLocationImagesWithDetailsRequestHandler(_mapper, _unitOfWork.Object);
             var result = await handler.Handle(new GetSpectacularLocationImagesWithDetailsRequest() { Id = 1 }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldNotBeNull();
+            result.Status.ShouldBe(StatusMessage.Success);
+            
+            
             result.Errors.ShouldBeNull();
         }
 
@@ -45,9 +45,9 @@ namespace BackEnd_UnitTest.Facts.SpectacularImages.Queries
             var handler = new GetSpectacularLocationImagesWithDetailsRequestHandler(_mapper, _unitOfWork.Object);
             var result = await handler.Handle(new GetSpectacularLocationImagesWithDetailsRequest() { Id = 11 }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.NotFound);
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldBeNull();
+            result.Status.ShouldBe(StatusMessage.NotFound);
+            
+            
             result.Errors.ShouldBeNull();
         }
     }

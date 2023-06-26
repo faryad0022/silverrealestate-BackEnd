@@ -34,9 +34,9 @@ namespace BackEnd_UnitTest.Facts.AboutUs.Commands
             var result = await handler.Handle(new UpdateAboutUsRequest() { updateAboutUsDTO = AboutUsModelGenerator.updateAboutUsDTO_Valid }, CancellationToken.None);
 
             result.Errors.ShouldBeNull();
-            result.Tentity.ShouldNotBeNull();
-            result.Tentities.ShouldBeNull();
-            result.Status.ShouldBe(ResponseStatus.Success);
+            
+            
+            result.Status.ShouldBe(StatusMessage.Success);
 
         }
         [Fact]
@@ -46,9 +46,9 @@ namespace BackEnd_UnitTest.Facts.AboutUs.Commands
             var result = await handler.Handle(new UpdateAboutUsRequest() { updateAboutUsDTO = AboutUsModelGenerator.updateAboutUsDTO_InValid }, CancellationToken.None);
 
             result.Errors.ShouldNotBeNull();
-            result.Tentity.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
-            result.Status.ShouldBe(ResponseStatus.ValidationError);
+            
+            
+            result.Status.ShouldBe(StatusMessage.ValidationError);
 
         }
         [Fact]
@@ -58,9 +58,9 @@ namespace BackEnd_UnitTest.Facts.AboutUs.Commands
             var result = await handler.Handle(new UpdateAboutUsRequest() { updateAboutUsDTO = AboutUsModelGenerator.updateAboutUsDTO_NotFound_InValid }, CancellationToken.None);
 
             result.Errors.ShouldBeNull();
-            result.Tentity.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
-            result.Status.ShouldBe(ResponseStatus.NotFound);
+            
+            
+            result.Status.ShouldBe(StatusMessage.NotFound);
 
         }
     }

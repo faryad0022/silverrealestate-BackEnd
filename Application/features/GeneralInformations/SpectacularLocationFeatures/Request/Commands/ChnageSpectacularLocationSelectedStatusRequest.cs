@@ -1,10 +1,10 @@
-﻿using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocations;
-using Application.Reaspose;
+﻿using Application.Const.Response;
+using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocations;
 using MediatR;
 
 namespace Application.features.GeneralInformations.SpectacularLocationFeatures.Request.Commands
 {
-    public class ChnageSpectacularLocationSelectedStatusRequest : IRequest<ReturnData<SpectacularLocationDTO>>
+    public class ChnageSpectacularLocationSelectedStatusRequest : IRequest<ResponseResult>
     {
         public long Id { get; set; }
     }

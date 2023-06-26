@@ -33,11 +33,10 @@ namespace BackEnd_UnitTest.Facts.TeamMembers.Commands
             var handler = new ChangeTeamMemberSelectedStatusRequestHandler(_mapper, _unitOfWork.Object);
             var result = await handler.Handle(new ChangeTeamMemberSelectedStatusRequest() { Id = 1 }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentity.ShouldNotBeNull();
+            result.Status.ShouldBe(StatusMessage.Success);
+            
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldBeOfType(typeof(TeamMemberDTO));
+            
         }
         [Fact]
         public async Task ChangeTeamMemberSelectedStatus_Valid_Notfound_InValid()
@@ -45,10 +44,10 @@ namespace BackEnd_UnitTest.Facts.TeamMembers.Commands
             var handler = new ChangeTeamMemberSelectedStatusRequestHandler(_mapper, _unitOfWork.Object);
             var result = await handler.Handle(new ChangeTeamMemberSelectedStatusRequest() { Id = 11 }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.NotFound);
-            result.Tentity.ShouldBeNull();
+            result.Status.ShouldBe(StatusMessage.NotFound);
+            
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
+            
         }
     }
 }

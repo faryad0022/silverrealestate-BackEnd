@@ -32,9 +32,9 @@ namespace BackEnd_UnitTest.Facts.CommonQuestions.Queries
             var handler = new GetCommonQuestionListRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new GetCommonQuestionListRequest(), CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentity.ShouldBeNull();
-            result.Tentities.ShouldNotBeNull();
+            result.Status.ShouldBe(StatusMessage.Success);
+            
+            
             result.Errors.ShouldBeNull();
         }
     }

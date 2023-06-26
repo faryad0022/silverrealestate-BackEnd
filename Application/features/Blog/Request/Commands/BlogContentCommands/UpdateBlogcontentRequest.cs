@@ -1,10 +1,10 @@
-﻿using Application.DTOs.Blog.BlogContent;
-using Application.Reaspose;
+﻿using Application.Const.Response;
+using Application.DTOs.Blog.BlogContent;
 using MediatR;
 
 namespace Application.features.Blog.Request.Commands.BlogContentCommands
 {
-    public class UpdateBlogcontentRequest : IRequest<ReturnData<UpdateBlogContentDTO>>
+    public class UpdateBlogcontentRequest : IRequest<ResponseResult>
     {
         public long Id { get; set; }
         public ChangeBlogContentIsSelectedDTO changeBlogContentIsSelected { get; set; }

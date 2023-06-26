@@ -1,10 +1,10 @@
-﻿using Application.DTOs.GeneralSiteInformationsDTO.TeamMembers;
-using Application.Reaspose;
+﻿using Application.Const.Response;
+using Application.DTOs.GeneralSiteInformationsDTO.TeamMembers;
 using MediatR;
 
 namespace Application.features.GeneralInformations.TeamMemberFeatures.Request.Commands
 {
-    public class UpdateTeamMemberRequest : IRequest<ReturnData<TeamMemberDTO>>
+    public class UpdateTeamMemberRequest : IRequest<ResponseResult>
     {
         public UpdateTeamMemberDTO updateTeamMemberDTO { get; set; }
     }

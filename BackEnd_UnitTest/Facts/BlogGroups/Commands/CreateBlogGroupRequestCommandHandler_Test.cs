@@ -41,10 +41,9 @@ namespace BackEnd_UnitTest.Facts.BlogGroups.Commands
             var handler = new CreateBlogGroupRequestCommandHandler(_mockEmailSender.Object, _mock.Object, _mapper);
             var result = await handler.Handle(new CreateBlogGroupRequestCommand() { createBlogGroupDTO = BlogGroupModelGenerator._createBlogGroupDTO_Valid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
+            result.Status.ShouldBe(StatusMessage.Success);
             result.Errors.ShouldBeNull();
-            result.Tentity.Name.ShouldBe("News 6");
-            result.Tentities.ShouldBeNull();
+            
         }
 
         [Fact]
@@ -53,10 +52,10 @@ namespace BackEnd_UnitTest.Facts.BlogGroups.Commands
             var handler = new CreateBlogGroupRequestCommandHandler(_mockEmailSender.Object, _mock.Object, _mapper);
             var result = await handler.Handle(new CreateBlogGroupRequestCommand() { createBlogGroupDTO = BlogGroupModelGenerator._createBlogGroupDTO_InValid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.ValidationError);
+            result.Status.ShouldBe(StatusMessage.ValidationError);
             result.Errors.ShouldNotBeNull();
-            result.Tentity.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
+            
+            
         }
     }
 }

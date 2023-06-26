@@ -33,9 +33,9 @@ namespace BackEnd_UnitTest.Facts.RealEstateServices.Commands
             var handler = new UpdateRealEstateServicesRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new UpdateRealEstateServicesRequest() { updateRealEstateServicesDTO = RealEstateServicesModelGenerator.updateRealEstateServicesDTO_Valid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldNotBeNull();
+            result.Status.ShouldBe(StatusMessage.Success);
+            
+            
         }
         [Fact]
         public async Task UpdateRealEstateServices_Validation_InValid()
@@ -43,10 +43,10 @@ namespace BackEnd_UnitTest.Facts.RealEstateServices.Commands
             var handler = new UpdateRealEstateServicesRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new UpdateRealEstateServicesRequest() { updateRealEstateServicesDTO = RealEstateServicesModelGenerator.updateRealEstateServicesDTO_InValid_ValidationError }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.ValidationError);
+            result.Status.ShouldBe(StatusMessage.ValidationError);
             result.Errors.ShouldNotBeNull();
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldBeNull();
+            
+            
         }
 
         [Fact]
@@ -55,10 +55,10 @@ namespace BackEnd_UnitTest.Facts.RealEstateServices.Commands
             var handler = new UpdateRealEstateServicesRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new UpdateRealEstateServicesRequest() { updateRealEstateServicesDTO = RealEstateServicesModelGenerator.updateRealEstateServicesDTO_InValid_NotFound }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.NotFound);
+            result.Status.ShouldBe(StatusMessage.NotFound);
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldBeNull();
+            
+            
         }
     }
 }

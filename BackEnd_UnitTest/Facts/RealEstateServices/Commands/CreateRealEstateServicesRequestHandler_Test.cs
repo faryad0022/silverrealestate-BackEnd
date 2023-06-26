@@ -33,9 +33,9 @@ namespace BackEnd_UnitTest.Facts.RealEstateServices.Commands
             var handler = new CreateRealEstateServicesRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new CreateRealEstateServicesRequest() { createRealEstateServicesDTO = RealEstateServicesModelGenerator.createRealEstateServicesDTO_Valid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldNotBeNull();
+            result.Status.ShouldBe(StatusMessage.Success);
+            
+            
             result.Errors.ShouldBeNull();
 
         }
@@ -45,9 +45,9 @@ namespace BackEnd_UnitTest.Facts.RealEstateServices.Commands
             var handler = new CreateRealEstateServicesRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new CreateRealEstateServicesRequest() { createRealEstateServicesDTO = RealEstateServicesModelGenerator.createRealEstateServicesDTO_InValid_NameRequired }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.ValidationError);
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldBeNull();
+            result.Status.ShouldBe(StatusMessage.ValidationError);
+            
+            
             result.Errors.ShouldNotBeNull();
             result.Errors.Count.ShouldBe(2);
         }

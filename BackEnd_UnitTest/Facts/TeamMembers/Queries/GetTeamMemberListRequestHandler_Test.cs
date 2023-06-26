@@ -37,12 +37,8 @@ namespace BackEnd_UnitTest.Facts.TeamMembers.Queries
             var handler = new GetTeamMemberListRequestHandler(_mapper, _unitOfWork.Object);
             var result = await handler.Handle(new GetTeamMemberListRequest { justSelected=false}, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentities.ShouldNotBeNull();
+            result.Status.ShouldBe(StatusMessage.Success);
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldBeOfType(typeof(List<TeamMemberDTO>));
-            result.Tentity.ShouldBeNull();
-            result.Tentities.Count.ShouldBe(4);
         }
         [Fact]
         public async Task GetTeamMemberList_Selected_Valid()
@@ -50,12 +46,9 @@ namespace BackEnd_UnitTest.Facts.TeamMembers.Queries
             var handler = new GetTeamMemberListRequestHandler(_mapper, _unitOfWork.Object);
             var result = await handler.Handle(new GetTeamMemberListRequest { justSelected = true }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentities.ShouldNotBeNull();
+            result.Status.ShouldBe(StatusMessage.Success);
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldBeOfType(typeof(List<TeamMemberDTO>));
-            result.Tentity.ShouldBeNull();
-            result.Tentities.Count.ShouldBe(3);
+
         }
     }
 }

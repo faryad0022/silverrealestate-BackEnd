@@ -32,10 +32,10 @@ namespace BackEnd_UnitTest.Facts.RealEstateServices.Queries
             var handler = new GetRealEstateServiceListRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new GetRealEstateServiceListRequest(), CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentity.ShouldBeNull();
+            result.Status.ShouldBe(StatusMessage.Success);
+            
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldNotBeNull();
+            
 
         }
         [Fact]
@@ -44,11 +44,9 @@ namespace BackEnd_UnitTest.Facts.RealEstateServices.Queries
             var handler = new GetRealEstateServiceListRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new GetRealEstateServiceListRequest() { justShowSelected = true }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentity.ShouldBeNull();
+            result.Status.ShouldBe(StatusMessage.Success);
+            
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldNotBeNull();
-            result.Tentities.Count.ShouldBe(3);
 
 
         }

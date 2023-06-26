@@ -3,7 +3,6 @@ using Application.Contract.Persistence;
 using Application.DTOs.GeneralSiteInformationsDTO.Banner;
 using Application.DTOs.GeneralSiteInformationsDTO.Banner.Validator;
 using Application.features.GeneralInformations.BannerFeatures.Request.Commands;
-using Application.Reaspose;
 using AutoMapper;
 using Domain.Entities.GeneralSiteInformation;
 using MediatR;
@@ -13,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.BannerFeatures.Handler.Commands
 {
-    public class CreateBannerRequestHandler : IRequestHandler<CreateBannerRequest, ReturnData<BannerDTO>>
+    public class CreateBannerRequestHandler : IRequestHandler<CreateBannerRequest, ResponseResult>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -23,21 +22,21 @@ namespace Application.features.GeneralInformations.BannerFeatures.Handler.Comman
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ReturnData<BannerDTO>> Handle(CreateBannerRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResult> Handle(CreateBannerRequest request, CancellationToken cancellationToken)
         {
             #region Validation
             var validator = new CreateBannerValidator();
             var validatorResult = await validator.ValidateAsync(request.createBannerDTO);
             if (!validatorResult.IsValid)
-                return SetReturnData<BannerDTO>.SetTEntity(
+                return ResponseResult.SetResult(
                     null,
-                    ResponseStatus.ValidationError,
+                    StatusMessage.ValidationError,
                     validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
             #endregion
             var banner = _mapper.Map<Banner>(request.createBannerDTO);
             await _unitofWork.BannerRepository.AddEntityAsync(banner);
             await _unitofWork.SaveChangesAsync();
-            return SetReturnData<BannerDTO>.SetTEntity(_mapper.Map<BannerDTO>(banner), ResponseStatus.Success, null);
+            return ResponseResult.SetResult(_mapper.Map<BannerDTO>(banner), StatusMessage.Success, null);
         }
     }
 }

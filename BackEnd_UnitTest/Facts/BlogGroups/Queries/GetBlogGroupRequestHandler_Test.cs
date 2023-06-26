@@ -33,8 +33,7 @@ namespace BackEnd_UnitTest.Facts.BlogGroups.Queries
             var handler = new GetBlogGroupRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new GetBlogGroupRequest() { blogGroupId = 1 }, CancellationToken.None);
 
-            result.Tentity.Name.ShouldBe("News");
-            result.Status.ShouldBe(ResponseStatus.Success);
+            result.Status.ShouldBe(StatusMessage.Success);
         }
         [Fact]
         public async Task InValid_GetBlogGroupTest()
@@ -42,10 +41,10 @@ namespace BackEnd_UnitTest.Facts.BlogGroups.Queries
             var handler = new GetBlogGroupRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new GetBlogGroupRequest() { blogGroupId = 7 }, CancellationToken.None);
 
-            result.Tentity.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
+            
+            
             result.Errors.ShouldBeNull();
-            result.Status.ShouldBe(ResponseStatus.NotFound);
+            result.Status.ShouldBe(StatusMessage.NotFound);
         }
     }
 }

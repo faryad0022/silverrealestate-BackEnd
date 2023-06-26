@@ -33,9 +33,7 @@ namespace BackEnd_UnitTest.Facts.SpectacularImages.Queries
             var result = await handler.Handle(new GetSpectacularImagesListWithDetailsRequest(), CancellationToken.None);
 
             result.Errors.ShouldBeNull();
-            result.Tentities.Count.ShouldBe(5);
-            result.Tentity.ShouldBeNull();
-            result.Status.ShouldBe(ResponseStatus.Success);
+            result.Status.ShouldBe(StatusMessage.Success);
         }
         [Fact]
         public async Task GetSpectacularImagesListWithDetails_Selected_Valid()
@@ -44,9 +42,7 @@ namespace BackEnd_UnitTest.Facts.SpectacularImages.Queries
             var result = await handler.Handle(new GetSpectacularImagesListWithDetailsRequest() { justSelected = true }, CancellationToken.None);
 
             result.Errors.ShouldBeNull();
-            result.Tentities.Count.ShouldBe(4);
-            result.Tentity.ShouldBeNull();
-            result.Status.ShouldBe(ResponseStatus.Success);
+            result.Status.ShouldBe(StatusMessage.Success);
         }
     }
 }

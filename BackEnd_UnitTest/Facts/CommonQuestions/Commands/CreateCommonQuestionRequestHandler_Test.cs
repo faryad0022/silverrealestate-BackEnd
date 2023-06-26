@@ -33,10 +33,10 @@ namespace BackEnd_UnitTest.Facts.CommonQuestions.Commands
             var handler = new CreateCommonQuestionRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new CreateCommonQuestionRequest() { createCommonQuestionDTO = CommonQuestionModelGenerator.createCommonQuestionDTO }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentity.ShouldNotBeNull();
+            result.Status.ShouldBe(StatusMessage.Success);
+            
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
+            
 
         }
         [Fact]
@@ -45,10 +45,10 @@ namespace BackEnd_UnitTest.Facts.CommonQuestions.Commands
             var handler = new CreateCommonQuestionRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new CreateCommonQuestionRequest() { createCommonQuestionDTO = CommonQuestionModelGenerator.createCommonQuestionDTO_Invalid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.ValidationError);
-            result.Tentity.ShouldBeNull();
+            result.Status.ShouldBe(StatusMessage.ValidationError);
+            
             result.Errors.ShouldNotBeNull();
-            result.Tentities.ShouldBeNull();
+            
 
         }
     }

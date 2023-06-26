@@ -33,9 +33,9 @@ namespace BackEnd_UnitTest.Facts.CommonQuestions.Commands
             var handler = new UpdateCommonQuestionRequestHnadler(_mapper, _mock.Object);
             var result = await handler.Handle(new UpdateCommonQuestionRequest() { updateCommonQuestionDTO = CommonQuestionModelGenerator.updateCommonQuestionDTO_Valid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldNotBeNull();
+            result.Status.ShouldBe(StatusMessage.Success);
+            
+            
         }
         [Fact]
         public async Task UpdateCommonQuestion_Validation_InValid()
@@ -43,10 +43,10 @@ namespace BackEnd_UnitTest.Facts.CommonQuestions.Commands
             var handler = new UpdateCommonQuestionRequestHnadler(_mapper, _mock.Object);
             var result = await handler.Handle(new UpdateCommonQuestionRequest() { updateCommonQuestionDTO = CommonQuestionModelGenerator.updateCommonQuestionDTO_Validation_InValid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.ValidationError);
+            result.Status.ShouldBe(StatusMessage.ValidationError);
             result.Errors.ShouldNotBeNull();
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldNotBeNull();
+            
+            
         }
 
         [Fact]
@@ -55,10 +55,10 @@ namespace BackEnd_UnitTest.Facts.CommonQuestions.Commands
             var handler = new UpdateCommonQuestionRequestHnadler(_mapper, _mock.Object);
             var result = await handler.Handle(new UpdateCommonQuestionRequest() { updateCommonQuestionDTO = CommonQuestionModelGenerator.updateCommonQuestionDTO_NotFound_InValid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.NotFound);
+            result.Status.ShouldBe(StatusMessage.NotFound);
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldNotBeNull();
+            
+            
         }
     }
 }

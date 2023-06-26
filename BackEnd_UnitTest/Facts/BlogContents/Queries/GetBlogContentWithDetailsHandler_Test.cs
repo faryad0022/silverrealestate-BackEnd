@@ -32,10 +32,10 @@ namespace BackEnd_UnitTest.Facts.BlogContents.Queries
             var handler = new GetBlogContentWithDetailsHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new GetBlogContentWithDetails() { blogContentId = 3 }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
+            result.Status.ShouldBe(StatusMessage.Success);
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
-            result.Tentity.BlogGroupId.ShouldBe(3);
+            
+            
         }
 
         [Fact]
@@ -44,10 +44,10 @@ namespace BackEnd_UnitTest.Facts.BlogContents.Queries
             var handler = new GetBlogContentWithDetailsHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new GetBlogContentWithDetails() { blogContentId = 37 }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.NotFound);
+            result.Status.ShouldBe(StatusMessage.NotFound);
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldBeNull();
+            
+            
         }
     }
 }

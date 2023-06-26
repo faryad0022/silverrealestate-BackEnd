@@ -3,7 +3,6 @@ using Application.Contract.Persistence;
 using Application.DTOs.GeneralSiteInformationsDTO.Address;
 using Application.DTOs.GeneralSiteInformationsDTO.Address.Validator;
 using Application.features.GeneralInformations.AddressFeatures.Request.Commands;
-using Application.Reaspose;
 using AutoMapper;
 using Domain.Entities.GeneralSiteInformation;
 using MediatR;
@@ -13,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.AddressFeatures.Handler.Commands
 {
-    public class CreateAddressRequestHandler : IRequestHandler<CreateAddressRequest, ReturnData<AddressDTO>>
+    public class CreateAddressRequestHandler : IRequestHandler<CreateAddressRequest, ResponseResult>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -23,22 +22,22 @@ namespace Application.features.GeneralInformations.AddressFeatures.Handler.Comma
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ReturnData<AddressDTO>> Handle(CreateAddressRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResult> Handle(CreateAddressRequest request, CancellationToken cancellationToken)
         {
             var toAddressDTO = _mapper.Map<AddressDTO>(request.createAddressDTO);
             #region Validation
             var validator = new CreateAddressValidator();
             var validationResult = await validator.ValidateAsync(request.createAddressDTO);
             if (!validationResult.IsValid)
-                return SetReturnData<AddressDTO>.SetTEntity(
+                return ResponseResult.SetResult(
                                 toAddressDTO,
-                                ResponseStatus.ValidationError,
+                                StatusMessage.ValidationError,
                                 validationResult.Errors.Select(q => q.ErrorMessage).ToList());
             #endregion
             var address = _mapper.Map<Address>(request.createAddressDTO);
             await _unitofWork.AddressRepository.AddEntityAsync(address);
             await _unitofWork.SaveChangesAsync();
-            return SetReturnData<AddressDTO>.SetTEntity(toAddressDTO, ResponseStatus.Success, null);
+            return ResponseResult.SetResult(toAddressDTO, StatusMessage.Success, null);
         }
     }
 }

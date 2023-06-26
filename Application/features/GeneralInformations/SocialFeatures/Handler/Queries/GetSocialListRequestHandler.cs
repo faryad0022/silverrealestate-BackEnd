@@ -2,7 +2,6 @@
 using Application.Contract.Persistence;
 using Application.DTOs.GeneralSiteInformationsDTO.Social;
 using Application.features.GeneralInformations.SocialFeatures.Request.Queries;
-using Application.Reaspose;
 using AutoMapper;
 using MediatR;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ namespace Application.features.GeneralInformations.SocialFeatures.Handler.Querie
 {
 
 
-    public class GetSocialListRequestHandler : IRequestHandler<GetSocialListRequest, ReturnData<SocialDTO>>
+    public class GetSocialListRequestHandler : IRequestHandler<GetSocialListRequest, ResponseResult>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -25,19 +24,19 @@ namespace Application.features.GeneralInformations.SocialFeatures.Handler.Querie
             _unitofWork = unitofWork;
         }
 
-        public async Task<ReturnData<SocialDTO>> Handle(GetSocialListRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResult> Handle(GetSocialListRequest request, CancellationToken cancellationToken)
         {
             var social = await _unitofWork.SocialRepository.GetAllAsync();
             if (request.justShowSelected)
             {
                 var selectedSocial = social.Where(x => x.IsSelected).ToList();
                 var SelectedSocialDTo = _mapper.Map<List<SocialDTO>>(selectedSocial);
-                return SetReturnData<SocialDTO>.SetTEntities(SelectedSocialDTo, ResponseStatus.Success, null);
+                return ResponseResult.SetResult(SelectedSocialDTo, StatusMessage.Success, null);
 
 
             }
             var socialDTo = _mapper.Map<List<SocialDTO>>(social);
-            return SetReturnData<SocialDTO>.SetTEntities(socialDTo, ResponseStatus.Success, null);
+            return ResponseResult.SetResult(socialDTo, StatusMessage.Success, null);
         }
     }
 

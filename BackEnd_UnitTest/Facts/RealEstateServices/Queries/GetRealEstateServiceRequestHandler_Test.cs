@@ -32,11 +32,10 @@ namespace BackEnd_UnitTest.Facts.RealEstateServices.Queries
             var handler = new GetRealEstateServiceRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new GetRealEstateServiceRequest() { Id = 2 }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentity.ShouldNotBeNull();
-            result.Tentity.Name.ShouldBe("mojgan");
+            result.Status.ShouldBe(StatusMessage.Success);
+            
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
+            
         }
         [Fact]
         public async Task GetRealEstateService_Valid2()
@@ -44,11 +43,10 @@ namespace BackEnd_UnitTest.Facts.RealEstateServices.Queries
             var handler = new GetRealEstateServiceRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new GetRealEstateServiceRequest() { Id = 3 }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
-            result.Tentity.ShouldNotBeNull();
-            result.Tentity.Name.ShouldBe("faryad");
+            result.Status.ShouldBe(StatusMessage.Success);
+            
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
+            
         }
         [Fact]
         public async Task GetRealEstateService_InValid()
@@ -56,10 +54,10 @@ namespace BackEnd_UnitTest.Facts.RealEstateServices.Queries
             var handler = new GetRealEstateServiceRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new GetRealEstateServiceRequest() { Id = 20 }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.NotFound);
-            result.Tentity.ShouldBeNull();
+            result.Status.ShouldBe(StatusMessage.NotFound);
+            
             result.Errors.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
+            
         }
     }
 }

@@ -34,11 +34,10 @@ namespace BackEnd_UnitTest.Facts.SpectacularImages.Commands
             var handler = new CreateSpectacularLocationImageRequestHandler(_mapper, _unitOfWork.Object);
             var result = await handler.Handle(new CreateSpectacularLocationImageRequest() { createSpectacularLocationImagesDTO = SpectacularLocationImageModelGenerator.createSpectacularImagesDTO_Valid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
+            result.Status.ShouldBe(StatusMessage.Success);
             result.Errors.ShouldBeNull();
-            result.Tentity.ShouldNotBeNull();
-            result.Tentities.ShouldBeNull();
-            result.Tentity.ShouldBeOfType(typeof(SpectacularLocationImagesDTO));
+            
+            
         }
         [Fact]
         public async Task CreateSpectacularLocationImage_ValidationError_InValid()
@@ -46,10 +45,10 @@ namespace BackEnd_UnitTest.Facts.SpectacularImages.Commands
             var handler = new CreateSpectacularLocationImageRequestHandler(_mapper, _unitOfWork.Object);
             var result = await handler.Handle(new CreateSpectacularLocationImageRequest() { createSpectacularLocationImagesDTO = SpectacularLocationImageModelGenerator.createSpectacularImagesDTO_ValidationError_InValid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.ValidationError);
+            result.Status.ShouldBe(StatusMessage.ValidationError);
             result.Errors.ShouldNotBeNull();
-            result.Tentity.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
+            
+            
         }
         [Fact]
         public async Task CreateSpectacularLocationImage_ValidationError_ParentId_InValid()
@@ -57,10 +56,10 @@ namespace BackEnd_UnitTest.Facts.SpectacularImages.Commands
             var handler = new CreateSpectacularLocationImageRequestHandler(_mapper, _unitOfWork.Object);
             var result = await handler.Handle(new CreateSpectacularLocationImageRequest() { createSpectacularLocationImagesDTO = SpectacularLocationImageModelGenerator.createSpectacularImagesDTO_ValidationError_ParentId_InValid }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.ValidationError);
+            result.Status.ShouldBe(StatusMessage.ValidationError);
             result.Errors.ShouldNotBeNull();
-            result.Tentity.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
+            
+            
         }
     }
 }

@@ -32,10 +32,10 @@ namespace BackEnd_UnitTest.Facts.Logos.Queries
             var handler = new GetLogoRequestHandler(_mapper, _mockRepo.Object);
             var result = await handler.Handle(new GetLogoRequest() { Id = 1 }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.Success);
+            result.Status.ShouldBe(StatusMessage.Success);
             result.Errors.ShouldBeNull();
-            result.Tentity.ShouldNotBeNull();
-            result.Tentities.ShouldBeNull();
+            
+            
 
         }
         [Fact]
@@ -44,10 +44,10 @@ namespace BackEnd_UnitTest.Facts.Logos.Queries
             var handler = new GetLogoRequestHandler(_mapper, _mockRepo.Object);
             var result = await handler.Handle(new GetLogoRequest() { Id = 3 }, CancellationToken.None);
 
-            result.Status.ShouldBe(ResponseStatus.NotFound);
+            result.Status.ShouldBe(StatusMessage.NotFound);
             result.Errors.ShouldBeNull();
-            result.Tentity.ShouldBeNull();
-            result.Tentities.ShouldBeNull();
+            
+            
 
         }
 

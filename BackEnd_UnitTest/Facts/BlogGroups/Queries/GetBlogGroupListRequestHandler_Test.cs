@@ -4,7 +4,6 @@ using Application.DTOs.Blog.BlogGroup;
 using Application.features.Blog.Handler.Queries.BlogGroup;
 using Application.features.Blog.Request.Queries.BlogGroup;
 using Application.Profiles;
-using Application.Reaspose;
 using AutoMapper;
 using BackEnd_UnitTest.Mocks;
 using Moq;
@@ -34,9 +33,8 @@ namespace BackEnd_UnitTest.Facts.BlogGroups.Queries
             var handler = new GetBlogGroupListRequestHandler(_mapper, _mockRepo.Object);
             var result = await handler.Handle(new GetBlogGroupListRequest(), CancellationToken.None);
 
-            result.ShouldBeOfType<ReturnData<BlogGroupDTO>>();
-            // result.Tentities.Count.ShouldBe(3);
-            result.Status.ShouldBe(ResponseStatus.Success);
+            result.ShouldBeOfType<ResponseResult>();
+            result.Status.ShouldBe(StatusMessage.Success);
 
         }
 
