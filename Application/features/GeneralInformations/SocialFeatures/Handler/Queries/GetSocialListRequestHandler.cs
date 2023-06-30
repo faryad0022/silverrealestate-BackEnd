@@ -13,7 +13,7 @@ namespace Application.features.GeneralInformations.SocialFeatures.Handler.Querie
 {
 
 
-    public class GetSocialListRequestHandler : IRequestHandler<GetSocialListRequest, ResponseResult>
+    public class GetSocialListRequestHandler : IRequestHandler<GetSocialListRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -24,19 +24,19 @@ namespace Application.features.GeneralInformations.SocialFeatures.Handler.Querie
             _unitofWork = unitofWork;
         }
 
-        public async Task<ResponseResult> Handle(GetSocialListRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(GetSocialListRequest request, CancellationToken cancellationToken)
         {
             var social = await _unitofWork.SocialRepository.GetAllAsync();
             if (request.justShowSelected)
             {
                 var selectedSocial = social.Where(x => x.IsSelected).ToList();
                 var SelectedSocialDTo = _mapper.Map<List<SocialDTO>>(selectedSocial);
-                return ResponseResult.SetResult(SelectedSocialDTo, StatusMessage.Success, null);
+                return ResponseResultDTO.SetResult(SelectedSocialDTo, StatusMessage.Success, null);
 
 
             }
             var socialDTo = _mapper.Map<List<SocialDTO>>(social);
-            return ResponseResult.SetResult(socialDTo, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(socialDTo, StatusMessage.Success, null);
         }
     }
 

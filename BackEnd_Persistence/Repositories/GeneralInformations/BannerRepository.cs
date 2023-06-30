@@ -1,4 +1,5 @@
 ﻿using Application.Contract.Persistence.EntitiesRepository.GeneralInformations;
+using Application.DTOs.GeneralSiteInformationsDTO.Banner;
 using Application.DTOs.Paging;
 using Application.Extensions;
 using Application.Models.FilterModels;
@@ -30,5 +31,6 @@ namespace BackEnd_Persistence.Repositories.GeneralInformations
             var banners = await bannersQuery.Paging(pager).ToListAsync();
             return filter.SetPaging(pager).SetBanners(banners);
         }
+
     }
 }

@@ -30,10 +30,10 @@ namespace BackEnd_UnitTest.Mocks
             });
 
             //Update Entity
-            _mock.Setup(r => r.UpdateEntityAsync(It.IsAny<TeamMember>())).Callback(() => { return; });
+            _mock.Setup(r => r.UpdateEntity(It.IsAny<TeamMember>())).Callback(() => { return; });
 
             //Change selected status
-            _mock.Setup(r => r.ChangeSelectedStatusAsync(It.IsAny<TeamMember>())).Callback((TeamMember teamMember) =>
+            _mock.Setup(r => r.ChangeSelectedStatus(It.IsAny<TeamMember>())).Callback((TeamMember teamMember) =>
             {
                 teamMember.IsSelected = !teamMember.IsSelected;
                 teamMember.LastUpdateDate = DateTime.Now;

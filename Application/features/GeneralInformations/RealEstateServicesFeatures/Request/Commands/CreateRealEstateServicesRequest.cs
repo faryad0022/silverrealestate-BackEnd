@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.features.GeneralInformations.RealEstateServicesFeatures.Request.Commands
 {
-    public class CreateRealEstateServicesRequest : IRequest<ResponseResult>
+    public class CreateRealEstateServicesRequest : IRequest<ResponseResultDTO>
     {
         public CreateRealEstateServicesDTO createRealEstateServicesDTO { get; set; }
     }

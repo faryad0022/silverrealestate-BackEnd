@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.features.GeneralInformations.SpectacularLocationImageFeatures.Request.Commands
 {
-    public class CreateSpectacularLocationImageRequest : IRequest<ResponseResult>
+    public class CreateSpectacularLocationImageRequest : IRequest<ResponseResultDTO>
     {
         public CreateSpectacularLocationImagesDTO createSpectacularLocationImagesDTO { get; set; }
     }

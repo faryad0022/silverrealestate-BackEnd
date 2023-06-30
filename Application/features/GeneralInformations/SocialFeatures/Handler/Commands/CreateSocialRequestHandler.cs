@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.SocialFeatures.Handler.Commands
 {
-    public class CreateSocialRequestHandler : IRequestHandler<CreateSocialRequest, ResponseResult>
+    public class CreateSocialRequestHandler : IRequestHandler<CreateSocialRequest, ResponseResultDTO>
     {
         private readonly IUnitofWork _unitofWork;
         private readonly IMapper _mapper;
@@ -22,7 +22,7 @@ namespace Application.features.GeneralInformations.SocialFeatures.Handler.Comman
             _unitofWork = unitofWork;
             _mapper = mapper;
         }
-        public async Task<ResponseResult> Handle(CreateSocialRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(CreateSocialRequest request, CancellationToken cancellationToken)
         {
             var social = _mapper.Map<Social>(request.createSocialDTO);
             #region Validation
@@ -30,7 +30,7 @@ namespace Application.features.GeneralInformations.SocialFeatures.Handler.Comman
             var validatorResult = await validator.ValidateAsync(request.createSocialDTO);
             if (!validatorResult.IsValid)
             {
-                return ResponseResult.SetResult(
+                return ResponseResultDTO.SetResult(
                     _mapper.Map<SocialDTO>(social),
                     StatusMessage.ValidationError,
                     validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
@@ -39,7 +39,7 @@ namespace Application.features.GeneralInformations.SocialFeatures.Handler.Comman
 
             social = await _unitofWork.SocialRepository.AddEntityAsync(social);
             await _unitofWork.SaveChangesAsync();
-            return ResponseResult.SetResult(
+            return ResponseResultDTO.SetResult(
                      _mapper.Map<SocialDTO>(social),
                      StatusMessage.Success,
                      null);

@@ -23,7 +23,7 @@ namespace BackEnd_UnitTest.Mocks
                     commonQuestionList.Add(common);
                     return common;
                 });
-            _mock.Setup(m => m.UpdateEntityAsync(It.IsAny<CommonQuestion>())).Callback(() => { return; });
+            _mock.Setup(m => m.UpdateEntity(It.IsAny<CommonQuestion>())).Callback(() => { return; });
 
             return _mock;
         }

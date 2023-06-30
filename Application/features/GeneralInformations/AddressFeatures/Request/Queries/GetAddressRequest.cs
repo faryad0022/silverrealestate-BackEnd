@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.features.GeneralInformations.AddressFeatures.Request.Queries
 {
-    public class GetAddressRequest : IRequest<ResponseResult>
+    public class GetAddressRequest : IRequest<ResponseResultDTO>
     {
         public long Id { get; set; }
     }

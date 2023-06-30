@@ -22,7 +22,7 @@ namespace BackEnd_UnitTest.Mocks
                     constructorList.Add(constructor);
                     return constructor;
                 });
-            _mockRepo.Setup(m => m.UpdateEntityAsync(It.IsAny<ConstructorInformation>())).Callback(() => { return; });
+            _mockRepo.Setup(m => m.UpdateEntity(It.IsAny<ConstructorInformation>())).Callback(() => { return; });
 
             return _mockRepo;
 

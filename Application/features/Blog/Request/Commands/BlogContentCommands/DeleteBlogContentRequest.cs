@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.features.Blog.Request.Commands.BlogContentCommands
 {
-    public class DeleteBlogContentRequest : IRequest<ResponseResult>
+    public class DeleteBlogContentRequest : IRequest<ResponseResultDTO>
     {
         public BlogContentDTO blogContentDTO { get; set; }
     }

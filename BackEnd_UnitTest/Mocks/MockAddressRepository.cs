@@ -22,7 +22,7 @@ namespace BackEnd_UnitTest.Mocks
                                 AddressModelGenerator.AddressList.Add(address);
                                 return address;
                             });
-            _mock.Setup(m => m.UpdateEntityAsync(It.IsAny<Address>())).Callback(() => { return; });
+            _mock.Setup(m => m.UpdateEntity(It.IsAny<Address>())).Callback(() => { return; });
             return _mock;
         }
     }

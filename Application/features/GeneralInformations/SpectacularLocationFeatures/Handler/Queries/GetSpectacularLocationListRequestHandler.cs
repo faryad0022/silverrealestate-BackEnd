@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.SpectacularLocationFeatures.Handler.Queries
 {
-    public class GetSpectacularLocationListRequestHandler : IRequestHandler<GetSpectacularLocationListRequest, ResponseResult>
+    public class GetSpectacularLocationListRequestHandler : IRequestHandler<GetSpectacularLocationListRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -21,20 +21,20 @@ namespace Application.features.GeneralInformations.SpectacularLocationFeatures.H
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(GetSpectacularLocationListRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(GetSpectacularLocationListRequest request, CancellationToken cancellationToken)
         {
             var specatularLocationList = await _unitofWork.SpectacularlocationRepository.GetAllAsync();
 
             if (specatularLocationList is null || specatularLocationList.Count < 1)
-               return ResponseResult.SetResult(null, StatusMessage.NoContent, null);
+               return ResponseResultDTO.SetResult(null, StatusMessage.NoContent, null);
             if (request.justShowSelected)
             {
                 var selectedSpectacularLocation = specatularLocationList.Where(s => s.IsSelected).ToList();
                 var selectedSpectacularLocationDTO = _mapper.Map<List<SpectacularLocationDTO>>(selectedSpectacularLocation);
-                return ResponseResult.SetResult(selectedSpectacularLocationDTO, StatusMessage.Success, null);
+                return ResponseResultDTO.SetResult(selectedSpectacularLocationDTO, StatusMessage.Success, null);
             }
             var specatularLocationListDTO = _mapper.Map<List<SpectacularLocationDTO>>(specatularLocationList);
-            return ResponseResult.SetResult(specatularLocationListDTO, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(specatularLocationListDTO, StatusMessage.Success, null);
         }
     }
 }

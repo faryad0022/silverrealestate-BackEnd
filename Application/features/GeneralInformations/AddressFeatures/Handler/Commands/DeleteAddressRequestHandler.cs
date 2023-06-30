@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.AddressFeatures.Handler.Commands
 {
-    public class DeleteAddressRequestHandler : IRequestHandler<DeleteAddressRequest, ResponseResult>
+    public class DeleteAddressRequestHandler : IRequestHandler<DeleteAddressRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -22,19 +22,19 @@ namespace Application.features.GeneralInformations.AddressFeatures.Handler.Comma
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(DeleteAddressRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(DeleteAddressRequest request, CancellationToken cancellationToken)
         {
             var address = await _unitofWork.AddressRepository.GetEntityAsync(request.Id);
             if (address is null)
-                return ResponseResult.SetResult(
+                return ResponseResultDTO.SetResult(
                     null,
                     StatusMessage.NotFound,
                     null
                     );
             var addressDTO = _mapper.Map<AddressDTO>(address);
-            _unitofWork.AddressRepository.DeleteEntityAsync(address);
+            _unitofWork.AddressRepository.DeleteEntity(address);
             await _unitofWork.SaveChangesAsync();
-            return ResponseResult.SetResult(
+            return ResponseResultDTO.SetResult(
                 addressDTO,
                 StatusMessage.Success,
                 null

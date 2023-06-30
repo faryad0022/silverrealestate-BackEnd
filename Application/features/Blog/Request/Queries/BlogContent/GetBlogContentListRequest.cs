@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.features.Blog.Request.Queries.BlogContent
 {
-    public class GetBlogContentListRequest : IRequest<ResponseResult>
+    public class GetBlogContentListRequest : IRequest<ResponseResultDTO>
     {
     }
 }

@@ -30,14 +30,14 @@ namespace BackEnd_UnitTest.Mocks
                 return spectacularLocationImage;
             });
             //Delete
-            _mock.Setup(r => r.DeleteEntityAsync(It.IsAny<SpectacularLocationImages>())).Callback(() =>
+            _mock.Setup(r => r.DeleteEntity(It.IsAny<SpectacularLocationImages>())).Callback(() =>
             {
                 spectacularLocationImageList.Remove(It.IsAny<SpectacularLocationImages>());
             });
             //Update
-            _mock.Setup(r => r.UpdateEntityAsync(It.IsAny<SpectacularLocationImages>())).Callback(() => { return; });
+            _mock.Setup(r => r.UpdateEntity(It.IsAny<SpectacularLocationImages>())).Callback(() => { return; });
             //Change
-            _mock.Setup(r => r.ChangeSelectedStatusAsync(It.IsAny<SpectacularLocationImages>())).Callback((SpectacularLocationImages spectacularlocation) =>
+            _mock.Setup(r => r.ChangeSelectedStatus(It.IsAny<SpectacularLocationImages>())).Callback((SpectacularLocationImages spectacularlocation) =>
             {
                 spectacularlocation.IsSelected = !spectacularlocation.IsSelected;
                 spectacularlocation.LastUpdateDate = DateTime.Now;

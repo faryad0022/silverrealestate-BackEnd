@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Commands
 {
-    public class UpdateTeamMemberRequestHandler : IRequestHandler<UpdateTeamMemberRequest, ResponseResult>
+    public class UpdateTeamMemberRequestHandler : IRequestHandler<UpdateTeamMemberRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -24,11 +24,11 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Co
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(UpdateTeamMemberRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(UpdateTeamMemberRequest request, CancellationToken cancellationToken)
         {
             var teamMember = await _unitofWork.TeamMemberRepository.GetEntityAsync(request.updateTeamMemberDTO.Id);
             if (teamMember is null)
-                return ResponseResult.SetResult(
+                return ResponseResultDTO.SetResult(
                     null,
                     StatusMessage.NotFound,
                     null
@@ -38,7 +38,7 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Co
             {
                 var createdImageName = ImageUploaderExtensions.UploadImage(request.updateTeamMemberDTO.MemberPicture, PathTools.TeamServernPath, teamMember.MemberPicture);
                 if (string.IsNullOrEmpty(createdImageName))
-                    return ResponseResult.SetResult(null, StatusMessage.UploadError, null);
+                    return ResponseResultDTO.SetResult(null, StatusMessage.UploadError, null);
                 request.updateTeamMemberDTO.MemberPicture = createdImageName;
             }
             else
@@ -53,14 +53,14 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Co
             var validatorResult = await validator.ValidateAsync(request.updateTeamMemberDTO);
             if (!validatorResult.IsValid)
             {
-                return ResponseResult.SetResult(null,StatusMessage.ValidationError,validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
+                return ResponseResultDTO.SetResult(null,StatusMessage.ValidationError,validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
             }
             #endregion
       
             var toUpdate = _mapper.Map<TeamMember>(request.updateTeamMemberDTO);
-            _unitofWork.TeamMemberRepository.UpdateEntityAsync(toUpdate);
+            _unitofWork.TeamMemberRepository.UpdateEntity(toUpdate);
             await _unitofWork.SaveChangesAsync();
-            return ResponseResult.SetResult(
+            return ResponseResultDTO.SetResult(
                                 _mapper.Map<TeamMemberDTO>(request.updateTeamMemberDTO),
                                 StatusMessage.Success,
                                 null);

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.SpectacularLocationImageFeatures.Handler.Commands
 {
-    public class UpdateSpectacularLocationImageRequestHandler : IRequestHandler<UpdateSpectacularLocationImageRequest, ResponseResult>
+    public class UpdateSpectacularLocationImageRequestHandler : IRequestHandler<UpdateSpectacularLocationImageRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -22,11 +22,11 @@ namespace Application.features.GeneralInformations.SpectacularLocationImageFeatu
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(UpdateSpectacularLocationImageRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(UpdateSpectacularLocationImageRequest request, CancellationToken cancellationToken)
         {
             var spectaculraImage = await _unitofWork.SpectacularLocationImageRepository.GetEntityAsync(request.updateSpectacularLocationImagesDTO.Id);
             if (spectaculraImage is null)
-                return ResponseResult.SetResult(
+                return ResponseResultDTO.SetResult(
                     null,
                     StatusMessage.NotFound,
                     null
@@ -35,7 +35,7 @@ namespace Application.features.GeneralInformations.SpectacularLocationImageFeatu
             var validator = new UpdateSpectacularLocationImagesDTOValidator();
             var validatorResult = await validator.ValidateAsync(request.updateSpectacularLocationImagesDTO);
             if (!validatorResult.IsValid)
-                return ResponseResult.SetResult(
+                return ResponseResultDTO.SetResult(
                     _mapper.Map<SpectacularLocationImagesDTO>(request.updateSpectacularLocationImagesDTO),
                     StatusMessage.ValidationError,
                     validatorResult.Errors.Select(q => q.ErrorMessage).ToList()
@@ -43,10 +43,10 @@ namespace Application.features.GeneralInformations.SpectacularLocationImageFeatu
             #endregion
 
             var toUpdate = _mapper.Map<SpectacularLocationImages>(request.updateSpectacularLocationImagesDTO);
-            _unitofWork.SpectacularLocationImageRepository.UpdateEntityAsync(toUpdate);
+            _unitofWork.SpectacularLocationImageRepository.UpdateEntity(toUpdate);
             await _unitofWork.SaveChangesAsync();
 
-            return ResponseResult.SetResult(
+            return ResponseResultDTO.SetResult(
                 _mapper.Map<SpectacularLocationImagesDTO>(request.updateSpectacularLocationImagesDTO),
                 StatusMessage.Success,
                 null

@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.features.GeneralInformations.CommonQuestionFeatures.Request.Command
 {
-    public class UpdateCommonQuestionRequest : IRequest<ResponseResult>
+    public class UpdateCommonQuestionRequest : IRequest<ResponseResultDTO>
     {
         public UpdateCommonQuestionDTO updateCommonQuestionDTO { get; set; }
     }

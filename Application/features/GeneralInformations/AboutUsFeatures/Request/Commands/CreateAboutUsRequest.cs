@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.features.GeneralInformations.AboutUsFeatures.Request.Commands
 {
-    public class CreateAboutUsRequest : IRequest<ResponseResult>
+    public class CreateAboutUsRequest : IRequest<ResponseResultDTO>
     {
         public CreateAboutUsDTO createAboutUsDTO { get; set; }
     }

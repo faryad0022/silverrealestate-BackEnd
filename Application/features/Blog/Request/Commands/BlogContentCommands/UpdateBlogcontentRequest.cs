@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.features.Blog.Request.Commands.BlogContentCommands
 {
-    public class UpdateBlogcontentRequest : IRequest<ResponseResult>
+    public class UpdateBlogcontentRequest : IRequest<ResponseResultDTO>
     {
         public long Id { get; set; }
         public ChangeBlogContentIsSelectedDTO changeBlogContentIsSelected { get; set; }

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.LogoFeatures.Handler.Queries
 {
-    public class GetLogoListRequestHandler : IRequestHandler<GetLogoListRequest, ResponseResult>
+    public class GetLogoListRequestHandler : IRequestHandler<GetLogoListRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -21,19 +21,19 @@ namespace Application.features.GeneralInformations.LogoFeatures.Handler.Queries
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(GetLogoListRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(GetLogoListRequest request, CancellationToken cancellationToken)
         {
             var logoList = await _unitofWork.LogoRepository.GetAllAsync();
             if (logoList is null || logoList.Count == 0)
-                return ResponseResult.SetResult(null, StatusMessage.NoContent, null);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NoContent, null);
             if (request.justShowSelected)
             {
                 var selectedLogo = logoList.Where(x => x.IsSelected).ToList();
                 var SelectedLogoDTo = _mapper.Map<List<LogoDTO>>(selectedLogo);
-                return ResponseResult.SetResult(SelectedLogoDTo, StatusMessage.Success, null);
+                return ResponseResultDTO.SetResult(SelectedLogoDTo, StatusMessage.Success, null);
             }
             var logoListDTO = _mapper.Map<List<LogoDTO>>(logoList);
-            return ResponseResult.SetResult(logoListDTO, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(logoListDTO, StatusMessage.Success, null);
         }
     }
 }

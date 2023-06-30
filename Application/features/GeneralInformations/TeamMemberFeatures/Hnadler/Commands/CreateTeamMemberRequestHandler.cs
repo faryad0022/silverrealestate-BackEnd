@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Commands
 {
-    public class CreateTeamMemberRequestHandler : IRequestHandler<CreateTeamMemberRequest, ResponseResult>
+    public class CreateTeamMemberRequestHandler : IRequestHandler<CreateTeamMemberRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -24,7 +24,7 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Co
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(CreateTeamMemberRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(CreateTeamMemberRequest request, CancellationToken cancellationToken)
         {
             var toCreate = _mapper.Map<TeamMember>(request.createTeamMmeberDTO);
             #region Validator
@@ -32,7 +32,7 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Co
             var validatorResult = await validator.ValidateAsync(request.createTeamMmeberDTO);
             if (!validatorResult.IsValid)
             {
-                return ResponseResult.SetResult(
+                return ResponseResultDTO.SetResult(
                     null,
                     StatusMessage.ValidationError,
                     validatorResult.Errors.Select(q => q.ErrorMessage).ToList()
@@ -45,7 +45,7 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Co
                 PathTools.TeamServernPath
                 );
             if (string.IsNullOrEmpty(createdImageName))
-                return ResponseResult.SetResult(
+                return ResponseResultDTO.SetResult(
                     null,
                     StatusMessage.UploadError,
                     null
@@ -54,7 +54,7 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Co
             toCreate.MemberPicture = createdImageName;
             var created = await _unitofWork.TeamMemberRepository.AddEntityAsync(toCreate);
             await _unitofWork.SaveChangesAsync();
-            return ResponseResult.SetResult(
+            return ResponseResultDTO.SetResult(
                 _mapper.Map<TeamMemberDTO>(created),
                 StatusMessage.Success,
                 null

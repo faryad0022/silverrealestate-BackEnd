@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.features.GeneralInformations.LogoFeatures.Request.Commands
 {
-    public class CreateLogoRequest : IRequest<ResponseResult>
+    public class CreateLogoRequest : IRequest<ResponseResultDTO>
     {
         public CreateLogoDTO createLogoDTO { get; set; }
     }

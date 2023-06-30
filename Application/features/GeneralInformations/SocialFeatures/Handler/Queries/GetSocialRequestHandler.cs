@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.SocialFeatures.Handler.Queries
 {
-    public class GetSocialRequestHandler : IRequestHandler<GetSocialRequest, ResponseResult>
+    public class GetSocialRequestHandler : IRequestHandler<GetSocialRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -20,15 +20,15 @@ namespace Application.features.GeneralInformations.SocialFeatures.Handler.Querie
             _unitofWork = unitofWork;
         }
 
-        public async Task<ResponseResult> Handle(GetSocialRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(GetSocialRequest request, CancellationToken cancellationToken)
         {
             if (request.Id < 0)
-                return ResponseResult.SetResult(null, StatusMessage.ValidationError, null);
+                return ResponseResultDTO.SetResult(null, StatusMessage.ValidationError, null);
 
             var social = await _unitofWork.SocialRepository.GetEntityAsync(request.Id);
             if (social is null)
-                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
-            return ResponseResult.SetResult(_mapper.Map<SocialDTO>(social), StatusMessage.Success, null);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NotFound, null);
+            return ResponseResultDTO.SetResult(_mapper.Map<SocialDTO>(social), StatusMessage.Success, null);
         }
     }
 

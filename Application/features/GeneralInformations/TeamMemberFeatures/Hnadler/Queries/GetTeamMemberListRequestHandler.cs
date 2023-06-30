@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Queries
 {
-    public class GetTeamMemberListRequestHandler : IRequestHandler<GetTeamMemberListRequest, ResponseResult>
+    public class GetTeamMemberListRequestHandler : IRequestHandler<GetTeamMemberListRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -21,16 +21,16 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Qu
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(GetTeamMemberListRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(GetTeamMemberListRequest request, CancellationToken cancellationToken)
         {
             var teamMemberList = await _unitofWork.TeamMemberRepository.GetAllAsync();
             if (request.justSelected)
                 teamMemberList = teamMemberList.Where(s => s.IsSelected).ToList();
            
             if (teamMemberList is null || teamMemberList.Count < 1)
-                return ResponseResult.SetResult(null, StatusMessage.NoContent, null);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NoContent, null);
 
-            return ResponseResult.SetResult(
+            return ResponseResultDTO.SetResult(
                     _mapper.Map<List<TeamMemberDTO>>(teamMemberList),
                     StatusMessage.Success,
                     null

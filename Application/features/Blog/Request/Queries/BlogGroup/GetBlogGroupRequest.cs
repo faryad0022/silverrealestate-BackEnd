@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.features.Blog.Request.Queries.BlogGroup
 {
-    public class GetBlogGroupRequest : IRequest<ResponseResult>
+    public class GetBlogGroupRequest : IRequest<ResponseResultDTO>
     {
         public long blogGroupId { get; set; }
     }

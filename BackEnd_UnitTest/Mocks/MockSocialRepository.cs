@@ -38,18 +38,18 @@ namespace BackEnd_UnitTest.Mocks
                 return social;
             });
 
-            mockRepo.Setup(r => r.UpdateEntityAsync(It.IsAny<Social>())).Callback(() => { return; });
+            mockRepo.Setup(r => r.UpdateEntity(It.IsAny<Social>())).Callback(() => { return; });
 
 
             //Delete
-            mockRepo.Setup(r => r.DeleteEntityAsync(It.IsAny<Social>())).Callback(() =>
+            mockRepo.Setup(r => r.DeleteEntity(It.IsAny<Social>())).Callback(() =>
             {
                 SocialModelGenerator.socialList.Remove(It.IsAny<Social>());
             });
 
 
             //Update
-            mockRepo.Setup(r => r.UpdateEntityAsync(It.IsAny<Social>())).Callback(() => { return; });
+            mockRepo.Setup(r => r.UpdateEntity(It.IsAny<Social>())).Callback(() => { return; });
             return mockRepo;
         }
     }

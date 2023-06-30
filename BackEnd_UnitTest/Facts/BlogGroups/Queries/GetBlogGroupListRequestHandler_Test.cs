@@ -33,7 +33,7 @@ namespace BackEnd_UnitTest.Facts.BlogGroups.Queries
             var handler = new GetBlogGroupListRequestHandler(_mapper, _mockRepo.Object);
             var result = await handler.Handle(new GetBlogGroupListRequest(), CancellationToken.None);
 
-            result.ShouldBeOfType<ResponseResult>();
+            result.ShouldBeOfType<ResponseResultDTO>();
             result.Status.ShouldBe(StatusMessage.Success);
 
         }

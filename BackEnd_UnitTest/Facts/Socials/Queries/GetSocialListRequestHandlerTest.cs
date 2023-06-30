@@ -36,7 +36,7 @@ namespace BackEnd_UnitTest.Facts.Socials.Queries
             var result = await handler.Handle(new GetSocialListRequest(), CancellationToken.None);
 
 
-            result.ShouldBeOfType<ResponseResult>();
+            result.ShouldBeOfType<ResponseResultDTO>();
             result.Status.ShouldBe(StatusMessage.Success);
 
         }
@@ -47,7 +47,7 @@ namespace BackEnd_UnitTest.Facts.Socials.Queries
             var result = await handler.Handle(new GetSocialListRequest() { justShowSelected = true }, CancellationToken.None);
 
 
-            result.ShouldBeOfType<ResponseResult>();
+            result.ShouldBeOfType<ResponseResultDTO>();
             result.Status.ShouldBe(StatusMessage.Success);
 
         }

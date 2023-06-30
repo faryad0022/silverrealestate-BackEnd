@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.CommonQuestionFeatures.Handler.Queries
 {
-    public class GetCommonQuestionRequestHandler : IRequestHandler<GetCommonQuestionRequest, ResponseResult>
+    public class GetCommonQuestionRequestHandler : IRequestHandler<GetCommonQuestionRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -19,13 +19,13 @@ namespace Application.features.GeneralInformations.CommonQuestionFeatures.Handle
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(GetCommonQuestionRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(GetCommonQuestionRequest request, CancellationToken cancellationToken)
         {
             var commonQuestion = await _unitofWork.CommonQuestionRepository.GetEntityAsync(request.Id);
             if (commonQuestion is null)
-                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NotFound, null);
             var commonQuestionDTO = _mapper.Map<CommonQuestionDTO>(commonQuestion);
-            return ResponseResult.SetResult(commonQuestionDTO, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(commonQuestionDTO, StatusMessage.Success, null);
 
         }
     }

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.AddressFeatures.Handler.Commands
 {
-    public class CreateAddressRequestHandler : IRequestHandler<CreateAddressRequest, ResponseResult>
+    public class CreateAddressRequestHandler : IRequestHandler<CreateAddressRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -22,14 +22,14 @@ namespace Application.features.GeneralInformations.AddressFeatures.Handler.Comma
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(CreateAddressRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(CreateAddressRequest request, CancellationToken cancellationToken)
         {
             var toAddressDTO = _mapper.Map<AddressDTO>(request.createAddressDTO);
             #region Validation
             var validator = new CreateAddressValidator();
             var validationResult = await validator.ValidateAsync(request.createAddressDTO);
             if (!validationResult.IsValid)
-                return ResponseResult.SetResult(
+                return ResponseResultDTO.SetResult(
                                 toAddressDTO,
                                 StatusMessage.ValidationError,
                                 validationResult.Errors.Select(q => q.ErrorMessage).ToList());
@@ -37,7 +37,7 @@ namespace Application.features.GeneralInformations.AddressFeatures.Handler.Comma
             var address = _mapper.Map<Address>(request.createAddressDTO);
             await _unitofWork.AddressRepository.AddEntityAsync(address);
             await _unitofWork.SaveChangesAsync();
-            return ResponseResult.SetResult(toAddressDTO, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(toAddressDTO, StatusMessage.Success, null);
         }
     }
 }

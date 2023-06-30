@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.RealEstateServicesFeatures.Handler.Commands
 {
-    public class ChangeRealEstateServiceSelectedStatusRequestHandler : IRequestHandler<ChangeRealEstateServiceSelectedStatusRequest, ResponseResult>
+    public class ChangeRealEstateServiceSelectedStatusRequestHandler : IRequestHandler<ChangeRealEstateServiceSelectedStatusRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -19,16 +19,16 @@ namespace Application.features.GeneralInformations.RealEstateServicesFeatures.Ha
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(ChangeRealEstateServiceSelectedStatusRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(ChangeRealEstateServiceSelectedStatusRequest request, CancellationToken cancellationToken)
         {
             var realEstateService = await _unitofWork.RealEstateServicesRepository.GetEntityAsync(request.Id);
             if (realEstateService is null)
-                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NotFound, null);
 
-            _unitofWork.RealEstateServicesRepository.ChangeSelectedStatusAsync(realEstateService);
+            _unitofWork.RealEstateServicesRepository.ChangeSelectedStatus(realEstateService);
             await _unitofWork.SaveChangesAsync();
             var realEstateServiceDTO = _mapper.Map<RealEstateServicesDTO>(realEstateService);
-            return ResponseResult.SetResult(realEstateServiceDTO, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(realEstateServiceDTO, StatusMessage.Success, null);
         }
     }
 }

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.RealEstateServicesFeatures.Handler.Commands
 {
-    public class UpdateRealEstateServicesRequestHandler : IRequestHandler<UpdateRealEstateServicesRequest, ResponseResult>
+    public class UpdateRealEstateServicesRequestHandler : IRequestHandler<UpdateRealEstateServicesRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -22,24 +22,24 @@ namespace Application.features.GeneralInformations.RealEstateServicesFeatures.Ha
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(UpdateRealEstateServicesRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(UpdateRealEstateServicesRequest request, CancellationToken cancellationToken)
         {
             var realEstateService = await _unitofWork.RealEstateServicesRepository.GetEntityAsync(request.updateRealEstateServicesDTO.Id);
             if (realEstateService is null)
-                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NotFound, null);
             #region Validation
             var validator = new UpdateRealEstateServicesDTOValidator();
             var validatorResult = await validator.ValidateAsync(request.updateRealEstateServicesDTO);
             if (!validatorResult.IsValid)
-                return ResponseResult.SetResult(
+                return ResponseResultDTO.SetResult(
                     null,
                     StatusMessage.ValidationError,
                     validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
             #endregion
             var toUpdate = _mapper.Map<RealEstateServices>(request.updateRealEstateServicesDTO);
-            _unitofWork.RealEstateServicesRepository.UpdateEntityAsync(toUpdate);
+            _unitofWork.RealEstateServicesRepository.UpdateEntity(toUpdate);
             await _unitofWork.SaveChangesAsync();
-            return ResponseResult.SetResult(request.updateRealEstateServicesDTO, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(request.updateRealEstateServicesDTO, StatusMessage.Success, null);
 
         }
     }

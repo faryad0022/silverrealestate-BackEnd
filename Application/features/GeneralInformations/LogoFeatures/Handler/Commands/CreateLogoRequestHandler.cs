@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.LogoFeatures.Handler.Commands
 {
-    public class CreateLogoRequestHandler : IRequestHandler<CreateLogoRequest, ResponseResult>
+    public class CreateLogoRequestHandler : IRequestHandler<CreateLogoRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -22,13 +22,13 @@ namespace Application.features.GeneralInformations.LogoFeatures.Handler.Commands
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(CreateLogoRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(CreateLogoRequest request, CancellationToken cancellationToken)
         {
             #region Validation
             var validator = new CreateLogoValidator();
             var validatorResult = await validator.ValidateAsync(request.createLogoDTO);
             if (!validatorResult.IsValid)
-                return ResponseResult.SetResult(
+                return ResponseResultDTO.SetResult(
                     null,
                     StatusMessage.ValidationError,
                     validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
@@ -36,7 +36,7 @@ namespace Application.features.GeneralInformations.LogoFeatures.Handler.Commands
             var logo = _mapper.Map<Logo>(request.createLogoDTO);
             await _unitofWork.LogoRepository.AddEntityAsync(logo);
             await _unitofWork.SaveChangesAsync();
-            return ResponseResult.SetResult(request.createLogoDTO, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(request.createLogoDTO, StatusMessage.Success, null);
         }
     }
 }

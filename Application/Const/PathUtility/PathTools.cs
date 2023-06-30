@@ -8,6 +8,7 @@ namespace Application.Const.PathUtility
         public static string ConstructorServerPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/constructor/");
         public static string SpectacularServerPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/spectacular/");
         public static string TeamServernPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/team/");
+        public static string BannerServernPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/banner/");
 
     }
 }

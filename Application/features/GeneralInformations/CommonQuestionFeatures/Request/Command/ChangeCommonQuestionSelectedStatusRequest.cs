@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.features.GeneralInformations.CommonQuestionFeatures.Request.Command
 {
-    public class ChangeCommonQuestionSelectedStatusRequest : IRequest<ResponseResult>
+    public class ChangeCommonQuestionSelectedStatusRequest : IRequest<ResponseResultDTO>
     {
         public long Id { get; set; }
     }

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.AboutUsFeatures.Handler.Queries
 {
-    public class GetAboutUsListRequestHandler : IRequestHandler<GetAboutUsListRequest, ResponseResult>
+    public class GetAboutUsListRequestHandler : IRequestHandler<GetAboutUsListRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -21,19 +21,19 @@ namespace Application.features.GeneralInformations.AboutUsFeatures.Handler.Queri
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(GetAboutUsListRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(GetAboutUsListRequest request, CancellationToken cancellationToken)
         {
             var aboutus = await _unitofWork.AboutUsRepository.GetAllAsync();
             if (aboutus is null || aboutus.Count == 0)
-                return ResponseResult.SetResult(null, StatusMessage.NoContent, null);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NoContent, null);
             if (request.justShowSelected)
             {
                 var selectedAboutus = aboutus.Where(x => x.IsSelected).ToList();
                 var SelectedAboutusDTo = _mapper.Map<List<AboutUsDTO>>(selectedAboutus);
-                return ResponseResult.SetResult(SelectedAboutusDTo, StatusMessage.Success, null);
+                return ResponseResultDTO.SetResult(SelectedAboutusDTo, StatusMessage.Success, null);
             }
             var aboutUsDTO = _mapper.Map<List<AboutUsDTO>>(aboutus);
-            return ResponseResult.SetResult(
+            return ResponseResultDTO.SetResult(
                 aboutUsDTO,
                 StatusMessage.Success,
                 null

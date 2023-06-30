@@ -21,19 +21,19 @@ namespace BackEnd_API.Controllers.AdminControllers
         }
 
         [HttpGet(ApiRouteV1.Logo_GetAll,Name = "GetAllLogo")]
-        public async Task<ActionResult<ResponseResult>> GetAllLogo()
+        public async Task<ActionResult<ResponseResultDTO>> GetAllLogo()
             => await _mediator.Send(new GetLogoListRequest());
 
         [HttpGet(ApiRouteV1.Logo_Get, Name = "GetLogo")]
-        public async Task<ActionResult<ResponseResult>> GetLogo([FromQuery] long Id)
+        public async Task<ActionResult<ResponseResultDTO>> GetLogo([FromQuery] long Id)
             => await _mediator.Send(new GetLogoRequest() { Id = Id });
 
         [HttpPost(ApiRouteV1.Logo_Add, Name = "AddLogo")]
-        public async Task<ActionResult<ResponseResult>> AddLogo([FromBody] CreateLogoDTO logoDTO)
+        public async Task<ActionResult<ResponseResultDTO>> AddLogo([FromBody] CreateLogoDTO logoDTO)
             => await _mediator.Send(new CreateLogoRequest() { createLogoDTO = logoDTO });
 
         [HttpPut(ApiRouteV1.Logo_ChangeStatus, Name = "ChangeLogoStatus")]
-        public async Task<ActionResult<ResponseResult>> ChangeLogoStatus([FromQuery] long Id)
+        public async Task<ActionResult<ResponseResultDTO>> ChangeLogoStatus([FromQuery] long Id)
             => await _mediator.Send(new ChangeLogoSelectStatusRequest() { Id = Id });
 
     }

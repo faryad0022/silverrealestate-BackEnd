@@ -20,11 +20,11 @@ namespace BackEnd_API.Controllers.SiteControllers
             _mediator = mediator;
         }
         [HttpGet(ApiRouteV1.Address_GetAll,Name ="GetAllAddressAsync")]
-        public async Task<ActionResult<ResponseResult>> GetAll()
+        public async Task<ActionResult<ResponseResultDTO>> GetAll()
             => await _mediator.Send(new GetAddressListRequest() { justShowSelected = true });
 
         [HttpGet(ApiRouteV1.Address_Get,Name ="GetAddressAsync")]
-        public async Task<ActionResult<ResponseResult>> GetById()
+        public async Task<ActionResult<ResponseResultDTO>> GetById()
             => await _mediator.Send(new GetAddressRequest());
 
     }

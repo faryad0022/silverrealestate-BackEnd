@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.BannerFeatures.Handler.Commands
 {
-    public class DeleteBannerRequestHandler : IRequestHandler<DeleteBannerRequest, ResponseResult>
+    public class DeleteBannerRequestHandler : IRequestHandler<DeleteBannerRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -19,15 +19,15 @@ namespace Application.features.GeneralInformations.BannerFeatures.Handler.Comman
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(DeleteBannerRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(DeleteBannerRequest request, CancellationToken cancellationToken)
         {
             var banner = await _unitofWork.BannerRepository.GetEntityAsync(request.Id);
             if (banner is null)
-                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NotFound, null);
             var bannerDTO = _mapper.Map<BannerDTO>(banner);
-            _unitofWork.BannerRepository.DeleteEntityAsync(banner);
+            _unitofWork.BannerRepository.DeleteEntity(banner);
             await _unitofWork.SaveChangesAsync();
-            return ResponseResult.SetResult(bannerDTO, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(bannerDTO, StatusMessage.Success, null);
         }
     }
 }

@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.features.GeneralInformations.SocialFeatures.Request.Commands
 {
-    public class DeleteSocialRequest : IRequest<ResponseResult>
+    public class DeleteSocialRequest : IRequest<ResponseResultDTO>
     {
         public long Id { get; set; }
     }

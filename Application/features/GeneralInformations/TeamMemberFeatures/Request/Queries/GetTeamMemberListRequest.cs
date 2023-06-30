@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Application.features.GeneralInformations.TeamMemberFeatures.Request.Queries
 {
-    public class GetTeamMemberListRequest : IRequest<ResponseResult>
+    public class GetTeamMemberListRequest : IRequest<ResponseResultDTO>
     {
         public bool justSelected { get; set; }
     }

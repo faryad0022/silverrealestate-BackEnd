@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.BannerFeatures.Handler.Queries
 {
-    public class GetBannerListRequestHandler : IRequestHandler<GetBannerListRequest, ResponseResult>
+    public class GetBannerListRequestHandler : IRequestHandler<GetBannerListRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -21,17 +21,17 @@ namespace Application.features.GeneralInformations.BannerFeatures.Handler.Querie
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(GetBannerListRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(GetBannerListRequest request, CancellationToken cancellationToken)
         {
             var bannerList = await _unitofWork.BannerRepository.GetAllAsync();
             if (request.justShowSelected)
                 bannerList = bannerList.Where(x => x.IsSelected).ToList();
 
             if (bannerList is null || bannerList.Count == 0)
-                return ResponseResult.SetResult(null, StatusMessage.NoContent, null);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NoContent, null);
             var bannerListDTO = _mapper.Map<List<BannerDTO>>(bannerList.OrderByDescending(date => date.LastUpdateDate));
 
-            return ResponseResult.SetResult(bannerListDTO, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(bannerListDTO, StatusMessage.Success, null);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace BackEnd_UnitTest.Mocks
                     bannerList.Add(banner);
                     return banner;
                 });
-            _mock.Setup(m => m.UpdateEntityAsync(It.IsAny<Banner>())).Callback(() => { return; });
+            _mock.Setup(m => m.UpdateEntity(It.IsAny<Banner>())).Callback(() => { return; });
             return _mock;
         }
     }

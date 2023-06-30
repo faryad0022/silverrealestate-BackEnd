@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.SpectacularLocationImageFeatures.Handler.Queries
 {
-    public class GetSpectacularLocationImagesWithDetailsRequestHandler : IRequestHandler<GetSpectacularLocationImagesWithDetailsRequest, ResponseResult>
+    public class GetSpectacularLocationImagesWithDetailsRequestHandler : IRequestHandler<GetSpectacularLocationImagesWithDetailsRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -19,12 +19,12 @@ namespace Application.features.GeneralInformations.SpectacularLocationImageFeatu
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(GetSpectacularLocationImagesWithDetailsRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(GetSpectacularLocationImagesWithDetailsRequest request, CancellationToken cancellationToken)
         {
             var spectacularImage = await _unitofWork.SpectacularLocationImageRepository.GetSpectacularLocationImagesWithDetails(request.Id);
             if (spectacularImage is null)
-                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
-            return ResponseResult.SetResult(
+                return ResponseResultDTO.SetResult(null, StatusMessage.NotFound, null);
+            return ResponseResultDTO.SetResult(
                 _mapper.Map<SpectacularLocationImagesDTO>(spectacularImage),
                 StatusMessage.Success,
                 null

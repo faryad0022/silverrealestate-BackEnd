@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.LogoFeatures.Handler.Commands
 {
-    public class ChangeLogoSelectStatusRequestHandler : IRequestHandler<ChangeLogoSelectStatusRequest, ResponseResult>
+    public class ChangeLogoSelectStatusRequestHandler : IRequestHandler<ChangeLogoSelectStatusRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -19,15 +19,15 @@ namespace Application.features.GeneralInformations.LogoFeatures.Handler.Commands
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(ChangeLogoSelectStatusRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(ChangeLogoSelectStatusRequest request, CancellationToken cancellationToken)
         {
             var logo = await _unitofWork.LogoRepository.GetEntityAsync(request.Id);
             if (logo is null)
-                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
-            _unitofWork.LogoRepository.ChangeSelectedStatusAsync(logo);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NotFound, null);
+            _unitofWork.LogoRepository.ChangeSelectedStatus(logo);
             await _unitofWork.SaveChangesAsync();
             var logoDTO = _mapper.Map<LogoDTO>(logo);
-            return ResponseResult.SetResult(logoDTO, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(logoDTO, StatusMessage.Success, null);
         }
     }
 }

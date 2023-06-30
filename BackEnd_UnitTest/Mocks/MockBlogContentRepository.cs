@@ -1,5 +1,6 @@
 ﻿using Application.Contract.Persistance.EntitiesRepository.Blog;
 using Application.DTOs.Blog.BlogContent;
+using Application.DTOs.Paging;
 using Application.Models.FilterModels;
 using BackEnd_UnitTest.Mocks.Models.BlogContents;
 using Domain.Entities.Blog;
@@ -37,55 +38,35 @@ namespace BackEnd_UnitTest.Mocks
                 .Returns(() => BlogContentModelGenerator.blogContentList.AsQueryable());
 
             _mock.Setup(m => m.FilterBlogContent(It.IsAny<FilterBlogContent>()))
-                .ReturnsAsync((FilterBlogContentDTO filter) =>
+                .ReturnsAsync((FilterBlogContent filter) =>
             {
                 var blogContentList = new List<BlogContent>();
-                var result = new FilterBlogContent()
-                {
-                    BlogGroupId = filter.BlogGroupId,
-                    BlogGroupName = filter.BlogGroupName,
-                    IsSelected = filter.IsSelected,
-                    Title = filter.Title,
-                    ViewCount = filter.ViewCount
-                };
 
-                if (filter.BlogContentList is null || filter.BlogContentList.Count < 1)
-                {
-                    result.BlogContentList = BlogContentModelGenerator.blogContentList;
-                }
-                else
-                {
-                    result.BlogContentList = BlogContentModelGenerator.MappingBlogContent(BlogContentModelGenerator.blogContentListDTO);
-                }
                 if (!string.IsNullOrEmpty(filter.Title))
                 {
-                    result.BlogContentList = result.BlogContentList
-                                               .Where(x => x.Title.Contains(filter.Title))
-                                               .AsQueryable()
-                                               .ToList();
+                    blogContentList = blogContentList.Where(x => x.Title.Contains(filter.Title)).ToList();
+
                 }
                 if (filter.BlogGroupId > 0)
                 {
-                    result.BlogContentList = result.BlogContentList
-                                               .Where(x => x.BlogGroupId == filter.BlogGroupId)
-                                               .AsQueryable()
-                                               .ToList();
+                    blogContentList = blogContentList.Where(x => x.BlogGroupId == filter.BlogGroupId).ToList();
                 }
                 if (!string.IsNullOrEmpty(filter.BlogGroupName))
                 {
-                    result.BlogContentList = result.BlogContentList
-                                               .Where(x => x.BlogGroupName == filter.BlogGroupName)
-                                               .AsQueryable()
-                                               .ToList();
+                    blogContentList = blogContentList.Where(x => x.blogGroup.Name.Contains(filter.BlogGroupName)).ToList();
                 }
                 if (filter.ViewCount > 0)
                 {
-                    result.BlogContentList = result.BlogContentList
-                                               .Where(x => x.ViewCount == filter.ViewCount)
-                                               .AsQueryable()
-                                               .ToList();
+                    blogContentList = blogContentList.Where(x => x.ViewCount == filter.ViewCount).ToList();
                 }
-                return result;
+                blogContentList = blogContentList.Where(x => x.IsDelete == filter.IsDelete).ToList();
+                blogContentList = blogContentList.Where(x => x.IsSelected == filter.IsSelected).ToList();
+
+                //var count = (int)Math.Ceiling(blogContentList.Count() / (double)filter.TakeEntity);
+                //var pager = Pager.Build(count, filter.PageId, filter.TakeEntity);
+                //var bloContents = await blogContentList.Paging(pager).ToListAsync();
+                //return filter.SetPaging(pager).SetBlogContents(bloContents);
+                return filter;
             });
 
             _mock.Setup(m => m.AddEntityAsync(It.IsAny<BlogContent>()))

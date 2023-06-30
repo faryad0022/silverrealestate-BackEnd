@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Application.features.Blog.Request.Commands.BlogContentCommands
 {
-    public class CreateBlogContentRequest : IRequest<ResponseResult>
+    public class CreateBlogContentRequest : IRequest<ResponseResultDTO>
     {
         public CreateBlogContentDTO createBlogContentDTO { get; set; }
     }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.AddressFeatures.Handler.Commands
 {
-    public class ChangeAddressDTOStatusRequestHandler : IRequestHandler<ChangeAddressDTOStatusRequest, ResponseResult>
+    public class ChangeAddressDTOStatusRequestHandler : IRequestHandler<ChangeAddressDTOStatusRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -19,14 +19,14 @@ namespace Application.features.GeneralInformations.AddressFeatures.Handler.Comma
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(ChangeAddressDTOStatusRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(ChangeAddressDTOStatusRequest request, CancellationToken cancellationToken)
         {
             var address = await _unitofWork.AddressRepository.GetEntityAsync(request.Id);
             if (address is null)
-                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
-            _unitofWork.AddressRepository.ChangeSelectedStatusAsync(address);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NotFound, null);
+            _unitofWork.AddressRepository.ChangeSelectedStatus(address);
             await _unitofWork.SaveChangesAsync();
-            return ResponseResult.SetResult(_mapper.Map<AddressDTO>(address), StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(_mapper.Map<AddressDTO>(address), StatusMessage.Success, null);
         }
     }
 }

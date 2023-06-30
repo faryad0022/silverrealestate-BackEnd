@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.features.GeneralInformations.TeamMemberFeatures.Request.Commands
 {
-    public class ChangeTeamMemberSelectedStatusRequest : IRequest<ResponseResult>
+    public class ChangeTeamMemberSelectedStatusRequest : IRequest<ResponseResultDTO>
     {
         public long Id { get; set; }
     }

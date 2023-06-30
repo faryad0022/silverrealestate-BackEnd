@@ -21,7 +21,7 @@ namespace BackEnd_UnitTest.Mocks
                     RealEstateServicesModelGenerator.RealEstateServicesList.Add(realEstateService);
                     return realEstateService;
                 });
-            _mock.Setup(r => r.UpdateEntityAsync(It.IsAny<RealEstateServices>())).Callback(() => { return; });
+            _mock.Setup(r => r.UpdateEntity(It.IsAny<RealEstateServices>())).Callback(() => { return; });
 
             return _mock;
         }

@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Application.features.Blog.Request.Queries.BlogContent
 {
-    public class GetBlogContentByFilterRequest : IRequest<ResponseResult>
+    public class GetBlogContentByFilterRequest : IRequest<ResponseResultDTO>
     {
         public FilterBlogContentDTO filter { get; set; }
     }

@@ -19,7 +19,7 @@ namespace BackEnd_API.Controllers.SiteControllers
             _mediator = mediator;
         }
         [HttpGet(ApiRouteV1.Banner_GetAll, Name = "GetAllBannerAsync")]
-        public async Task<ActionResult<ResponseResult>> GetAll()
+        public async Task<ActionResult<ResponseResultDTO>> GetAll()
             => await _mediator.Send(new GetBannerListRequest() { justShowSelected = true });
 
     }

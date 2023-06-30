@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.SpectacularLocationFeatures.Handler.Queries
 {
-    public class GetSpectacularLocationRequestHandler : IRequestHandler<GetSpectacularLocationRequest, ResponseResult>
+    public class GetSpectacularLocationRequestHandler : IRequestHandler<GetSpectacularLocationRequest, ResponseResultDTO>
     {
         private readonly IUnitofWork _unitofWork;
         private readonly IMapper _mapper;
@@ -19,13 +19,13 @@ namespace Application.features.GeneralInformations.SpectacularLocationFeatures.H
             _unitofWork = unitofWork;
             _mapper = mapper;
         }
-        public async Task<ResponseResult> Handle(GetSpectacularLocationRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(GetSpectacularLocationRequest request, CancellationToken cancellationToken)
         {
             var spectacularLocation = await _unitofWork.SpectacularlocationRepository.GetEntityAsync(request.Id);
             if (spectacularLocation is null)
-                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NotFound, null);
             var spectacularLocationDTO = _mapper.Map<SpectacularLocationDTO>(spectacularLocation);
-            return ResponseResult.SetResult(spectacularLocationDTO, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(spectacularLocationDTO, StatusMessage.Success, null);
         }
     }
 }

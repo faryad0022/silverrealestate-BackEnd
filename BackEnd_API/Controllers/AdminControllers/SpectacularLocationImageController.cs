@@ -20,23 +20,23 @@ namespace BackEnd_API.Controllers.AdminControllers
             _mediator = mediator;
         }
         [HttpGet(ApiRouteV1.SpectacularLocationImage_GetAll_WithDetails,Name = "GetAllSpectacularLocationImageWithDetails")]
-        public async Task<ActionResult<ResponseResult>> GetAllSpectacularLocationImageWithDetails()
+        public async Task<ActionResult<ResponseResultDTO>> GetAllSpectacularLocationImageWithDetails()
             => await _mediator.Send(new GetSpectacularImagesListWithDetailsRequest());
 
         [HttpGet(ApiRouteV1.SpectacularLocationImage_Get_WithDetails, Name = "GetSpectacularLocationImageWithDetails")]
-        public async Task<ActionResult<ResponseResult>> GetSpectacularLocationImageWithDetails([FromQuery] long Id)
+        public async Task<ActionResult<ResponseResultDTO>> GetSpectacularLocationImageWithDetails([FromQuery] long Id)
             => await _mediator.Send(new GetSpectacularLocationImagesWithDetailsRequest() { Id = Id });
 
         [HttpPost(ApiRouteV1.SpectacularLocationImage_Add, Name = "AddSpectacularLocationImage")]
-        public async Task<ActionResult<ResponseResult>> AddSpectacularLocationImage([FromBody] CreateSpectacularLocationImagesDTO createSpectacularLocationImagesDTO)
+        public async Task<ActionResult<ResponseResultDTO>> AddSpectacularLocationImage([FromBody] CreateSpectacularLocationImagesDTO createSpectacularLocationImagesDTO)
             => await _mediator.Send(new CreateSpectacularLocationImageRequest() { createSpectacularLocationImagesDTO = createSpectacularLocationImagesDTO });
 
         [HttpPut(ApiRouteV1.SpectacularLocationImage_Update, Name = "UpdateSpectacularLocationImage")]
-        public async Task<ActionResult<ResponseResult>> UpdateSpectacularLocationImage([FromQuery] UpdateSpectacularLocationImagesDTO updateSpectacularLocationImagesDTO)
+        public async Task<ActionResult<ResponseResultDTO>> UpdateSpectacularLocationImage([FromQuery] UpdateSpectacularLocationImagesDTO updateSpectacularLocationImagesDTO)
             => await _mediator.Send(new UpdateSpectacularLocationImageRequest() { updateSpectacularLocationImagesDTO = updateSpectacularLocationImagesDTO });
 
         [HttpPut(ApiRouteV1.SpectacularLocationImage_ChangeStatus, Name = "ChangeSpectacularLocationImageStatus")]
-        public async Task<ActionResult<ResponseResult>> ChangeSpectacularLocationImageStatus([FromQuery] long Id)
+        public async Task<ActionResult<ResponseResultDTO>> ChangeSpectacularLocationImageStatus([FromQuery] long Id)
             => await _mediator.Send(new ChangeSpectacularLocationImageSelectedStatusRequest() { Id = Id });
     }
 }

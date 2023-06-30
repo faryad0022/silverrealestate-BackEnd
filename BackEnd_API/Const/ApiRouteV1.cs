@@ -28,6 +28,8 @@
         public const string Banner_Update = "v1/banner/update";
         public const string Banner_Delete = "v1/banner/delete";
         public const string Banner_ChangeStatus = "v1/banner/changestatus";
+        public const string Banner_UpdateLink = "v1/banner/update-link";
+        public const string Banner_UpdateDescription = "v1/banner/update-description";
         #endregion
 
         #region BlogContent
@@ -58,6 +60,8 @@
         public const string CommonQuestiom_Update = "v1/commonquestiom/update";
         public const string CommonQuestiom_Delete = "v1/commonquestiom/delete";
         public const string CommonQuestiom_ChangeStatus = "v1/commonquestiom/changestatus";
+
+
         #endregion
 
         #region ConstructorInformation

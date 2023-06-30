@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Queries
 {
-    public class GetTeamMemberRequestHandler : IRequestHandler<GetTeamMemberRequest, ResponseResult>
+    public class GetTeamMemberRequestHandler : IRequestHandler<GetTeamMemberRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -19,12 +19,12 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Qu
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(GetTeamMemberRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(GetTeamMemberRequest request, CancellationToken cancellationToken)
         {
             var teamMember = await _unitofWork.TeamMemberRepository.GetEntityAsync(request.Id);
             if (teamMember is null)
-                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
-            return ResponseResult.SetResult(
+                return ResponseResultDTO.SetResult(null, StatusMessage.NotFound, null);
+            return ResponseResultDTO.SetResult(
                 _mapper.Map<TeamMemberDTO>(teamMember),
                 StatusMessage.Success,
                 null

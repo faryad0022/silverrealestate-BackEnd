@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.AboutUsFeatures.Handler.Commands
 {
-    public class UpdateAboutUsRequestHandler : IRequestHandler<UpdateAboutUsRequest, ResponseResult>
+    public class UpdateAboutUsRequestHandler : IRequestHandler<UpdateAboutUsRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -21,26 +21,26 @@ namespace Application.features.GeneralInformations.AboutUsFeatures.Handler.Comma
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(UpdateAboutUsRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(UpdateAboutUsRequest request, CancellationToken cancellationToken)
         {
             var about = await _unitofWork.AboutUsRepository.GetEntityAsync(request.updateAboutUsDTO.Id);
 
             if (about is null)
             {
-                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NotFound, null);
             }
             #region Validation
             var validator = new UpdateAboutUsDTOValidator(_unitofWork.AboutUsRepository);
             var validatorResult = await validator.ValidateAsync(request.updateAboutUsDTO);
             if (!validatorResult.IsValid)
             {
-                return ResponseResult.SetResult(null, StatusMessage.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
+                return ResponseResultDTO.SetResult(null, StatusMessage.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
             }
             #endregion
 
-            _unitofWork.AboutUsRepository.UpdateEntityAsync(about);
+            _unitofWork.AboutUsRepository.UpdateEntity(about);
             await _unitofWork.SaveChangesAsync();
-            return ResponseResult.SetResult(request.updateAboutUsDTO, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(request.updateAboutUsDTO, StatusMessage.Success, null);
 
         }
     }

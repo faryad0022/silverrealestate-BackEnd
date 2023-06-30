@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.Blog.Handler.Commands.BlogcontentCommands
 {
-    public class CreateBlogContentRequestHandler : IRequestHandler<CreateBlogContentRequest, ResponseResult>
+    public class CreateBlogContentRequestHandler : IRequestHandler<CreateBlogContentRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IEmailSender _emailSender;
@@ -27,7 +27,7 @@ namespace Application.features.Blog.Handler.Commands.BlogcontentCommands
             _emailSender = emailSender;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(CreateBlogContentRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(CreateBlogContentRequest request, CancellationToken cancellationToken)
         {
 
             #region Validator
@@ -35,7 +35,7 @@ namespace Application.features.Blog.Handler.Commands.BlogcontentCommands
             var validatorResult = await validator.ValidateAsync(request.createBlogContentDTO);
             if (!validatorResult.IsValid)
             {
-                return ResponseResult.SetResult(null, StatusMessage.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
+                return ResponseResultDTO.SetResult(null, StatusMessage.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
             }
             #endregion
 
@@ -60,7 +60,7 @@ namespace Application.features.Blog.Handler.Commands.BlogcontentCommands
                 throw e;
             }
             await _unitofWork.SaveChangesAsync();
-            return ResponseResult.SetResult(request.createBlogContentDTO, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(request.createBlogContentDTO, StatusMessage.Success, null);
 
         }
     }

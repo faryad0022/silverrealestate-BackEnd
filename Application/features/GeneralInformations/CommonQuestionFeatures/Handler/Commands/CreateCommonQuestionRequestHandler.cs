@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.CommonQuestionFeatures.Handler.Commands
 {
-    public class CreateCommonQuestionRequestHandler : IRequestHandler<CreateCommonQuestionRequest, ResponseResult>
+    public class CreateCommonQuestionRequestHandler : IRequestHandler<CreateCommonQuestionRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -22,18 +22,18 @@ namespace Application.features.GeneralInformations.CommonQuestionFeatures.Handle
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(CreateCommonQuestionRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(CreateCommonQuestionRequest request, CancellationToken cancellationToken)
         {
             #region Validation
             var validator = new CreateCommonQuestionValidator();
             var validatorResult = await validator.ValidateAsync(request.createCommonQuestionDTO);
             if (!validatorResult.IsValid)
-                return ResponseResult.SetResult(null, StatusMessage.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
+                return ResponseResultDTO.SetResult(null, StatusMessage.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
             #endregion
             var commonDTO = _mapper.Map<CommonQuestion>(request.createCommonQuestionDTO);
             await _unitofWork.CommonQuestionRepository.AddEntityAsync(commonDTO);
             await _unitofWork.SaveChangesAsync();
-            return ResponseResult.SetResult(request.createCommonQuestionDTO, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(request.createCommonQuestionDTO, StatusMessage.Success, null);
 
         }
     }

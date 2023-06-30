@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.Blog.Handler.Commands.BlogcontentCommands
 {
-    public class UpdateBlogcontentRequestHandler : IRequestHandler<UpdateBlogcontentRequest, ResponseResult>
+    public class UpdateBlogcontentRequestHandler : IRequestHandler<UpdateBlogcontentRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -21,12 +21,12 @@ namespace Application.features.Blog.Handler.Commands.BlogcontentCommands
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(UpdateBlogcontentRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(UpdateBlogcontentRequest request, CancellationToken cancellationToken)
         {
             var blogContent = await _unitofWork.BlogContentRepository.GetEntityAsync(request.Id);
 
             if (blogContent is null)
-                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NotFound, null);
 
             if (request.updateBlogContentDTO != null)
             {
@@ -35,12 +35,12 @@ namespace Application.features.Blog.Handler.Commands.BlogcontentCommands
                 var validatorResult = await validator.ValidateAsync(request.updateBlogContentDTO);
                 if (!validatorResult.IsValid)
                 {
-                    return ResponseResult.SetResult(request.updateBlogContentDTO, StatusMessage.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
+                    return ResponseResultDTO.SetResult(request.updateBlogContentDTO, StatusMessage.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
                 }
                 #endregion
 
                 _mapper.Map(request.updateBlogContentDTO, blogContent);
-                _unitofWork.BlogContentRepository.UpdateEntityAsync(blogContent);
+                _unitofWork.BlogContentRepository.UpdateEntity(blogContent);
             }
             else if (request.changeBlogContentStatusDTO != null)
             {
@@ -54,7 +54,7 @@ namespace Application.features.Blog.Handler.Commands.BlogcontentCommands
             }
             await _unitofWork.SaveChangesAsync();
 
-            return ResponseResult.SetResult(null, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(null, StatusMessage.Success, null);
         }
     }
 }

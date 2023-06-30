@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Commands
 {
-    public class ChangeTeamMemberSelectedStatusRequestHandler : IRequestHandler<ChangeTeamMemberSelectedStatusRequest, ResponseResult>
+    public class ChangeTeamMemberSelectedStatusRequestHandler : IRequestHandler<ChangeTeamMemberSelectedStatusRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -20,14 +20,14 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Co
             _unitofWork = unitofWork;
         }
 
-        public async Task<ResponseResult> Handle(ChangeTeamMemberSelectedStatusRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(ChangeTeamMemberSelectedStatusRequest request, CancellationToken cancellationToken)
         {
             var teamMember = await _unitofWork.TeamMemberRepository.GetEntityAsync(request.Id);
             if (teamMember is null)
-                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
-            _unitofWork.TeamMemberRepository.ChangeSelectedStatusAsync(teamMember);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NotFound, null);
+            _unitofWork.TeamMemberRepository.ChangeSelectedStatus(teamMember);
             await _unitofWork.SaveChangesAsync();
-            return ResponseResult.SetResult(
+            return ResponseResultDTO.SetResult(
                 _mapper.Map<TeamMemberDTO>(teamMember),
                 StatusMessage.Success,
                 null

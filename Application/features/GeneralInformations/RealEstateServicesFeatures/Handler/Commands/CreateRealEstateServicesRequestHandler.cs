@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.RealEstateServicesFeatures.Handler.Commands
 {
-    public class CreateRealEstateServicesRequestHandler : IRequestHandler<CreateRealEstateServicesRequest, ResponseResult>
+    public class CreateRealEstateServicesRequestHandler : IRequestHandler<CreateRealEstateServicesRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -22,13 +22,13 @@ namespace Application.features.GeneralInformations.RealEstateServicesFeatures.Ha
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(CreateRealEstateServicesRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(CreateRealEstateServicesRequest request, CancellationToken cancellationToken)
         {
             #region Validation
             var validator = new CreateRealEstateServicesDTOValidator();
             var validatorResult = await validator.ValidateAsync(request.createRealEstateServicesDTO);
             if (!validatorResult.IsValid)
-                return ResponseResult.SetResult(
+                return ResponseResultDTO.SetResult(
                     null,
                     StatusMessage.ValidationError,
                     validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
@@ -36,7 +36,7 @@ namespace Application.features.GeneralInformations.RealEstateServicesFeatures.Ha
             var realEstateServices = _mapper.Map<RealEstateServices>(request.createRealEstateServicesDTO);
             await _unitofWork.RealEstateServicesRepository.AddEntityAsync(realEstateServices);
             await _unitofWork.SaveChangesAsync();
-            return ResponseResult.SetResult(request.createRealEstateServicesDTO, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(request.createRealEstateServicesDTO, StatusMessage.Success, null);
         }
     }
 }

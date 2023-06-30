@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Queries
 {
-    public class GetFilterTeamMemberRequestHandler : IRequestHandler<GetFilterTeamMemberRequest, ResponseResult>
+    public class GetFilterTeamMemberRequestHandler : IRequestHandler<GetFilterTeamMemberRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -23,14 +23,14 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Qu
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(GetFilterTeamMemberRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(GetFilterTeamMemberRequest request, CancellationToken cancellationToken)
         {
             var filter = _mapper.Map<FilterTeamMember>(request.filter);
             var teamMember = await _unitofWork.TeamMemberRepository.FilterTeamMembers(filter);
             var teamMemberDTO = _mapper.Map<FilterTeamMemberDTO>(teamMember);
             if (teamMember.TeamMembers is null || teamMember.TeamMembers.Count < 1)
-                return ResponseResult.SetResult(teamMemberDTO,StatusMessage.NoContent,null);
-            return ResponseResult.SetResult(teamMemberDTO, StatusMessage.Success, null);
+                return ResponseResultDTO.SetResult(teamMemberDTO,StatusMessage.NoContent,null);
+            return ResponseResultDTO.SetResult(teamMemberDTO, StatusMessage.Success, null);
 
         }
     }

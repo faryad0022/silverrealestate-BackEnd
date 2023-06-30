@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.SpectacularLocationFeatures.Handler.Commands
 {
-    public class ChnageSpectacularLocationSelectedStatusRequestHandler : IRequestHandler<ChnageSpectacularLocationSelectedStatusRequest, ResponseResult>
+    public class ChnageSpectacularLocationSelectedStatusRequestHandler : IRequestHandler<ChnageSpectacularLocationSelectedStatusRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -19,14 +19,14 @@ namespace Application.features.GeneralInformations.SpectacularLocationFeatures.H
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(ChnageSpectacularLocationSelectedStatusRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(ChnageSpectacularLocationSelectedStatusRequest request, CancellationToken cancellationToken)
         {
             var spectacularLocation = await _unitofWork.SpectacularlocationRepository.GetEntityAsync(request.Id);
             if (spectacularLocation is null)
-                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
-            _unitofWork.SpectacularlocationRepository.ChangeSelectedStatusAsync(spectacularLocation);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NotFound, null);
+            _unitofWork.SpectacularlocationRepository.ChangeSelectedStatus(spectacularLocation);
             await _unitofWork.SaveChangesAsync();
-            return ResponseResult.SetResult(
+            return ResponseResultDTO.SetResult(
                 _mapper.Map<SpectacularLocationDTO>(spectacularLocation),
                 StatusMessage.Success,
                 null

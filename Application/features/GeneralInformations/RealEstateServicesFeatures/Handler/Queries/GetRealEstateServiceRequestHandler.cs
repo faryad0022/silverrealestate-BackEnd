@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.RealEstateServicesFeatures.Handler.Queries
 {
-    public class GetRealEstateServiceRequestHandler : IRequestHandler<GetRealEstateServiceRequest, ResponseResult>
+    public class GetRealEstateServiceRequestHandler : IRequestHandler<GetRealEstateServiceRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -19,13 +19,13 @@ namespace Application.features.GeneralInformations.RealEstateServicesFeatures.Ha
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(GetRealEstateServiceRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(GetRealEstateServiceRequest request, CancellationToken cancellationToken)
         {
             var realEstateService = await _unitofWork.RealEstateServicesRepository.GetEntityAsync(request.Id);
             if (realEstateService is null)
-                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NotFound, null);
             var realEstateServiceDTO = _mapper.Map<RealEstateServicesDTO>(realEstateService);
-            return ResponseResult.SetResult(realEstateServiceDTO, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(realEstateServiceDTO, StatusMessage.Success, null);
         }
     }
 }

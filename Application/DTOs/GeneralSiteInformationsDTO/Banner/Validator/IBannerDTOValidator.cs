@@ -10,6 +10,9 @@ namespace Application.DTOs.GeneralSiteInformationsDTO.Banner.Validator
             RuleFor(x => x.BannerImage)
                 .NotNull().WithMessage(ValidatorMessages.NotNull)
                 .NotEmpty().WithMessage(ValidatorMessages.NotEmpty);
+            RuleFor(x => x.Alt)
+                .NotNull().WithMessage(ValidatorMessages.NotNull)
+                .NotEmpty().WithMessage(ValidatorMessages.NotEmpty);
 
         }
     }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.Blog.Handler.Queries.BlogGroup
 {
-    public class GetBlogGroupRequestHandler : IRequestHandler<GetBlogGroupRequest, ResponseResult>
+    public class GetBlogGroupRequestHandler : IRequestHandler<GetBlogGroupRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -19,12 +19,12 @@ namespace Application.features.Blog.Handler.Queries.BlogGroup
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(GetBlogGroupRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(GetBlogGroupRequest request, CancellationToken cancellationToken)
         {
             var blogGroup = await _unitofWork.BlogGroupRepository.GetEntityAsync(request.blogGroupId);
             if (blogGroup is null)
-                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
-            return ResponseResult.SetResult(_mapper.Map<BlogGroupDTO>(blogGroup), StatusMessage.Success, null);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NotFound, null);
+            return ResponseResultDTO.SetResult(_mapper.Map<BlogGroupDTO>(blogGroup), StatusMessage.Success, null);
         }
     }
 }

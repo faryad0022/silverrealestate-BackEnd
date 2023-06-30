@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.BannerFeatures.Handler.Queries
 {
-    public class GetFilterBannerRequestHandler : IRequestHandler<GetFilterBannerRequest, ResponseResult>
+    public class GetFilterBannerRequestHandler : IRequestHandler<GetFilterBannerRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -23,15 +23,15 @@ namespace Application.features.GeneralInformations.BannerFeatures.Handler.Querie
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(GetFilterBannerRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(GetFilterBannerRequest request, CancellationToken cancellationToken)
         {
             var filter = _mapper.Map<FilterBanner>(request.filter);
             var filterredBanner = await _unitofWork.BannerRepository.FilterBanners(filter);
             var filteredBannerDTO = _mapper.Map<FilterBannerDTO>(filterredBanner);
             if (filterredBanner.Banners is null || filterredBanner.Banners.Count < 1)
-                return ResponseResult.SetResult(filteredBannerDTO, StatusMessage.NoContent, null);
+                return ResponseResultDTO.SetResult(filteredBannerDTO, StatusMessage.NoContent, null);
 
-            return ResponseResult.SetResult(filteredBannerDTO, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(filteredBannerDTO, StatusMessage.Success, null);
         }
     }
 }

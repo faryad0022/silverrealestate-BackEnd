@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.ConstructorInformations.Handler.Queries
 {
-    public class GetConstructorInformationRequestHandler : IRequestHandler<GetConstructorInformationRequest, ResponseResult>
+    public class GetConstructorInformationRequestHandler : IRequestHandler<GetConstructorInformationRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -19,13 +19,13 @@ namespace Application.features.GeneralInformations.ConstructorInformations.Handl
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(GetConstructorInformationRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(GetConstructorInformationRequest request, CancellationToken cancellationToken)
         {
             var constructor = await _unitofWork.ConstructorInfromationRepository.GetEntityAsync(request.Id);
             if (constructor is null)
-                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NotFound, null);
             var constructorDTO = _mapper.Map<ConstructorInformationDTO>(constructor);
-            return ResponseResult.SetResult(constructorDTO, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(constructorDTO, StatusMessage.Success, null);
         }
     }
 }

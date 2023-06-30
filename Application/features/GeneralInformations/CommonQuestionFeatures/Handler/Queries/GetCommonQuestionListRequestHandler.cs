@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.CommonQuestionFeatures.Handler.Queries
 {
-    public class GetCommonQuestionListRequestHandler : IRequestHandler<GetCommonQuestionListRequest, ResponseResult>
+    public class GetCommonQuestionListRequestHandler : IRequestHandler<GetCommonQuestionListRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -21,19 +21,19 @@ namespace Application.features.GeneralInformations.CommonQuestionFeatures.Handle
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(GetCommonQuestionListRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(GetCommonQuestionListRequest request, CancellationToken cancellationToken)
         {
             var CommonQuestionList = await _unitofWork.CommonQuestionRepository.GetAllAsync();
             if (CommonQuestionList is null || CommonQuestionList.Count == 0)
-                return ResponseResult.SetResult(null, StatusMessage.NoContent, null);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NoContent, null);
             if (request.justShowSelected)
             {
                 var selectedCommonQuestion = CommonQuestionList.Where(x => x.IsSelected).ToList();
                 var SelectedCommonQuestionDTo = _mapper.Map<List<CommonQuestionDTO>>(selectedCommonQuestion);
-                return ResponseResult.SetResult(SelectedCommonQuestionDTo, StatusMessage.Success, null);
+                return ResponseResultDTO.SetResult(SelectedCommonQuestionDTo, StatusMessage.Success, null);
             }
             var commonQuestionListDTO = _mapper.Map<List<CommonQuestionDTO>>(CommonQuestionList);
-            return ResponseResult.SetResult(commonQuestionListDTO, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(commonQuestionListDTO, StatusMessage.Success, null);
         }
     }
 }

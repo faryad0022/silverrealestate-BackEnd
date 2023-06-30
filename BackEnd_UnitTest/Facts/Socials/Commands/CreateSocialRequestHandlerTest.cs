@@ -35,7 +35,7 @@ namespace BackEnd_UnitTest.Facts.Socials.Commands
             var handler = new CreateSocialRequestHandler(_mockRepository.Object, _mapper);
             var result = await handler.Handle(new CreateSocialRequest() { createSocialDTO = SocialModelGenerator._createSocialDTO }, CancellationToken.None);
 
-            result.ShouldBeOfType<ResponseResult>();
+            result.ShouldBeOfType<ResponseResultDTO>();
             
             result.Errors.ShouldBeNull();
             result.Status.ShouldBe(StatusMessage.Success);
@@ -48,7 +48,7 @@ namespace BackEnd_UnitTest.Facts.Socials.Commands
             var handler = new CreateSocialRequestHandler(_mockRepository.Object, _mapper);
             var result = await handler.Handle(new CreateSocialRequest() { createSocialDTO = SocialModelGenerator._createSocialDTO }, CancellationToken.None);
 
-            result.ShouldBeOfType<ResponseResult>();
+            result.ShouldBeOfType<ResponseResultDTO>();
             result.Status.ShouldBe(StatusMessage.ValidationError);
             result.Errors.ShouldNotBeEmpty();
         }

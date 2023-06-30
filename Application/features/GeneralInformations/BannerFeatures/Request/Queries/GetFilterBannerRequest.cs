@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.features.GeneralInformations.BannerFeatures.Request.Queries
 {
-    public class GetFilterBannerRequest : IRequest<ResponseResult>
+    public class GetFilterBannerRequest : IRequest<ResponseResultDTO>
     {
         public FilterBannerDTO filter { get; set; }
     }

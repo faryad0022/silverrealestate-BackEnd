@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.AboutUsFeatures.Handler.Commands
 {
-    public class CreateAboutUsRequestHandler : IRequestHandler<CreateAboutUsRequest, ResponseResult>
+    public class CreateAboutUsRequestHandler : IRequestHandler<CreateAboutUsRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -22,27 +22,27 @@ namespace Application.features.GeneralInformations.AboutUsFeatures.Handler.Comma
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(CreateAboutUsRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(CreateAboutUsRequest request, CancellationToken cancellationToken)
         {
             #region Validator
             var validator = new CreateAboutUsDTOValidator();
             var validatorResult = await validator.ValidateAsync(request.createAboutUsDTO);
             if (!validatorResult.IsValid)
             {
-                return ResponseResult.SetResult(null, StatusMessage.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
+                return ResponseResultDTO.SetResult(null, StatusMessage.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
 
             }
             #endregion
             var aboutUsCount = await _unitofWork.AboutUsRepository.GetAboutUsCountAsync();
             if (aboutUsCount > 0)
             {
-                return ResponseResult.SetResult(null, StatusMessage.NotAllow, null);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NotAllow, null);
 
             }
             var aboutUs = _mapper.Map<AboutUs>(request.createAboutUsDTO);
             await _unitofWork.AboutUsRepository.AddEntityAsync(aboutUs);
             await _unitofWork.SaveChangesAsync();
-            return ResponseResult.SetResult(request.createAboutUsDTO, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(request.createAboutUsDTO, StatusMessage.Success, null);
 
         }
     }

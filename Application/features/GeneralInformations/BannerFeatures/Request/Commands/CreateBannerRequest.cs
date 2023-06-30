@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.features.GeneralInformations.BannerFeatures.Request.Commands
 {
-    public class CreateBannerRequest : IRequest<ResponseResult>
+    public class CreateBannerRequest : IRequest<ResponseResultDTO>
     {
         public CreateBannerDTO createBannerDTO { get; set; }
     }

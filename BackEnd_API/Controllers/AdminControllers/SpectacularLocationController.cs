@@ -21,23 +21,23 @@ namespace BackEnd_API.Controllers.AdminControllers
         }
 
         [HttpGet(ApiRouteV1.SpectacularLocation_GetAll,Name = "GetAllSpectacularLocations")]
-        public async Task<ActionResult<ResponseResult>> GetAllSpectacularLocations()
+        public async Task<ActionResult<ResponseResultDTO>> GetAllSpectacularLocations()
             => await _mediator.Send(new GetSpectacularLocationListRequest());
 
         [HttpGet(ApiRouteV1.SpectacularLocation_Get, Name = "GetSpectacularLocation")]
-        public async Task<ActionResult<ResponseResult>> GetSpectacularLocation([FromQuery] long Id)
+        public async Task<ActionResult<ResponseResultDTO>> GetSpectacularLocation([FromQuery] long Id)
             => await _mediator.Send(new GetSpectacularLocationRequest() { Id = Id });
 
         [HttpPost(ApiRouteV1.SpectacularLocation_Add, Name = "AddSpectacularLocation")]
-        public async Task<ActionResult<ResponseResult>> AddSpectacularLocation([FromBody] CreateSpectacularLocationDTO createSpectacularLocationDTO)
+        public async Task<ActionResult<ResponseResultDTO>> AddSpectacularLocation([FromBody] CreateSpectacularLocationDTO createSpectacularLocationDTO)
             => await _mediator.Send(new CreateSpectacularLocationRequest() { createSpectacularLocationDTO = createSpectacularLocationDTO });
 
         [HttpPut(ApiRouteV1.SpectacularLocation_ChangeStatus, Name = "ChangeSpectacularLocationStatus")]
-        public async Task<ActionResult<ResponseResult>> ChangeSpectacularLocationStatus([FromQuery] long Id)
+        public async Task<ActionResult<ResponseResultDTO>> ChangeSpectacularLocationStatus([FromQuery] long Id)
             => await _mediator.Send(new ChnageSpectacularLocationSelectedStatusRequest() { Id = Id });
 
         [HttpPut(ApiRouteV1.SpectacularLocation_Update, Name = "UpdateSpectacularLocationStatus")]
-        public async Task<ActionResult<ResponseResult>> UpdateSpectacularLocationStatus([FromQuery] UpdateSpectacularLocationDTO updateSpectacularLocationDTO)
+        public async Task<ActionResult<ResponseResultDTO>> UpdateSpectacularLocationStatus([FromQuery] UpdateSpectacularLocationDTO updateSpectacularLocationDTO)
             => await _mediator.Send(new UpdateSpectacularLocationRequest() { updateSpectacularLocationDTO = updateSpectacularLocationDTO });
     }
 }

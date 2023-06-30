@@ -25,14 +25,14 @@ namespace BackEnd_UnitTest.Mocks
                 return spectacularLocation;
             });
             //Delete
-            _mock.Setup(r => r.DeleteEntityAsync(It.IsAny<Spectacularlocation>())).Callback(() =>
+            _mock.Setup(r => r.DeleteEntity(It.IsAny<Spectacularlocation>())).Callback(() =>
             {
                 spectacularLocationList.Remove(It.IsAny<Spectacularlocation>());
             });
             //Update
-            _mock.Setup(r => r.UpdateEntityAsync(It.IsAny<Spectacularlocation>())).Callback(() => { return; });
+            _mock.Setup(r => r.UpdateEntity(It.IsAny<Spectacularlocation>())).Callback(() => { return; });
             //Change
-            _mock.Setup(r => r.ChangeSelectedStatusAsync(It.IsAny<Spectacularlocation>())).Callback((Spectacularlocation spectacularlocation) =>
+            _mock.Setup(r => r.ChangeSelectedStatus(It.IsAny<Spectacularlocation>())).Callback((Spectacularlocation spectacularlocation) =>
             {
                 spectacularlocation.IsSelected = !spectacularlocation.IsSelected;
                 spectacularlocation.LastUpdateDate = DateTime.Now;

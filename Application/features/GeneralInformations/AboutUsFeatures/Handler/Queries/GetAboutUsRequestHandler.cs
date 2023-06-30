@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.AboutUsFeatures.Handler.Queries
 {
-    public class GetAboutUsRequestHandler : IRequestHandler<GetAboutUsRequest, ResponseResult>
+    public class GetAboutUsRequestHandler : IRequestHandler<GetAboutUsRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -20,12 +20,12 @@ namespace Application.features.GeneralInformations.AboutUsFeatures.Handler.Queri
             _unitofWork = unitofWork;
         }
 
-        public async Task<ResponseResult> Handle(GetAboutUsRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(GetAboutUsRequest request, CancellationToken cancellationToken)
         {
             var aboutUs = await _unitofWork.AboutUsRepository.GetEntityAsync(request.Id);
             if (aboutUs is null)
-                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
-            return ResponseResult.SetResult(_mapper.Map<AboutUsDTO>(aboutUs), StatusMessage.Success, null);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NotFound, null);
+            return ResponseResultDTO.SetResult(_mapper.Map<AboutUsDTO>(aboutUs), StatusMessage.Success, null);
         }
     }
 }

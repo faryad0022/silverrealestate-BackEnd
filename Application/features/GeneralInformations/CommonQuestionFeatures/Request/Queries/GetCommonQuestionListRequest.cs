@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.features.GeneralInformations.CommonQuestionFeatures.Request.Queries
 {
-    public class GetCommonQuestionListRequest : IRequest<ResponseResult>
+    public class GetCommonQuestionListRequest : IRequest<ResponseResultDTO>
     {
         public bool justShowSelected { get; set; } = false;
     }

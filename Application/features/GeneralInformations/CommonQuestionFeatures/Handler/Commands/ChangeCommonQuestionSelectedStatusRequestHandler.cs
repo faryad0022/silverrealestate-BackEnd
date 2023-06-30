@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.CommonQuestionFeatures.Handler.Commands
 {
-    public class ChangeCommonQuestionSelectedStatusRequestHandler : IRequestHandler<ChangeCommonQuestionSelectedStatusRequest, ResponseResult>
+    public class ChangeCommonQuestionSelectedStatusRequestHandler : IRequestHandler<ChangeCommonQuestionSelectedStatusRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -19,14 +19,14 @@ namespace Application.features.GeneralInformations.CommonQuestionFeatures.Handle
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(ChangeCommonQuestionSelectedStatusRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(ChangeCommonQuestionSelectedStatusRequest request, CancellationToken cancellationToken)
         {
             var common = await _unitofWork.CommonQuestionRepository.GetEntityAsync(request.Id);
             if (common is null)
-                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
-            _unitofWork.CommonQuestionRepository.ChangeSelectedStatusAsync(common);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NotFound, null);
+            _unitofWork.CommonQuestionRepository.ChangeSelectedStatus(common);
             await _unitofWork.SaveChangesAsync();
-            return ResponseResult.SetResult(_mapper.Map<CommonQuestionDTO>(common), StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(_mapper.Map<CommonQuestionDTO>(common), StatusMessage.Success, null);
         }
     }
 }

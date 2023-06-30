@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.ConstructorInformations.Handler.Commands
 {
-    public class ChangeConstructorInformationSelectedStatusRequestHandler : IRequestHandler<ChangeConstructorInformationSelectedStatusRequest, ResponseResult>
+    public class ChangeConstructorInformationSelectedStatusRequestHandler : IRequestHandler<ChangeConstructorInformationSelectedStatusRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -19,14 +19,14 @@ namespace Application.features.GeneralInformations.ConstructorInformations.Handl
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(ChangeConstructorInformationSelectedStatusRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(ChangeConstructorInformationSelectedStatusRequest request, CancellationToken cancellationToken)
         {
             var constructor = await _unitofWork.ConstructorInfromationRepository.GetEntityAsync(request.Id);
             if (constructor is null)
-                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
-            _unitofWork.ConstructorInfromationRepository.ChangeSelectedStatusAsync(constructor);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NotFound, null);
+            _unitofWork.ConstructorInfromationRepository.ChangeSelectedStatus(constructor);
             await _unitofWork.SaveChangesAsync();
-            return ResponseResult.SetResult(_mapper.Map<ConstructorInformationDTO>(constructor), StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(_mapper.Map<ConstructorInformationDTO>(constructor), StatusMessage.Success, null);
         }
     }
 }

@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.features.GeneralInformations.TeamMemberFeatures.Request.Commands
 {
-    public class CreateTeamMemberRequest : IRequest<ResponseResult>
+    public class CreateTeamMemberRequest : IRequest<ResponseResultDTO>
     {
         public CreateTeamMmeberDTO createTeamMmeberDTO { get; set; }
     }

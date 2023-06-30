@@ -32,7 +32,7 @@ namespace BackEnd_UnitTest.Facts.Socials.Queries
         {
             var handler = new GetSocialRequestHandler(_mapper, _mockSocialRepository.Object);
             var result = await handler.Handle(new GetSocialRequest() { Id = 2 }, CancellationToken.None);
-            result.ShouldBeOfType<ResponseResult>();
+            result.ShouldBeOfType<ResponseResultDTO>();
             result.Status.ShouldBe(StatusMessage.Success);
         }
         [Fact]
@@ -41,7 +41,7 @@ namespace BackEnd_UnitTest.Facts.Socials.Queries
             var handler = new GetSocialRequestHandler(_mapper, _mockSocialRepository.Object);
             var result = await handler.Handle(new GetSocialRequest() { Id = -2 }, CancellationToken.None);
 
-            result.ShouldBeOfType<ResponseResult>();
+            result.ShouldBeOfType<ResponseResultDTO>();
             result.Status.ShouldBe(StatusMessage.ValidationError);
         }
         [Fact]
@@ -49,7 +49,7 @@ namespace BackEnd_UnitTest.Facts.Socials.Queries
         {
             var handler = new GetSocialRequestHandler(_mapper, _mockSocialRepository.Object);
             var result = await handler.Handle(new GetSocialRequest() { Id = 3 }, CancellationToken.None);
-            result.ShouldBeOfType<ResponseResult>();
+            result.ShouldBeOfType<ResponseResultDTO>();
             result.Status.ShouldBe(StatusMessage.NotFound);
         }
     }

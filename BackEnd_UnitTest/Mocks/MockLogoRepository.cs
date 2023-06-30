@@ -22,7 +22,7 @@ namespace BackEnd_UnitTest.Mocks
                     LogoModelGenerator.LogoList.Add(logo);
                     return logo;
                 });
-            _mock.Setup(r => r.UpdateEntityAsync(It.IsAny<Logo>())).Callback(() => { return; });
+            _mock.Setup(r => r.UpdateEntity(It.IsAny<Logo>())).Callback(() => { return; });
 
 
 

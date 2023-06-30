@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Application.features.GeneralInformations.ConstructorInformations.Request.Commands
 {
-    public class UpdateConstructorInformationRequest : IRequest<ResponseResult>
+    public class UpdateConstructorInformationRequest : IRequest<ResponseResultDTO>
     {
         public UpdateConstructorInformationDTO updateConstructorInformationDTO { get; set; }
     }

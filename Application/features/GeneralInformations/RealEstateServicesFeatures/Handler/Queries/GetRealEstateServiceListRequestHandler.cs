@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.RealEstateServicesFeatures.Handler.Queries
 {
-    public class GetRealEstateServiceListRequestHandler : IRequestHandler<GetRealEstateServiceListRequest, ResponseResult>
+    public class GetRealEstateServiceListRequestHandler : IRequestHandler<GetRealEstateServiceListRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -21,15 +21,15 @@ namespace Application.features.GeneralInformations.RealEstateServicesFeatures.Ha
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(GetRealEstateServiceListRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(GetRealEstateServiceListRequest request, CancellationToken cancellationToken)
         {
             var realEstateServiceList = await _unitofWork.RealEstateServicesRepository.GetAllAsync();
             if (realEstateServiceList is null || realEstateServiceList.Count < 1)
-                return ResponseResult.SetResult(null, StatusMessage.NoContent, null);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NoContent, null);
             if (request.justShowSelected)
                 realEstateServiceList = realEstateServiceList.Where(q => q.IsSelected).ToList();
             var realEstateServiceListDTO = _mapper.Map<List<RealEstateServicesDTO>>(realEstateServiceList);
-            return ResponseResult.SetResult(realEstateServiceListDTO, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(realEstateServiceListDTO, StatusMessage.Success, null);
         }
     }
 }

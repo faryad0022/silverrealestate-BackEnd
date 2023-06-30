@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.Blog.Handler.Commands.BlogGroupCommands
 {
-    public class CreateBlogGroupRequestCommandHandler : IRequestHandler<CreateBlogGroupRequestCommand, ResponseResult>
+    public class CreateBlogGroupRequestCommandHandler : IRequestHandler<CreateBlogGroupRequestCommand, ResponseResultDTO>
     {
         private readonly IUnitofWork _unitofWork;
         private readonly IMapper _mapper;
@@ -27,7 +27,7 @@ namespace Application.features.Blog.Handler.Commands.BlogGroupCommands
             _unitofWork = unitofWork;
             _mapper = mapper;
         }
-        public async Task<ResponseResult> Handle(CreateBlogGroupRequestCommand request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(CreateBlogGroupRequestCommand request, CancellationToken cancellationToken)
         {
             var blogGroup = _mapper.Map<BlogGroup>(request.createBlogGroupDTO);
 
@@ -36,7 +36,7 @@ namespace Application.features.Blog.Handler.Commands.BlogGroupCommands
             var validatorResult = await validator.ValidateAsync(request.createBlogGroupDTO);
             if (!validatorResult.IsValid)
             {
-                return ResponseResult.SetResult(null, StatusMessage.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
+                return ResponseResultDTO.SetResult(null, StatusMessage.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
 
             }
             #endregion
@@ -63,7 +63,7 @@ namespace Application.features.Blog.Handler.Commands.BlogGroupCommands
                 //// Log or handle error, but don't throw...
             }
 
-            return ResponseResult.SetResult(request.createBlogGroupDTO, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(request.createBlogGroupDTO, StatusMessage.Success, null);
             #endregion
 
         }

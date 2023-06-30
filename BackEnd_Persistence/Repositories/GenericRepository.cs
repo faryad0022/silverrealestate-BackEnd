@@ -26,14 +26,14 @@ namespace BackEnd_Persistence.Repositories
 
         }
 
-        public void ChangeSelectedStatusAsync(TEntity entity)
+        public void ChangeSelectedStatus(TEntity entity)
         {
             entity.IsSelected = !entity.IsSelected;
             entity.LastUpdateDate = DateTime.Now;
             _dbContext.Set<TEntity>().Update(entity);
         }
 
-        public void DeleteEntityAsync(TEntity entity)
+        public void DeleteEntity(TEntity entity)
         {
             entity.LastUpdateDate = DateTime.Now;
             entity.IsDelete = true;
@@ -63,7 +63,7 @@ namespace BackEnd_Persistence.Repositories
             return await _dbContext.Set<TEntity>().FindAsync(entityId);
         }
 
-        public void UpdateEntityAsync(TEntity entity)
+        public void UpdateEntity(TEntity entity)
         {
             entity.LastUpdateDate = DateTime.Now;
             _dbContext.Set<TEntity>().Update(entity);

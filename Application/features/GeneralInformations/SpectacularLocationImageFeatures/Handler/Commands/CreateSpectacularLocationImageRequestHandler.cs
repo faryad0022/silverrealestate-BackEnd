@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.SpectacularLocationImageFeatures.Handler.Commands
 {
-    public class CreateSpectacularLocationImageRequestHandler : IRequestHandler<CreateSpectacularLocationImageRequest, ResponseResult>
+    public class CreateSpectacularLocationImageRequestHandler : IRequestHandler<CreateSpectacularLocationImageRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -22,21 +22,21 @@ namespace Application.features.GeneralInformations.SpectacularLocationImageFeatu
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(CreateSpectacularLocationImageRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(CreateSpectacularLocationImageRequest request, CancellationToken cancellationToken)
         {
             var toCreate = _mapper.Map<SpectacularLocationImages>(request.createSpectacularLocationImagesDTO);
             #region Validator
             var validator = new CreateSpectacularLocationImagesDTOValidator();
             var validatorResult = await validator.ValidateAsync(request.createSpectacularLocationImagesDTO);
             if (!validatorResult.IsValid)
-                return ResponseResult.SetResult(
+                return ResponseResultDTO.SetResult(
                     null,
                     StatusMessage.ValidationError,
                     validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
             #endregion
             var created = await _unitofWork.SpectacularLocationImageRepository.AddEntityAsync(toCreate);
             await _unitofWork.SaveChangesAsync();
-            return ResponseResult.SetResult(
+            return ResponseResultDTO.SetResult(
                 _mapper.Map<SpectacularLocationImagesDTO>(created),
                 StatusMessage.Success,
                 null

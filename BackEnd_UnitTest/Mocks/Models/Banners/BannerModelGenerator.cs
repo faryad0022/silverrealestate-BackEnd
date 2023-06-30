@@ -56,5 +56,28 @@ namespace BackEnd_UnitTest.Mocks.Models.Banners
             BannerImage = "",
             Link = "bannner/banner",
         };
+
+        public static UpdateBannerDescriptionDTO updateBannerDescriptionDTO_NotFound_InValid = new UpdateBannerDescriptionDTO
+        {
+            Id = 100,
+            Description = "bannner/banner",
+        };
+        public static UpdateBannerDescriptionDTO updateBannerDescriptionDTO_Valid = new UpdateBannerDescriptionDTO
+        {
+            Id = 1,
+            Description = "bannner/banner",
+        };
+
+        public static UpdateBannerLinkDTO updateBannerLinkDTO_NotFound_InValid = new UpdateBannerLinkDTO
+        {
+            Id = 100,
+            Link = "bannner/banner",
+        };
+        public static UpdateBannerLinkDTO updateBannerLinkDTO_Valid = new UpdateBannerLinkDTO
+        {
+            Id = 1,
+            Link = "bannner/banner",
+        };
+
     }
 }

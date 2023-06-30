@@ -100,7 +100,16 @@ namespace Application.Profiles
             #endregion
 
             #region Banner
-            CreateMap<Banner, BannerDTO>().ReverseMap();
+            CreateMap<Banner, BannerDTO>()
+                .ForMember(dest => dest.IsDelete, opt =>
+                {
+                    opt.MapFrom(src => src.IsDelete);
+                })
+                .ForMember(dest => dest.IsSelected, opt =>
+                {
+                    opt.MapFrom(src => src.IsSelected);
+                })
+                .ReverseMap();
             CreateMap<Banner, CreateBannerDTO>().ReverseMap();
             CreateMap<Banner, UpdateBannerDTO>().ReverseMap();
             CreateMap<BannerDTO, CreateBannerDTO>().ReverseMap();

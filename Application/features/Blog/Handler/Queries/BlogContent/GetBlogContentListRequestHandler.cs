@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.Blog.Handler.Queries.BlogContent
 {
-    public class GetBlogContentListRequestHandler : IRequestHandler<GetBlogContentListRequest, ResponseResult>
+    public class GetBlogContentListRequestHandler : IRequestHandler<GetBlogContentListRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -20,10 +20,10 @@ namespace Application.features.Blog.Handler.Queries.BlogContent
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(GetBlogContentListRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(GetBlogContentListRequest request, CancellationToken cancellationToken)
         {
             var blogContentList = await _unitofWork.BlogContentRepository.GetAllAsync();
-            return ResponseResult.SetResult(
+            return ResponseResultDTO.SetResult(
                 _mapper.Map<List<BlogContentListDTO>>(blogContentList),
                 StatusMessage.Success,
                 null);

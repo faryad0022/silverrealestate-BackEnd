@@ -21,16 +21,16 @@ namespace BackEnd_API.Controllers.AdminControllers
             _mediator = mediator;
         }
         [HttpGet(ApiRouteV1.BlogGroup_GetAll,Name = "GetBlogGroupListAsync")]
-        public async Task<ActionResult<ResponseResult>> GetBlogGroupListAsync()
+        public async Task<ActionResult<ResponseResultDTO>> GetBlogGroupListAsync()
             => await _mediator.Send(new GetBlogGroupListRequest());
 
         [HttpGet(ApiRouteV1.BlogGroup_Get, Name = "GetBlogGroupAsync")]
-        public async Task<ActionResult<ResponseResult>> GetBlogGroupAsync([FromQuery] long id)
+        public async Task<ActionResult<ResponseResultDTO>> GetBlogGroupAsync([FromQuery] long id)
             => await _mediator.Send(new GetBlogGroupRequest { blogGroupId = id });
 
 
         [HttpPost(ApiRouteV1.BlogGroup_Add, Name = "AddBlogGroupAsync")]
-        public async Task<ActionResult<ResponseResult>> AddBlogGroupAsync([FromBody] CreateBlogGroupDTO blogGroupDTO)
+        public async Task<ActionResult<ResponseResultDTO>> AddBlogGroupAsync([FromBody] CreateBlogGroupDTO blogGroupDTO)
             => await _mediator.Send(new CreateBlogGroupRequestCommand { createBlogGroupDTO = blogGroupDTO });
     }
 }

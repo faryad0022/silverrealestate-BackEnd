@@ -25,7 +25,7 @@ namespace BackEnd_UnitTest.Mocks
                     aboutUs.Add(about);
                     return about;
                 });
-            _mock.Setup(m => m.UpdateEntityAsync(It.IsAny<AboutUs>())).Callback(() => { return; });
+            _mock.Setup(m => m.UpdateEntity(It.IsAny<AboutUs>())).Callback(() => { return; });
 
             return _mock;
         }

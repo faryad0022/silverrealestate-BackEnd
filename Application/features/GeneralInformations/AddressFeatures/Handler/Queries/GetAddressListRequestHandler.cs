@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.AddressFeatures.Handler.Queries
 {
-    public class GetAddressListRequestHandler : IRequestHandler<GetAddressListRequest, ResponseResult>
+    public class GetAddressListRequestHandler : IRequestHandler<GetAddressListRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -21,19 +21,19 @@ namespace Application.features.GeneralInformations.AddressFeatures.Handler.Queri
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(GetAddressListRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(GetAddressListRequest request, CancellationToken cancellationToken)
         {
             var addressList = await _unitofWork.AddressRepository.GetAllAsync();
             if (addressList is null || addressList.Count == 0)
-                return ResponseResult.SetResult(null, StatusMessage.NoContent, null);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NoContent, null);
             if (request.justShowSelected)
             {
                 var selectedAddress = addressList.Where(x => x.IsSelected).ToList();
                 var SelectedAddressDTo = _mapper.Map<List<AddressDTO>>(selectedAddress);
-                return ResponseResult.SetResult(SelectedAddressDTo, StatusMessage.Success, null);
+                return ResponseResultDTO.SetResult(SelectedAddressDTo, StatusMessage.Success, null);
             }
             var addressListDTO = _mapper.Map<List<AddressDTO>>(addressList);
-            return ResponseResult.SetResult(addressListDTO, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(addressListDTO, StatusMessage.Success, null);
 
         }
     }

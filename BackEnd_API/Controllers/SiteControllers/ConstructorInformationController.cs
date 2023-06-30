@@ -19,7 +19,7 @@ namespace BackEnd_API.Controllers.SiteControllers
             _mediator = mediator;
         }
         [HttpGet(ApiRouteV1.ConstructorInformation_GetAll,Name ="GetAllConstructorInformationAsync")]
-        public async Task<ActionResult<ResponseResult>> GetAllConstructor()
+        public async Task<ActionResult<ResponseResultDTO>> GetAllConstructor()
             => await _mediator.Send(new GetConstructorInformationListRequest() { justShowSelected=true});
     }
 }

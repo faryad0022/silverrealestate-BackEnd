@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.LogoFeatures.Handler.Queries
 {
-    public class GetLogoRequestHandler : IRequestHandler<GetLogoRequest, ResponseResult>
+    public class GetLogoRequestHandler : IRequestHandler<GetLogoRequest, ResponseResultDTO>
     {
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
@@ -19,13 +19,13 @@ namespace Application.features.GeneralInformations.LogoFeatures.Handler.Queries
             _mapper = mapper;
             _unitofWork = unitofWork;
         }
-        public async Task<ResponseResult> Handle(GetLogoRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(GetLogoRequest request, CancellationToken cancellationToken)
         {
             var logo = await _unitofWork.LogoRepository.GetEntityAsync(request.Id);
             if (logo is null)
-                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NotFound, null);
             var logoDTO = _mapper.Map<LogoDTO>(logo);
-            return ResponseResult.SetResult(logoDTO, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(logoDTO, StatusMessage.Success, null);
         }
     }
 }

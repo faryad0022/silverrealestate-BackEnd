@@ -21,6 +21,8 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\about\origin\" />
+    <Folder Include="wwwroot\images\banner\compressed\" />
+    <Folder Include="wwwroot\images\banner\origin\" />
     <Folder Include="wwwroot\images\blogs\origin\" />
     <Folder Include="wwwroot\images\constructor\origin\" />
     <Folder Include="wwwroot\images\spectacular\origin\" />

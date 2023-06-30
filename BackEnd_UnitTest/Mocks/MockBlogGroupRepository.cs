@@ -33,12 +33,12 @@ namespace BackEnd_UnitTest.Mocks
                     return blogGroup;
                 });
 
-            mockRepo.Setup(m => m.DeleteEntityAsync(It.IsAny<BlogGroup>()))
+            mockRepo.Setup(m => m.DeleteEntity(It.IsAny<BlogGroup>()))
                 .Callback((BlogGroup blogGroup) =>
                 {
                     BlogGroupModelGenerator.blogGroupList.Remove(blogGroup);
                 });
-            mockRepo.Setup(m => m.UpdateEntityAsync(It.IsAny<BlogGroup>())).Callback(() => { return; });
+            mockRepo.Setup(m => m.UpdateEntity(It.IsAny<BlogGroup>())).Callback(() => { return; });
             mockRepo.Setup(m => m.IsDuplicate(It.IsAny<string>())).ReturnsAsync((string name) =>
             {
                 var blogGroup = BlogGroupModelGenerator.blogGroupList.FirstOrDefault(m => m.Name == name);

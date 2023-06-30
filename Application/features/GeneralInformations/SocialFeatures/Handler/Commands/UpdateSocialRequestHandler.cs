@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Application.features.GeneralInformations.SocialFeatures.Handler.Commands
 {
-    public class UpdateSocialRequestHandler : IRequestHandler<UpdateSocialRequest, ResponseResult>
+    public class UpdateSocialRequestHandler : IRequestHandler<UpdateSocialRequest, ResponseResultDTO>
     {
         private readonly IUnitofWork _unitofWork;
         private readonly IMapper _mapper;
@@ -22,19 +22,19 @@ namespace Application.features.GeneralInformations.SocialFeatures.Handler.Comman
             _unitofWork = unitofWork;
             _mapper = mapper;
         }
-        public async Task<ResponseResult> Handle(UpdateSocialRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseResultDTO> Handle(UpdateSocialRequest request, CancellationToken cancellationToken)
         {
 
             var social = await _unitofWork.SocialRepository.GetEntityAsync(request.UpdateSocialDTO.Id);
             if (social is null)
-                return ResponseResult.SetResult(null, StatusMessage.NotFound, null);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NotFound, null);
 
             #region Validation
             var validator = new UpdateSocialDTOValidator(_unitofWork.SocialRepository);
             var validatorResult = await validator.ValidateAsync(request.UpdateSocialDTO);
             if (!validatorResult.IsValid)
             {
-                return ResponseResult.SetResult(
+                return ResponseResultDTO.SetResult(
                     _mapper.Map<SocialDTO>(social),
                     StatusMessage.ValidationError,
                     validatorResult.Errors.Select(q => q.ErrorMessage).ToList()
@@ -42,9 +42,9 @@ namespace Application.features.GeneralInformations.SocialFeatures.Handler.Comman
             }
             #endregion
             var toUpdate = _mapper.Map<Social>(request.UpdateSocialDTO);
-            _unitofWork.SocialRepository.UpdateEntityAsync(toUpdate);
+            _unitofWork.SocialRepository.UpdateEntity(toUpdate);
             await _unitofWork.SaveChangesAsync();
-            return ResponseResult.SetResult(
+            return ResponseResultDTO.SetResult(
                                 _mapper.Map<SocialDTO>(social),
                                 StatusMessage.Success,
                                 null);
