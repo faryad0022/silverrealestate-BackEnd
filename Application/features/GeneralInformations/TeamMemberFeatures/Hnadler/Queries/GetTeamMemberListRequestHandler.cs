@@ -26,7 +26,7 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Qu
             var teamMemberList = await _unitofWork.TeamMemberRepository.GetAllAsync();
             if (request.justSelected)
                 teamMemberList = teamMemberList.Where(s => s.IsSelected).ToList();
-           
+
             if (teamMemberList is null || teamMemberList.Count < 1)
                 return ResponseResultDTO.SetResult(null, StatusMessage.NoContent, null);
 

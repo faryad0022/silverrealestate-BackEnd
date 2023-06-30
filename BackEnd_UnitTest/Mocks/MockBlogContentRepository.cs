@@ -1,6 +1,4 @@
 ﻿using Application.Contract.Persistance.EntitiesRepository.Blog;
-using Application.DTOs.Blog.BlogContent;
-using Application.DTOs.Paging;
 using Application.Models.FilterModels;
 using BackEnd_UnitTest.Mocks.Models.BlogContents;
 using Domain.Entities.Blog;

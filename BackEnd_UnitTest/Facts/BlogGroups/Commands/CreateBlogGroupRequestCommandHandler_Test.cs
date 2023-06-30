@@ -43,7 +43,7 @@ namespace BackEnd_UnitTest.Facts.BlogGroups.Commands
 
             result.Status.ShouldBe(StatusMessage.Success);
             result.Errors.ShouldBeNull();
-            
+
         }
 
         [Fact]
@@ -54,8 +54,8 @@ namespace BackEnd_UnitTest.Facts.BlogGroups.Commands
 
             result.Status.ShouldBe(StatusMessage.ValidationError);
             result.Errors.ShouldNotBeNull();
-            
-            
+
+
         }
     }
 }

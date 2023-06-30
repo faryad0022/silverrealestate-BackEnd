@@ -19,7 +19,7 @@ namespace BackEnd_API.Controllers.AdminControllers
         {
             _mediator = mediator;
         }
-        [HttpGet(ApiRouteV1.ConstructorInformation_GetAll,Name = "GetAllConstructorInformation")]
+        [HttpGet(ApiRouteV1.ConstructorInformation_GetAll, Name = "GetAllConstructorInformation")]
         public async Task<ActionResult<ResponseResultDTO>> GetAllConstructorInformation()
             => await _mediator.Send(new GetConstructorInformationListRequest());
 

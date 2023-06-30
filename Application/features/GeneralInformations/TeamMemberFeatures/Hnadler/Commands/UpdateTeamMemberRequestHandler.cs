@@ -53,10 +53,10 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Co
             var validatorResult = await validator.ValidateAsync(request.updateTeamMemberDTO);
             if (!validatorResult.IsValid)
             {
-                return ResponseResultDTO.SetResult(null,StatusMessage.ValidationError,validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
+                return ResponseResultDTO.SetResult(null, StatusMessage.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
             }
             #endregion
-      
+
             var toUpdate = _mapper.Map<TeamMember>(request.updateTeamMemberDTO);
             _unitofWork.TeamMemberRepository.UpdateEntity(toUpdate);
             await _unitofWork.SaveChangesAsync();

@@ -33,9 +33,9 @@ namespace BackEnd_UnitTest.Facts.RealEstateServices.Queries
             var result = await handler.Handle(new GetRealEstateServiceRequest() { Id = 2 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
-            
+
             result.Errors.ShouldBeNull();
-            
+
         }
         [Fact]
         public async Task GetRealEstateService_Valid2()
@@ -44,9 +44,9 @@ namespace BackEnd_UnitTest.Facts.RealEstateServices.Queries
             var result = await handler.Handle(new GetRealEstateServiceRequest() { Id = 3 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
-            
+
             result.Errors.ShouldBeNull();
-            
+
         }
         [Fact]
         public async Task GetRealEstateService_InValid()
@@ -55,9 +55,9 @@ namespace BackEnd_UnitTest.Facts.RealEstateServices.Queries
             var result = await handler.Handle(new GetRealEstateServiceRequest() { Id = 20 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.NotFound);
-            
+
             result.Errors.ShouldBeNull();
-            
+
         }
     }
 }

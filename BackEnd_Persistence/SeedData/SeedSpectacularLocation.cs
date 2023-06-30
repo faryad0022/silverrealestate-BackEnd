@@ -36,7 +36,7 @@ namespace BackEnd_Persistence.SeedData
                     Id = 4,
                     IsSelected = false,
                     Name = "Casino",
-                    CreateDate=DateTime.Now
+                    CreateDate = DateTime.Now
                 }
                 );
         }

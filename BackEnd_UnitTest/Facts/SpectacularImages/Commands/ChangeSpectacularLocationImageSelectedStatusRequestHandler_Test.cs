@@ -1,6 +1,5 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocationImages;
 using Application.features.GeneralInformations.SpectacularLocationImageFeatures.Handler.Commands;
 using Application.features.GeneralInformations.SpectacularLocationImageFeatures.Request.Commands;
 using Application.Profiles;
@@ -35,8 +34,8 @@ namespace BackEnd_UnitTest.Facts.SpectacularImages.Commands
 
             result.Status.ShouldBe(StatusMessage.Success);
             result.Errors.ShouldBeNull();
-            
-            
+
+
         }
         [Fact]
         public async Task CreateSpectacularLocationImage_NotFound_InValid()
@@ -46,8 +45,8 @@ namespace BackEnd_UnitTest.Facts.SpectacularImages.Commands
 
             result.Status.ShouldBe(StatusMessage.NotFound);
             result.Errors.ShouldBeNull();
-            
-            
+
+
         }
     }
 }

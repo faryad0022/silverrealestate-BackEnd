@@ -1,6 +1,5 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocations;
 using Application.features.GeneralInformations.SpectacularLocationFeatures.Handler.Commands;
 using Application.features.GeneralInformations.SpectacularLocationFeatures.Request.Commands;
 using Application.Profiles;
@@ -34,8 +33,8 @@ namespace BackEnd_UnitTest.Facts.SpectacularLocations.Commands
             var result = await handler.Handle(new ChnageSpectacularLocationSelectedStatusRequest() { Id = 1 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
-            
-            
+
+
 
         }
         [Fact]
@@ -45,8 +44,8 @@ namespace BackEnd_UnitTest.Facts.SpectacularLocations.Commands
             var result = await handler.Handle(new ChnageSpectacularLocationSelectedStatusRequest() { Id = 10 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.NotFound);
-            
-            
+
+
 
         }
     }

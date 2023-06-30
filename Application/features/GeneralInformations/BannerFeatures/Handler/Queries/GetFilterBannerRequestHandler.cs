@@ -5,9 +5,6 @@ using Application.features.GeneralInformations.BannerFeatures.Request.Queries;
 using Application.Models.FilterModels;
 using AutoMapper;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,7 +15,7 @@ namespace Application.features.GeneralInformations.BannerFeatures.Handler.Querie
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
 
-        public GetFilterBannerRequestHandler(IMapper mapper,IUnitofWork unitofWork)
+        public GetFilterBannerRequestHandler(IMapper mapper, IUnitofWork unitofWork)
         {
             _mapper = mapper;
             _unitofWork = unitofWork;

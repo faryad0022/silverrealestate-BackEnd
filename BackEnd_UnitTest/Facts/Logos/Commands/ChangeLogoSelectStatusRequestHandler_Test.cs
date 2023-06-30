@@ -34,8 +34,8 @@ namespace BackEnd_UnitTest.Facts.Logos.Commands
 
             result.Status.ShouldBe(StatusMessage.Success);
             result.Errors.ShouldBeNull();
-            
-            
+
+
         }
         [Fact]
         public async Task ChangeLogoSelected_NotFound_InValid()
@@ -45,8 +45,8 @@ namespace BackEnd_UnitTest.Facts.Logos.Commands
 
             result.Status.ShouldBe(StatusMessage.NotFound);
             result.Errors.ShouldBeNull();
-            
-            
+
+
         }
     }
 }

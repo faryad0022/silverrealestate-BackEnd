@@ -26,7 +26,7 @@ namespace Application.features.GeneralInformations.SpectacularLocationFeatures.H
             var specatularLocationList = await _unitofWork.SpectacularlocationRepository.GetAllAsync();
 
             if (specatularLocationList is null || specatularLocationList.Count < 1)
-               return ResponseResultDTO.SetResult(null, StatusMessage.NoContent, null);
+                return ResponseResultDTO.SetResult(null, StatusMessage.NoContent, null);
             if (request.justShowSelected)
             {
                 var selectedSpectacularLocation = specatularLocationList.Where(s => s.IsSelected).ToList();

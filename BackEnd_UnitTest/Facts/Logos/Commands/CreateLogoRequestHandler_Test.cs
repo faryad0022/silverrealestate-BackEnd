@@ -35,8 +35,8 @@ namespace BackEnd_UnitTest.Facts.Logos.Commands
 
             result.Status.ShouldBe(StatusMessage.Success);
             result.Errors.ShouldBeNull();
-            
-            
+
+
         }
         [Fact]
         public async Task CreateLogo_ValidationError_InValid()
@@ -46,8 +46,8 @@ namespace BackEnd_UnitTest.Facts.Logos.Commands
 
             result.Status.ShouldBe(StatusMessage.ValidationError);
             result.Errors.ShouldNotBeNull();
-            
-            
+
+
         }
     }
 }

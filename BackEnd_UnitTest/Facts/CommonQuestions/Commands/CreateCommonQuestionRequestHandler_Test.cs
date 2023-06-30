@@ -34,9 +34,9 @@ namespace BackEnd_UnitTest.Facts.CommonQuestions.Commands
             var result = await handler.Handle(new CreateCommonQuestionRequest() { createCommonQuestionDTO = CommonQuestionModelGenerator.createCommonQuestionDTO }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
-            
+
             result.Errors.ShouldBeNull();
-            
+
 
         }
         [Fact]
@@ -46,9 +46,9 @@ namespace BackEnd_UnitTest.Facts.CommonQuestions.Commands
             var result = await handler.Handle(new CreateCommonQuestionRequest() { createCommonQuestionDTO = CommonQuestionModelGenerator.createCommonQuestionDTO_Invalid }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.ValidationError);
-            
+
             result.Errors.ShouldNotBeNull();
-            
+
 
         }
     }

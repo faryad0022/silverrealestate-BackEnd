@@ -34,8 +34,8 @@ namespace BackEnd_UnitTest.Facts.Addresses.Commands
             var result = await handler.Handle(new CreateAddressRequest() { createAddressDTO = AddressModelGenerator.AddressDTO }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
-            
-            
+
+
         }
         [Fact]
         public async Task CreateAddress_Email_InValid()
@@ -44,8 +44,8 @@ namespace BackEnd_UnitTest.Facts.Addresses.Commands
             var result = await handler.Handle(new CreateAddressRequest() { createAddressDTO = AddressModelGenerator.AddressDTO_Invalid_Email }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.ValidationError);
-            
-            
+
+
             result.Errors.ShouldNotBeNull();
         }
     }

@@ -1,6 +1,5 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.DTOs.Blog.BlogGroup;
 using Application.features.Blog.Handler.Queries.BlogGroup;
 using Application.features.Blog.Request.Queries.BlogGroup;
 using Application.Profiles;

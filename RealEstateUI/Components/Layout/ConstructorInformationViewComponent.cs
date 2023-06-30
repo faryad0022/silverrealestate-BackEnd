@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace RealEstateUI.Components.Layout
 {
     [ViewComponent(Name = "ConstructorInformation")]
-    public class ConstructorInformationViewComponent:ViewComponent
+    public class ConstructorInformationViewComponent : ViewComponent
     {
         private readonly IConstructorInformationService _constructorInformationService;
 

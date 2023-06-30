@@ -35,7 +35,7 @@ namespace BackEnd_UnitTest.Facts.BlogContents.Queries
             result.Status.ShouldBe(StatusMessage.Success);
             result.Errors.ShouldBeNull();
 
-            
+
 
 
         }

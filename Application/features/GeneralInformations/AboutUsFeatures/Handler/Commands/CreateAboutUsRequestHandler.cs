@@ -1,6 +1,5 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.DTOs.GeneralSiteInformationsDTO.AboutUs;
 using Application.DTOs.GeneralSiteInformationsDTO.AboutUs.Validators;
 using Application.features.GeneralInformations.AboutUsFeatures.Request.Commands;
 using AutoMapper;

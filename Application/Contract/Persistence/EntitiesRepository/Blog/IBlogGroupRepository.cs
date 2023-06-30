@@ -1,8 +1,6 @@
 ﻿
 using Application.Contract.Persistence.CommonGenericRepository;
-using Application.DTOs.Blog.BlogGroup;
 using Domain.Entities.Blog;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Application.Contract.Persistance.EntitiesRepository.Blog

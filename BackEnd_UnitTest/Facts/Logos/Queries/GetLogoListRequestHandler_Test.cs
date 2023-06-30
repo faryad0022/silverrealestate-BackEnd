@@ -34,8 +34,8 @@ namespace BackEnd_UnitTest.Facts.Logos.Queries
 
             result.Status.ShouldBe(StatusMessage.Success);
             result.Errors.ShouldBeNull();
-            
-            
+
+
         }
         [Fact]
         public async Task GetSelectedLogoList_Valid()
@@ -45,8 +45,8 @@ namespace BackEnd_UnitTest.Facts.Logos.Queries
 
             result.Status.ShouldBe(StatusMessage.Success);
             result.Errors.ShouldBeNull();
-            
-            
+
+
         }
     }
 

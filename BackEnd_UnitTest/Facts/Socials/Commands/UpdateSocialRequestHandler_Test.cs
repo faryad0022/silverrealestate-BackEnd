@@ -51,8 +51,8 @@ namespace BackEnd_UnitTest.Facts.Socials.Commands
             }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.NotFound);
-            
-            
+
+
             result.Errors.ShouldBeNull();
 
         }

@@ -1,6 +1,5 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.DTOs.GeneralSiteInformationsDTO.TeamMembers;
 using Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Commands;
 using Application.features.GeneralInformations.TeamMemberFeatures.Request.Commands;
 using Application.Profiles;
@@ -34,9 +33,9 @@ namespace BackEnd_UnitTest.Facts.TeamMembers.Commands
             var result = await handler.Handle(new ChangeTeamMemberSelectedStatusRequest() { Id = 1 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
-            
+
             result.Errors.ShouldBeNull();
-            
+
         }
         [Fact]
         public async Task ChangeTeamMemberSelectedStatus_Valid_Notfound_InValid()
@@ -45,9 +44,9 @@ namespace BackEnd_UnitTest.Facts.TeamMembers.Commands
             var result = await handler.Handle(new ChangeTeamMemberSelectedStatusRequest() { Id = 11 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.NotFound);
-            
+
             result.Errors.ShouldBeNull();
-            
+
         }
     }
 }

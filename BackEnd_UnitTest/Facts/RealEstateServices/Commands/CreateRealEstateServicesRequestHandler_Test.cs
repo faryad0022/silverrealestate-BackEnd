@@ -34,8 +34,8 @@ namespace BackEnd_UnitTest.Facts.RealEstateServices.Commands
             var result = await handler.Handle(new CreateRealEstateServicesRequest() { createRealEstateServicesDTO = RealEstateServicesModelGenerator.createRealEstateServicesDTO_Valid }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
-            
-            
+
+
             result.Errors.ShouldBeNull();
 
         }
@@ -46,8 +46,8 @@ namespace BackEnd_UnitTest.Facts.RealEstateServices.Commands
             var result = await handler.Handle(new CreateRealEstateServicesRequest() { createRealEstateServicesDTO = RealEstateServicesModelGenerator.createRealEstateServicesDTO_InValid_NameRequired }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.ValidationError);
-            
-            
+
+
             result.Errors.ShouldNotBeNull();
             result.Errors.Count.ShouldBe(2);
         }

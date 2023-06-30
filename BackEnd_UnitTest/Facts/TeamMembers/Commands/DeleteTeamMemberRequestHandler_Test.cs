@@ -7,10 +7,6 @@ using AutoMapper;
 using BackEnd_UnitTest.Mocks;
 using Moq;
 using Shouldly;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -37,8 +33,8 @@ namespace BackEnd_UnitTest.Facts.TeamMembers.Commands
             var result = await handler.Handle(new RemoveTeamMemberRequest() { Id = 1 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
-            
-            
+
+
             result.Errors.ShouldBeNull();
         }
 
@@ -49,8 +45,8 @@ namespace BackEnd_UnitTest.Facts.TeamMembers.Commands
             var result = await handler.Handle(new RemoveTeamMemberRequest() { Id = 10 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.NotFound);
-            
-            
+
+
             result.Errors.ShouldBeNull();
         }
     }

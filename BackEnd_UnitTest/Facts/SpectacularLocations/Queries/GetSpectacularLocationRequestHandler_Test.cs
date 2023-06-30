@@ -1,6 +1,5 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocations;
 using Application.features.GeneralInformations.SpectacularLocationFeatures.Handler.Queries;
 using Application.features.GeneralInformations.SpectacularLocationFeatures.Request.Queries;
 using Application.Profiles;
@@ -33,7 +32,7 @@ namespace BackEnd_UnitTest.Facts.SpectacularLocations.Queries
             var handler = new GetSpectacularLocationRequestHandler(_unitofWork.Object, _mapper);
             var result = await handler.Handle(new GetSpectacularLocationRequest() { Id = 1 }, CancellationToken.None);
 
-            
+
             result.Errors.ShouldBeNull();
             result.Status.ShouldBe(StatusMessage.Success);
         }
@@ -43,8 +42,8 @@ namespace BackEnd_UnitTest.Facts.SpectacularLocations.Queries
             var handler = new GetSpectacularLocationRequestHandler(_unitofWork.Object, _mapper);
             var result = await handler.Handle(new GetSpectacularLocationRequest() { Id = 10 }, CancellationToken.None);
 
-            
-            
+
+
             result.Errors.ShouldBeNull();
             result.Status.ShouldBe(StatusMessage.NotFound);
         }

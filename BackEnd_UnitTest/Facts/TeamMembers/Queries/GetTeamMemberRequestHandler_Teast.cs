@@ -1,6 +1,5 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.DTOs.GeneralSiteInformationsDTO.TeamMembers;
 using Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Queries;
 using Application.features.GeneralInformations.TeamMemberFeatures.Request.Queries;
 using Application.Profiles;
@@ -34,7 +33,7 @@ namespace BackEnd_UnitTest.Facts.TeamMembers.Queries
             var result = await handler.Handle(new GetTeamMemberRequest { Id = 1 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
-            
+
             result.Errors.ShouldBeNull();
         }
         [Fact]
@@ -44,9 +43,9 @@ namespace BackEnd_UnitTest.Facts.TeamMembers.Queries
             var result = await handler.Handle(new GetTeamMemberRequest { Id = 10 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.NotFound);
-            
+
             result.Errors.ShouldBeNull();
-            
+
         }
     }
 }

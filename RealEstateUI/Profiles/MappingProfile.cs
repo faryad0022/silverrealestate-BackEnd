@@ -4,7 +4,7 @@ using RealEstateUI.Services.Base;
 
 namespace RealEstateUI.Profiles
 {
-    public class MappingProfile:Profile
+    public class MappingProfile : Profile
     {
         public MappingProfile()
         {

@@ -33,9 +33,9 @@ namespace BackEnd_UnitTest.Facts.ConstructorInformations.Queries
             var result = await handler.Handle(new GetConstructorInformationRequest() { Id = 1 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
-            
+
             result.Errors.ShouldBeNull();
-            
+
 
         }
         [Fact]
@@ -45,9 +45,9 @@ namespace BackEnd_UnitTest.Facts.ConstructorInformations.Queries
             var result = await handler.Handle(new GetConstructorInformationRequest() { Id = 10 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.NotFound);
-            
+
             result.Errors.ShouldBeNull();
-            
+
 
         }
     }

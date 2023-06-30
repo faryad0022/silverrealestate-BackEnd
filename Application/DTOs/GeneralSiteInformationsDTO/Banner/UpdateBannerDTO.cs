@@ -1,5 +1,4 @@
 ﻿using Application.DTOs.Common;
-using System;
 
 namespace Application.DTOs.GeneralSiteInformationsDTO.Banner
 {

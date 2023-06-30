@@ -33,7 +33,7 @@ namespace BackEnd_UnitTest.Facts.Addresses.Queries
             var result = await handler.Handle(new GetAddressRequest() { Id = 1 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
-            
+
             result.Errors.ShouldBeNull();
         }
         [Fact]
@@ -43,7 +43,7 @@ namespace BackEnd_UnitTest.Facts.Addresses.Queries
             var result = await handler.Handle(new GetAddressRequest() { Id = 3 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.NotFound);
-            
+
             result.Errors.ShouldBeNull();
         }
     }

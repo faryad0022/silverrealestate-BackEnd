@@ -43,8 +43,8 @@ namespace BackEnd_UnitTest.Facts.BlogContents.Commands
 
             result.Status.ShouldBe(StatusMessage.Success);
             result.Errors.ShouldBeNull();
-            
-            
+
+
         }
 
         [Fact]
@@ -55,7 +55,7 @@ namespace BackEnd_UnitTest.Facts.BlogContents.Commands
 
             result.Status.ShouldBe(StatusMessage.ValidationError);
             result.Errors.ShouldNotBeNull();
-            
+
         }
 
         [Fact]
@@ -68,7 +68,7 @@ namespace BackEnd_UnitTest.Facts.BlogContents.Commands
 
             result.Status.ShouldBe(StatusMessage.ValidationError);
             result.Errors.ShouldNotBeNull();
-            
+
         }
     }
 }

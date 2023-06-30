@@ -41,8 +41,8 @@ namespace BackEnd_UnitTest.Facts.BlogGroups.Queries
             var handler = new GetBlogGroupRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new GetBlogGroupRequest() { blogGroupId = 7 }, CancellationToken.None);
 
-            
-            
+
+
             result.Errors.ShouldBeNull();
             result.Status.ShouldBe(StatusMessage.NotFound);
         }

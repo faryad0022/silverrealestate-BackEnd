@@ -8,7 +8,6 @@ using BackEnd_UnitTest.Mocks;
 using BackEnd_UnitTest.Mocks.Models.BlogContents;
 using Moq;
 using Shouldly;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -34,11 +33,11 @@ namespace BackEnd_UnitTest.Facts.BlogContents.Queries
             var handler = new GetBlogContentByFilterRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new GetBlogContentByFilterRequest() { filter = BlogContentModelGenerator.filterBlogContent_ByTitle_blogList_Valid }, CancellationToken.None);
 
-            
-            
+
+
             result.Status.ShouldBe(StatusMessage.Success);
             result.Errors.ShouldBeNull();
-            
+
 
         }
         [Fact]
@@ -47,11 +46,11 @@ namespace BackEnd_UnitTest.Facts.BlogContents.Queries
             var handler = new GetBlogContentByFilterRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new GetBlogContentByFilterRequest() { filter = BlogContentModelGenerator.filterBlogContent_ById_Valid }, CancellationToken.None);
 
-            
-            
+
+
             result.Status.ShouldBe(StatusMessage.Success);
             result.Errors.ShouldBeNull();
-            
+
 
         }
     }

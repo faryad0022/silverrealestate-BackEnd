@@ -19,8 +19,8 @@ namespace Application.Extensions
             if (image is null || resizedImage is null)
                 return null;
             var imageName = Guid.NewGuid().ToString("N") + ".jpeg";
-            image.AddImageToServer(imageName, path+"origin/", deleteFileName);
-            resizedImage.AddImageToServer(imageName, path+"compressed/", deleteFileName);
+            image.AddImageToServer(imageName, path + "origin/", deleteFileName);
+            resizedImage.AddImageToServer(imageName, path + "compressed/", deleteFileName);
             return imageName;
         }
         public static void AddImageToServer(this Image image, string fileName, string path, string deleteFileName = null)

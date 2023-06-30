@@ -33,8 +33,8 @@ namespace BackEnd_UnitTest.Facts.RealEstateServices.Commands
             var result = await handler.Handle(new ChangeRealEstateServiceSelectedStatusRequest() { Id = 1 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
-            
-            
+
+
         }
 
         [Fact]
@@ -44,8 +44,8 @@ namespace BackEnd_UnitTest.Facts.RealEstateServices.Commands
             var result = await handler.Handle(new ChangeRealEstateServiceSelectedStatusRequest() { Id = 5 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.NotFound);
-            
-            
+
+
         }
     }
 }

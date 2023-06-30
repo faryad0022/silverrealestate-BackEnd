@@ -1,6 +1,5 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.DTOs.Blog.BlogContent;
 using Application.DTOs.Blog.BlogContent.Validators;
 using Application.features.Blog.Request.Commands.BlogContentCommands;
 using AutoMapper;

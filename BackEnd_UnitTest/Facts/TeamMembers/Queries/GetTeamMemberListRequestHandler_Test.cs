@@ -1,6 +1,5 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.DTOs.GeneralSiteInformationsDTO.TeamMembers;
 using Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Queries;
 using Application.features.GeneralInformations.TeamMemberFeatures.Request.Queries;
 using Application.Profiles;
@@ -8,10 +7,6 @@ using AutoMapper;
 using BackEnd_UnitTest.Mocks;
 using Moq;
 using Shouldly;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -35,7 +30,7 @@ namespace BackEnd_UnitTest.Facts.TeamMembers.Queries
         public async Task GetTeamMemberList_Valid()
         {
             var handler = new GetTeamMemberListRequestHandler(_mapper, _unitOfWork.Object);
-            var result = await handler.Handle(new GetTeamMemberListRequest { justSelected=false}, CancellationToken.None);
+            var result = await handler.Handle(new GetTeamMemberListRequest { justSelected = false }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
             result.Errors.ShouldBeNull();

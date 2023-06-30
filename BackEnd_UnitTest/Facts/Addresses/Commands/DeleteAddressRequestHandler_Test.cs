@@ -2,17 +2,11 @@
 using Application.Contract.Persistence;
 using Application.features.GeneralInformations.AddressFeatures.Handler.Commands;
 using Application.features.GeneralInformations.AddressFeatures.Request.Commands;
-using Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Commands;
-using Application.features.GeneralInformations.TeamMemberFeatures.Request.Commands;
 using Application.Profiles;
 using AutoMapper;
 using BackEnd_UnitTest.Mocks;
 using Moq;
 using Shouldly;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -39,8 +33,8 @@ namespace BackEnd_UnitTest.Facts.Addresses.Commands
             var result = await handler.Handle(new DeleteAddressRequest() { Id = 1 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
-            
-            
+
+
             result.Errors.ShouldBeNull();
         }
 
@@ -51,8 +45,8 @@ namespace BackEnd_UnitTest.Facts.Addresses.Commands
             var result = await handler.Handle(new DeleteAddressRequest() { Id = 15 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.NotFound);
-            
-            
+
+
             result.Errors.ShouldBeNull();
         }
     }

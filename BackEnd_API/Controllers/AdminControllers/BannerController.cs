@@ -19,9 +19,9 @@ namespace BackEnd_API.Controllers.AdminControllers
         {
             _mediator = mediator;
         }
-        [HttpGet(ApiRouteV1.Banner_GetFilter,Name = "GetFilterBanner")]
-        public async Task<ActionResult<ResponseResultDTO>> GetFilterBanner([FromQuery]FilterBannerDTO filter)
-            => await _mediator.Send(new GetFilterBannerRequest() { filter = filter});
+        [HttpGet(ApiRouteV1.Banner_GetFilter, Name = "GetFilterBanner")]
+        public async Task<ActionResult<ResponseResultDTO>> GetFilterBanner([FromQuery] FilterBannerDTO filter)
+            => await _mediator.Send(new GetFilterBannerRequest() { filter = filter });
 
         [HttpGet(ApiRouteV1.Banner_GetAll, Name = "GetAllBanner")]
         public async Task<ActionResult<ResponseResultDTO>> GetAllBanner()

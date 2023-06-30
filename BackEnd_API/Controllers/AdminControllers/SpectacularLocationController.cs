@@ -20,7 +20,7 @@ namespace BackEnd_API.Controllers.AdminControllers
             _mediator = mediator;
         }
 
-        [HttpGet(ApiRouteV1.SpectacularLocation_GetAll,Name = "GetAllSpectacularLocations")]
+        [HttpGet(ApiRouteV1.SpectacularLocation_GetAll, Name = "GetAllSpectacularLocations")]
         public async Task<ActionResult<ResponseResultDTO>> GetAllSpectacularLocations()
             => await _mediator.Send(new GetSpectacularLocationListRequest());
 

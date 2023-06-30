@@ -4,9 +4,6 @@ using Application.DTOs.GeneralSiteInformationsDTO.Address;
 using Application.features.GeneralInformations.AddressFeatures.Request.Commands;
 using AutoMapper;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 

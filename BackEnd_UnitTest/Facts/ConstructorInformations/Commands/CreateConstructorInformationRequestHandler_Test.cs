@@ -35,9 +35,9 @@ namespace BackEnd_UnitTest.Facts.ConstructorInformations.Commands
             var result = await handler.Handle(new CreateConstructorInformationRequest() { createConstructorInformationDTO = ConstructorInformationModelGenerator.createConstructorInformationDTO_Valid }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
-            
+
             result.Errors.ShouldBeNull();
-            
+
 
         }
         [Fact]
@@ -47,9 +47,9 @@ namespace BackEnd_UnitTest.Facts.ConstructorInformations.Commands
             var result = await handler.Handle(new CreateConstructorInformationRequest() { createConstructorInformationDTO = ConstructorInformationModelGenerator.createConstructorInformationDTO_Validation_InValid }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.ValidationError);
-            
+
             result.Errors.ShouldNotBeNull();
-            
+
 
         }
     }

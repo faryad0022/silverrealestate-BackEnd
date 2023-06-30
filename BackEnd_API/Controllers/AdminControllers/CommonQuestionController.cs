@@ -19,7 +19,7 @@ namespace BackEnd_API.Controllers.AdminControllers
         {
             _mediator = mediator;
         }
-        [HttpGet(ApiRouteV1.CommonQuestiom_GetAll,Name = "GetAllCommonQuestion")]
+        [HttpGet(ApiRouteV1.CommonQuestiom_GetAll, Name = "GetAllCommonQuestion")]
         public async Task<ActionResult<ResponseResultDTO>> GetAllCommonQuestion()
             => await _mediator.Send(new GetCommonQuestionListRequest());
 

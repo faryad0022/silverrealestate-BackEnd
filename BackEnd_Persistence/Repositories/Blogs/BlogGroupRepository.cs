@@ -1,9 +1,6 @@
 ﻿using Application.Contract.Persistance.EntitiesRepository.Blog;
-using Application.DTOs.Blog.BlogGroup;
 using Domain.Entities.Blog;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace BackEnd_Persistence.Repositories.Blogs

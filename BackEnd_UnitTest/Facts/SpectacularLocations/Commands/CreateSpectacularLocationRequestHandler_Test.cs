@@ -1,6 +1,5 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocations;
 using Application.features.GeneralInformations.SpectacularLocationFeatures.Handler.Commands;
 using Application.features.GeneralInformations.SpectacularLocationFeatures.Request.Commands;
 using Application.Profiles;
@@ -34,7 +33,7 @@ namespace BackEnd_UnitTest.Facts.SpectacularLocations.Commands
             var handler = new CreateSpectacularLocationRequestHandler(_mapper, _unitofWork.Object);
             var result = await handler.Handle(new CreateSpectacularLocationRequest() { createSpectacularLocationDTO = SpectacularLocationModelGenerator.CreateSpectacularLocationDTO_Valid }, CancellationToken.None);
 
-            
+
             result.Status.ShouldBe(StatusMessage.Success);
         }
         [Fact]
@@ -43,9 +42,9 @@ namespace BackEnd_UnitTest.Facts.SpectacularLocations.Commands
             var handler = new CreateSpectacularLocationRequestHandler(_mapper, _unitofWork.Object);
             var result = await handler.Handle(new CreateSpectacularLocationRequest() { createSpectacularLocationDTO = SpectacularLocationModelGenerator.CreateSpectacularLocationDTO_ValidationError_InValid }, CancellationToken.None);
 
-            
+
             result.Status.ShouldBe(StatusMessage.ValidationError);
-            
+
             result.Errors.ShouldNotBeNull();
         }
     }

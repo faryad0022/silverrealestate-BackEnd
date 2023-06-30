@@ -33,8 +33,8 @@ namespace BackEnd_UnitTest.Facts.AboutUs.Queries
             var result = await handler.Handle(new GetAboutUsListRequest(), CancellationToken.None);
 
             result.Errors.ShouldBeNull();
-            
-            
+
+
             result.Status.ShouldBe(StatusMessage.Success);
 
         }
@@ -46,7 +46,7 @@ namespace BackEnd_UnitTest.Facts.AboutUs.Queries
             var result = await handler.Handle(new GetAboutUsListRequest() { justShowSelected = true }, CancellationToken.None);
 
             result.Errors.ShouldBeNull();
-            
+
             result.Status.ShouldBe(StatusMessage.Success);
 
         }

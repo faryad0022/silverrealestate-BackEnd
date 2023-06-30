@@ -1,6 +1,5 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.DTOs.GeneralSiteInformationsDTO.TeamMembers;
 using Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Commands;
 using Application.features.GeneralInformations.TeamMemberFeatures.Request.Commands;
 using Application.Profiles;
@@ -35,7 +34,7 @@ namespace BackEnd_UnitTest.Facts.TeamMembers.Commands
             var result = await handler.Handle(new UpdateTeamMemberRequest() { updateTeamMemberDTO = TeamMemberModelGenerator.UpdateTeamMemberDTO_Valid }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
-            
+
             result.Errors.ShouldBeNull();
 
         }
@@ -46,9 +45,9 @@ namespace BackEnd_UnitTest.Facts.TeamMembers.Commands
             var result = await handler.Handle(new UpdateTeamMemberRequest() { updateTeamMemberDTO = TeamMemberModelGenerator.UpdateTeamMemberDTO_ValidationError_InValid }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.ValidationError);
-            
+
             result.Errors.ShouldNotBeNull();
-            
+
         }
         [Fact]
         public async Task UpdateTeamMember_Notfound_InValid()
@@ -57,9 +56,9 @@ namespace BackEnd_UnitTest.Facts.TeamMembers.Commands
             var result = await handler.Handle(new UpdateTeamMemberRequest() { updateTeamMemberDTO = TeamMemberModelGenerator.UpdateTeamMemberDTO_NotFound_InValid }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.NotFound);
-            
+
             result.Errors.ShouldBeNull();
-            
+
         }
     }
 }

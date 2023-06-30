@@ -33,8 +33,8 @@ namespace BackEnd_UnitTest.Facts.CommonQuestions.Queries
             var result = await handler.Handle(new GetCommonQuestionListRequest(), CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
-            
-            
+
+
             result.Errors.ShouldBeNull();
         }
     }

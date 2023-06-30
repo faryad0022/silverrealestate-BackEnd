@@ -34,8 +34,8 @@ namespace BackEnd_UnitTest.Facts.AboutUs.Queries
             var result = await handler.Handle(new GetAboutUsRequest() { Id = 1 }, CancellationToken.None);
 
             result.Errors.ShouldBeNull();
-            
-            
+
+
             result.Status.ShouldBe(StatusMessage.Success);
         }
 
@@ -46,8 +46,8 @@ namespace BackEnd_UnitTest.Facts.AboutUs.Queries
             var result = await handler.Handle(new GetAboutUsRequest() { Id = 10 }, CancellationToken.None);
 
             result.Errors.ShouldBeNull();
-            
-            
+
+
             result.Status.ShouldBe(StatusMessage.NotFound);
         }
     }

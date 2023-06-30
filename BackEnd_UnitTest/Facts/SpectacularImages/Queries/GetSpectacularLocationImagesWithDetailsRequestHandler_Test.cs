@@ -33,8 +33,8 @@ namespace BackEnd_UnitTest.Facts.SpectacularImages.Queries
             var result = await handler.Handle(new GetSpectacularLocationImagesWithDetailsRequest() { Id = 1 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
-            
-            
+
+
             result.Errors.ShouldBeNull();
         }
 
@@ -46,8 +46,8 @@ namespace BackEnd_UnitTest.Facts.SpectacularImages.Queries
             var result = await handler.Handle(new GetSpectacularLocationImagesWithDetailsRequest() { Id = 11 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.NotFound);
-            
-            
+
+
             result.Errors.ShouldBeNull();
         }
     }

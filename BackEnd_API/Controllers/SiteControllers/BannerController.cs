@@ -1,5 +1,4 @@
 ﻿using Application.Const.Response;
-using Application.DTOs.GeneralSiteInformationsDTO.Banner;
 using Application.features.GeneralInformations.BannerFeatures.Request.Queries;
 using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;

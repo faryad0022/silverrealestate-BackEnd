@@ -33,9 +33,9 @@ namespace BackEnd_UnitTest.Facts.ConstructorInformations.Commands
             var result = await handler.Handle(new ChangeConstructorInformationSelectedStatusRequest() { Id = 2 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
-            
+
             result.Errors.ShouldBeNull();
-            
+
 
         }
         [Fact]
@@ -45,9 +45,9 @@ namespace BackEnd_UnitTest.Facts.ConstructorInformations.Commands
             var result = await handler.Handle(new ChangeConstructorInformationSelectedStatusRequest() { Id = 7 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.NotFound);
-            
+
             result.Errors.ShouldBeNull();
-            
+
 
         }
     }

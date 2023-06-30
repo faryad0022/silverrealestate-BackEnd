@@ -20,7 +20,7 @@ namespace BackEnd_API.Controllers.AdminControllers
             _mediator = mediator;
         }
 
-        [HttpGet(ApiRouteV1.Logo_GetAll,Name = "GetAllLogo")]
+        [HttpGet(ApiRouteV1.Logo_GetAll, Name = "GetAllLogo")]
         public async Task<ActionResult<ResponseResultDTO>> GetAllLogo()
             => await _mediator.Send(new GetLogoListRequest());
 

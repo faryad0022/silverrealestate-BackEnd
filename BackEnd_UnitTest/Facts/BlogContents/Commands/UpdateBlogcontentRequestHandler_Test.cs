@@ -38,7 +38,7 @@ namespace BackEnd_UnitTest.Facts.BlogContents.Commands
             }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
-            
+
             result.Errors.ShouldBeNull();
         }
         [Fact]
@@ -52,7 +52,7 @@ namespace BackEnd_UnitTest.Facts.BlogContents.Commands
             }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.NotFound);
-            
+
             result.Errors.ShouldBeNull();
         }
 
@@ -67,9 +67,9 @@ namespace BackEnd_UnitTest.Facts.BlogContents.Commands
             }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
-            
+
             result.Errors.ShouldBeNull();
-            
+
         }
 
         [Fact]
@@ -83,9 +83,9 @@ namespace BackEnd_UnitTest.Facts.BlogContents.Commands
             }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
-            
+
             result.Errors.ShouldBeNull();
-            
+
         }
     }
 }

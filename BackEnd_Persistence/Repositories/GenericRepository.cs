@@ -49,7 +49,7 @@ namespace BackEnd_Persistence.Repositories
 
         public async Task<IReadOnlyList<TEntity>> GetAllAsync()
         {
-            return await _dbContext.Set<TEntity>().Where(t=>!t.IsDelete).ToListAsync();
+            return await _dbContext.Set<TEntity>().Where(t => !t.IsDelete).ToListAsync();
         }
 
         public IQueryable<TEntity> GetEntitiesQuery()

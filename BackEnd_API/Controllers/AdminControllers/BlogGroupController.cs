@@ -1,6 +1,5 @@
 ﻿using Application.Const.Response;
 using Application.DTOs.Blog.BlogGroup;
-using Application.features.Blog.Handler.Queries.BlogGroup;
 using Application.features.Blog.Request.Commands.BlogGroupCommands;
 using Application.features.Blog.Request.Queries.BlogGroup;
 using BackEnd_API.Const;
@@ -20,7 +19,7 @@ namespace BackEnd_API.Controllers.AdminControllers
         {
             _mediator = mediator;
         }
-        [HttpGet(ApiRouteV1.BlogGroup_GetAll,Name = "GetBlogGroupListAsync")]
+        [HttpGet(ApiRouteV1.BlogGroup_GetAll, Name = "GetBlogGroupListAsync")]
         public async Task<ActionResult<ResponseResultDTO>> GetBlogGroupListAsync()
             => await _mediator.Send(new GetBlogGroupListRequest());
 

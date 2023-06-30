@@ -34,8 +34,8 @@ namespace BackEnd_UnitTest.Facts.CommonQuestions.Commands
             var result = await handler.Handle(new UpdateCommonQuestionRequest() { updateCommonQuestionDTO = CommonQuestionModelGenerator.updateCommonQuestionDTO_Valid }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
-            
-            
+
+
         }
         [Fact]
         public async Task UpdateCommonQuestion_Validation_InValid()
@@ -45,8 +45,8 @@ namespace BackEnd_UnitTest.Facts.CommonQuestions.Commands
 
             result.Status.ShouldBe(StatusMessage.ValidationError);
             result.Errors.ShouldNotBeNull();
-            
-            
+
+
         }
 
         [Fact]
@@ -57,8 +57,8 @@ namespace BackEnd_UnitTest.Facts.CommonQuestions.Commands
 
             result.Status.ShouldBe(StatusMessage.NotFound);
             result.Errors.ShouldBeNull();
-            
-            
+
+
         }
     }
 }

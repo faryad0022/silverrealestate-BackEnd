@@ -1,5 +1,4 @@
 ﻿using Application.Contract.Persistence.CommonGenericRepository;
-using Application.DTOs.Blog.BlogContent;
 using Application.Models.FilterModels;
 using Domain.Entities.Blog;
 using System.Collections.Generic;

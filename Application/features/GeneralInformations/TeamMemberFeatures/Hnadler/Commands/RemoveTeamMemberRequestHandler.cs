@@ -4,9 +4,6 @@ using Application.DTOs.GeneralSiteInformationsDTO.TeamMembers;
 using Application.features.GeneralInformations.TeamMemberFeatures.Request.Commands;
 using AutoMapper;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -17,7 +14,7 @@ namespace Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Co
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
 
-        public RemoveTeamMemberRequestHandler(IMapper mapper,IUnitofWork unitofWork)
+        public RemoveTeamMemberRequestHandler(IMapper mapper, IUnitofWork unitofWork)
         {
             _mapper = mapper;
             _unitofWork = unitofWork;

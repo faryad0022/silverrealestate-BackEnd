@@ -34,8 +34,8 @@ namespace BackEnd_UnitTest.Facts.AboutUs.Commands
             var result = await handler.Handle(new UpdateAboutUsRequest() { updateAboutUsDTO = AboutUsModelGenerator.updateAboutUsDTO_Valid }, CancellationToken.None);
 
             result.Errors.ShouldBeNull();
-            
-            
+
+
             result.Status.ShouldBe(StatusMessage.Success);
 
         }
@@ -46,8 +46,8 @@ namespace BackEnd_UnitTest.Facts.AboutUs.Commands
             var result = await handler.Handle(new UpdateAboutUsRequest() { updateAboutUsDTO = AboutUsModelGenerator.updateAboutUsDTO_InValid }, CancellationToken.None);
 
             result.Errors.ShouldNotBeNull();
-            
-            
+
+
             result.Status.ShouldBe(StatusMessage.ValidationError);
 
         }
@@ -58,8 +58,8 @@ namespace BackEnd_UnitTest.Facts.AboutUs.Commands
             var result = await handler.Handle(new UpdateAboutUsRequest() { updateAboutUsDTO = AboutUsModelGenerator.updateAboutUsDTO_NotFound_InValid }, CancellationToken.None);
 
             result.Errors.ShouldBeNull();
-            
-            
+
+
             result.Status.ShouldBe(StatusMessage.NotFound);
 
         }

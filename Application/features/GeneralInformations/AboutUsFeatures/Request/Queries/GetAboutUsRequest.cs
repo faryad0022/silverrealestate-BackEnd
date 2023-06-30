@@ -1,5 +1,4 @@
 ﻿using Application.Const.Response;
-using Application.DTOs.GeneralSiteInformationsDTO.AboutUs;
 using MediatR;
 
 

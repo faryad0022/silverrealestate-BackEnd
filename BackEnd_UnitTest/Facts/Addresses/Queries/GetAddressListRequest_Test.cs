@@ -33,7 +33,7 @@ namespace BackEnd_UnitTest.Facts.Addresses.Queries
             var result = await handler.Handle(new GetAddressListRequest(), CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
-            
+
         }
 
         [Fact]

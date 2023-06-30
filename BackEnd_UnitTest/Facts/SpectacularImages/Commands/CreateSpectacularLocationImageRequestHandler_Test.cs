@@ -1,6 +1,5 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocationImages;
 using Application.features.GeneralInformations.SpectacularLocationImageFeatures.Handler.Commands;
 using Application.features.GeneralInformations.SpectacularLocationImageFeatures.Request.Commands;
 using Application.Profiles;
@@ -36,8 +35,8 @@ namespace BackEnd_UnitTest.Facts.SpectacularImages.Commands
 
             result.Status.ShouldBe(StatusMessage.Success);
             result.Errors.ShouldBeNull();
-            
-            
+
+
         }
         [Fact]
         public async Task CreateSpectacularLocationImage_ValidationError_InValid()
@@ -47,8 +46,8 @@ namespace BackEnd_UnitTest.Facts.SpectacularImages.Commands
 
             result.Status.ShouldBe(StatusMessage.ValidationError);
             result.Errors.ShouldNotBeNull();
-            
-            
+
+
         }
         [Fact]
         public async Task CreateSpectacularLocationImage_ValidationError_ParentId_InValid()
@@ -58,8 +57,8 @@ namespace BackEnd_UnitTest.Facts.SpectacularImages.Commands
 
             result.Status.ShouldBe(StatusMessage.ValidationError);
             result.Errors.ShouldNotBeNull();
-            
-            
+
+
         }
     }
 }

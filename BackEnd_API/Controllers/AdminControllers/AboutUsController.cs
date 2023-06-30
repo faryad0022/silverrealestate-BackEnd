@@ -19,9 +19,9 @@ namespace BackEnd_API.Controllers.AdminControllers
         {
             _mediator = mediator;
         }
-        [HttpGet(ApiRouteV1.AboutUs_GetAll,Name = "GetAboutUsListAsync")]
+        [HttpGet(ApiRouteV1.AboutUs_GetAll, Name = "GetAboutUsListAsync")]
         public async Task<ActionResult<ResponseResultDTO>> GetAboutUsListAsync()
-            =>  await _mediator.Send(new GetAboutUsListRequest());
+            => await _mediator.Send(new GetAboutUsListRequest());
 
 
         [HttpGet(ApiRouteV1.AboutUs_Get, Name = "GetAboutUsAsync")]

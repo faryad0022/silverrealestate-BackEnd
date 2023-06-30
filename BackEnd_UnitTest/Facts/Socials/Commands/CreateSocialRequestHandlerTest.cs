@@ -1,6 +1,5 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.DTOs.GeneralSiteInformationsDTO.Social;
 using Application.features.GeneralInformations.SocialFeatures.Handler.Commands;
 using Application.features.GeneralInformations.SocialFeatures.Request.Commands;
 using Application.Profiles;
@@ -36,7 +35,7 @@ namespace BackEnd_UnitTest.Facts.Socials.Commands
             var result = await handler.Handle(new CreateSocialRequest() { createSocialDTO = SocialModelGenerator._createSocialDTO }, CancellationToken.None);
 
             result.ShouldBeOfType<ResponseResultDTO>();
-            
+
             result.Errors.ShouldBeNull();
             result.Status.ShouldBe(StatusMessage.Success);
         }

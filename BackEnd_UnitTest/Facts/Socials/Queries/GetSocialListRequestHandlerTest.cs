@@ -1,6 +1,5 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.DTOs.GeneralSiteInformationsDTO.Social;
 using Application.features.GeneralInformations.SocialFeatures.Handler.Queries;
 using Application.features.GeneralInformations.SocialFeatures.Request.Queries;
 using Application.Profiles;
@@ -8,7 +7,6 @@ using AutoMapper;
 using BackEnd_UnitTest.Mocks;
 using Moq;
 using Shouldly;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;

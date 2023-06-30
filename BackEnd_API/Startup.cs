@@ -3,13 +3,11 @@ using BackEnd_Infrastructure;
 using BackEnd_Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Linq;
 
 namespace BackEnd_API
 {
@@ -41,8 +39,9 @@ namespace BackEnd_API
             });
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("Admin", new OpenApiInfo { 
-                    Title = "Admin Controller Actions", 
+                c.SwaggerDoc("Admin", new OpenApiInfo
+                {
+                    Title = "Admin Controller Actions",
                     Version = "V1",
                     Contact = new OpenApiContact
                     {
@@ -71,7 +70,8 @@ namespace BackEnd_API
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => {
+                app.UseSwaggerUI(c =>
+                {
                     c.SwaggerEndpoint("/swagger/Admin/swagger.json", "Admin");
                     c.SwaggerEndpoint("/swagger/Site/swagger.json", "Site");
                 });

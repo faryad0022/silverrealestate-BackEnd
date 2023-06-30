@@ -18,7 +18,7 @@ namespace BackEnd_API.Controllers.AdminControllers
             _mediator = mediator;
         }
 
-        [HttpGet(ApiRouteV1.Address_GetAll,Name = "GetAllAddress")]
+        [HttpGet(ApiRouteV1.Address_GetAll, Name = "GetAllAddress")]
         public async Task<ActionResult<ResponseResultDTO>> GetAllAddress()
             => await _mediator.Send(new GetAddressListRequest());
 

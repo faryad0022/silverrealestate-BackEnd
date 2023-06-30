@@ -35,8 +35,8 @@ namespace BackEnd_UnitTest.Facts.CommonQuestions.Commands
             var result = await handler.Handle(new ChangeCommonQuestionSelectedStatusRequest() { Id = 1 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
-            
-            
+
+
         }
 
         [Fact]
@@ -46,8 +46,8 @@ namespace BackEnd_UnitTest.Facts.CommonQuestions.Commands
             var result = await handler.Handle(new ChangeAddressDTOStatusRequest() { Id = 40 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.NotFound);
-            
-            
+
+
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.DTOs.GeneralSiteInformationsDTO.TeamMembers;
 using Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Commands;
 using Application.features.GeneralInformations.TeamMemberFeatures.Request.Commands;
 using Application.Profiles;
@@ -9,10 +8,6 @@ using BackEnd_UnitTest.Mocks;
 using BackEnd_UnitTest.Mocks.Models.TeamMembers;
 using Moq;
 using Shouldly;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -35,11 +30,11 @@ namespace BackEnd_UnitTest.Facts.TeamMembers.Commands
         [Fact]
         public async Task CreateTeamMember_Valid()
         {
-            var handler = new CreateTeamMemberRequestHandler(_mapper,_unitOfWork.Object);
+            var handler = new CreateTeamMemberRequestHandler(_mapper, _unitOfWork.Object);
             var result = await handler.Handle(new CreateTeamMemberRequest() { createTeamMmeberDTO = TeamMemberModelGenerator.CreateTeamMmeberDTO_Valid }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
-            
+
             result.Errors.ShouldBeNull();
 
         }
@@ -50,9 +45,9 @@ namespace BackEnd_UnitTest.Facts.TeamMembers.Commands
             var result = await handler.Handle(new CreateTeamMemberRequest() { createTeamMmeberDTO = TeamMemberModelGenerator.CreateTeamMmeberDTO_ValidationError_InValid }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.ValidationError);
-            
+
             result.Errors.ShouldNotBeNull();
-            
+
         }
     }
 }

@@ -3,7 +3,6 @@ using RealEstateUI.Contract;
 using RealEstateUI.Models;
 using RealEstateUI.Services.Base;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace RealEstateUI.Services
@@ -14,14 +13,14 @@ namespace RealEstateUI.Services
         private readonly ILocalStorageService _localStorage;
         private readonly IMapper _mapper;
 
-        public AddressService(IClient httpClient,ILocalStorageService localStorage,IMapper mapper)
+        public AddressService(IClient httpClient, ILocalStorageService localStorage, IMapper mapper)
         {
             _httpClient = httpClient;
             _localStorage = localStorage;
             _mapper = mapper;
         }
 
- 
+
 
         public async Task<IReadOnlyList<AddressVM>> GetAllAddressAsync()
         {
@@ -34,6 +33,6 @@ namespace RealEstateUI.Services
             return _mapper.Map<AddressVM>(address.Tentity);
         }
 
-   
+
     }
 }

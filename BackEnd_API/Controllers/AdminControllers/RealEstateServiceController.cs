@@ -19,7 +19,7 @@ namespace BackEnd_API.Controllers.AdminControllers
         {
             _mediator = mediator;
         }
-        [HttpGet(ApiRouteV1.RealEstateServicc_GetAll,Name = "GetAllRealEstateService")]
+        [HttpGet(ApiRouteV1.RealEstateServicc_GetAll, Name = "GetAllRealEstateService")]
         public async Task<ActionResult<ResponseResultDTO>> GetAllRealEstateService()
             => await _mediator.Send(new GetRealEstateServiceListRequest());
 

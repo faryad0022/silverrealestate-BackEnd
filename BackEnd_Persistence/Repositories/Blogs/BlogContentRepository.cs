@@ -34,7 +34,7 @@ namespace BackEnd_Persistence.Repositories.Blogs
 
         public async Task<FilterBlogContent> FilterBlogContent(FilterBlogContent filter)
         {
-            var blogContentQuery = GetEntitiesQuery().Include(x=>x.blogGroup).AsQueryable();
+            var blogContentQuery = GetEntitiesQuery().Include(x => x.blogGroup).AsQueryable();
             if (!string.IsNullOrEmpty(filter.Title))
             {
                 blogContentQuery = blogContentQuery.Where(x => x.Title.Contains(filter.Title));

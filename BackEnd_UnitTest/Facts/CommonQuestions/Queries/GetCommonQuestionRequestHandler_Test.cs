@@ -33,8 +33,8 @@ namespace BackEnd_UnitTest.Facts.CommonQuestions.Queries
             var result = await handler.Handle(new GetCommonQuestionRequest() { Id = 1 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
-            
-            
+
+
             result.Errors.ShouldBeNull();
         }
 
@@ -45,8 +45,8 @@ namespace BackEnd_UnitTest.Facts.CommonQuestions.Queries
             var result = await handler.Handle(new GetCommonQuestionRequest() { Id = 10 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.NotFound);
-            
-            
+
+
             result.Errors.ShouldBeNull();
         }
     }
