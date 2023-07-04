@@ -32,11 +32,15 @@ namespace BackEnd_API.Controllers.AdminControllers
             => await _mediator.Send(new CreateRealEstateServicesRequest() { createRealEstateServicesDTO = createRealEstateServicesDTO });
 
         [HttpPut(ApiRouteV1.RealEstateServicc_Update, Name = "UpdateRealEstateService")]
-        public async Task<ActionResult<ResponseResultDTO>> UpdateRealEstateService([FromQuery] UpdateRealEstateServicesDTO updateRealEstateServicesDTO)
+        public async Task<ActionResult<ResponseResultDTO>> UpdateRealEstateService([FromBody] UpdateRealEstateServicesDTO updateRealEstateServicesDTO)
             => await _mediator.Send(new UpdateRealEstateServicesRequest() { updateRealEstateServicesDTO = updateRealEstateServicesDTO });
 
         [HttpPut(ApiRouteV1.RealEstateServicc_ChangeStatus, Name = "ChangeRealEstateServiceStatus")]
-        public async Task<ActionResult<ResponseResultDTO>> ChangeRealEstateServiceStatus([FromQuery] long Id)
+        public async Task<ActionResult<ResponseResultDTO>> ChangeRealEstateServiceStatus([FromBody] long Id)
             => await _mediator.Send(new ChangeRealEstateServiceSelectedStatusRequest() { Id = Id });
+
+        [HttpPut(ApiRouteV1.RealEstateServicc_Delete, Name = "DeleteRealEstateService")]
+        public async Task<ActionResult<ResponseResultDTO>> DeleteRealEstateService([FromBody] long Id)
+            => await _mediator.Send(new DeleteRealEstateServiceRequest() { Id = Id });
     }
 }

@@ -131,17 +131,6 @@
         public const string TeamMember_ChangeStatus = "v1/teammember/changestatus";
         #endregion
 
-        #region TeamMemberSocial
-        public const string TeamMemberSocial_GetAll = "v1/teammembersocial/getall";
-        public const string TeamMemberSocial_GetAll_WithDetails = "v1/teammembersocial/getall/withdetails";
-        public const string TeamMemberSocial_Get = "v1/teammembersocial/get";
-        public const string TeamMemberSocial_Get_WithDetails = "v1/teammembersocial/get/withdetails";
-        public const string TeamMemberSocial_Get_Filter = "v1/teammembersocial/getbyfilter";
-        public const string TeamMemberSocial_Add = "v1/teammembersocial/add";
-        public const string TeamMemberSocial_Update = "v1/teammembersocial/update";
-        public const string TeamMemberSocial_Delete = "v1/teammembersocial/delete";
-        public const string TeamMemberSocial_ChangeStatus = "v1/teammembersocial/changestatus";
-        #endregion
 
     }
 }

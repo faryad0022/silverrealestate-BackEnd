@@ -24,7 +24,10 @@
     <Folder Include="wwwroot\images\banner\compressed\" />
     <Folder Include="wwwroot\images\banner\origin\" />
     <Folder Include="wwwroot\images\blogs\origin\" />
+    <Folder Include="wwwroot\images\constructor\NewFolder\" />
     <Folder Include="wwwroot\images\constructor\origin\" />
+    <Folder Include="wwwroot\images\realestateservice\compressed\" />
+    <Folder Include="wwwroot\images\realestateservice\orogin\" />
     <Folder Include="wwwroot\images\spectacular\origin\" />
     <Folder Include="wwwroot\images\team\compressed\" />
     <Folder Include="wwwroot\images\team\NewFolder\" />

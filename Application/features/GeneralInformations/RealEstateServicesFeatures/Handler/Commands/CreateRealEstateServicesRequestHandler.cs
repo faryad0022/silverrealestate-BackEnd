@@ -1,6 +1,9 @@
-﻿using Application.Const.Response;
+﻿using Application.Const.PathUtility;
+using Application.Const.Response;
 using Application.Contract.Persistence;
+using Application.DTOs.GeneralSiteInformationsDTO.RealEstateServicess;
 using Application.DTOs.GeneralSiteInformationsDTO.RealEstateServicess.Validators;
+using Application.Extensions;
 using Application.features.GeneralInformations.RealEstateServicesFeatures.Request.Commands;
 using AutoMapper;
 using Domain.Entities.GeneralSiteInformation;
@@ -32,10 +35,23 @@ namespace Application.features.GeneralInformations.RealEstateServicesFeatures.Ha
                     StatusMessage.ValidationError,
                     validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
             #endregion
-            var realEstateServices = _mapper.Map<RealEstateServices>(request.createRealEstateServicesDTO);
-            await _unitofWork.RealEstateServicesRepository.AddEntityAsync(realEstateServices);
+            #region Upload Image
+            var createdImageName = ImageUploaderExtensions.UploadImage(
+                request.createRealEstateServicesDTO.ImageName,
+                PathTools.RealEstateServiceImageServerPath
+                );
+            if (string.IsNullOrEmpty(createdImageName))
+                return ResponseResultDTO.SetResult(
+                    null,
+                    StatusMessage.UploadError,
+                    null
+                    );
+            #endregion
+            var realEstate = _mapper.Map<RealEstateServices>(request.createRealEstateServicesDTO);
+            realEstate.ImageName = createdImageName;
+            await _unitofWork.RealEstateServicesRepository.AddEntityAsync(realEstate);
             await _unitofWork.SaveChangesAsync();
-            return ResponseResultDTO.SetResult(request.createRealEstateServicesDTO, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(_mapper.Map<RealEstateServicesDTO>(realEstate), StatusMessage.Success, null);
         }
     }
 }

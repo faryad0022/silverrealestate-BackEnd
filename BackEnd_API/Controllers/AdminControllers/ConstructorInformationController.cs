@@ -32,11 +32,11 @@ namespace BackEnd_API.Controllers.AdminControllers
             => await _mediator.Send(new CreateConstructorInformationRequest() { createConstructorInformationDTO = createConstructorInformationDTO });
 
         [HttpPut(ApiRouteV1.ConstructorInformation_Update, Name = "UpdateConstructorInformation")]
-        public async Task<ActionResult<ResponseResultDTO>> UpdateConstructorInformation([FromQuery] UpdateConstructorInformationDTO updateConstructorInformationDTO)
+        public async Task<ActionResult<ResponseResultDTO>> UpdateConstructorInformation([FromBody] UpdateConstructorInformationDTO updateConstructorInformationDTO)
             => await _mediator.Send(new UpdateConstructorInformationRequest() { updateConstructorInformationDTO = updateConstructorInformationDTO });
 
-        [HttpPut(ApiRouteV1.ConstructorInformation_ChangeStatus, Name = "ChangeConstructorInformationStatus")]
-        public async Task<ActionResult<ResponseResultDTO>> ChangeConstructorInformationStatus([FromQuery] long Id)
-            => await _mediator.Send(new ChangeConstructorInformationSelectedStatusRequest() { Id = Id });
+        [HttpPut(ApiRouteV1.ConstructorInformation_Delete, Name = "DeleteConstructorInformationStatus")]
+        public async Task<ActionResult<ResponseResultDTO>> DeleteConstructorInformationStatus([FromBody] long Id)
+            => await _mediator.Send(new DeleteConstructorInformationRequest() { Id = Id });
     }
 }

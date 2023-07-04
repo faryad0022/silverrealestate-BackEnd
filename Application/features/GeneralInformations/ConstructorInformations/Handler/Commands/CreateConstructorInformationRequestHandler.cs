@@ -1,11 +1,16 @@
-﻿using Application.Const.Response;
+﻿using Application.Const.PathUtility;
+using Application.Const.Response;
 using Application.Contract.Persistence;
+using Application.DTOs.GeneralSiteInformationsDTO.Banner;
+using Application.DTOs.GeneralSiteInformationsDTO.ConstructorInformations;
 using Application.DTOs.GeneralSiteInformationsDTO.ConstructorInformations.Validators;
+using Application.Extensions;
 using Application.features.GeneralInformations.ConstructorInformations.Request.Commands;
 using AutoMapper;
 using Domain.Entities.GeneralSiteInformation;
 using MediatR;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -32,10 +37,23 @@ namespace Application.features.GeneralInformations.ConstructorInformations.Handl
                                 StatusMessage.ValidationError,
                                 validationResult.Errors.Select(q => q.ErrorMessage).ToList());
             #endregion
+            #region Upload Image
+            var createdImageName = ImageUploaderExtensions.UploadImage(
+                request.createConstructorInformationDTO.ConstructorLogo,
+                PathTools.ConstructorServerPath
+                );
+            if (string.IsNullOrEmpty(createdImageName))
+                return ResponseResultDTO.SetResult(
+                    null,
+                    StatusMessage.UploadError,
+                    null
+                    );
+            #endregion
             var constructor = _mapper.Map<ConstructorInformation>(request.createConstructorInformationDTO);
+            constructor.ConstructorLogo = createdImageName;
             await _unitofWork.ConstructorInfromationRepository.AddEntityAsync(constructor);
             await _unitofWork.SaveChangesAsync();
-            return ResponseResultDTO.SetResult(request.createConstructorInformationDTO, StatusMessage.Success, null);
+            return ResponseResultDTO.SetResult(_mapper.Map<ConstructorInformationDTO>(constructor), StatusMessage.Success, null);
         }
     }
 }
