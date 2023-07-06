@@ -11,6 +11,7 @@ using Application.DTOs.GeneralSiteInformationsDTO.Social;
 using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocationImages;
 using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocations;
 using Application.DTOs.GeneralSiteInformationsDTO.TeamMembers;
+using Application.DTOs.Project.City;
 using Application.DTOs.Project.Country;
 using Application.Models.FilterModels;
 using AutoMapper;
@@ -200,6 +201,20 @@ namespace Application.Profiles
             CreateMap<Country, CreateCountryDTO>().ReverseMap();
             CreateMap<CountryDTO, UpdateCountryDTO>().ReverseMap();
             CreateMap<CountryDTO, CreateCountryDTO>().ReverseMap();
+
+            #endregion
+
+            #region City
+            CreateMap<City,CityDTO>()
+                .ForMember(dest => dest.CountryName, opt =>
+                {
+                    opt.MapFrom(src => src.Country.CountryName);
+                })
+                .ReverseMap();
+            CreateMap<City, UpdateCityDTO>().ReverseMap();
+            CreateMap<City, CreateCityDTO>().ReverseMap();
+            CreateMap<CityDTO, UpdateCityDTO>().ReverseMap();
+            CreateMap<CityDTO, CreateCityDTO>().ReverseMap();
 
             #endregion
 

@@ -13,6 +13,7 @@ namespace Application.DTOs.Project.City.Validators
             _unitofWork = unitofWork;
             Include(new ICItyDTOVlidator());
             RuleFor(x => x.CountryId)
+                .GreaterThan(0).WithMessage(ValidatorMessages.GreaterThan)
                 .MustAsync(async (id, token) =>
                 {
                     return await _unitofWork.CountryRepository.ExistAsync(id);

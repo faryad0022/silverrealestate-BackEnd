@@ -65,7 +65,7 @@ namespace BackEnd_Persistence.Repositories.Blogs
         {
             var blogContent = await _dbContext.BlogContents
                 .Include(q => q.blogGroup)
-                .FirstOrDefaultAsync(q => q.Id == BlogcontentId);
+                .SingleOrDefaultAsync(q => q.Id == BlogcontentId);
             return blogContent;
         }
 
@@ -75,27 +75,5 @@ namespace BackEnd_Persistence.Repositories.Blogs
             return blogContents;
         }
 
-        public List<BlogContent> MappingBlogContent(List<BlogContentDTO> blogContents)
-        {
-            var blogContentList = new List<BlogContent>();
-            foreach (var item in blogContents)
-            {
-                var blogContent = new BlogContent
-                {
-                    Id = item.Id,
-                    Status = item.Status,
-                    BlogGroupId = item.BlogGroupId,
-                    BlogGroupName = item.BlogGroupName,
-                    IsSelected = item.IsSelected,
-                    Tags = item.Tags,
-                    ImageName = item.ImageName,
-                    Text = item.Text,
-                    Title = item.Title,
-                    ViewCount = item.ViewCount,
-                };
-                blogContentList.Add(blogContent);
-            }
-            return blogContentList;
-        }
     }
 }

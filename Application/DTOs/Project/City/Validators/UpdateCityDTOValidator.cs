@@ -13,9 +13,17 @@ namespace Application.DTOs.Project.City.Validators
             _unitofWork = unitofWork;
 
             Include(new ICItyDTOVlidator());
+
             RuleFor(x => x.Id)
-                .GreaterThan(0).WithMessage(ValidatorMessages.GreaterThan);
+                .GreaterThan(0).WithMessage(ValidatorMessages.GreaterThan)
+                .MustAsync(async (id,token) =>
+                {
+                    return await _unitofWork.CityRepository.ExistAsync(id);
+                }).WithMessage(ValidatorMessages.NotExist);
+
+
             RuleFor(x => x.CountryId)
+                .GreaterThan(0).WithMessage(ValidatorMessages.GreaterThan)
                 .MustAsync(async (id, token) =>
                 {
                     return await _unitofWork.CountryRepository.ExistAsync(id);

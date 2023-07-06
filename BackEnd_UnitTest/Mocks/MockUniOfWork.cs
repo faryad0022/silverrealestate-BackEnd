@@ -1,4 +1,7 @@
 ﻿using Application.Contract.Persistence;
+using BackEnd_UnitTest.Mocks.Blog;
+using BackEnd_UnitTest.Mocks.General;
+using BackEnd_UnitTest.Mocks.Projects;
 using Moq;
 
 namespace BackEnd_UnitTest.Mocks
@@ -22,6 +25,7 @@ namespace BackEnd_UnitTest.Mocks
             var _mockrSpectacularLocationImagesRepository = MockSpectacularImagesRepository.GetSpectacularImagesRepository();
             var _mockTeamMemberRepository = MockTeamMemberRepository.GetTeamMemberRepository();
             var _mockCountryRepository = MockCountryRepository.GetCountryRepository();
+            var _mockCityRepository = MockCityRepository.GetCityRepository();
 
 
             //var _mockAboutSocialRepository = Mock
@@ -39,6 +43,7 @@ namespace BackEnd_UnitTest.Mocks
             _mockUOW.Setup(s => s.SpectacularLocationImageRepository).Returns(() => _mockrSpectacularLocationImagesRepository.Object);
             _mockUOW.Setup(s => s.TeamMemberRepository).Returns(() => _mockTeamMemberRepository.Object);
             _mockUOW.Setup(s => s.CountryRepository).Returns(() => _mockCountryRepository.Object);
+            _mockUOW.Setup(s => s.CityRepository).Returns(() => _mockCityRepository.Object);
 
 
             return _mockUOW;

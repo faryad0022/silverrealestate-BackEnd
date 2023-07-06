@@ -7,6 +7,6 @@ namespace Application.DTOs.Project.City
     {
         public string CityName { get; set; }
         public long CountryId { get; set; }
-        public CountryDTO Country { get; set; }
+        public string CountryName { get; set; }
     }
 }

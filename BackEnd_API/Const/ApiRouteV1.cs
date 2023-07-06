@@ -131,6 +131,25 @@
         public const string TeamMember_ChangeStatus = "v1/teammember/changestatus";
         #endregion
 
+        #region Country
+        public const string Country_GetAll = "v1/country/getall";
+        public const string Country_Get = "v1/country/get";
+        public const string Country_Add = "v1/country/add";
+        public const string Country_Update = "v1/country/update";
+        public const string Country_Delete = "v1/country/delete";
+        public const string Country_ChangeStatus = "v1/country/changestatus";
+        #endregion
+
+        #region City
+        public const string City_GetCityListOfCountry = "v1/city/get-city-list-of-country";
+        public const string City_GetCityListOfCountry_WithDetails = "v1/city/get-city-list-of-country/withdetails";
+        public const string City_Get = "v1/city/get";
+        public const string City_GetWithDetails = "v1/city/get-withdetails";
+        public const string City_Add = "v1/city/add";
+        public const string City_Update = "v1/city/update";
+        public const string City_Delete = "v1/city/delete";
+        public const string City_ChangeStatus = "v1/city/changestatus";
+        #endregion
 
     }
 }
