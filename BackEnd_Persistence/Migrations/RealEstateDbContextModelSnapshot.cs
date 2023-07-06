@@ -77,7 +77,7 @@ namespace BackEnd_Persistence.Migrations
                             Id = 1L,
                             BlogGroupId = 2L,
                             BlogGroupName = "دانشگاه های قبرس",
-                            CreateDate = new DateTime(2023, 6, 27, 10, 46, 38, 884, DateTimeKind.Local).AddTicks(4565),
+                            CreateDate = new DateTime(2023, 7, 5, 13, 48, 9, 420, DateTimeKind.Local).AddTicks(7278),
                             ImageName = "EMU.jpg",
                             IsDelete = false,
                             IsSelected = true,
@@ -93,7 +93,7 @@ namespace BackEnd_Persistence.Migrations
                             Id = 2L,
                             BlogGroupId = 2L,
                             BlogGroupName = "دانشگاه های قبرس",
-                            CreateDate = new DateTime(2023, 6, 27, 10, 46, 38, 884, DateTimeKind.Local).AddTicks(7593),
+                            CreateDate = new DateTime(2023, 7, 5, 13, 48, 9, 420, DateTimeKind.Local).AddTicks(9413),
                             ImageName = "EMU.jpg",
                             IsDelete = false,
                             IsSelected = true,
@@ -109,7 +109,7 @@ namespace BackEnd_Persistence.Migrations
                             Id = 3L,
                             BlogGroupId = 1L,
                             BlogGroupName = "اخبار قبرس",
-                            CreateDate = new DateTime(2023, 6, 27, 10, 46, 38, 884, DateTimeKind.Local).AddTicks(7607),
+                            CreateDate = new DateTime(2023, 7, 5, 13, 48, 9, 420, DateTimeKind.Local).AddTicks(9423),
                             ImageName = "CYP.jpg",
                             IsDelete = false,
                             IsSelected = true,
@@ -152,7 +152,7 @@ namespace BackEnd_Persistence.Migrations
                         new
                         {
                             Id = 1L,
-                            CreateDate = new DateTime(2023, 6, 27, 10, 46, 38, 885, DateTimeKind.Local).AddTicks(4980),
+                            CreateDate = new DateTime(2023, 7, 5, 13, 48, 9, 421, DateTimeKind.Local).AddTicks(3772),
                             IsDelete = false,
                             IsSelected = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -161,7 +161,7 @@ namespace BackEnd_Persistence.Migrations
                         new
                         {
                             Id = 2L,
-                            CreateDate = new DateTime(2023, 6, 27, 10, 46, 38, 885, DateTimeKind.Local).AddTicks(5647),
+                            CreateDate = new DateTime(2023, 7, 5, 13, 48, 9, 421, DateTimeKind.Local).AddTicks(4260),
                             IsDelete = false,
                             IsSelected = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -170,7 +170,7 @@ namespace BackEnd_Persistence.Migrations
                         new
                         {
                             Id = 3L,
-                            CreateDate = new DateTime(2023, 6, 27, 10, 46, 38, 885, DateTimeKind.Local).AddTicks(5658),
+                            CreateDate = new DateTime(2023, 7, 5, 13, 48, 9, 421, DateTimeKind.Local).AddTicks(4268),
                             IsDelete = false,
                             IsSelected = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -211,7 +211,7 @@ namespace BackEnd_Persistence.Migrations
                         new
                         {
                             Id = 1L,
-                            CreateDate = new DateTime(2023, 6, 27, 10, 46, 38, 878, DateTimeKind.Local).AddTicks(6872),
+                            CreateDate = new DateTime(2023, 7, 5, 13, 48, 9, 416, DateTimeKind.Local).AddTicks(3702),
                             IsDelete = false,
                             IsSelected = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -262,7 +262,7 @@ namespace BackEnd_Persistence.Migrations
                         {
                             Id = 1L,
                             CellPhone = "+98-9123071411",
-                            CreateDate = new DateTime(2023, 6, 27, 10, 46, 38, 883, DateTimeKind.Local).AddTicks(2290),
+                            CreateDate = new DateTime(2023, 7, 5, 13, 48, 9, 420, DateTimeKind.Local).AddTicks(331),
                             Email = "mahancomputer49@gmail.com",
                             IsDelete = false,
                             IsSelected = true,
@@ -275,7 +275,7 @@ namespace BackEnd_Persistence.Migrations
                         {
                             Id = 2L,
                             CellPhone = "+90-5338355243",
-                            CreateDate = new DateTime(2023, 6, 27, 10, 46, 38, 883, DateTimeKind.Local).AddTicks(2384),
+                            CreateDate = new DateTime(2023, 7, 5, 13, 48, 9, 420, DateTimeKind.Local).AddTicks(369),
                             Email = "mahancomputer49@gmail.com",
                             IsDelete = false,
                             IsSelected = true,
@@ -356,7 +356,7 @@ namespace BackEnd_Persistence.Migrations
                         {
                             Id = 1L,
                             Answer = "قبرس با داشتن آب و هوای معتدل و مرطوب مدیترانه ایی مقصد مورد علاقه جهانگردان برای تعطیلات می باشد، با داشتن بیش از ۳۰۰ روز آفتابی و گرمایی مطلوب و کوهستان هایی در دل خود، از اعتدالی مدیترانه ایی برخوردار است.",
-                            CreateDate = new DateTime(2023, 6, 27, 10, 46, 38, 886, DateTimeKind.Local).AddTicks(5595),
+                            CreateDate = new DateTime(2023, 7, 5, 13, 48, 9, 421, DateTimeKind.Local).AddTicks(9796),
                             IsDelete = false,
                             IsSelected = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -366,7 +366,7 @@ namespace BackEnd_Persistence.Migrations
                         {
                             Id = 2L,
                             Answer = "قبرس شمالی با داشتن ۳۶ درصد از مساحت کل جزیره قبرس به علت داشتن شرایط مهاجرتی آسان و مالیات بسیار کم در قیاس با جمهوری قبرس و سایر کشورهای اروپایی مورد توجه سرمایه گذارانی از نقاط مختلف دنیا قرار گرفته است",
-                            CreateDate = new DateTime(2023, 6, 27, 10, 46, 38, 886, DateTimeKind.Local).AddTicks(6661),
+                            CreateDate = new DateTime(2023, 7, 5, 13, 48, 9, 422, DateTimeKind.Local).AddTicks(755),
                             IsDelete = false,
                             IsSelected = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -376,7 +376,7 @@ namespace BackEnd_Persistence.Migrations
                         {
                             Id = 3L,
                             Answer = "لیر ترکیه به عنوان ارز رایج این کشور شناخته می شود ولی خرید فروش ملک به پوند انگلستان می باشد و دلار و یورو هم در کنار این دو واحد پولی مورد استفاده قرار می گیرد.",
-                            CreateDate = new DateTime(2023, 6, 27, 10, 46, 38, 886, DateTimeKind.Local).AddTicks(6671),
+                            CreateDate = new DateTime(2023, 7, 5, 13, 48, 9, 422, DateTimeKind.Local).AddTicks(764),
                             IsDelete = false,
                             IsSelected = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -386,7 +386,7 @@ namespace BackEnd_Persistence.Migrations
                         {
                             Id = 4L,
                             Answer = "امنیت بالای قبرس شمالی در کنار رفاه مردم این کشور می تواند برای هر خانواده ایی دلیلی مناسب برای مهاجرت به قبرس شمالی باشد، بی علت نیست اگر قبرس شمالی در فهرست پنج کشور امن دنیا قرار گرفته است.",
-                            CreateDate = new DateTime(2023, 6, 27, 10, 46, 38, 886, DateTimeKind.Local).AddTicks(6674),
+                            CreateDate = new DateTime(2023, 7, 5, 13, 48, 9, 422, DateTimeKind.Local).AddTicks(767),
                             IsDelete = false,
                             IsSelected = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -396,7 +396,7 @@ namespace BackEnd_Persistence.Migrations
                         {
                             Id = 5L,
                             Answer = "برای ورود به قبرس شمالی به صورت توریستی نیازی به اخذ ویزا نخواهید داشت.  برای داشتن اقامت بیشتر، از طریق اقامت دانشجویی، خرید ملک و یا ثبت شرکت و یا اشتغال میسر خواهد بود.",
-                            CreateDate = new DateTime(2023, 6, 27, 10, 46, 38, 886, DateTimeKind.Local).AddTicks(6676),
+                            CreateDate = new DateTime(2023, 7, 5, 13, 48, 9, 422, DateTimeKind.Local).AddTicks(769),
                             IsDelete = false,
                             IsSelected = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -441,7 +441,7 @@ namespace BackEnd_Persistence.Migrations
                         {
                             Id = 1L,
                             ConstructorLogo = "Noyanlar.jpg",
-                            CreateDate = new DateTime(2023, 6, 27, 10, 46, 38, 887, DateTimeKind.Local).AddTicks(3621),
+                            CreateDate = new DateTime(2023, 7, 5, 13, 48, 9, 422, DateTimeKind.Local).AddTicks(6374),
                             Description = "گروه شرکت های نویانلار که در سال 1973 تأسیس شد، خدمات با کیفیت بالا را در تمام زمینه های صنعت ساخت و ساز در قبرس شمالی ارائه می دهد. این یک شرکت خانوادگی موفق است که کیفیت و رشد قابل اعتماد را در صنعت ساخت و ساز فراهم می کند. پروژه های ما مطابق با طرح های ساختمانی معاصر انجام می شود تا رضایتمندی بالا را فراهم کند.این مسیر باتاسیس شرکت معماری و مهندسی با مسئولیت محدود Arken توسط معمار کهنه کار گوکان نویان آغاز شد که در دهه های 1970 و 1980 بسیاری از پروژه های معماری را امضا کرد. در سال ۱۹۸۶ یک مهندس عمران با تجربه به نام Mustafa Noyan به این تیم پیوست.",
                             IsDelete = false,
                             IsSelected = true,
@@ -452,7 +452,7 @@ namespace BackEnd_Persistence.Migrations
                         {
                             Id = 2L,
                             ConstructorLogo = "Ceaser.jpg",
-                            CreateDate = new DateTime(2023, 6, 27, 10, 46, 38, 887, DateTimeKind.Local).AddTicks(3637),
+                            CreateDate = new DateTime(2023, 7, 5, 13, 48, 9, 422, DateTimeKind.Local).AddTicks(6386),
                             Description = "اگر که به دنبال خرید ملک در قبرس شمالی بوده اید، بدون شک نام سزار ریزورت‌ به گوشتان خورده است. افیک گروپ، شرکت مادر مجتمع سزار قبرس، در سال های اخیر در قبرس ترک مشهور و به دنبال آن اولین پروژه ی این شرکت به نام سزار ریزورت بر سر زبان ها افتاد. شهرک سزار قبرس شمالی با وجود قیمت نسبتا بالا خود در مقایسه با املاک منطقه توانسته در دل فارسی زبانان جا باز کند و جمع کثیری از ایرانیان را در این شهرک گرد هم آورد.\r\nشنا در استخرهای تابستانه، نوشیدن لاته گرم در کافه پاریس در فصل پاییز، پایکوبی در مهمانی های پر زرق و برق زمستانه و در نهایت پیاده روی های سرخوشانه به مقصد ساحل لانگ بیچ در فصل بهار همگی از زیبایی های شهرک سزار قبرس شمالی هستند.\r\nآنچه مجتمع سزار قبرس را از دیگر شهرک های جزیره جدا میکند، شرایط پرداخت اقساطی واحدها می باشد.\r\nوقتی پای اقساط به میان می آید، توجه به تبصره های قرارداد از مسائل حساس و چالش برانگیز می شود. قرارداد مجتمع سزار قبرس حاوی شش تا هشت صفحه با بند ها و تبصره های مختلف به زبان انگلیسی است که عدم توجه و غفلت از هر یک از این بندها ممکن است ضرر و زیان جبران ناپذیری برای خریداران به همراه داشته باشد. امکان تغییر در جزییات تبصره ها با صحبت و رایزنی مشاور املاک شما با مدیران فروش سزار ریزورت وجود دارد. بنابراین پیش از امضای هرگونه قرارداد ملک شهرک سزار قبرس شمالی حتما با مشاور املاک مسلط به زبان انگلیسی و ترکی، مشورت کرده و راهنمایی های لازم را دریافت کنید تا در آینده با مشکلات مالی و حقوقی مواجه نشوید.",
                             IsDelete = false,
                             IsSelected = true,
@@ -491,13 +491,13 @@ namespace BackEnd_Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Logos");
+                    b.ToTable("Logo");
 
                     b.HasData(
                         new
                         {
                             Id = 1L,
-                            CreateDate = new DateTime(2023, 6, 27, 10, 46, 38, 887, DateTimeKind.Local).AddTicks(9769),
+                            CreateDate = new DateTime(2023, 7, 5, 13, 48, 9, 425, DateTimeKind.Local).AddTicks(2077),
                             Description = "The Best real estate in cyprus",
                             ImageName = "silver.jpg",
                             IsDelete = false,
@@ -508,7 +508,7 @@ namespace BackEnd_Persistence.Migrations
                         new
                         {
                             Id = 2L,
-                            CreateDate = new DateTime(2023, 6, 27, 10, 46, 38, 887, DateTimeKind.Local).AddTicks(9787),
+                            CreateDate = new DateTime(2023, 7, 5, 13, 48, 9, 425, DateTimeKind.Local).AddTicks(2098),
                             Description = "The Best real estate in cyprus",
                             ImageName = "silver-net.jpg",
                             IsDelete = false,
@@ -587,7 +587,7 @@ namespace BackEnd_Persistence.Migrations
                         new
                         {
                             Id = 1L,
-                            CreateDate = new DateTime(2023, 6, 27, 10, 46, 38, 888, DateTimeKind.Local).AddTicks(5511),
+                            CreateDate = new DateTime(2023, 7, 5, 13, 48, 9, 425, DateTimeKind.Local).AddTicks(7922),
                             Icon = "fa fa-instagram",
                             IsDelete = false,
                             IsSelected = true,
@@ -598,7 +598,7 @@ namespace BackEnd_Persistence.Migrations
                         new
                         {
                             Id = 2L,
-                            CreateDate = new DateTime(2023, 6, 27, 10, 46, 38, 888, DateTimeKind.Local).AddTicks(5524),
+                            CreateDate = new DateTime(2023, 7, 5, 13, 48, 9, 425, DateTimeKind.Local).AddTicks(7935),
                             Icon = "fa fa-facebok",
                             IsDelete = false,
                             IsSelected = true,
@@ -676,7 +676,7 @@ namespace BackEnd_Persistence.Migrations
                         new
                         {
                             Id = 1L,
-                            CreateDate = new DateTime(2023, 6, 27, 10, 46, 38, 889, DateTimeKind.Local).AddTicks(566),
+                            CreateDate = new DateTime(2023, 7, 5, 13, 48, 9, 426, DateTimeKind.Local).AddTicks(3117),
                             IsDelete = false,
                             IsSelected = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -685,7 +685,7 @@ namespace BackEnd_Persistence.Migrations
                         new
                         {
                             Id = 2L,
-                            CreateDate = new DateTime(2023, 6, 27, 10, 46, 38, 889, DateTimeKind.Local).AddTicks(579),
+                            CreateDate = new DateTime(2023, 7, 5, 13, 48, 9, 426, DateTimeKind.Local).AddTicks(3129),
                             IsDelete = false,
                             IsSelected = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -694,7 +694,7 @@ namespace BackEnd_Persistence.Migrations
                         new
                         {
                             Id = 3L,
-                            CreateDate = new DateTime(2023, 6, 27, 10, 46, 38, 889, DateTimeKind.Local).AddTicks(581),
+                            CreateDate = new DateTime(2023, 7, 5, 13, 48, 9, 426, DateTimeKind.Local).AddTicks(3132),
                             IsDelete = false,
                             IsSelected = false,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -703,7 +703,7 @@ namespace BackEnd_Persistence.Migrations
                         new
                         {
                             Id = 4L,
-                            CreateDate = new DateTime(2023, 6, 27, 10, 46, 38, 889, DateTimeKind.Local).AddTicks(583),
+                            CreateDate = new DateTime(2023, 7, 5, 13, 48, 9, 426, DateTimeKind.Local).AddTicks(3133),
                             IsDelete = false,
                             IsSelected = false,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -766,7 +766,7 @@ namespace BackEnd_Persistence.Migrations
                         {
                             Id = 1L,
                             CellPhone = "09123071411",
-                            CreateDate = new DateTime(2023, 6, 27, 10, 46, 38, 889, DateTimeKind.Local).AddTicks(8416),
+                            CreateDate = new DateTime(2023, 7, 5, 13, 48, 9, 427, DateTimeKind.Local).AddTicks(505),
                             Email = "mahancomputer49@gmail.com",
                             IsDelete = false,
                             IsSelected = true,
@@ -779,7 +779,7 @@ namespace BackEnd_Persistence.Migrations
                         {
                             Id = 2L,
                             CellPhone = "09352499091",
-                            CreateDate = new DateTime(2023, 6, 27, 10, 46, 38, 889, DateTimeKind.Local).AddTicks(8432),
+                            CreateDate = new DateTime(2023, 7, 5, 13, 48, 9, 427, DateTimeKind.Local).AddTicks(518),
                             Email = "faryad.abolhassani@yahoo.com",
                             IsDelete = false,
                             IsSelected = true,
@@ -792,7 +792,7 @@ namespace BackEnd_Persistence.Migrations
                         {
                             Id = 3L,
                             CellPhone = "09122895170",
-                            CreateDate = new DateTime(2023, 6, 27, 10, 46, 38, 889, DateTimeKind.Local).AddTicks(8436),
+                            CreateDate = new DateTime(2023, 7, 5, 13, 48, 9, 427, DateTimeKind.Local).AddTicks(521),
                             Email = "Mojgan.Nazari@gmail.com",
                             IsDelete = false,
                             IsSelected = true,
@@ -801,6 +801,346 @@ namespace BackEnd_Persistence.Migrations
                             MemberPosition = "Sell Manager",
                             Name = "Mojgan"
                         });
+                });
+
+            modelBuilder.Entity("Domain.Entities.Project.City", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CityName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("CountryId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsSelected")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.ToTable("Cities");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Project.Country", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CountryFlag")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CountryName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsSelected")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Countries");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Project.Property", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AgentPhoneNmber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("CityId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("ConnectionFee")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FeatureImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Floor")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FloorSpace")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsSelected")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("KeyHandOverDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("NumberOfBathroom")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NumberOfBedroom")
+                        .HasColumnType("int");
+
+                    b.Property<string>("OwnerPhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PaymentPlan")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<long>("PropertyContractTypeId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("PropertyStatus")
+                        .HasColumnType("bit");
+
+                    b.Property<long>("PropertyTypeId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("StampDutyFee")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("VATFee")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityId");
+
+                    b.HasIndex("PropertyContractTypeId");
+
+                    b.HasIndex("PropertyTypeId");
+
+                    b.ToTable("Properties");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Project.PropertyContractType", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ContractType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsSelected")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PropertyContractTypes");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Project.PropertyFacility", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FacilityName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsSelected")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("PropertyId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PropertyId");
+
+                    b.ToTable("PropertyFacilities");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Project.PropertyGallery", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsSelected")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("PropertyId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PropertyId");
+
+                    b.ToTable("PropertyGalleries");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Project.PropertyPlan", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsSelected")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PlanDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PlanImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("PropertyId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PropertyId");
+
+                    b.ToTable("PropertyPlans");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Project.PropertyType", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsSelected")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PropertyTypes");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Project.PropertyVideo", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsSelected")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("PropertyId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("VideoName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PropertyId");
+
+                    b.ToTable("PropertyVideos");
                 });
 
             modelBuilder.Entity("Domain.Entities.Blog.BlogContent", b =>
@@ -825,6 +1165,88 @@ namespace BackEnd_Persistence.Migrations
                     b.Navigation("Spectacularlocation");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Project.City", b =>
+                {
+                    b.HasOne("Domain.Entities.Project.Country", "Country")
+                        .WithMany("Cities")
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Country");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Project.Property", b =>
+                {
+                    b.HasOne("Domain.Entities.Project.City", "City")
+                        .WithMany("Properties")
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Project.PropertyContractType", "PropertyContractType")
+                        .WithMany("Properties")
+                        .HasForeignKey("PropertyContractTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Project.PropertyType", "PropertyTypes")
+                        .WithMany("Properties")
+                        .HasForeignKey("PropertyTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("City");
+
+                    b.Navigation("PropertyContractType");
+
+                    b.Navigation("PropertyTypes");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Project.PropertyFacility", b =>
+                {
+                    b.HasOne("Domain.Entities.Project.Property", "Property")
+                        .WithMany("PropertyFacilities")
+                        .HasForeignKey("PropertyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Property");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Project.PropertyGallery", b =>
+                {
+                    b.HasOne("Domain.Entities.Project.Property", "ProPerty")
+                        .WithMany("PropertyGalleries")
+                        .HasForeignKey("PropertyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ProPerty");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Project.PropertyPlan", b =>
+                {
+                    b.HasOne("Domain.Entities.Project.Property", "Property")
+                        .WithMany("PropertyPlans")
+                        .HasForeignKey("PropertyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Property");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Project.PropertyVideo", b =>
+                {
+                    b.HasOne("Domain.Entities.Project.Property", "ProPerty")
+                        .WithMany("PropertyVideos")
+                        .HasForeignKey("PropertyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ProPerty");
+                });
+
             modelBuilder.Entity("Domain.Entities.Blog.BlogGroup", b =>
                 {
                     b.Navigation("BlogContents");
@@ -833,6 +1255,37 @@ namespace BackEnd_Persistence.Migrations
             modelBuilder.Entity("Domain.Entities.GeneralSiteInformation.Spectacularlocation", b =>
                 {
                     b.Navigation("spectacularLocationImages");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Project.City", b =>
+                {
+                    b.Navigation("Properties");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Project.Country", b =>
+                {
+                    b.Navigation("Cities");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Project.Property", b =>
+                {
+                    b.Navigation("PropertyFacilities");
+
+                    b.Navigation("PropertyGalleries");
+
+                    b.Navigation("PropertyPlans");
+
+                    b.Navigation("PropertyVideos");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Project.PropertyContractType", b =>
+                {
+                    b.Navigation("Properties");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Project.PropertyType", b =>
+                {
+                    b.Navigation("Properties");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,8 +1,11 @@
 ﻿using Application.Contract.Persistance.EntitiesRepository.Blog;
+using Application.Contract.Persistance.EntitiesRepository.Project;
 using Application.Contract.Persistence;
 using Application.Contract.Persistence.EntitiesRepository.GeneralInformations;
+using Application.Contract.Persistence.EntitiesRepository.Project;
 using BackEnd_Persistence.Repositories.Blogs;
 using BackEnd_Persistence.Repositories.GeneralInformations;
+using BackEnd_Persistence.Repositories.Project;
 using System;
 using System.Threading.Tasks;
 
@@ -25,6 +28,13 @@ namespace BackEnd_Persistence.Repositories
         private ISpectacularLocationImageRepository _spectacularLocationImageRepository;
         private ITeamMemberRepository _teamMemberRepository;
 
+
+        private ICityRepository _cityRepository;
+        private ICountryRepository _countryRepository;
+        private IPropertyContractTypeRepository _propertyContractTypeRepository;
+        private IPropertyTypeRepository _propertyTypeRepository;
+        private IPropertyPlanRepository _propertyPlanRepository;
+
         public UnitOfWork(RealEstateDbContext context) => _context = context;
 
 
@@ -41,6 +51,13 @@ namespace BackEnd_Persistence.Repositories
         public ISpectacularlocationRepository SpectacularlocationRepository => _spectacularlocationRepository ??= new SpectacularlocationRepository(_context);
         public ISpectacularLocationImageRepository SpectacularLocationImageRepository => _spectacularLocationImageRepository ??= new SpectacularLocationImageRepository(_context);
         public ITeamMemberRepository TeamMemberRepository => _teamMemberRepository ??= new TeamMemberRepository(_context);
+
+
+        public ICityRepository CityRepository => _cityRepository ??= new CityRepository(_context);
+        public ICountryRepository CountryRepository => _countryRepository ??= new CountryRepository(_context);
+        public IPropertyContractTypeRepository PropertyContractTypeRepository => _propertyContractTypeRepository ??= new PropertyContractTypeRepository(_context);
+        public IPropertyTypeRepository PropertyTypeRepository => _propertyTypeRepository ??= new PropertyTypeRepository(_context);
+        public IPropertyPlanRepository PropertyPlanRepository => _propertyPlanRepository ??= new PropertyPlanRepository(_context);
 
 
         public void Dispose()

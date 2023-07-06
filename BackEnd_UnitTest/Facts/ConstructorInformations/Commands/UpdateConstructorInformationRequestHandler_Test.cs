@@ -32,7 +32,7 @@ namespace BackEnd_UnitTest.Facts.ConstructorInformations.Commands
         public async Task UpdateConstructorInformationRequestHandler_Valid()
         {
             var handler = new UpdateConstructorInformationRequestHandler(_mapper, _mock.Object);
-            var result = await handler.Handle(new UpdateConstructorInformationRequest() { updateConstructorInformationDTO = ConstructorInformationModelGenerator.updateConstructorInformationDTO_Valid }, CancellationToken.None);
+            var result = await handler.Handle(new UpdateConstructorInformationRequest() { updateConstructorInformationDTO = ConstructorInformationsModelGenerator.updateConstructorInformationDTO_Valid }, CancellationToken.None);
 
 
             result.Status.ShouldBe(StatusMessage.Success);
@@ -43,7 +43,7 @@ namespace BackEnd_UnitTest.Facts.ConstructorInformations.Commands
         public async Task UpdateConstructorInformationRequestHandler_Validation_InValid()
         {
             var handler = new UpdateConstructorInformationRequestHandler(_mapper, _mock.Object);
-            var result = await handler.Handle(new UpdateConstructorInformationRequest() { updateConstructorInformationDTO = ConstructorInformationModelGenerator.updateConstructorInformationDTO_Validation_InValid }, CancellationToken.None);
+            var result = await handler.Handle(new UpdateConstructorInformationRequest() { updateConstructorInformationDTO = ConstructorInformationsModelGenerator.updateConstructorInformationDTO_Validation_InValid }, CancellationToken.None);
 
 
             result.Status.ShouldBe(StatusMessage.ValidationError);
@@ -54,7 +54,7 @@ namespace BackEnd_UnitTest.Facts.ConstructorInformations.Commands
         public async Task UpdateConstructorInformationRequestHandler_NotFound_InValid()
         {
             var handler = new UpdateConstructorInformationRequestHandler(_mapper, _mock.Object);
-            var result = await handler.Handle(new UpdateConstructorInformationRequest() { updateConstructorInformationDTO = ConstructorInformationModelGenerator.updateConstructorInformationDTO_Notfound_InValid }, CancellationToken.None);
+            var result = await handler.Handle(new UpdateConstructorInformationRequest() { updateConstructorInformationDTO = ConstructorInformationsModelGenerator.updateConstructorInformationDTO_Notfound_InValid }, CancellationToken.None);
 
 
             result.Status.ShouldBe(StatusMessage.NotFound);

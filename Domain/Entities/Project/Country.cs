@@ -4,14 +4,10 @@ namespace Domain.Entities.Project
 {
     public class Country : BaseEntity
     {
-        #region Properties
         public string CountryName { get; set; }
-        public string Icon { get; set; }
-        #endregion
+        public string CountryFlag { get; set; }
 
-        #region Relations
         public ICollection<City> Cities { get; set; }
-        #endregion
 
     }
 }

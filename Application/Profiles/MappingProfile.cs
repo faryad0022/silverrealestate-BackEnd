@@ -11,10 +11,12 @@ using Application.DTOs.GeneralSiteInformationsDTO.Social;
 using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocationImages;
 using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocations;
 using Application.DTOs.GeneralSiteInformationsDTO.TeamMembers;
+using Application.DTOs.Project.Country;
 using Application.Models.FilterModels;
 using AutoMapper;
 using Domain.Entities.Blog;
 using Domain.Entities.GeneralSiteInformation;
+using Domain.Entities.Project;
 
 namespace Application.Profiles
 {
@@ -190,6 +192,16 @@ namespace Application.Profiles
                 .ReverseMap();
             #endregion
 
+
+
+            #region Country
+            CreateMap<Country, CountryDTO>().ReverseMap();
+            CreateMap<Country, UpdateCountryDTO>().ReverseMap();
+            CreateMap<Country, CreateCountryDTO>().ReverseMap();
+            CreateMap<CountryDTO, UpdateCountryDTO>().ReverseMap();
+            CreateMap<CountryDTO, CreateCountryDTO>().ReverseMap();
+
+            #endregion
 
         }
     }

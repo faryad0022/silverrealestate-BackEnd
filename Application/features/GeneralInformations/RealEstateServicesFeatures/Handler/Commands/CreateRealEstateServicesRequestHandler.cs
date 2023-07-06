@@ -26,15 +26,6 @@ namespace Application.features.GeneralInformations.RealEstateServicesFeatures.Ha
         }
         public async Task<ResponseResultDTO> Handle(CreateRealEstateServicesRequest request, CancellationToken cancellationToken)
         {
-            #region Validation
-            var validator = new CreateRealEstateServicesDTOValidator();
-            var validatorResult = await validator.ValidateAsync(request.createRealEstateServicesDTO);
-            if (!validatorResult.IsValid)
-                return ResponseResultDTO.SetResult(
-                    null,
-                    StatusMessage.ValidationError,
-                    validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
-            #endregion
             #region Upload Image
             var createdImageName = ImageUploaderExtensions.UploadImage(
                 request.createRealEstateServicesDTO.ImageName,
@@ -49,6 +40,16 @@ namespace Application.features.GeneralInformations.RealEstateServicesFeatures.Ha
             #endregion
             var realEstate = _mapper.Map<RealEstateServices>(request.createRealEstateServicesDTO);
             realEstate.ImageName = createdImageName;
+            #region Validation
+            var validator = new CreateRealEstateServicesDTOValidator();
+            var validatorResult = await validator.ValidateAsync(request.createRealEstateServicesDTO);
+            if (!validatorResult.IsValid)
+                return ResponseResultDTO.SetResult(
+                    null,
+                    StatusMessage.ValidationError,
+                    validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
+            #endregion
+
             await _unitofWork.RealEstateServicesRepository.AddEntityAsync(realEstate);
             await _unitofWork.SaveChangesAsync();
             return ResponseResultDTO.SetResult(_mapper.Map<RealEstateServicesDTO>(realEstate), StatusMessage.Success, null);

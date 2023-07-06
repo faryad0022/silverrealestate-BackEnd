@@ -1,32 +1,40 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Domain.Entities.Project
 {
     public class Property : BaseEntity
     {
-        #region Properties
-        public string Image { get; set; }
-        public string BannerImage { get; set; }
-        public bool IsBanner { get; set; } = false;
-        public bool ForSell { get; set; } = true;
-        public bool IsSold { get; set; } = false;
-        public bool IsRent { get; set; } = false;
+        public string FeatureImage { get; set; }
         public string OwnerPhoneNumber { get; set; }
         public string AgentPhoneNmber { get; set; }
-        #endregion
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public string PaymentPlan { get; set; }
+        public DateTime KeyHandOverDate { get; set; }
+        public double Price { get; set; }
+        public int VATFee { get; set; }
+        public int ConnectionFee { get; set; }
+        public int StampDutyFee { get; set; }
+        public string Address { get; set; }
+        public int NumberOfBedroom { get; set; }
+        public int NumberOfBathroom { get; set; }
+        public int FloorSpace { get; set; }//mm
+        public int Floor { get; set; }
+        public string Description { get; set; }
+        public bool PropertyStatus { get; set; }//available or no
 
-        #region ForeignKey
-        public long PropertyStatusId { get; set; }
-        #endregion
-        #region Relations
-        [ForeignKey(nameof(PropertyStatusId))]
-        public PropertyStatus PropertyStatus { get; set; }
-        public PropertyDetail PropertyDetail { get; set; }
+        public long PropertyTypeId { get; set; }
+        public long CityId { get; set; }
+        public long PropertyContractTypeId { get; set; }
+
+        public PropertyType PropertyTypes { get; set; }
+        public PropertyContractType PropertyContractType { get; set; }
+        public City City { get; set; }
         public ICollection<PropertyGallery> PropertyGalleries { get; set; }
         public ICollection<PropertyVideo> PropertyVideos { get; set; }
-        public ICollection<PropertyFacility> propertyFacilities { get; set; }
-        #endregion
+        public ICollection<PropertyFacility> PropertyFacilities { get; set; }
+        public ICollection<PropertyPlan> PropertyPlans { get; set; }
 
     }
 }

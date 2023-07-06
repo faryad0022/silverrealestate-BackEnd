@@ -44,7 +44,7 @@ namespace BackEnd_Persistence.Repositories
         public async Task<bool> ExistAsync(long entityId)
         {
             var entity = await GetEntityAsync(entityId);
-            return entity != null;
+            return !(entity == null);
         }
 
         public async Task<IReadOnlyList<TEntity>> GetAllAsync()

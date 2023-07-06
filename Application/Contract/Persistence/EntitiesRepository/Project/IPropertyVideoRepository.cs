@@ -4,7 +4,7 @@ using System;
 
 namespace Application.Contract.Persistance.EntitiesRepository.Project
 {
-    public interface IPropertyVideoRepository : IDisposable, IGenericRepository<PropertyVideo>
+    public interface IPropertyVideoRepository : IGenericRepository<PropertyVideo>
     {
     }
 }

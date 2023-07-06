@@ -32,7 +32,7 @@ namespace BackEnd_UnitTest.Facts.ConstructorInformations.Commands
         public async Task CreateConstructorInformation_Valid()
         {
             var handler = new CreateConstructorInformationRequestHandler(_mapper, _mock.Object);
-            var result = await handler.Handle(new CreateConstructorInformationRequest() { createConstructorInformationDTO = ConstructorInformationModelGenerator.createConstructorInformationDTO_Valid }, CancellationToken.None);
+            var result = await handler.Handle(new CreateConstructorInformationRequest() { createConstructorInformationDTO = ConstructorInformationsModelGenerator.createConstructorInformationDTO_Valid }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
 
@@ -44,7 +44,7 @@ namespace BackEnd_UnitTest.Facts.ConstructorInformations.Commands
         public async Task CreateConstructorInformation_Validation_InValid()
         {
             var handler = new CreateConstructorInformationRequestHandler(_mapper, _mock.Object);
-            var result = await handler.Handle(new CreateConstructorInformationRequest() { createConstructorInformationDTO = ConstructorInformationModelGenerator.createConstructorInformationDTO_Validation_InValid }, CancellationToken.None);
+            var result = await handler.Handle(new CreateConstructorInformationRequest() { createConstructorInformationDTO = ConstructorInformationsModelGenerator.createConstructorInformationDTO_Validation_InValid }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.ValidationError);
 

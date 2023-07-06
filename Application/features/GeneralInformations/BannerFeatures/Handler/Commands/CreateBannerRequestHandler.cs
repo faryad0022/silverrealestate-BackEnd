@@ -26,15 +26,6 @@ namespace Application.features.GeneralInformations.BannerFeatures.Handler.Comman
         }
         public async Task<ResponseResultDTO> Handle(CreateBannerRequest request, CancellationToken cancellationToken)
         {
-            #region Validation
-            var validator = new CreateBannerValidator();
-            var validatorResult = await validator.ValidateAsync(request.createBannerDTO);
-            if (!validatorResult.IsValid)
-                return ResponseResultDTO.SetResult(
-                    null,
-                    StatusMessage.ValidationError,
-                    validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
-            #endregion
             #region Upload Image
             var createdImageName = ImageUploaderExtensions.UploadImage(
                 request.createBannerDTO.BannerImage,
@@ -49,6 +40,16 @@ namespace Application.features.GeneralInformations.BannerFeatures.Handler.Comman
             #endregion
             var banner = _mapper.Map<Banner>(request.createBannerDTO);
             banner.BannerImage = createdImageName;
+            #region Validation
+            var validator = new CreateBannerValidator();
+            var validatorResult = await validator.ValidateAsync(request.createBannerDTO);
+            if (!validatorResult.IsValid)
+                return ResponseResultDTO.SetResult(
+                    null,
+                    StatusMessage.ValidationError,
+                    validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
+            #endregion
+
 
             await _unitofWork.BannerRepository.AddEntityAsync(banner);
             await _unitofWork.SaveChangesAsync();

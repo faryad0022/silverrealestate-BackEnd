@@ -1,10 +1,13 @@
 ﻿using Application.Contract.Persistance.EntitiesRepository.Blog;
+using Application.Contract.Persistance.EntitiesRepository.Project;
 using Application.Contract.Persistence;
 using Application.Contract.Persistence.CommonGenericRepository;
 using Application.Contract.Persistence.EntitiesRepository.GeneralInformations;
+using Application.Contract.Persistence.EntitiesRepository.Project;
 using BackEnd_Persistence.Repositories;
 using BackEnd_Persistence.Repositories.Blogs;
 using BackEnd_Persistence.Repositories.GeneralInformations;
+using BackEnd_Persistence.Repositories.Project;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,6 +31,7 @@ namespace BackEnd_Persistence
 
             services.AddScoped<IBlogContentRepository, BlogContentRepository>();
             services.AddScoped<IBlogGroupRepository, BlogGroupRepository>();
+            
             services.AddScoped<IAboutUsRepository, AboutUsRepository>();
             services.AddScoped<ISocialRepository, SocialRepository>();
             services.AddScoped<IAddressRepository, AddressRepository>();
@@ -39,6 +43,12 @@ namespace BackEnd_Persistence
             services.AddScoped<ISpectacularlocationRepository, SpectacularlocationRepository>();
             services.AddScoped<ISpectacularLocationImageRepository, SpectacularLocationImageRepository>();
             services.AddScoped<ITeamMemberRepository, TeamMemberRepository>();
+            
+            services.AddScoped<ICityRepository, CityRepository>();
+            services.AddScoped<ICountryRepository, CountryRepository>();
+            services.AddScoped<IPropertyContractTypeRepository, PropertyContractTypeRepository>();
+            services.AddScoped<IPropertyTypeRepository, PropertyTypeRepository>();
+            services.AddScoped<IPropertyPlanRepository, PropertyPlanRepository>();
 
             return services;
         }

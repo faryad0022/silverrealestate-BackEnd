@@ -51,5 +51,17 @@ namespace BackEnd_UnitTest.Facts.Banners.Commands
 
 
         }
+        [Fact]
+        public async Task CreateBanner_UploadError_InValid()
+        {
+            var handler = new CreateBannerRequestHandler(_mapper, _mock.Object);
+            var result = await handler.Handle(new CreateBannerRequest() { createBannerDTO = BannerModelGenerator.createBannerDTO_UploadError_InValid }, CancellationToken.None);
+
+            result.Status.ShouldBe(StatusMessage.UploadError);
+
+            result.Errors.ShouldBeNull();
+
+
+        }
     }
 }
