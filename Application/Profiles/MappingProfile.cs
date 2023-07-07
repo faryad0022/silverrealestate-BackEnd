@@ -13,6 +13,7 @@ using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocations;
 using Application.DTOs.GeneralSiteInformationsDTO.TeamMembers;
 using Application.DTOs.Project.City;
 using Application.DTOs.Project.Country;
+using Application.DTOs.Project.PropertyContractType;
 using Application.DTOs.Project.PropertyType;
 using Application.Models.FilterModels;
 using AutoMapper;
@@ -225,6 +226,15 @@ namespace Application.Profiles
             CreateMap<PropertyType, CreatePropertyTypeDTO>().ReverseMap();
             CreateMap<PropertyTypeDTO, UpdatePropertyTypeDTO>().ReverseMap();
             CreateMap<PropertyTypeDTO, CreatePropertyTypeDTO>().ReverseMap();
+
+            #endregion
+
+            #region PropertyContractType
+            CreateMap<PropertyContractType, PropertyContractTypeDTO>().ReverseMap();
+            CreateMap<PropertyContractType, UpdatePropertyContractTypeDTO>().ReverseMap();
+            CreateMap<PropertyContractType, CreatePropertyContractTypeDTO>().ReverseMap();
+            CreateMap<PropertyContractTypeDTO, UpdatePropertyContractTypeDTO>().ReverseMap();
+            CreateMap<PropertyContractTypeDTO, CreatePropertyContractTypeDTO>().ReverseMap();
 
             #endregion
 
