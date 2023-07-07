@@ -5,7 +5,7 @@ using Application.features.Projects.CityFeatures.Request.Commands;
 using Application.Profiles;
 using AutoMapper;
 using BackEnd_UnitTest.Mocks;
-using BackEnd_UnitTest.Mocks.Models.Cities;
+using BackEnd_UnitTest.Models.Projects.Cities;
 using Moq;
 using Shouldly;
 using System.Threading;

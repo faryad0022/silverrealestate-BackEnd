@@ -5,7 +5,7 @@ using Application.features.GeneralInformations.SocialFeatures.Request.Commands;
 using Application.Profiles;
 using AutoMapper;
 using BackEnd_UnitTest.Mocks;
-using BackEnd_UnitTest.Mocks.Models.Socials;
+using BackEnd_UnitTest.Models.General.Socials;
 using Moq;
 using Shouldly;
 using System.Threading;

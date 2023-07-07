@@ -1,5 +1,5 @@
 ﻿using Application.Contract.Persistence.EntitiesRepository.GeneralInformations;
-using BackEnd_UnitTest.Mocks.Models.SoectacularImages;
+using BackEnd_UnitTest.Models.General.SoectacularImages;
 using Domain.Entities.GeneralSiteInformation;
 using Moq;
 using System;

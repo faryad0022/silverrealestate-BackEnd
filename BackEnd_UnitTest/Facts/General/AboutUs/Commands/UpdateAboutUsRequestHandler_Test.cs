@@ -5,7 +5,7 @@ using Application.features.GeneralInformations.AboutUsFeatures.Request.Commands;
 using Application.Profiles;
 using AutoMapper;
 using BackEnd_UnitTest.Mocks;
-using BackEnd_UnitTest.Mocks.Models.About;
+using BackEnd_UnitTest.Models.General.About;
 using Moq;
 using Shouldly;
 using System.Threading;

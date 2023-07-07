@@ -5,7 +5,7 @@ using Application.features.GeneralInformations.SpectacularLocationImageFeatures.
 using Application.Profiles;
 using AutoMapper;
 using BackEnd_UnitTest.Mocks;
-using BackEnd_UnitTest.Mocks.Models.SoectacularImages;
+using BackEnd_UnitTest.Models.General.SoectacularImages;
 using Moq;
 using Shouldly;
 using System.Threading;

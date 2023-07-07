@@ -5,7 +5,7 @@ using Application.features.Blog.Request.Queries.BlogContent;
 using Application.Profiles;
 using AutoMapper;
 using BackEnd_UnitTest.Mocks;
-using BackEnd_UnitTest.Mocks.Models.BlogContents;
+using BackEnd_UnitTest.Models.Blogs.BlogContents;
 using Moq;
 using Shouldly;
 using System.Threading;

@@ -7,7 +7,7 @@ using Application.Models;
 using Application.Profiles;
 using AutoMapper;
 using BackEnd_UnitTest.Mocks;
-using BackEnd_UnitTest.Mocks.Models.BlogGroups;
+using BackEnd_UnitTest.Models.Blogs.BlogGroups;
 using Moq;
 using Shouldly;
 using System.Threading;

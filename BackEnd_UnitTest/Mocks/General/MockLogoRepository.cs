@@ -1,5 +1,5 @@
 ﻿using Application.Contract.Persistence.EntitiesRepository.GeneralInformations;
-using BackEnd_UnitTest.Mocks.Models.Logos;
+using BackEnd_UnitTest.Models.General.Logos;
 using Domain.Entities.GeneralSiteInformation;
 using Moq;
 using System.Linq;

@@ -5,7 +5,7 @@ using Application.features.GeneralInformations.RealEstateServicesFeatures.Reques
 using Application.Profiles;
 using AutoMapper;
 using BackEnd_UnitTest.Mocks;
-using BackEnd_UnitTest.Mocks.Models.RealEstateService;
+using BackEnd_UnitTest.Models.General.RealEstateService;
 using Moq;
 using Shouldly;
 using System.Threading;

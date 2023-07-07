@@ -5,7 +5,7 @@ using Application.features.GeneralInformations.CommonQuestionFeatures.Request.Co
 using Application.Profiles;
 using AutoMapper;
 using BackEnd_UnitTest.Mocks;
-using BackEnd_UnitTest.Mocks.Models.CommonQuestions;
+using BackEnd_UnitTest.Models.General.CommonQuestions;
 using Moq;
 using Shouldly;
 using System.Threading;

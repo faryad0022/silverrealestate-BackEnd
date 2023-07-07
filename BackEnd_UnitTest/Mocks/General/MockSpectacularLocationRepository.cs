@@ -1,5 +1,5 @@
 ﻿using Application.Contract.Persistence.EntitiesRepository.GeneralInformations;
-using BackEnd_UnitTest.Mocks.Models.SpectacularLocations;
+using BackEnd_UnitTest.Models.General.SpectacularLocations;
 using Domain.Entities.GeneralSiteInformation;
 using Moq;
 using System;

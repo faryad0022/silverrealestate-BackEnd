@@ -1,5 +1,5 @@
 ﻿using Application.Contract.Persistance.EntitiesRepository.Blog;
-using BackEnd_UnitTest.Mocks.Models.BlogGroups;
+using BackEnd_UnitTest.Models.Blogs.BlogGroups;
 using Domain.Entities.Blog;
 using Moq;
 using System.Linq;

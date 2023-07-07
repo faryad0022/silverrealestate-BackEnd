@@ -5,7 +5,7 @@ using Application.features.GeneralInformations.TeamMemberFeatures.Request.Comman
 using Application.Profiles;
 using AutoMapper;
 using BackEnd_UnitTest.Mocks;
-using BackEnd_UnitTest.Mocks.Models.TeamMembers;
+using BackEnd_UnitTest.Models.General.TeamMembers;
 using Moq;
 using Shouldly;
 using System.Threading;

@@ -151,5 +151,14 @@
         public const string City_ChangeStatus = "v1/city/changestatus";
         #endregion
 
+        #region PropertyType
+        public const string PropertyType_GetAll = "v1/propertytype/getall";
+        public const string PropertyType_Get = "v1/propertytype/get";
+        public const string PropertyType_Add = "v1/propertytype/add";
+        public const string PropertyType_Update = "v1/propertytype/update";
+        public const string PropertyType_Delete = "v1/propertytype/delete";
+        public const string PropertyType_ChangeStatus = "v1/propertytype/changestatus";
+        #endregion
+
     }
 }
