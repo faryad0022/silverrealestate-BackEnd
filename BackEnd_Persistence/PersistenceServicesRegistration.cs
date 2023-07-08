@@ -49,6 +49,7 @@ namespace BackEnd_Persistence
             services.AddScoped<IPropertyContractTypeRepository, PropertyContractTypeRepository>();
             services.AddScoped<IPropertyTypeRepository, PropertyTypeRepository>();
             services.AddScoped<IPropertyPlanRepository, PropertyPlanRepository>();
+            services.AddScoped<IPropertyRepository, PropertyRepository>();
 
             return services;
         }

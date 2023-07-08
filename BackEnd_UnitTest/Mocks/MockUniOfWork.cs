@@ -28,6 +28,7 @@ namespace BackEnd_UnitTest.Mocks
             var _mockCityRepository = MockCityRepository.GetCityRepository();
             var _mockPropertyTypeRepository = MockPropertyTypeRepository.GetPropertyTypeRepository();
             var _mockPropertyContractTypeRepository = MockPropertyContractTypeRepository.GetPropertyContractTypeRepository();
+            var _mockPropertyRepository = MockPropertyRepository.GetPropertyRepository();
 
 
             //var _mockAboutSocialRepository = Mock
@@ -48,6 +49,7 @@ namespace BackEnd_UnitTest.Mocks
             _mockUOW.Setup(s => s.CityRepository).Returns(() => _mockCityRepository.Object);
             _mockUOW.Setup(s => s.PropertyTypeRepository).Returns(() => _mockPropertyTypeRepository.Object);
             _mockUOW.Setup(s => s.PropertyContractTypeRepository).Returns(() => _mockPropertyContractTypeRepository.Object);
+            _mockUOW.Setup(s => s.PropertyRepository).Returns(() => _mockPropertyRepository.Object);
 
 
             return _mockUOW;

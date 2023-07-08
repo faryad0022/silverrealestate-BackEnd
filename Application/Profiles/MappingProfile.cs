@@ -13,6 +13,7 @@ using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocations;
 using Application.DTOs.GeneralSiteInformationsDTO.TeamMembers;
 using Application.DTOs.Project.City;
 using Application.DTOs.Project.Country;
+using Application.DTOs.Project.PropertDTOs;
 using Application.DTOs.Project.PropertyContractType;
 using Application.DTOs.Project.PropertyType;
 using Application.Models.FilterModels;
@@ -236,6 +237,33 @@ namespace Application.Profiles
             CreateMap<PropertyContractTypeDTO, UpdatePropertyContractTypeDTO>().ReverseMap();
             CreateMap<PropertyContractTypeDTO, CreatePropertyContractTypeDTO>().ReverseMap();
 
+            #endregion
+
+            #region Property
+            CreateMap<Property, PropertyDTO>()
+                .ForMember(dest => dest.PropertyType, opt =>
+                {
+                    opt.MapFrom(src => src.PropertyTypes.Type);
+                })
+                .ForMember(dest => dest.City, opt =>
+                {
+                    opt.MapFrom(src => src.City.CityName);
+                })
+                .ForMember(dest => dest.PropertyTypeContract, opt =>
+                {
+                    opt.MapFrom(src => src.PropertyContractType.ContractType);
+                })
+                .ReverseMap();
+            CreateMap<Property, UpdatePropertyDTO>().ReverseMap();
+            CreateMap<Property, CreatePropertyDTO>().ReverseMap();
+            CreateMap<PropertyDTO, UpdatePropertyDTO>().ReverseMap();
+            CreateMap<PropertyDTO, CreatePropertyDTO>().ReverseMap();
+            CreateMap<FilterProperty, FilterPropertyDTO>()
+                .ForMember(dest => dest.PropertyDTOs, opt =>
+                {
+                    opt.MapFrom(src => src.Properties);
+                })
+                .ReverseMap();
             #endregion
 
         }

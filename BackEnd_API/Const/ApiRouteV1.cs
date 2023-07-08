@@ -169,5 +169,15 @@
         public const string PropertyContractType_ChangeStatus = "v1/propertycontracttype/changestatus";
         #endregion
 
+        #region Property
+        public const string Property_GetAll = "v1/property/getall";
+        public const string Property_Get = "v1/property/get";
+        public const string Property_GetFilter = "v1/property/filter-property";
+        public const string Property_Add = "v1/property/add";
+        public const string Property_Update = "v1/property/update";
+        public const string Property_Delete = "v1/property/delete";
+        public const string Property_ChangeStatus = "v1/property/changestatus";
+        #endregion
+
     }
 }

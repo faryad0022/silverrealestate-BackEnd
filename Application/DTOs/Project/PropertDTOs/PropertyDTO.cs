@@ -1,8 +1,7 @@
 ﻿using Application.DTOs.Common;
 using System;
-using System.ComponentModel.DataAnnotations;
 
-namespace Application.DTOs.Project
+namespace Application.DTOs.Project.PropertDTOs
 {
     public class PropertyDTO : BaseEntityDTO
     {
@@ -23,10 +22,14 @@ namespace Application.DTOs.Project
         public int FloorSpace { get; set; }//mm
         public int Floor { get; set; }
         public string Description { get; set; }
-        public bool PropertyStatus { get; set; }//available or no
+        public bool PropertyStatus { get; set; } = true;//available or no
 
+
+        public string PropertyType { get; set; }
         public long PropertyTypeId { get; set; }
+        public string City { get; set; }
         public long CityId { get; set; }
+        public string PropertyTypeContract { get; set; }
         public long PropertyContractTypeId { get; set; }
     }
 }
