@@ -5,7 +5,7 @@ namespace Application.features.Projects.PropertyFeatures.Request.Queries
 {
     public class GetPropertyListWithDetailsRequest : IRequest<ResponseResultDTO>
     {
-        public bool PropertyStatus { get; set; } 
-        public bool Selected { get; set; } 
+        public bool PropertyStatus { get; set; }
+        public bool Selected { get; set; }
     }
 }

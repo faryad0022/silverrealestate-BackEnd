@@ -1,7 +1,5 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.features.GeneralInformations.ConstructorInformations.Handler.Queries;
-using Application.features.GeneralInformations.ConstructorInformations.Request.Queries;
 using Application.features.Projects.CountryFeatures.Handler.Queries;
 using Application.features.Projects.CountryFeatures.Request.Queries;
 using Application.Profiles;
@@ -9,10 +7,6 @@ using AutoMapper;
 using BackEnd_UnitTest.Mocks;
 using Moq;
 using Shouldly;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;

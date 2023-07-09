@@ -13,6 +13,7 @@ using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocations;
 using Application.DTOs.GeneralSiteInformationsDTO.TeamMembers;
 using Application.DTOs.Project.City;
 using Application.DTOs.Project.Country;
+using Application.DTOs.Project.Facility;
 using Application.DTOs.Project.PropertDTOs;
 using Application.DTOs.Project.PropertyContractType;
 using Application.DTOs.Project.PropertyType;
@@ -208,7 +209,7 @@ namespace Application.Profiles
             #endregion
 
             #region City
-            CreateMap<City,CityDTO>()
+            CreateMap<City, CityDTO>()
                 .ForMember(dest => dest.CountryName, opt =>
                 {
                     opt.MapFrom(src => src.Country.CountryName);
@@ -264,6 +265,15 @@ namespace Application.Profiles
                     opt.MapFrom(src => src.Properties);
                 })
                 .ReverseMap();
+            #endregion
+
+            #region Facility
+            CreateMap<Facility, FacilityDTO>().ReverseMap();
+            CreateMap<Facility, UpdateFacilityDTO>().ReverseMap();
+            CreateMap<Facility, CreateFacilityDTO>().ReverseMap();
+            CreateMap<FacilityDTO, UpdateFacilityDTO>().ReverseMap();
+            CreateMap<FacilityDTO, CreateFacilityDTO>().ReverseMap();
+
             #endregion
 
         }

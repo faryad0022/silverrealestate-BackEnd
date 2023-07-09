@@ -1,6 +1,5 @@
 ﻿using Application.DTOs.Paging;
 using Domain.Entities.Project;
-using System;
 using System.Collections.Generic;
 
 namespace Application.Models.FilterModels

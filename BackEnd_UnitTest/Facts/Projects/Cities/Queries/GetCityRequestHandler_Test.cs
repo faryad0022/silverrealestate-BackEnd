@@ -7,10 +7,6 @@ using AutoMapper;
 using BackEnd_UnitTest.Mocks;
 using Moq;
 using Shouldly;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -34,7 +30,7 @@ namespace BackEnd_UnitTest.Facts.Projects.Cities.Queries
         [Fact]
         public async Task GetCity_Valid()
         {
-            var handler = new GetCityRequestHandler(_mock.Object,_mapper);
+            var handler = new GetCityRequestHandler(_mock.Object, _mapper);
             var result = await handler.Handle(new GetCityRequest() { Id = 1 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);

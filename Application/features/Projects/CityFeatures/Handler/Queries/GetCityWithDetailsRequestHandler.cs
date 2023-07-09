@@ -4,9 +4,6 @@ using Application.DTOs.Project.City;
 using Application.features.Projects.CityFeatures.Request.Queries;
 using AutoMapper;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -17,7 +14,7 @@ namespace Application.features.Projects.CityFeatures.Handler.Queries
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
 
-        public GetCityWithDetailsRequestHandler(IMapper mapper,IUnitofWork unitofWork)
+        public GetCityWithDetailsRequestHandler(IMapper mapper, IUnitofWork unitofWork)
         {
             _mapper = mapper;
             _unitofWork = unitofWork;

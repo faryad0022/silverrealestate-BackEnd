@@ -6,7 +6,6 @@ using Application.DTOs.Project.PropertDTOs.Validators;
 using Application.Extensions;
 using Application.features.Projects.PropertyFeatures.Request.Commands;
 using AutoMapper;
-using Domain.Entities.GeneralSiteInformation;
 using Domain.Entities.Project;
 using MediatR;
 using System.Linq;

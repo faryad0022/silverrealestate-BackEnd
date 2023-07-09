@@ -24,7 +24,7 @@ namespace Application.features.Projects.CityFeatures.Handler.Queries
         public async Task<ResponseResultDTO> Handle(GetCityListOfCountryWithDetailsRequest request, CancellationToken cancellationToken)
         {
             var cityList = await _unitofWork.CityRepository.GetCityListOfCountryWithDetailsAsync(request.countryId);
-            if (cityList is null || cityList.Count<1)
+            if (cityList is null || cityList.Count < 1)
                 return ResponseResultDTO.SetResult(null, StatusMessage.NotFound, null);
             var cityListDTO = _mapper.Map<List<CityDTO>>(cityList);
             return ResponseResultDTO.SetResult(cityListDTO, StatusMessage.Success, null);

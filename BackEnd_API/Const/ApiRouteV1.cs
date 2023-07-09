@@ -179,5 +179,14 @@
         public const string Property_ChangeStatus = "v1/property/changestatus";
         #endregion
 
+        #region Facility
+        public const string Facility_GetAll = "v1/facility/getall";
+        public const string Facility_Get = "v1/facility/get";
+        public const string Facility_Add = "v1/facility/add";
+        public const string Facility_Update = "v1/facility/update";
+        public const string Facility_Delete = "v1/facility/delete";
+        public const string Facility_ChangeStatus = "v1/facility/changestatus";
+        #endregion
+
     }
 }

@@ -28,5 +28,6 @@ namespace Application.DTOs.Project.PropertDTOs
         public long PropertyTypeId { get; set; }
         public long CityId { get; set; }
         public long PropertyContractTypeId { get; set; }
+
     }
 }

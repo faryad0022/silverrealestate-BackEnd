@@ -987,7 +987,7 @@ namespace BackEnd_Persistence.Migrations
                     b.ToTable("PropertyContractTypes");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Project.PropertyFacility", b =>
+            modelBuilder.Entity("Domain.Entities.Project.Facility", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -1202,7 +1202,7 @@ namespace BackEnd_Persistence.Migrations
                     b.Navigation("PropertyTypes");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Project.PropertyFacility", b =>
+            modelBuilder.Entity("Domain.Entities.Project.Facility", b =>
                 {
                     b.HasOne("Domain.Entities.Project.Property", "Property")
                         .WithMany("PropertyFacilities")

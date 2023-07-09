@@ -5,7 +5,6 @@ using Application.features.Projects.PropertyContractTypeFeatures.Request.Queries
 using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 

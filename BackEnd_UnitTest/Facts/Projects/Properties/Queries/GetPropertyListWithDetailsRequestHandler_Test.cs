@@ -2,17 +2,11 @@
 using Application.Contract.Persistence;
 using Application.features.Projects.PropertyFeatures.Handler.Queries;
 using Application.features.Projects.PropertyFeatures.Request.Queries;
-using Application.features.Projects.PropertyTypeFeatures.Handler.Queries;
-using Application.features.Projects.PropertyTypeFeatures.Request.Queries;
 using Application.Profiles;
 using AutoMapper;
 using BackEnd_UnitTest.Mocks;
 using Moq;
 using Shouldly;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;

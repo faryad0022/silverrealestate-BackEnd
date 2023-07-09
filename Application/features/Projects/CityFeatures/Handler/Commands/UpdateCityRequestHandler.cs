@@ -2,10 +2,7 @@
 using Application.Contract.Persistence;
 using Application.DTOs.Project.City;
 using Application.DTOs.Project.City.Validators;
-using Application.DTOs.Project.Country;
-using Application.DTOs.Project.Country.Validators;
 using Application.features.Projects.CityFeatures.Request.Commands;
-using Application.features.Projects.CountryFeatures.Request.Commands;
 using AutoMapper;
 using Domain.Entities.Project;
 using MediatR;

@@ -26,7 +26,7 @@ namespace BackEnd_API.Controllers.AdminControllers
 
         [HttpGet(ApiRouteV1.Property_GetFilter, Name = "GetFilterProperties")]
         public async Task<ActionResult<ResponseResultDTO>> GetFilterProperties([FromQuery] FilterPropertyDTO filterDTO)
-            => await _mediator.Send(new GetFilterPropertyRequest() { filterDTO = filterDTO});
+            => await _mediator.Send(new GetFilterPropertyRequest() { filterDTO = filterDTO });
 
         [HttpGet(ApiRouteV1.Property_Get, Name = "GetProperty")]
         public async Task<ActionResult<ResponseResultDTO>> GetProperty([FromBody] long Id)

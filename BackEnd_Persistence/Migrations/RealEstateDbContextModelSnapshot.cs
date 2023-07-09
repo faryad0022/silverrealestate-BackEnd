@@ -77,7 +77,7 @@ namespace BackEnd_Persistence.Migrations
                             Id = 1L,
                             BlogGroupId = 2L,
                             BlogGroupName = "دانشگاه های قبرس",
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 78, DateTimeKind.Local).AddTicks(3734),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 96, DateTimeKind.Local).AddTicks(9649),
                             ImageName = "EMU.jpg",
                             IsDelete = false,
                             IsSelected = true,
@@ -93,7 +93,7 @@ namespace BackEnd_Persistence.Migrations
                             Id = 2L,
                             BlogGroupId = 2L,
                             BlogGroupName = "دانشگاه های قبرس",
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 78, DateTimeKind.Local).AddTicks(7313),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 97, DateTimeKind.Local).AddTicks(2821),
                             ImageName = "EMU.jpg",
                             IsDelete = false,
                             IsSelected = true,
@@ -109,7 +109,7 @@ namespace BackEnd_Persistence.Migrations
                             Id = 3L,
                             BlogGroupId = 1L,
                             BlogGroupName = "اخبار قبرس",
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 78, DateTimeKind.Local).AddTicks(7329),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 97, DateTimeKind.Local).AddTicks(2837),
                             ImageName = "CYP.jpg",
                             IsDelete = false,
                             IsSelected = true,
@@ -152,7 +152,7 @@ namespace BackEnd_Persistence.Migrations
                         new
                         {
                             Id = 1L,
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 79, DateTimeKind.Local).AddTicks(7046),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 98, DateTimeKind.Local).AddTicks(555),
                             IsDelete = false,
                             IsSelected = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -161,7 +161,7 @@ namespace BackEnd_Persistence.Migrations
                         new
                         {
                             Id = 2L,
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 79, DateTimeKind.Local).AddTicks(7874),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 98, DateTimeKind.Local).AddTicks(1520),
                             IsDelete = false,
                             IsSelected = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -170,7 +170,7 @@ namespace BackEnd_Persistence.Migrations
                         new
                         {
                             Id = 3L,
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 79, DateTimeKind.Local).AddTicks(7886),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 98, DateTimeKind.Local).AddTicks(1543),
                             IsDelete = false,
                             IsSelected = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -211,7 +211,7 @@ namespace BackEnd_Persistence.Migrations
                         new
                         {
                             Id = 1L,
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 70, DateTimeKind.Local).AddTicks(3600),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 86, DateTimeKind.Local).AddTicks(2777),
                             IsDelete = false,
                             IsSelected = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -262,7 +262,7 @@ namespace BackEnd_Persistence.Migrations
                         {
                             Id = 1L,
                             CellPhone = "+98-9123071411",
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 77, DateTimeKind.Local).AddTicks(1263),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 92, DateTimeKind.Local).AddTicks(710),
                             Email = "mahancomputer49@gmail.com",
                             IsDelete = false,
                             IsSelected = true,
@@ -275,7 +275,7 @@ namespace BackEnd_Persistence.Migrations
                         {
                             Id = 2L,
                             CellPhone = "+90-5338355243",
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 77, DateTimeKind.Local).AddTicks(1347),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 92, DateTimeKind.Local).AddTicks(784),
                             Email = "mahancomputer49@gmail.com",
                             IsDelete = false,
                             IsSelected = true,
@@ -356,7 +356,7 @@ namespace BackEnd_Persistence.Migrations
                         {
                             Id = 1L,
                             Answer = "قبرس با داشتن آب و هوای معتدل و مرطوب مدیترانه ایی مقصد مورد علاقه جهانگردان برای تعطیلات می باشد، با داشتن بیش از ۳۰۰ روز آفتابی و گرمایی مطلوب و کوهستان هایی در دل خود، از اعتدالی مدیترانه ایی برخوردار است.",
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 81, DateTimeKind.Local).AddTicks(9886),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 99, DateTimeKind.Local).AddTicks(8924),
                             IsDelete = false,
                             IsSelected = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -366,7 +366,7 @@ namespace BackEnd_Persistence.Migrations
                         {
                             Id = 2L,
                             Answer = "قبرس شمالی با داشتن ۳۶ درصد از مساحت کل جزیره قبرس به علت داشتن شرایط مهاجرتی آسان و مالیات بسیار کم در قیاس با جمهوری قبرس و سایر کشورهای اروپایی مورد توجه سرمایه گذارانی از نقاط مختلف دنیا قرار گرفته است",
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 82, DateTimeKind.Local).AddTicks(1453),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 100, DateTimeKind.Local).AddTicks(2922),
                             IsDelete = false,
                             IsSelected = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -376,7 +376,7 @@ namespace BackEnd_Persistence.Migrations
                         {
                             Id = 3L,
                             Answer = "لیر ترکیه به عنوان ارز رایج این کشور شناخته می شود ولی خرید فروش ملک به پوند انگلستان می باشد و دلار و یورو هم در کنار این دو واحد پولی مورد استفاده قرار می گیرد.",
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 82, DateTimeKind.Local).AddTicks(1470),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 100, DateTimeKind.Local).AddTicks(2936),
                             IsDelete = false,
                             IsSelected = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -386,7 +386,7 @@ namespace BackEnd_Persistence.Migrations
                         {
                             Id = 4L,
                             Answer = "امنیت بالای قبرس شمالی در کنار رفاه مردم این کشور می تواند برای هر خانواده ایی دلیلی مناسب برای مهاجرت به قبرس شمالی باشد، بی علت نیست اگر قبرس شمالی در فهرست پنج کشور امن دنیا قرار گرفته است.",
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 82, DateTimeKind.Local).AddTicks(1474),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 100, DateTimeKind.Local).AddTicks(2939),
                             IsDelete = false,
                             IsSelected = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -396,7 +396,7 @@ namespace BackEnd_Persistence.Migrations
                         {
                             Id = 5L,
                             Answer = "برای ورود به قبرس شمالی به صورت توریستی نیازی به اخذ ویزا نخواهید داشت.  برای داشتن اقامت بیشتر، از طریق اقامت دانشجویی، خرید ملک و یا ثبت شرکت و یا اشتغال میسر خواهد بود.",
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 82, DateTimeKind.Local).AddTicks(1477),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 100, DateTimeKind.Local).AddTicks(2942),
                             IsDelete = false,
                             IsSelected = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -441,7 +441,7 @@ namespace BackEnd_Persistence.Migrations
                         {
                             Id = 1L,
                             ConstructorLogo = "Noyanlar.jpg",
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 83, DateTimeKind.Local).AddTicks(1064),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 101, DateTimeKind.Local).AddTicks(2177),
                             Description = "گروه شرکت های نویانلار که در سال 1973 تأسیس شد، خدمات با کیفیت بالا را در تمام زمینه های صنعت ساخت و ساز در قبرس شمالی ارائه می دهد. این یک شرکت خانوادگی موفق است که کیفیت و رشد قابل اعتماد را در صنعت ساخت و ساز فراهم می کند. پروژه های ما مطابق با طرح های ساختمانی معاصر انجام می شود تا رضایتمندی بالا را فراهم کند.این مسیر باتاسیس شرکت معماری و مهندسی با مسئولیت محدود Arken توسط معمار کهنه کار گوکان نویان آغاز شد که در دهه های 1970 و 1980 بسیاری از پروژه های معماری را امضا کرد. در سال ۱۹۸۶ یک مهندس عمران با تجربه به نام Mustafa Noyan به این تیم پیوست.",
                             IsDelete = false,
                             IsSelected = true,
@@ -452,7 +452,7 @@ namespace BackEnd_Persistence.Migrations
                         {
                             Id = 2L,
                             ConstructorLogo = "Ceaser.jpg",
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 83, DateTimeKind.Local).AddTicks(1086),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 101, DateTimeKind.Local).AddTicks(2199),
                             Description = "اگر که به دنبال خرید ملک در قبرس شمالی بوده اید، بدون شک نام سزار ریزورت‌ به گوشتان خورده است. افیک گروپ، شرکت مادر مجتمع سزار قبرس، در سال های اخیر در قبرس ترک مشهور و به دنبال آن اولین پروژه ی این شرکت به نام سزار ریزورت بر سر زبان ها افتاد. شهرک سزار قبرس شمالی با وجود قیمت نسبتا بالا خود در مقایسه با املاک منطقه توانسته در دل فارسی زبانان جا باز کند و جمع کثیری از ایرانیان را در این شهرک گرد هم آورد.\r\nشنا در استخرهای تابستانه، نوشیدن لاته گرم در کافه پاریس در فصل پاییز، پایکوبی در مهمانی های پر زرق و برق زمستانه و در نهایت پیاده روی های سرخوشانه به مقصد ساحل لانگ بیچ در فصل بهار همگی از زیبایی های شهرک سزار قبرس شمالی هستند.\r\nآنچه مجتمع سزار قبرس را از دیگر شهرک های جزیره جدا میکند، شرایط پرداخت اقساطی واحدها می باشد.\r\nوقتی پای اقساط به میان می آید، توجه به تبصره های قرارداد از مسائل حساس و چالش برانگیز می شود. قرارداد مجتمع سزار قبرس حاوی شش تا هشت صفحه با بند ها و تبصره های مختلف به زبان انگلیسی است که عدم توجه و غفلت از هر یک از این بندها ممکن است ضرر و زیان جبران ناپذیری برای خریداران به همراه داشته باشد. امکان تغییر در جزییات تبصره ها با صحبت و رایزنی مشاور املاک شما با مدیران فروش سزار ریزورت وجود دارد. بنابراین پیش از امضای هرگونه قرارداد ملک شهرک سزار قبرس شمالی حتما با مشاور املاک مسلط به زبان انگلیسی و ترکی، مشورت کرده و راهنمایی های لازم را دریافت کنید تا در آینده با مشکلات مالی و حقوقی مواجه نشوید.",
                             IsDelete = false,
                             IsSelected = true,
@@ -497,7 +497,7 @@ namespace BackEnd_Persistence.Migrations
                         new
                         {
                             Id = 1L,
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 87, DateTimeKind.Local).AddTicks(3835),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 110, DateTimeKind.Local).AddTicks(3041),
                             Description = "The Best real estate in cyprus",
                             ImageName = "silver.jpg",
                             IsDelete = false,
@@ -508,7 +508,7 @@ namespace BackEnd_Persistence.Migrations
                         new
                         {
                             Id = 2L,
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 87, DateTimeKind.Local).AddTicks(3860),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 110, DateTimeKind.Local).AddTicks(3079),
                             Description = "The Best real estate in cyprus",
                             ImageName = "silver-net.jpg",
                             IsDelete = false,
@@ -587,7 +587,7 @@ namespace BackEnd_Persistence.Migrations
                         new
                         {
                             Id = 1L,
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 91, DateTimeKind.Local).AddTicks(7647),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 118, DateTimeKind.Local).AddTicks(5549),
                             Icon = "fa fa-instagram",
                             IsDelete = false,
                             IsSelected = true,
@@ -598,7 +598,7 @@ namespace BackEnd_Persistence.Migrations
                         new
                         {
                             Id = 2L,
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 91, DateTimeKind.Local).AddTicks(7661),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 118, DateTimeKind.Local).AddTicks(5573),
                             Icon = "fa fa-facebok",
                             IsDelete = false,
                             IsSelected = true,
@@ -676,7 +676,7 @@ namespace BackEnd_Persistence.Migrations
                         new
                         {
                             Id = 1L,
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 92, DateTimeKind.Local).AddTicks(3020),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 119, DateTimeKind.Local).AddTicks(4549),
                             IsDelete = false,
                             IsSelected = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -685,7 +685,7 @@ namespace BackEnd_Persistence.Migrations
                         new
                         {
                             Id = 2L,
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 92, DateTimeKind.Local).AddTicks(3033),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 119, DateTimeKind.Local).AddTicks(4571),
                             IsDelete = false,
                             IsSelected = true,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -694,7 +694,7 @@ namespace BackEnd_Persistence.Migrations
                         new
                         {
                             Id = 3L,
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 92, DateTimeKind.Local).AddTicks(3036),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 119, DateTimeKind.Local).AddTicks(4576),
                             IsDelete = false,
                             IsSelected = false,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -703,7 +703,7 @@ namespace BackEnd_Persistence.Migrations
                         new
                         {
                             Id = 4L,
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 92, DateTimeKind.Local).AddTicks(3039),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 119, DateTimeKind.Local).AddTicks(4578),
                             IsDelete = false,
                             IsSelected = false,
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -766,7 +766,7 @@ namespace BackEnd_Persistence.Migrations
                         {
                             Id = 1L,
                             CellPhone = "09123071411",
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 93, DateTimeKind.Local).AddTicks(3335),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 120, DateTimeKind.Local).AddTicks(7105),
                             Email = "mahancomputer49@gmail.com",
                             IsDelete = false,
                             IsSelected = true,
@@ -779,7 +779,7 @@ namespace BackEnd_Persistence.Migrations
                         {
                             Id = 2L,
                             CellPhone = "09352499091",
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 93, DateTimeKind.Local).AddTicks(3354),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 120, DateTimeKind.Local).AddTicks(7133),
                             Email = "faryad.abolhassani@yahoo.com",
                             IsDelete = false,
                             IsSelected = true,
@@ -792,7 +792,7 @@ namespace BackEnd_Persistence.Migrations
                         {
                             Id = 3L,
                             CellPhone = "09122895170",
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 93, DateTimeKind.Local).AddTicks(3358),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 120, DateTimeKind.Local).AddTicks(7138),
                             Email = "Mojgan.Nazari@gmail.com",
                             IsDelete = false,
                             IsSelected = true,
@@ -840,40 +840,40 @@ namespace BackEnd_Persistence.Migrations
                             Id = 1L,
                             CityName = "Kish",
                             CountryId = 1L,
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 80, DateTimeKind.Local).AddTicks(8350),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 98, DateTimeKind.Local).AddTicks(9056),
                             IsDelete = false,
                             IsSelected = true,
-                            LastUpdateDate = new DateTime(2023, 7, 8, 7, 27, 32, 80, DateTimeKind.Local).AddTicks(8369)
+                            LastUpdateDate = new DateTime(2023, 7, 8, 15, 8, 55, 98, DateTimeKind.Local).AddTicks(9072)
                         },
                         new
                         {
                             Id = 2L,
                             CityName = "Tehran",
                             CountryId = 1L,
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 81, DateTimeKind.Local).AddTicks(753),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 99, DateTimeKind.Local).AddTicks(949),
                             IsDelete = false,
                             IsSelected = true,
-                            LastUpdateDate = new DateTime(2023, 7, 8, 7, 27, 32, 81, DateTimeKind.Local).AddTicks(765)
+                            LastUpdateDate = new DateTime(2023, 7, 8, 15, 8, 55, 99, DateTimeKind.Local).AddTicks(965)
                         },
                         new
                         {
                             Id = 3L,
                             CityName = "Iskele",
                             CountryId = 2L,
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 81, DateTimeKind.Local).AddTicks(769),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 99, DateTimeKind.Local).AddTicks(969),
                             IsDelete = false,
                             IsSelected = true,
-                            LastUpdateDate = new DateTime(2023, 7, 8, 7, 27, 32, 81, DateTimeKind.Local).AddTicks(772)
+                            LastUpdateDate = new DateTime(2023, 7, 8, 15, 8, 55, 99, DateTimeKind.Local).AddTicks(970)
                         },
                         new
                         {
                             Id = 4L,
                             CityName = "Girne",
                             CountryId = 2L,
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 81, DateTimeKind.Local).AddTicks(776),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 99, DateTimeKind.Local).AddTicks(973),
                             IsDelete = false,
                             IsSelected = true,
-                            LastUpdateDate = new DateTime(2023, 7, 8, 7, 27, 32, 81, DateTimeKind.Local).AddTicks(778)
+                            LastUpdateDate = new DateTime(2023, 7, 8, 15, 8, 55, 99, DateTimeKind.Local).AddTicks(975)
                         });
                 });
 
@@ -912,30 +912,30 @@ namespace BackEnd_Persistence.Migrations
                             Id = 1L,
                             CountryFlag = "",
                             CountryName = "Iran",
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 83, DateTimeKind.Local).AddTicks(8066),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 101, DateTimeKind.Local).AddTicks(8998),
                             IsDelete = false,
                             IsSelected = true,
-                            LastUpdateDate = new DateTime(2023, 7, 8, 7, 27, 32, 83, DateTimeKind.Local).AddTicks(8080)
+                            LastUpdateDate = new DateTime(2023, 7, 8, 15, 8, 55, 101, DateTimeKind.Local).AddTicks(9010)
                         },
                         new
                         {
                             Id = 2L,
                             CountryFlag = "",
                             CountryName = "Cyprus",
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 83, DateTimeKind.Local).AddTicks(9263),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 102, DateTimeKind.Local).AddTicks(261),
                             IsDelete = false,
                             IsSelected = true,
-                            LastUpdateDate = new DateTime(2023, 7, 8, 7, 27, 32, 83, DateTimeKind.Local).AddTicks(9273)
+                            LastUpdateDate = new DateTime(2023, 7, 8, 15, 8, 55, 102, DateTimeKind.Local).AddTicks(270)
                         },
                         new
                         {
                             Id = 3L,
                             CountryFlag = "",
                             CountryName = "USA",
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 83, DateTimeKind.Local).AddTicks(9276),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 102, DateTimeKind.Local).AddTicks(274),
                             IsDelete = false,
                             IsSelected = false,
-                            LastUpdateDate = new DateTime(2023, 7, 8, 7, 27, 32, 83, DateTimeKind.Local).AddTicks(9278)
+                            LastUpdateDate = new DateTime(2023, 7, 8, 15, 8, 55, 102, DateTimeKind.Local).AddTicks(276)
                         });
                 });
 
@@ -1041,13 +1041,13 @@ namespace BackEnd_Persistence.Migrations
                             ConnectionFee = 2300,
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
-                            EndDate = new DateTime(2023, 7, 8, 7, 27, 32, 88, DateTimeKind.Local).AddTicks(8908),
+                            EndDate = new DateTime(2023, 7, 8, 15, 8, 55, 112, DateTimeKind.Local).AddTicks(4143),
                             FeatureImage = "ph1.jpg",
                             Floor = 2,
                             FloorSpace = 55,
                             IsDelete = false,
                             IsSelected = false,
-                            KeyHandOverDate = new DateTime(2023, 7, 8, 7, 27, 32, 89, DateTimeKind.Local).AddTicks(95),
+                            KeyHandOverDate = new DateTime(2023, 7, 8, 15, 8, 55, 112, DateTimeKind.Local).AddTicks(5357),
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NumberOfBathroom = 1,
                             NumberOfBedroom = 0,
@@ -1058,7 +1058,7 @@ namespace BackEnd_Persistence.Migrations
                             PropertyStatus = true,
                             PropertyTypeId = 1L,
                             StampDutyFee = 200,
-                            StartDate = new DateTime(2023, 7, 8, 7, 27, 32, 88, DateTimeKind.Local).AddTicks(8383),
+                            StartDate = new DateTime(2023, 7, 8, 15, 8, 55, 112, DateTimeKind.Local).AddTicks(3421),
                             VATFee = 7000
                         },
                         new
@@ -1070,13 +1070,13 @@ namespace BackEnd_Persistence.Migrations
                             ConnectionFee = 2300,
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
-                            EndDate = new DateTime(2023, 7, 8, 7, 27, 32, 89, DateTimeKind.Local).AddTicks(7625),
+                            EndDate = new DateTime(2023, 7, 8, 15, 8, 55, 114, DateTimeKind.Local).AddTicks(463),
                             FeatureImage = "ph2.jpg",
                             Floor = 2,
                             FloorSpace = 64,
                             IsDelete = false,
                             IsSelected = false,
-                            KeyHandOverDate = new DateTime(2023, 7, 8, 7, 27, 32, 89, DateTimeKind.Local).AddTicks(7627),
+                            KeyHandOverDate = new DateTime(2023, 7, 8, 15, 8, 55, 114, DateTimeKind.Local).AddTicks(466),
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NumberOfBathroom = 1,
                             NumberOfBedroom = 1,
@@ -1087,7 +1087,7 @@ namespace BackEnd_Persistence.Migrations
                             PropertyStatus = true,
                             PropertyTypeId = 1L,
                             StampDutyFee = 200,
-                            StartDate = new DateTime(2023, 7, 8, 7, 27, 32, 89, DateTimeKind.Local).AddTicks(7616),
+                            StartDate = new DateTime(2023, 7, 8, 15, 8, 55, 114, DateTimeKind.Local).AddTicks(443),
                             VATFee = 7000
                         },
                         new
@@ -1099,13 +1099,13 @@ namespace BackEnd_Persistence.Migrations
                             ConnectionFee = 2300,
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
-                            EndDate = new DateTime(2023, 7, 8, 7, 27, 32, 89, DateTimeKind.Local).AddTicks(7635),
+                            EndDate = new DateTime(2023, 7, 8, 15, 8, 55, 114, DateTimeKind.Local).AddTicks(479),
                             FeatureImage = "ph3.jpg",
                             Floor = 0,
                             FloorSpace = 125,
                             IsDelete = false,
                             IsSelected = false,
-                            KeyHandOverDate = new DateTime(2023, 7, 8, 7, 27, 32, 89, DateTimeKind.Local).AddTicks(7636),
+                            KeyHandOverDate = new DateTime(2023, 7, 8, 15, 8, 55, 114, DateTimeKind.Local).AddTicks(481),
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NumberOfBathroom = 2,
                             NumberOfBedroom = 3,
@@ -1116,7 +1116,7 @@ namespace BackEnd_Persistence.Migrations
                             PropertyStatus = true,
                             PropertyTypeId = 2L,
                             StampDutyFee = 200,
-                            StartDate = new DateTime(2023, 7, 8, 7, 27, 32, 89, DateTimeKind.Local).AddTicks(7633),
+                            StartDate = new DateTime(2023, 7, 8, 15, 8, 55, 114, DateTimeKind.Local).AddTicks(475),
                             VATFee = 7000
                         },
                         new
@@ -1128,13 +1128,13 @@ namespace BackEnd_Persistence.Migrations
                             ConnectionFee = 0,
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
-                            EndDate = new DateTime(2023, 7, 8, 7, 27, 32, 89, DateTimeKind.Local).AddTicks(7642),
+                            EndDate = new DateTime(2023, 7, 8, 15, 8, 55, 114, DateTimeKind.Local).AddTicks(487),
                             FeatureImage = "ph4.jpg",
                             Floor = 3,
                             FloorSpace = 65,
                             IsDelete = false,
                             IsSelected = false,
-                            KeyHandOverDate = new DateTime(2023, 7, 8, 7, 27, 32, 89, DateTimeKind.Local).AddTicks(7644),
+                            KeyHandOverDate = new DateTime(2023, 7, 8, 15, 8, 55, 114, DateTimeKind.Local).AddTicks(489),
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NumberOfBathroom = 1,
                             NumberOfBedroom = 1,
@@ -1145,7 +1145,7 @@ namespace BackEnd_Persistence.Migrations
                             PropertyStatus = true,
                             PropertyTypeId = 1L,
                             StampDutyFee = 0,
-                            StartDate = new DateTime(2023, 7, 8, 7, 27, 32, 89, DateTimeKind.Local).AddTicks(7640),
+                            StartDate = new DateTime(2023, 7, 8, 15, 8, 55, 114, DateTimeKind.Local).AddTicks(485),
                             VATFee = 0
                         },
                         new
@@ -1157,13 +1157,13 @@ namespace BackEnd_Persistence.Migrations
                             ConnectionFee = 1500,
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
-                            EndDate = new DateTime(2023, 7, 8, 7, 27, 32, 89, DateTimeKind.Local).AddTicks(7649),
+                            EndDate = new DateTime(2023, 7, 8, 15, 8, 55, 114, DateTimeKind.Local).AddTicks(496),
                             FeatureImage = "ph5.jpg",
                             Floor = 15,
                             FloorSpace = 48,
                             IsDelete = false,
                             IsSelected = false,
-                            KeyHandOverDate = new DateTime(2023, 7, 8, 7, 27, 32, 89, DateTimeKind.Local).AddTicks(7651),
+                            KeyHandOverDate = new DateTime(2023, 7, 8, 15, 8, 55, 114, DateTimeKind.Local).AddTicks(498),
                             LastUpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NumberOfBathroom = 1,
                             NumberOfBedroom = 0,
@@ -1174,7 +1174,7 @@ namespace BackEnd_Persistence.Migrations
                             PropertyStatus = true,
                             PropertyTypeId = 1L,
                             StampDutyFee = 250,
-                            StartDate = new DateTime(2023, 7, 8, 7, 27, 32, 89, DateTimeKind.Local).AddTicks(7647),
+                            StartDate = new DateTime(2023, 7, 8, 15, 8, 55, 114, DateTimeKind.Local).AddTicks(494),
                             VATFee = 2000
                         });
                 });
@@ -1210,32 +1210,32 @@ namespace BackEnd_Persistence.Migrations
                         {
                             Id = 1L,
                             ContractType = "فروش",
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 90, DateTimeKind.Local).AddTicks(4057),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 114, DateTimeKind.Local).AddTicks(9150),
                             IsDelete = false,
                             IsSelected = true,
-                            LastUpdateDate = new DateTime(2023, 7, 8, 7, 27, 32, 90, DateTimeKind.Local).AddTicks(4067)
+                            LastUpdateDate = new DateTime(2023, 7, 8, 15, 8, 55, 114, DateTimeKind.Local).AddTicks(9167)
                         },
                         new
                         {
                             Id = 2L,
                             ContractType = "اجاره",
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 90, DateTimeKind.Local).AddTicks(4642),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 114, DateTimeKind.Local).AddTicks(9843),
                             IsDelete = false,
                             IsSelected = true,
-                            LastUpdateDate = new DateTime(2023, 7, 8, 7, 27, 32, 90, DateTimeKind.Local).AddTicks(4652)
+                            LastUpdateDate = new DateTime(2023, 7, 8, 15, 8, 55, 114, DateTimeKind.Local).AddTicks(9851)
                         },
                         new
                         {
                             Id = 3L,
                             ContractType = "پیش فروش",
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 90, DateTimeKind.Local).AddTicks(4658),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 114, DateTimeKind.Local).AddTicks(9855),
                             IsDelete = false,
                             IsSelected = true,
-                            LastUpdateDate = new DateTime(2023, 7, 8, 7, 27, 32, 90, DateTimeKind.Local).AddTicks(4662)
+                            LastUpdateDate = new DateTime(2023, 7, 8, 15, 8, 55, 114, DateTimeKind.Local).AddTicks(9857)
                         });
                 });
 
-            modelBuilder.Entity("Domain.Entities.Project.PropertyFacility", b =>
+            modelBuilder.Entity("Domain.Entities.Project.Facility", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -1265,6 +1265,58 @@ namespace BackEnd_Persistence.Migrations
                     b.HasIndex("PropertyId");
 
                     b.ToTable("PropertyFacilities");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 116, DateTimeKind.Local).AddTicks(5580),
+                            FacilityName = "استخر چهار فصل",
+                            IsDelete = false,
+                            IsSelected = true,
+                            LastUpdateDate = new DateTime(2023, 7, 8, 15, 8, 55, 116, DateTimeKind.Local).AddTicks(5601),
+                            PropertyId = 1L
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 116, DateTimeKind.Local).AddTicks(7092),
+                            FacilityName = "استخر چهار فصل",
+                            IsDelete = false,
+                            IsSelected = true,
+                            LastUpdateDate = new DateTime(2023, 7, 8, 15, 8, 55, 116, DateTimeKind.Local).AddTicks(7102),
+                            PropertyId = 2L
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 116, DateTimeKind.Local).AddTicks(7106),
+                            FacilityName = "زمین بازی",
+                            IsDelete = false,
+                            IsSelected = true,
+                            LastUpdateDate = new DateTime(2023, 7, 8, 15, 8, 55, 116, DateTimeKind.Local).AddTicks(7108),
+                            PropertyId = 1L
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 116, DateTimeKind.Local).AddTicks(7111),
+                            FacilityName = "رستوران",
+                            IsDelete = false,
+                            IsSelected = true,
+                            LastUpdateDate = new DateTime(2023, 7, 8, 15, 8, 55, 116, DateTimeKind.Local).AddTicks(7113),
+                            PropertyId = 1L
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 116, DateTimeKind.Local).AddTicks(7116),
+                            FacilityName = "سالن زیبایی",
+                            IsDelete = false,
+                            IsSelected = true,
+                            LastUpdateDate = new DateTime(2023, 7, 8, 15, 8, 55, 116, DateTimeKind.Local).AddTicks(7118),
+                            PropertyId = 1L
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Project.PropertyGallery", b =>
@@ -1364,28 +1416,28 @@ namespace BackEnd_Persistence.Migrations
                         new
                         {
                             Id = 1L,
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 91, DateTimeKind.Local).AddTicks(525),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 117, DateTimeKind.Local).AddTicks(4999),
                             IsDelete = false,
                             IsSelected = true,
-                            LastUpdateDate = new DateTime(2023, 7, 8, 7, 27, 32, 91, DateTimeKind.Local).AddTicks(535),
+                            LastUpdateDate = new DateTime(2023, 7, 8, 15, 8, 55, 117, DateTimeKind.Local).AddTicks(5012),
                             Type = "آپارتمان"
                         },
                         new
                         {
                             Id = 2L,
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 91, DateTimeKind.Local).AddTicks(1174),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 117, DateTimeKind.Local).AddTicks(6030),
                             IsDelete = false,
                             IsSelected = true,
-                            LastUpdateDate = new DateTime(2023, 7, 8, 7, 27, 32, 91, DateTimeKind.Local).AddTicks(1184),
+                            LastUpdateDate = new DateTime(2023, 7, 8, 15, 8, 55, 117, DateTimeKind.Local).AddTicks(6044),
                             Type = "ویلا"
                         },
                         new
                         {
                             Id = 3L,
-                            CreateDate = new DateTime(2023, 7, 8, 7, 27, 32, 91, DateTimeKind.Local).AddTicks(1189),
+                            CreateDate = new DateTime(2023, 7, 8, 15, 8, 55, 117, DateTimeKind.Local).AddTicks(6048),
                             IsDelete = false,
                             IsSelected = true,
-                            LastUpdateDate = new DateTime(2023, 7, 8, 7, 27, 32, 91, DateTimeKind.Local).AddTicks(1192),
+                            LastUpdateDate = new DateTime(2023, 7, 8, 15, 8, 55, 117, DateTimeKind.Local).AddTicks(6050),
                             Type = "زمین"
                         });
                 });
@@ -1396,6 +1448,9 @@ namespace BackEnd_Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AparatLinlk")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -1412,7 +1467,7 @@ namespace BackEnd_Persistence.Migrations
                     b.Property<long>("PropertyId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("VideoName")
+                    b.Property<string>("YoutubeLinlk")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -1482,7 +1537,7 @@ namespace BackEnd_Persistence.Migrations
                     b.Navigation("PropertyTypes");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Project.PropertyFacility", b =>
+            modelBuilder.Entity("Domain.Entities.Project.Facility", b =>
                 {
                     b.HasOne("Domain.Entities.Project.Property", "Property")
                         .WithMany("PropertyFacilities")

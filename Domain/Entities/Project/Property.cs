@@ -33,7 +33,7 @@ namespace Domain.Entities.Project
         public City City { get; set; }
         public ICollection<PropertyGallery> PropertyGalleries { get; set; }
         public ICollection<PropertyVideo> PropertyVideos { get; set; }
-        public ICollection<PropertyFacility> PropertyFacilities { get; set; }
+        public ICollection<Facility> PropertyFacilities { get; set; }
         public ICollection<PropertyPlan> PropertyPlans { get; set; }
 
     }

@@ -1,5 +1,4 @@
 ﻿using Application.DTOs.Common;
-using Application.DTOs.Project.Country;
 
 namespace Application.DTOs.Project.City
 {

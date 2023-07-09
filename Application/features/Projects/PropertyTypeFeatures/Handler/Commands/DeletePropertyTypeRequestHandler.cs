@@ -4,15 +4,12 @@ using Application.DTOs.Project.PropertyType;
 using Application.features.Projects.PropertyTypeFeatures.Request.Commands;
 using AutoMapper;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Application.features.Projects.PropertyTypeFeatures.Handler.Commands
 {
-    public class DeletePropertyTypeRequestHandler:IRequestHandler<DeletePropertyTypeRequest,ResponseResultDTO>
+    public class DeletePropertyTypeRequestHandler : IRequestHandler<DeletePropertyTypeRequest, ResponseResultDTO>
     {
         private IMapper _mapper;
         private IUnitofWork _unitofWork;

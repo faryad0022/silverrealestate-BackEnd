@@ -1,15 +1,11 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.DTOs.Project.PropertyType;
 using Application.DTOs.Project.PropertyType.Validators;
 using Application.features.Projects.PropertyTypeFeatures.Request.Commands;
 using AutoMapper;
 using Domain.Entities.Project;
 using MediatR;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -20,7 +16,7 @@ namespace Application.features.Projects.PropertyTypeFeatures.Handler.Commands
         private readonly IMapper _mapper;
         private readonly IUnitofWork _unitofWork;
 
-        public UpdatePropertyTypeRequestHandler(IMapper mapper,IUnitofWork unitofWork)
+        public UpdatePropertyTypeRequestHandler(IMapper mapper, IUnitofWork unitofWork)
         {
             _mapper = mapper;
             _unitofWork = unitofWork;
@@ -37,7 +33,7 @@ namespace Application.features.Projects.PropertyTypeFeatures.Handler.Commands
             var toUpdate = _mapper.Map<PropertyType>(request.updatePropertyTypeDTO);
             _unitofWork.PropertyTypeRepository.UpdateEntity(toUpdate);
             await _unitofWork.SaveChangesAsync();
-            return ResponseResultDTO.SetResult(request.updatePropertyTypeDTO,StatusMessage.Success,null);
+            return ResponseResultDTO.SetResult(request.updatePropertyTypeDTO, StatusMessage.Success, null);
         }
     }
 }

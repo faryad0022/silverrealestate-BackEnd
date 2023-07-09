@@ -38,7 +38,7 @@ namespace BackEnd_Persistence
         public DbSet<City> Cities { get; set; }
         public DbSet<Property> Properties { get; set; }
         public DbSet<PropertyType> PropertyTypes { get; set; }
-        public DbSet<PropertyFacility> PropertyFacilities { get; set; }
+        public DbSet<Facility> PropertyFacilities { get; set; }
         public DbSet<PropertyGallery> PropertyGalleries { get; set; }
         public DbSet<PropertyPlan> PropertyPlans { get; set; }
         public DbSet<PropertyVideo> PropertyVideos { get; set; }

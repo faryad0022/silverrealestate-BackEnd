@@ -1,13 +1,10 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Application.DTOs.Project.PropertDTOs.Validators
 {
-    public class UpdatePropertyDTOValidator:AbstractValidator<UpdatePropertyDTO>
+    public class UpdatePropertyDTOValidator : AbstractValidator<UpdatePropertyDTO>
     {
         private readonly IUnitofWork _unitofWork;
 
@@ -16,7 +13,7 @@ namespace Application.DTOs.Project.PropertDTOs.Validators
             _unitofWork = unitofWork;
 
             Include(new IPropertyDTOValidator(_unitofWork));
-            RuleFor(x=>x.Id)
+            RuleFor(x => x.Id)
                 .GreaterThan(0).WithMessage(ValidatorMessages.GreaterThan)
                 .NotEmpty().WithMessage(ValidatorMessages.NotEmpty)
                 .NotNull().WithMessage(ValidatorMessages.NotNull)

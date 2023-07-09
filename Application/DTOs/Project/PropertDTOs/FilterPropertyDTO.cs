@@ -1,5 +1,4 @@
 ﻿using Application.DTOs.Paging;
-using System;
 using System.Collections.Generic;
 
 namespace Application.DTOs.Project.PropertDTOs

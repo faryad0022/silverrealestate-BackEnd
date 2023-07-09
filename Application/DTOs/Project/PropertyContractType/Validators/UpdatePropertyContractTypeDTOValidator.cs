@@ -11,8 +11,8 @@ namespace Application.DTOs.Project.PropertyContractType.Validators
         {
             _unitofWork = unitofWork;
             Include(new IPropertyContractTypeDTOValidator());
-            RuleFor(x=>x.Id)
-                .MustAsync(async (id,token) =>
+            RuleFor(x => x.Id)
+                .MustAsync(async (id, token) =>
                 {
                     return await _unitofWork.PropertyContractTypeRepository.ExistAsync(id);
                 });

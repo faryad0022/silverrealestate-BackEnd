@@ -1,6 +1,6 @@
 ﻿namespace Domain.Entities.Project
 {
-    public class PropertyFacility : BaseEntity
+    public class Facility : BaseEntity
     {
         public string FacilityName { get; set; }
         public long PropertyId { get; set; }

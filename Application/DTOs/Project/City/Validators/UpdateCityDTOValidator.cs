@@ -16,7 +16,7 @@ namespace Application.DTOs.Project.City.Validators
 
             RuleFor(x => x.Id)
                 .GreaterThan(0).WithMessage(ValidatorMessages.GreaterThan)
-                .MustAsync(async (id,token) =>
+                .MustAsync(async (id, token) =>
                 {
                     return await _unitofWork.CityRepository.ExistAsync(id);
                 }).WithMessage(ValidatorMessages.NotExist);

@@ -31,7 +31,7 @@ namespace BackEnd_Persistence
 
             services.AddScoped<IBlogContentRepository, BlogContentRepository>();
             services.AddScoped<IBlogGroupRepository, BlogGroupRepository>();
-            
+
             services.AddScoped<IAboutUsRepository, AboutUsRepository>();
             services.AddScoped<ISocialRepository, SocialRepository>();
             services.AddScoped<IAddressRepository, AddressRepository>();
@@ -43,13 +43,14 @@ namespace BackEnd_Persistence
             services.AddScoped<ISpectacularlocationRepository, SpectacularlocationRepository>();
             services.AddScoped<ISpectacularLocationImageRepository, SpectacularLocationImageRepository>();
             services.AddScoped<ITeamMemberRepository, TeamMemberRepository>();
-            
+
             services.AddScoped<ICityRepository, CityRepository>();
             services.AddScoped<ICountryRepository, CountryRepository>();
             services.AddScoped<IPropertyContractTypeRepository, PropertyContractTypeRepository>();
             services.AddScoped<IPropertyTypeRepository, PropertyTypeRepository>();
             services.AddScoped<IPropertyPlanRepository, PropertyPlanRepository>();
             services.AddScoped<IPropertyRepository, PropertyRepository>();
+            services.AddScoped<IFacilityRepository, FacilityRepository>();
 
             return services;
         }

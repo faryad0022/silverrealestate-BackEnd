@@ -27,7 +27,7 @@ namespace Application.features.Projects.PropertyFeatures.Handler.Commands
 
         public async Task<ResponseResultDTO> Handle(CreatePropertyRequest request, CancellationToken cancellationToken)
         {
-         
+
             #region Validator
             var validator = new CreatePropertyDTOValidator(_unitofWork);
             var validatorResult = await validator.ValidateAsync(request.createPropertyDTO);

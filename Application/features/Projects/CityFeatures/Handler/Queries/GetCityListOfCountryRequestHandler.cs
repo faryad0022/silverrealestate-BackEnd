@@ -1,7 +1,6 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
 using Application.DTOs.Project.City;
-using Application.DTOs.Project.Country;
 using Application.features.Projects.CityFeatures.Request.Queries;
 using AutoMapper;
 using MediatR;

@@ -81,7 +81,7 @@ namespace BackEnd_Persistence.Repositories.Project
                .Include(x => x.City)
                .Include(x => x.PropertyTypes)
                .Include(x => x.PropertyContractType)
-               .SingleOrDefaultAsync(x=>x.Id == id);
+               .SingleOrDefaultAsync(x => x.Id == id);
         }
     }
 }

@@ -30,7 +30,7 @@ namespace BackEnd_UnitTest.Facts.Projects.Cities.Queries
         [Fact]
         public async Task GetCityListOfCountryWithDetails_Valid()
         {
-            var handler = new GetCityListOfCountryWithDetailsRequestHandler(_mapper,_mock.Object);
+            var handler = new GetCityListOfCountryWithDetailsRequestHandler(_mapper, _mock.Object);
             var result = await handler.Handle(new GetCityListOfCountryWithDetailsRequest() { countryId = 1 }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);

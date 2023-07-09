@@ -21,7 +21,7 @@ namespace BackEnd_API.Controllers.AdminControllers
 
         [HttpGet(ApiRouteV1.City_GetCityListOfCountry, Name = "GetCityListOfCountry")]
         public async Task<ActionResult<ResponseResultDTO>> GetCityListOfCountry([FromQuery] long countryId)
-            => await _mediator.Send(new GetCityListOfCountryRequest() { countryId = countryId});
+            => await _mediator.Send(new GetCityListOfCountryRequest() { countryId = countryId });
 
 
         [HttpGet(ApiRouteV1.City_GetCityListOfCountry_WithDetails, Name = "GetCityListOfCountryWithDetailsAsync")]

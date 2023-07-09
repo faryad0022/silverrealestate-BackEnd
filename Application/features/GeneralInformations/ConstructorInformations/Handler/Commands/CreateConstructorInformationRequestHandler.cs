@@ -1,7 +1,6 @@
 ﻿using Application.Const.PathUtility;
 using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.DTOs.GeneralSiteInformationsDTO.Banner;
 using Application.DTOs.GeneralSiteInformationsDTO.ConstructorInformations;
 using Application.DTOs.GeneralSiteInformationsDTO.ConstructorInformations.Validators;
 using Application.Extensions;
@@ -10,7 +9,6 @@ using AutoMapper;
 using Domain.Entities.GeneralSiteInformation;
 using MediatR;
 using System.Linq;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
