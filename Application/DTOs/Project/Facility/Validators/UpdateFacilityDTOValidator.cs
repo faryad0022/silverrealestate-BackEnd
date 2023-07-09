@@ -11,7 +11,13 @@ namespace Application.DTOs.Project.Facility.Validators
         public UpdateFacilityDTOValidator(IUnitofWork unitofWork)
         {
             _unitofWork = unitofWork;
-            Include(new IFacilityDTOValidator(_unitofWork));
+            Include(new IFacilityDTOValidator());
+            RuleFor(x => x.PropertyId)
+                .GreaterThan(0).WithMessage(ValidatorMessages.GreaterThan)
+                .MustAsync(async (id, token) =>
+                {
+                    return await _unitofWork.PropertyRepository.ExistAsync(id);
+                }).WithMessage(ValidatorMessages.NotExist);
             RuleFor(x => x.Id)
                 .GreaterThan(0).WithMessage(ValidatorMessages.GreaterThan)
                 .NotEmpty().WithMessage(ValidatorMessages.NotEmpty)

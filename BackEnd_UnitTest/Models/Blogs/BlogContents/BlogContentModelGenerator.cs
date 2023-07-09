@@ -189,6 +189,10 @@ namespace BackEnd_UnitTest.Models.Blogs.BlogContents
         public static FilterBlogContentDTO filterBlogContent_ById_Valid = new FilterBlogContentDTO
         {
             BlogGroupId = 1,
+            IsSelected = true,
+            IsDelete = false,
+            BlogContentList = blogContentListDTO
+
         };
         public static FilterBlogContentDTO filterBlogContent_ByTitle_blogList_Valid = new FilterBlogContentDTO
         {

@@ -188,5 +188,14 @@
         public const string Facility_ChangeStatus = "v1/facility/changestatus";
         #endregion
 
+        #region PropertyGallery
+        public const string PropertyGallery_GetAll = "v1/property-gallery/getall";
+        public const string PropertyGallery_Get = "v1/property-gallery/get";
+        public const string PropertyGallery_Add = "v1/property-gallery/add";
+        public const string PropertyGallery_Update = "v1/property-gallery/update";
+        public const string PropertyGallery_Delete = "v1/property-gallery/delete";
+        public const string PropertyGallery_ChangeStatus = "v1/property-gallery/changestatus";
+        #endregion
+
     }
 }

@@ -35,10 +35,7 @@ namespace BackEnd_UnitTest.Facts.Projects.Facilities.Commands
             var result = await handler.Handle(new CreateFacilityRequest() { createFacilityDTO = FacilityModelGenerator.createFacilityDTO_Valid }, CancellationToken.None);
 
             result.Status.ShouldBe(StatusMessage.Success);
-
             result.Errors.ShouldBeNull();
-
-
         }
         [Fact]
         public async Task CreateFacility_Validation_InValid()

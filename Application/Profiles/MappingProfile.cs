@@ -16,6 +16,7 @@ using Application.DTOs.Project.Country;
 using Application.DTOs.Project.Facility;
 using Application.DTOs.Project.PropertDTOs;
 using Application.DTOs.Project.PropertyContractType;
+using Application.DTOs.Project.PropertyGalleries;
 using Application.DTOs.Project.PropertyType;
 using Application.Models.FilterModels;
 using AutoMapper;
@@ -275,6 +276,16 @@ namespace Application.Profiles
             CreateMap<FacilityDTO, CreateFacilityDTO>().ReverseMap();
 
             #endregion
+
+            #region PropertyGallery
+            CreateMap<PropertyGallery, PropertyGalleryDTO>().ReverseMap();
+            CreateMap<PropertyGallery, UpdatePropertyGalleryDTO>().ReverseMap();
+            CreateMap<PropertyGallery, CreatePropertyGalleryDTO>().ReverseMap();
+            CreateMap<PropertyGalleryDTO, UpdatePropertyGalleryDTO>().ReverseMap();
+            CreateMap<PropertyGalleryDTO, CreatePropertyGalleryDTO>().ReverseMap();
+
+            #endregion
+
 
         }
     }
