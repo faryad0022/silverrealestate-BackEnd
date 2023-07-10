@@ -18,6 +18,7 @@ using Application.DTOs.Project.PropertDTOs;
 using Application.DTOs.Project.PropertyContractType;
 using Application.DTOs.Project.PropertyGalleries;
 using Application.DTOs.Project.PropertyType;
+using Application.DTOs.Project.PropertyVideos;
 using Application.Models.FilterModels;
 using AutoMapper;
 using Domain.Entities.Blog;
@@ -198,8 +199,6 @@ namespace Application.Profiles
                 .ReverseMap();
             #endregion
 
-
-
             #region Country
             CreateMap<Country, CountryDTO>().ReverseMap();
             CreateMap<Country, UpdateCountryDTO>().ReverseMap();
@@ -286,7 +285,14 @@ namespace Application.Profiles
 
             #endregion
 
+            #region PropertyVideo
+            CreateMap<PropertyVideo, PropertyVideoDTO>().ReverseMap();
+            CreateMap<PropertyVideo, UpdatePropertyVideoDTO>().ReverseMap();
+            CreateMap<PropertyVideo, CreatePropertyVideoDTO>().ReverseMap();
+            CreateMap<PropertyVideoDTO, UpdatePropertyVideoDTO>().ReverseMap();
+            CreateMap<PropertyVideoDTO, CreatePropertyVideoDTO>().ReverseMap();
 
+            #endregion
         }
     }
 }

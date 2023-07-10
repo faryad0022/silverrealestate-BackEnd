@@ -1,10 +1,12 @@
-﻿namespace Domain.Entities.Project
+﻿using Application.DTOs.Common;
+
+namespace Application.DTOs.Project.PropertyVideos
 {
-    public class PropertyVideo : BaseEntity
+    public class PropertyVideoDTO : BaseEntityDTO
     {
         public string YoutubeLink { get; set; }
         public string AparatLink { get; set; }
         public long PropertyId { get; set; }
-        public Property ProPerty { get; set; }
+
     }
 }

@@ -12,6 +12,11 @@ namespace Application.DTOs.Project.PropertyGalleries.Validators
         {
             _unitofWork = unitofWork;
             Include(new IPropertyGalleryDTOValidator(_unitofWork));
+            RuleFor(x=>x.PropertyId)
+                .MustAsync(async (id, token) =>
+                {
+                    return await _unitofWork.PropertyRepository.ExistAsync(id);
+                }).WithMessage(ValidatorMessages.NotExist);
             RuleFor(x => x.Id)
                 .GreaterThan(0).WithMessage(ValidatorMessages.GreaterThan)
                 .NotEmpty().WithMessage(ValidatorMessages.NotEmpty)

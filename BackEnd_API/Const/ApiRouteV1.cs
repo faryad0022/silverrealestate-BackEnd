@@ -197,5 +197,14 @@
         public const string PropertyGallery_ChangeStatus = "v1/property-gallery/changestatus";
         #endregion
 
+        #region PropertyVideo
+        public const string PropertyVideo_GetAll = "v1/property-video/getall";
+        public const string PropertyVideo_Get = "v1/property-video/get";
+        public const string PropertyVideo_Add = "v1/property-video/add";
+        public const string PropertyVideo_Update = "v1/property-video/update";
+        public const string PropertyVideo_Delete = "v1/property-video/delete";
+        public const string PropertyVideo_ChangeStatus = "v1/property-video/changestatus";
+        #endregion
+
     }
 }

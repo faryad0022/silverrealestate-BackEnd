@@ -52,6 +52,7 @@ namespace BackEnd_Persistence
             services.AddScoped<IPropertyRepository, PropertyRepository>();
             services.AddScoped<IFacilityRepository, FacilityRepository>();
             services.AddScoped<IPropertyGalleryRepository, PropertyGalleryRepository>();
+            services.AddScoped<IPropertyVideoRepository, PropertyVideoRepository>();
 
             return services;
         }

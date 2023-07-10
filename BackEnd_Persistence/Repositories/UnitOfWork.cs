@@ -37,6 +37,7 @@ namespace BackEnd_Persistence.Repositories
         private IPropertyRepository _propertyRepository;
         private IFacilityRepository _facilityRepository;
         private IPropertyGalleryRepository _propertyGalleryRepository;
+        private IPropertyVideoRepository _propertyVideoRepository;
 
         public UnitOfWork(RealEstateDbContext context) => _context = context;
 
@@ -64,6 +65,7 @@ namespace BackEnd_Persistence.Repositories
         public IPropertyRepository PropertyRepository => _propertyRepository ??= new PropertyRepository(_context);
         public IFacilityRepository FacilityRepository => _facilityRepository ??= new FacilityRepository(_context);
         public IPropertyGalleryRepository PropertyGalleryRepository => _propertyGalleryRepository ??= new PropertyGalleryRepository(_context);
+        public IPropertyVideoRepository PropertyVideoRepository => _propertyVideoRepository ??= new PropertyVideoRepository(_context);
 
 
         public void Dispose()

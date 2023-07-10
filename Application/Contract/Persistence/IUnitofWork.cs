@@ -31,6 +31,7 @@ namespace Application.Contract.Persistence
         IPropertyRepository PropertyRepository { get; }
         IFacilityRepository FacilityRepository { get; }
         IPropertyGalleryRepository PropertyGalleryRepository { get; }
+        IPropertyVideoRepository PropertyVideoRepository { get; }
 
         Task SaveChangesAsync();
     }
