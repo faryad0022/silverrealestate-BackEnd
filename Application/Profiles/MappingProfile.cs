@@ -17,6 +17,7 @@ using Application.DTOs.Project.Facility;
 using Application.DTOs.Project.PropertDTOs;
 using Application.DTOs.Project.PropertyContractType;
 using Application.DTOs.Project.PropertyGalleries;
+using Application.DTOs.Project.PropertyPlans;
 using Application.DTOs.Project.PropertyType;
 using Application.DTOs.Project.PropertyVideos;
 using Application.Models.FilterModels;
@@ -291,6 +292,15 @@ namespace Application.Profiles
             CreateMap<PropertyVideo, CreatePropertyVideoDTO>().ReverseMap();
             CreateMap<PropertyVideoDTO, UpdatePropertyVideoDTO>().ReverseMap();
             CreateMap<PropertyVideoDTO, CreatePropertyVideoDTO>().ReverseMap();
+
+            #endregion
+
+            #region PropertyPlan
+            CreateMap<PropertyPlan, PropertyPlanDTO>().ReverseMap();
+            CreateMap<PropertyPlan, UpdatePropertyPlanDTO>().ReverseMap();
+            CreateMap<PropertyPlan, CreatePropertyPlanDTO>().ReverseMap();
+            CreateMap<PropertyPlanDTO, UpdatePropertyPlanDTO>().ReverseMap();
+            CreateMap<PropertyPlanDTO, CreatePropertyPlanDTO>().ReverseMap();
 
             #endregion
         }

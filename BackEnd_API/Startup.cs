@@ -43,23 +43,16 @@ namespace BackEnd_API
                 {
                     Title = "Admin Controller Actions",
                     Version = "V1",
-                    Contact = new OpenApiContact
-                    {
-                        Name = "Shayne Boyer",
-                        Email = string.Empty,
-                        Url = new Uri("https://twitter.com/spboyer"),
-                    },
-                    License = new OpenApiLicense
-                    {
-                        Name = "Use under LICX",
-                        Url = new Uri("https://example.com/license"),
-                    }
 
                 });
             });
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("Site", new OpenApiInfo { Title = "Site Controller Actions", Version = "V1" });
+                c.SwaggerDoc("Site", new OpenApiInfo 
+                { 
+                    Title = "Site Controller Actions",
+                    Version = "V1" 
+                });
             });
         }
 

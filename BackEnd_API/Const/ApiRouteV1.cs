@@ -206,5 +206,14 @@
         public const string PropertyVideo_ChangeStatus = "v1/property-video/changestatus";
         #endregion
 
+        #region PropertyPlan
+        public const string PropertyPlan_GetAll = "v1/property-plan/getall";
+        public const string PropertyPlan_Get = "v1/property-plan/get";
+        public const string PropertyPlan_Add = "v1/property-plan/add";
+        public const string PropertyPlan_Update = "v1/property-plan/update";
+        public const string PropertyPlan_Delete = "v1/property-plan/delete";
+        public const string PropertyPlan_ChangeStatus = "v1/property-plan/changestatus";
+        #endregion
+
     }
 }

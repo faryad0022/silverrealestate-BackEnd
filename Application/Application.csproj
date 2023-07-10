@@ -23,11 +23,4 @@
 		<ProjectReference Include="..\Domain\Domain.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="features\Projects\PropertyPlanFeatures\Handler\Commands\" />
-	  <Folder Include="features\Projects\PropertyPlanFeatures\Handler\Queries\" />
-	  <Folder Include="features\Projects\PropertyPlanFeatures\Request\Commands\" />
-	  <Folder Include="features\Projects\PropertyPlanFeatures\Request\Queries\" />
-	</ItemGroup>
-
 </Project>

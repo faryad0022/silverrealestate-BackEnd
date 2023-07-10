@@ -32,6 +32,7 @@ namespace BackEnd_UnitTest.Mocks
             var _mockFacilityRepository = MockFacilityRepository.GetFacilityRepository();
             var _mockPropertyGalleryRepository = MockPropertyGalleryRepository.GetPropertyGalleryRepository();
             var _mockPropertyVideoRepository = MockPropertyVideoRepository.GetPropertyVideoRepository();
+            var _mockPropertyPlanRepository = MockPropertyPlanRepository.GetPropertyPlanRepository();
 
 
             //var _mockAboutSocialRepository = Mock
@@ -56,6 +57,7 @@ namespace BackEnd_UnitTest.Mocks
             _mockUOW.Setup(s => s.FacilityRepository).Returns(() => _mockFacilityRepository.Object);
             _mockUOW.Setup(s => s.PropertyGalleryRepository).Returns(() => _mockPropertyGalleryRepository.Object);
             _mockUOW.Setup(s => s.PropertyVideoRepository).Returns(() => _mockPropertyVideoRepository.Object);
+            _mockUOW.Setup(s => s.PropertyPlanRepository).Returns(() => _mockPropertyPlanRepository.Object);
 
 
             return _mockUOW;
