@@ -142,6 +142,7 @@
 
         #region City
         public const string City_GetCityListOfCountry = "v1/city/get-city-list-of-country";
+        public const string City_GetCityList_WithDetails = "v1/city/get-city-list/withdetails";
         public const string City_GetCityListOfCountry_WithDetails = "v1/city/get-city-list-of-country/withdetails";
         public const string City_Get = "v1/city/get";
         public const string City_GetWithDetails = "v1/city/get-withdetails";

@@ -67,6 +67,11 @@ namespace BackEnd_UnitTest.Models.Projects.Cities
             CityName = "",
             CountryId = 1,
         };
+        public static CreateCityDTO _createCityDTO_ValidationError_Duplicate_Invalid = new CreateCityDTO
+        {
+            CityName = "Kish",
+            CountryId = 2,
+        };
 
 
         public static UpdateCityDTO _updateCityDTO_Valid = new()
@@ -92,6 +97,12 @@ namespace BackEnd_UnitTest.Models.Projects.Cities
             Id = 1,
             CityName = "Kish1",
             CountryId = 10,
+        };
+        public static UpdateCityDTO _updateCityDTO_ValidationError_Duplicate_InValid = new UpdateCityDTO
+        {
+            Id = 1,
+            CityName = "Kish",
+            CountryId = 1,
         };
 
     }

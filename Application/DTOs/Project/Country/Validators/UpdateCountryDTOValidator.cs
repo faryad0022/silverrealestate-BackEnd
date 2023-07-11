@@ -11,7 +11,12 @@ namespace Application.DTOs.Project.Country.Validators
         public UpdateCountryDTOValidator(IUnitofWork unitofWork)
         {
             _unitofWork = unitofWork;
-            Include(new ICountryDTOValidator());
+            Include(new ICountryDTOValidator(_unitofWork));
+            RuleFor(x => x.CountryName)
+                .MustAsync(async (countryName, token) =>
+                {
+                    return await _unitofWork.CountryRepository.CheckDuplicate(countryName);
+                }).WithMessage(ValidatorMessages.Duplicate);
             RuleFor(x => x.Id)
                 .GreaterThan(0).WithMessage(ValidatorMessages.GreaterThan)
                 .MustAsync(async (id, token) =>

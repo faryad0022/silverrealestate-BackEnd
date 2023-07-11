@@ -68,6 +68,16 @@ namespace BackEnd_UnitTest.Facts.Projects.Cities.Commands
             result.Errors.ShouldNotBeNull();
 
         }
+        [Fact]
+        public async Task UpdateCity_Validation_Duplicate_Invalid()
+        {
+            var handler = new UpdateCityRequestHandler(_mapper, _mock.Object);
+            var result = await handler.Handle(new UpdateCityRequest() { updateCityDTO = CityModelGenerator._updateCityDTO_ValidationError_Duplicate_InValid }, CancellationToken.None);
+
+            result.Status.ShouldBe(StatusMessage.ValidationError);
+            result.Errors.ShouldNotBeNull();
+
+        }
 
     }
 }

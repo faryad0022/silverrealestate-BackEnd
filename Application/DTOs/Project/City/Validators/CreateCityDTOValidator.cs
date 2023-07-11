@@ -11,7 +11,7 @@ namespace Application.DTOs.Project.City.Validators
         public CreateCityDTOValidator(IUnitofWork unitofWork)
         {
             _unitofWork = unitofWork;
-            Include(new ICItyDTOVlidator());
+            Include(new ICItyDTOVlidator(_unitofWork));
             RuleFor(x => x.CountryId)
                 .GreaterThan(0).WithMessage(ValidatorMessages.GreaterThan)
                 .MustAsync(async (id, token) =>

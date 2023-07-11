@@ -26,7 +26,7 @@ namespace Application.features.Projects.CountryFeatures.Handler.Commands
         public async Task<ResponseResultDTO> Handle(CreateCountryRequest request, CancellationToken cancellationToken)
         {
             #region Validation
-            var validator = new CreateCountryDTOValidator();
+            var validator = new CreateCountryDTOValidator(_unitofWork);
             var validatorResult = await validator.ValidateAsync(request.createCountryDTO);
             if (!validatorResult.IsValid)
                 return ResponseResultDTO.SetResult(request.createCountryDTO, StatusMessage.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());

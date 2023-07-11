@@ -12,7 +12,7 @@ namespace Application.DTOs.Project.City.Validators
         {
             _unitofWork = unitofWork;
 
-            Include(new ICItyDTOVlidator());
+            Include(new ICItyDTOVlidator(_unitofWork));
 
             RuleFor(x => x.Id)
                 .GreaterThan(0).WithMessage(ValidatorMessages.GreaterThan)

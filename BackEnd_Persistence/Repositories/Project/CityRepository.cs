@@ -16,21 +16,29 @@ namespace BackEnd_Persistence.Repositories.Project
             _dbContext = dbContext;
         }
 
+        public async Task<bool> CheckDuplicateCity(string cityName)
+        {
+            var city = await _dbContext.Cities.FirstOrDefaultAsync(c => c.CityName == cityName);
+            if (city is null)
+                return true;
+            return false;
+        }
+
         public Task<List<City>> GetCityListOfCountryWithDetailsAsync(long countryId)
         {
-            var cityList = _dbContext.Cities.Include(c => c.Country).Where(c => c.CountryId == countryId).ToListAsync();
+            var cityList = _dbContext.Cities.Include(c => c.Country).Where(c => c.CountryId == countryId && !c.IsDelete).ToListAsync();
             return cityList;
         }
 
         public async Task<List<City>> GetCityListWithDetailsAsync()
         {
-            var cityList = await _dbContext.Cities.Include(c => c.Country).ToListAsync();
+            var cityList = await _dbContext.Cities.Include(c => c.Country).Where(x => !x.IsDelete).ToListAsync();
             return cityList;
         }
 
         public async Task<City> GetCityWithDetailsAsync(long id)
         {
-            var city = await _dbContext.Cities.Include(c => c.Country).SingleOrDefaultAsync(c => c.Id == id);
+            var city = await _dbContext.Cities.Include(c => c.Country).Where(x=>!x.IsDelete).SingleOrDefaultAsync(c => c.Id == id);
             return city;
         }
     }

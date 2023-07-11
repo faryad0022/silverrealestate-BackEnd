@@ -10,5 +10,6 @@ namespace Application.Contract.Persistance.EntitiesRepository.Project
         Task<City> GetCityWithDetailsAsync(long id);
         Task<List<City>> GetCityListWithDetailsAsync();
         Task<List<City>> GetCityListOfCountryWithDetailsAsync(long countryId);
+        Task<bool> CheckDuplicateCity(string cityName);
     }
 }
