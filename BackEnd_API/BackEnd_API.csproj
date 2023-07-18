@@ -5,6 +5,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\images\about\**" />
+    <Compile Remove="wwwroot\images\blogs\**" />
+    <Compile Remove="wwwroot\images\spectacular\**" />
+    <Content Remove="wwwroot\images\about\**" />
+    <Content Remove="wwwroot\images\blogs\**" />
+    <Content Remove="wwwroot\images\spectacular\**" />
+    <EmbeddedResource Remove="wwwroot\images\about\**" />
+    <EmbeddedResource Remove="wwwroot\images\blogs\**" />
+    <EmbeddedResource Remove="wwwroot\images\spectacular\**" />
+    <None Remove="wwwroot\images\about\**" />
+    <None Remove="wwwroot\images\blogs\**" />
+    <None Remove="wwwroot\images\spectacular\**" />
+  </ItemGroup>
+
+  <ItemGroup>
 	  <PackageReference Include="MediatR" Version="11.1.0" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.17">
 		  <PrivateAssets>all</PrivateAssets>
@@ -20,15 +35,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\images\about\origin\" />
     <Folder Include="wwwroot\images\banner\compressed\" />
     <Folder Include="wwwroot\images\banner\origin\" />
-    <Folder Include="wwwroot\images\blogs\origin\" />
     <Folder Include="wwwroot\images\constructor\NewFolder\" />
     <Folder Include="wwwroot\images\constructor\origin\" />
+    <Folder Include="wwwroot\images\aboutUs\" />
+    <Folder Include="wwwroot\images\blog\" />
     <Folder Include="wwwroot\images\realestateservice\compressed\" />
     <Folder Include="wwwroot\images\realestateservice\orogin\" />
-    <Folder Include="wwwroot\images\spectacular\origin\" />
     <Folder Include="wwwroot\images\team\compressed\" />
     <Folder Include="wwwroot\images\team\NewFolder\" />
   </ItemGroup>

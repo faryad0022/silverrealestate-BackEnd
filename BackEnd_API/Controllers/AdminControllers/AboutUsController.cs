@@ -35,7 +35,7 @@ namespace BackEnd_API.Controllers.AdminControllers
 
 
         [HttpPut(ApiRouteV1.AboutUs_Update, Name = "UpdateAboutusAsync")]
-        public async Task<ActionResult<ResponseResultDTO>> UpdateAboutusAsync([FromQuery] UpdateAboutUsDTO aboutUsDTO)
+        public async Task<ActionResult<ResponseResultDTO>> UpdateAboutusAsync([FromBody] UpdateAboutUsDTO aboutUsDTO)
             => await _mediator.Send(new UpdateAboutUsRequest { updateAboutUsDTO = aboutUsDTO });
     }
 }

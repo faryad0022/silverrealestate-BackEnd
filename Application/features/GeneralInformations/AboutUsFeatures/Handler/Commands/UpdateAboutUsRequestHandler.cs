@@ -3,6 +3,7 @@ using Application.Contract.Persistence;
 using Application.DTOs.GeneralSiteInformationsDTO.AboutUs.Validators;
 using Application.features.GeneralInformations.AboutUsFeatures.Request.Commands;
 using AutoMapper;
+using Domain.Entities.GeneralSiteInformation;
 using MediatR;
 using System.Linq;
 using System.Threading;
@@ -36,8 +37,8 @@ namespace Application.features.GeneralInformations.AboutUsFeatures.Handler.Comma
                 return ResponseResultDTO.SetResult(null, StatusMessage.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
             }
             #endregion
-
-            _unitofWork.AboutUsRepository.UpdateEntity(about);
+            var toUpdate = _mapper.Map<AboutUs>(request.updateAboutUsDTO);
+            _unitofWork.AboutUsRepository.UpdateEntity(toUpdate);
             await _unitofWork.SaveChangesAsync();
             return ResponseResultDTO.SetResult(request.updateAboutUsDTO, StatusMessage.Success, null);
 

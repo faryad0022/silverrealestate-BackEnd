@@ -27,7 +27,7 @@ namespace Application.features.Projects.PropertyFeatures.Handler.Commands
 
         public async Task<ResponseResultDTO> Handle(UpdatePropertyRequest request, CancellationToken cancellationToken)
         {
-            var property = await _unitofWork.PropertyRepository.GetEntityAsync(request.updatePropertyDTO.Id);
+            var property = await _unitofWork.PropertyRepository.GetPropertyWithDetails(request.updatePropertyDTO.Id);
             if (property is null)
                 return ResponseResultDTO.SetResult(null, StatusMessage.NotFound, null);
             #region Upload Image
@@ -53,7 +53,9 @@ namespace Application.features.Projects.PropertyFeatures.Handler.Commands
             var toUpdate = _mapper.Map<Property>(request.updatePropertyDTO);
             _unitofWork.PropertyRepository.UpdateEntity(toUpdate);
             await _unitofWork.SaveChangesAsync();
-            return ResponseResultDTO.SetResult(_mapper.Map<PropertyDTO>(toUpdate), StatusMessage.Success, null);
+            var propertyUpdated = await _unitofWork.PropertyRepository.GetPropertyWithDetails(request.updatePropertyDTO.Id);
+
+            return ResponseResultDTO.SetResult(_mapper.Map<PropertyDTO>(propertyUpdated), StatusMessage.Success, null);
         }
     }
 }
