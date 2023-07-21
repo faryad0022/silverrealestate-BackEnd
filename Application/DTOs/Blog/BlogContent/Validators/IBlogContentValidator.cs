@@ -25,8 +25,6 @@ namespace Application.DTOs.Blog.BlogContent.Validators
                 .GreaterThan(0).WithMessage(ValidatorMessages.GreaterThan);
 
             RuleFor(x => x.ImageName)
-                .MaximumLength(500).WithMessage(ValidatorMessages.MaximumLength)
-                .MinimumLength(5).WithMessage(ValidatorMessages.MinimumLength)
                 .NotEmpty().WithMessage(ValidatorMessages.NotEmpty)
                 .NotNull().WithMessage(ValidatorMessages.NotNull);
 

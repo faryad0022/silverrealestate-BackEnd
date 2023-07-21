@@ -70,7 +70,7 @@ namespace BackEnd_Persistence.Repositories.Blogs
 
         public async Task<List<BlogContent>> GetBlogContentWithDetailsListAsync()
         {
-            var blogContents = await _dbContext.BlogContents.Include(q => q.blogGroup).ToListAsync();
+            var blogContents = await _dbContext.BlogContents.Where(x=>!x.IsDelete).Include(q => q.blogGroup).ToListAsync();
             return blogContents;
         }
 

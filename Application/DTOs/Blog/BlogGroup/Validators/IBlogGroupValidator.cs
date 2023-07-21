@@ -9,7 +9,7 @@ namespace Application.DTOs.Blog.BlogGroup.Validators
         public IBlogGroupValidator()
         {
             RuleFor(p => p.Name)
-                .MaximumLength(20).WithMessage(ValidatorMessages.MaximumLength)
+                .MaximumLength(500).WithMessage(ValidatorMessages.MaximumLength)
                 .MinimumLength(2).WithMessage(ValidatorMessages.MinimumLength)
                 .NotEmpty().WithMessage(ValidatorMessages.NotEmpty)
                 .NotNull().WithMessage(ValidatorMessages.NotNull);

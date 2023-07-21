@@ -1,7 +1,10 @@
-﻿using Application.Const.Response;
+﻿using Application.Const.PathUtility;
+using Application.Const.Response;
 using Application.Contract.Infrastructure;
 using Application.Contract.Persistence;
+using Application.DTOs.Blog.BlogContent;
 using Application.DTOs.Blog.BlogContent.Validators;
+using Application.Extensions;
 using Application.features.Blog.Request.Commands.BlogContentCommands;
 using Application.Models;
 using AutoMapper;
@@ -28,7 +31,21 @@ namespace Application.features.Blog.Handler.Commands.BlogcontentCommands
         }
         public async Task<ResponseResultDTO> Handle(CreateBlogContentRequest request, CancellationToken cancellationToken)
         {
-
+            #region Upload Image
+            var createdImageName = ImageUploaderExtensions.UploadImage(
+                request.createBlogContentDTO.ImageName,
+                PathTools.BlogServerPath
+                );
+            if (string.IsNullOrEmpty(createdImageName))
+                return ResponseResultDTO.SetResult(
+                    null,
+                    StatusMessage.UploadError,
+                    null
+                    );
+            #endregion
+            
+            var blogContent = _mapper.Map<BlogContent>(request.createBlogContentDTO);
+            blogContent.ImageName = createdImageName;
             #region Validator
             var validator = new CreateBlogContantDTOValidator(_unitofWork.BlogGroupRepository);
             var validatorResult = await validator.ValidateAsync(request.createBlogContentDTO);
@@ -38,28 +55,28 @@ namespace Application.features.Blog.Handler.Commands.BlogcontentCommands
             }
             #endregion
 
-            var blogContent = _mapper.Map<BlogContent>(request.createBlogContentDTO);
 
             blogContent = await _unitofWork.BlogContentRepository.AddEntityAsync(blogContent);
 
-            var email = new Email
-            {
-                To = "mahancomputer49@gmail.com",
-                Subject = "Submitted",
-                Body = $"New blog by Id {blogContent.Id} and title {blogContent.Title} is created"
-            };
-            try
-            {
-                await _emailSender.SendEmailAsync(email);
+            //var email = new Email
+            //{
+            //    To = "mahancomputer49@gmail.com",
+            //    Subject = "Submitted",
+            //    Body = $"New blog by Id {blogContent.Id} and title {blogContent.Title} is created"
+            //};
+            //try
+            //{
+            //    await _emailSender.SendEmailAsync(email);
 
-            }
-            catch (Exception e)
-            {
+            //}
+            //catch (Exception e)
+            //{
 
-                throw e;
-            }
+            //    throw e;
+            //}
             await _unitofWork.SaveChangesAsync();
-            return ResponseResultDTO.SetResult(request.createBlogContentDTO, StatusMessage.Success, null);
+            var createdBlogContentDTO = _mapper.Map<BlogContentDTO>(blogContent);
+            return ResponseResultDTO.SetResult(createdBlogContentDTO, StatusMessage.Success, null);
 
         }
     }

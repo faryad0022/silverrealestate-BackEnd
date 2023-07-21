@@ -1,8 +1,12 @@
-﻿using Application.Const.Response;
+﻿using Application.Const.PathUtility;
+using Application.Const.Response;
 using Application.Contract.Persistence;
+using Application.DTOs.Blog.BlogContent;
 using Application.DTOs.Blog.BlogContent.Validators;
+using Application.Extensions;
 using Application.features.Blog.Request.Commands.BlogContentCommands;
 using AutoMapper;
+using Domain.Entities.GeneralSiteInformation;
 using MediatR;
 using System.Linq;
 using System.Threading;
@@ -22,38 +26,42 @@ namespace Application.features.Blog.Handler.Commands.BlogcontentCommands
         }
         public async Task<ResponseResultDTO> Handle(UpdateBlogcontentRequest request, CancellationToken cancellationToken)
         {
-            var blogContent = await _unitofWork.BlogContentRepository.GetEntityAsync(request.Id);
+            var blogContent = await _unitofWork.BlogContentRepository.GetEntityAsync(request.updateBlogContentDTO.Id);
 
             if (blogContent is null)
                 return ResponseResultDTO.SetResult(null, StatusMessage.NotFound, null);
-
-            if (request.updateBlogContentDTO != null)
+            #region Upload Image
+            if (request.updateBlogContentDTO.ImageName != "")
             {
-                #region Validation
-                var validator = new UpdateBlogContentDTOValidator(_unitofWork.BlogContentRepository);
-                var validatorResult = await validator.ValidateAsync(request.updateBlogContentDTO);
-                if (!validatorResult.IsValid)
-                {
-                    return ResponseResultDTO.SetResult(request.updateBlogContentDTO, StatusMessage.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
-                }
-                #endregion
-
-                _mapper.Map(request.updateBlogContentDTO, blogContent);
-                _unitofWork.BlogContentRepository.UpdateEntity(blogContent);
+                var createdImageName = ImageUploaderExtensions.UploadImage(request.updateBlogContentDTO.ImageName, PathTools.BlogServerPath, blogContent.ImageName);
+                if (string.IsNullOrEmpty(createdImageName))
+                    return ResponseResultDTO.SetResult(null, StatusMessage.UploadError, null);
+                request.updateBlogContentDTO.ImageName = createdImageName;
             }
-            else if (request.changeBlogContentStatusDTO != null)
+            else
             {
-                await _unitofWork.BlogContentRepository.ChangeBlogContentStatus(blogContent);
+                request.updateBlogContentDTO.ImageName = blogContent.ImageName;
 
             }
-            else if (request.changeBlogContentIsSelected != null)
-            {
-                await _unitofWork.BlogContentRepository.ChangeBlogContentIsSelected(blogContent);
 
+            #endregion
+
+            #region Validation
+            var validator = new UpdateBlogContentDTOValidator(_unitofWork.BlogContentRepository);
+            var validatorResult = await validator.ValidateAsync(request.updateBlogContentDTO);
+            if (!validatorResult.IsValid)
+            {
+                return ResponseResultDTO.SetResult(request.updateBlogContentDTO, StatusMessage.ValidationError, validatorResult.Errors.Select(q => q.ErrorMessage).ToList());
             }
+            #endregion
+
+            _mapper.Map(request.updateBlogContentDTO, blogContent);
+            _unitofWork.BlogContentRepository.UpdateEntity(blogContent);
+
+
             await _unitofWork.SaveChangesAsync();
-
-            return ResponseResultDTO.SetResult(null, StatusMessage.Success, null);
+            var updatedDTO = _mapper.Map<BlogContentDTO>(await _unitofWork.BlogContentRepository.GetBlogContentWithDetailsAsync(request.updateBlogContentDTO.Id));
+            return ResponseResultDTO.SetResult(updatedDTO, StatusMessage.Success, null);
         }
     }
 }

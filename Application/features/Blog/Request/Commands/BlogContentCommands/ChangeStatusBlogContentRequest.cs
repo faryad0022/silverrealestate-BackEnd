@@ -1,10 +1,9 @@
 ﻿using Application.Const.Response;
-using Application.DTOs.Blog.BlogContent;
 using MediatR;
 
 namespace Application.features.Blog.Request.Commands.BlogContentCommands
 {
-    public class DeleteBlogContentRequest : IRequest<ResponseResultDTO>
+    public class ChangeStatusBlogContentRequest : IRequest<ResponseResultDTO>
     {
         public long Id { get; set; }
     }

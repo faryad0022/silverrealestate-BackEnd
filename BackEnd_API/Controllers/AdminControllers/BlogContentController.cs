@@ -2,6 +2,7 @@
 using Application.DTOs.Blog.BlogContent;
 using Application.features.Blog.Request.Commands.BlogContentCommands;
 using Application.features.Blog.Request.Queries.BlogContent;
+using Application.features.Projects.CityFeatures.Request.Commands;
 using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;
@@ -38,19 +39,17 @@ namespace BackEnd_API.Controllers.AdminControllers
         public async Task<ActionResult<ResponseResultDTO>> AddBlogContentAsync([FromBody] CreateBlogContentDTO createBlogContentDTO)
             => await _mediator.Send(new CreateBlogContentRequest() { createBlogContentDTO = createBlogContentDTO });
 
-
+        [HttpPut(ApiRouteV1.BlogContent_Delete, Name = "DeleteBlogContent")]
+        public async Task<ActionResult<ResponseResultDTO>> DeleteCity([FromBody] long id)
+            => await _mediator.Send(new DeleteBlogContentRequest() { Id = id });
 
         [HttpPut(ApiRouteV1.BlogContent_Update, Name = "UpdateBlogContentAsync")]
         public async Task<ActionResult<ResponseResultDTO>> UpdateBlogContentAsync([FromBody] UpdateBlogContentDTO updateBlogContentDTO)
             => await _mediator.Send(new UpdateBlogcontentRequest() { updateBlogContentDTO = updateBlogContentDTO });
 
 
-        [HttpPut(ApiRouteV1.BlogContent_ChangeStatus, Name = "ChangeBlogContentIsSelectedAsync")]
-        public async Task<ActionResult<ResponseResultDTO>> ChangeBlogContentIsSelectedAsync([FromBody] ChangeBlogContentIsSelectedDTO changeBlogContentIsSelected, [FromQuery] long Id)
-            => await _mediator.Send(new UpdateBlogcontentRequest()
-            {
-                Id = Id,
-                changeBlogContentIsSelected = changeBlogContentIsSelected
-            });
+        [HttpPut(ApiRouteV1.BlogContent_ChangeStatus, Name = "ChangeBlogContentStatusAsync")]
+        public async Task<ActionResult<ResponseResultDTO>> ChangeBlogContentIsSelectedAsync([FromBody] long id)
+            => await _mediator.Send(new ChangeStatusBlogContentRequest() { Id = id});
     }
 }

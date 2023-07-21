@@ -21,7 +21,7 @@ namespace Application.features.Blog.Handler.Commands.BlogcontentCommands
         }
         public async Task<ResponseResultDTO> Handle(DeleteBlogContentRequest request, CancellationToken cancellationToken)
         {
-            var blogContent = await _unitofWork.BlogContentRepository.GetEntityAsync(request.blogContentDTO.Id);
+            var blogContent = await _unitofWork.BlogContentRepository.GetEntityAsync(request.Id);
             if (blogContent is null)
                 return ResponseResultDTO.SetResult(null, StatusMessage.NotFound, null);
             _unitofWork.BlogContentRepository.DeleteEntity(blogContent);

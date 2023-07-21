@@ -13,6 +13,7 @@ namespace Application.Const.PathUtility
         public static string PropertyImageServerPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/property/");
         public static string PropertyGalleryServerPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/gallery/");
         public static string PropertyPlanServerPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/plan/");
+        public static string BlogServerPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/blog/featurImage/");
 
     }
 }
