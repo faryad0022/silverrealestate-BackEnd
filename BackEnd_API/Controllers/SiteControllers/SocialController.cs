@@ -16,7 +16,7 @@ namespace BackEnd_API.Controllers.SiteControllers
         {
             _mediator = mediator;
         }
-        [HttpGet(ApiRouteV1.Social_GetAll, Name = "GetSocialListAsync")]
+        [HttpGet(ApiRouteV1.Social_GetAll, Name = "SiteGetSocialListAsync")]
         public async Task<ActionResult<ResponseResultDTO>> GetSocialListAsync()
              => await _mediator.Send(new GetSocialListRequest() { justShowSelected = true });
 

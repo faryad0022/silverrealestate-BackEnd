@@ -50,8 +50,9 @@ namespace Application.features.Projects.PropertyFeatures.Handler.Commands
             var toCreate = _mapper.Map<Property>(request.createPropertyDTO);
             toCreate = await _unitofWork.PropertyRepository.AddEntityAsync(toCreate);
             await _unitofWork.SaveChangesAsync();
-            var createdDTO = _mapper.Map<PropertyDTO>(toCreate);
-            return ResponseResultDTO.SetResult(createdDTO, StatusMessage.Success, null);
+            var createdWithDetails = await _unitofWork.PropertyRepository.GetPropertyWithDetails(toCreate.Id);
+            var createdWithDetailsDTO = _mapper.Map<PropertyDTO>(createdWithDetails);
+            return ResponseResultDTO.SetResult(createdWithDetailsDTO, StatusMessage.Success, null);
 
         }
     }
