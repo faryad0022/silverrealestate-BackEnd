@@ -2,6 +2,10 @@
 {
     public static class ApiRouteV1
     {
+        #region Account
+        public const string Login = "v1/account/login";
+        public const string Register = "v1/account/register";
+        #endregion
         #region Address
         public const string Address_GetAll = "v1/address/getall";
         public const string Address_Get = "v1/address/get";

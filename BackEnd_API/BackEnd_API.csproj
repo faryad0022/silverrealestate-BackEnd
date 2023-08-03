@@ -30,6 +30,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\BackEnd_Identity\BackEnd_Identity.csproj" />
     <ProjectReference Include="..\BackEnd_Infrastructure\BackEnd_Infrastructure.csproj" />
     <ProjectReference Include="..\BackEnd_Persistence\BackEnd_Persistence.csproj" />
   </ItemGroup>
