@@ -5,11 +5,14 @@ using Application.features.GeneralInformations.AddressFeatures.Request.Queries;
 using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace BackEnd_API.Controllers.PanelControllers
 {
+    [Authorize]
+
     public class AddressController : AdminBaseController
     {
         private readonly IMediator _mediator;

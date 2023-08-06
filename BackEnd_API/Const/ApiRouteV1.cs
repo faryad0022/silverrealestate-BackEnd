@@ -5,6 +5,9 @@
         #region Account
         public const string Login = "v1/account/login";
         public const string Register = "v1/account/register";
+        public const string LogOut = "v1/account/logout";
+        public const string Authenticated = "v1/account/authenticated";
+
         #endregion
         #region Address
         public const string Address_GetAll = "v1/address/getall";

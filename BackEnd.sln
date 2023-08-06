@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackEnd_UnitTest", "BackEnd
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstateUI", "RealEstateUI\RealEstateUI.csproj", "{6C20D393-4562-467F-8FC7-07CAD9004472}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackEnd_Identity", "BackEnd_Identity\BackEnd_Identity.csproj", "{A8646C94-90AB-4E75-A8C5-0CBC6CF41A15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackEnd_Identity", "BackEnd_Identity\BackEnd_Identity.csproj", "{A8646C94-90AB-4E75-A8C5-0CBC6CF41A15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

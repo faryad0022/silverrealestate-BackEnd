@@ -11,5 +11,11 @@
 
         public static string Error = "Error";
         public static string NoContent = "NoContent";
+
+        public static string EmailExist = "Email_Exist";
+        public static string UserExist = "User_Exist";
+        public static string InvalidInputs = "Invalid_Inputs";
+        public static string NotActive = "Not_Active";
+        public static string NotLoggedIn = "Not_Logged_In";
     }
 }

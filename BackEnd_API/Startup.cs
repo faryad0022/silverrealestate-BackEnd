@@ -1,15 +1,20 @@
 using Application;
+using BackEnd_API.Exceptions;
 using BackEnd_Identity;
 using BackEnd_Infrastructure;
 using BackEnd_Persistence;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.Net;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace BackEnd_API
 {
@@ -39,6 +44,8 @@ namespace BackEnd_API
                     o.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
                 });
             });
+            //services.AddTransient<ExceptionMiddleware>();
+
             AddAdminSwaggerDoc(services);
             AddSiteSwaggerDoc(services);
         }
@@ -49,14 +56,20 @@ namespace BackEnd_API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c =>
-                {
-                    c.SwaggerEndpoint("/swagger/Admin/swagger.json", "Admin");
-                    c.SwaggerEndpoint("/swagger/Site/swagger.json", "Site");
-                });
+
             }
+            app.UseErrorHandling();
+
+
             app.UseAuthentication();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/Admin/swagger.json", "Admin");
+                c.SwaggerEndpoint("/swagger/Site/swagger.json", "Site");
+            });
+
 
             app.UseHttpsRedirection();
 
@@ -67,6 +80,7 @@ namespace BackEnd_API
             app.UseAuthorization();
 
             app.UseCors("CorsPolicy");
+
 
             app.UseEndpoints(endpoints =>
             {

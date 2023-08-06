@@ -1,10 +1,13 @@
 ﻿using Application.Const.Auth;
 using Application.Contract.Identity;
 using Application.Models.Identity;
+using BackEnd_Identity.Extentions;
 using BackEnd_Identity.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -12,48 +15,87 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Providers.Entities;
 
 namespace BackEnd_Identity.Services
 {
     public class AuthService : IAuthService
     {
+        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly JWTSettings _jwtSettings;
 
         public AuthService(
+            IHttpContextAccessor httpContextAccessor,
             UserManager<ApplicationUser> userManager,
             IOptions<JWTSettings> jwtSettings,
             SignInManager<ApplicationUser> signInManager)
         {
+            _httpContextAccessor = httpContextAccessor;
             _userManager = userManager;
             _jwtSettings = jwtSettings.Value;
             _signInManager = signInManager;
         }
+
+        public async Task<AuthResponse> Authenticated()
+        {
+            if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+            {
+                var userId = GetUserId(_httpContextAccessor.HttpContext.User);
+                var user = await _userManager.FindByIdAsync(userId);
+                var token = await GenerateToken(user);
+                return new AuthResponse
+                {
+                    Email = user.Email,
+                    Id = userId,
+                    Token = new JwtSecurityTokenHandler().WriteToken(token),
+                    UserName = user.UserName,
+                    AuthResponseResult = AuthResponseResult.Success
+                };
+            }
+            return new AuthResponse
+            {
+                Email = null,
+                Id = null,
+                Token = null,
+                UserName = null,
+                AuthResponseResult = AuthResponseResult.NotLoggedIn
+            }; ;
+        }
+
         public async Task<AuthResponse> Login(AuthRequest request)
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
 
             if (user == null)
             {
-                throw new Exception($"User with {request.Email} not found.");
+                return new AuthResponse
+                {
+                    AuthResponseResult = AuthResponseResult.UserNotFound
+                };
             }
+
 
             var result = await _signInManager.PasswordSignInAsync(user.UserName, request.Password, false, lockoutOnFailure: false);
 
             if (!result.Succeeded)
             {
-                throw new Exception($"Credentials for '{request.Email} aren't valid'.");
+                return new AuthResponse
+                {
+                    AuthResponseResult = AuthResponseResult.InvalidInputs
+                };
             }
 
             JwtSecurityToken jwtSecurityToken = await GenerateToken(user);
 
-            AuthResponse response = new AuthResponse
+            AuthResponse response = new()
             {
                 Id = user.Id,
                 Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken),
-                Email = user.Email,
-                UserName = user.UserName
+                Email = user.Email.SanitizeText(),
+                UserName = user.UserName.SanitizeText(),
+                AuthResponseResult = AuthResponseResult.Success
             };
 
             return response;
@@ -65,13 +107,17 @@ namespace BackEnd_Identity.Services
 
             if (existingUser != null)
             {
-                throw new Exception($"Username '{request.UserName}' already exists.");
+                return new RegisterResponse
+                {
+                    UserId = "",
+                    RegisterResponseResult = RegisterResponseResult.UserExist
+                };
             }
 
             var user = new ApplicationUser
             {
-                Email = request.Email,
-                UserName = request.UserName,
+                Email = request.Email.SanitizeText(),
+                UserName = request.UserName.SanitizeText(),
                 EmailConfirmed = true
             };
 
@@ -84,7 +130,11 @@ namespace BackEnd_Identity.Services
                 if (result.Succeeded)
                 {
                     await _userManager.AddToRoleAsync(user, "Employee");
-                    return new RegisterResponse() { UserId = user.Id };
+                    return new RegisterResponse
+                    {
+                        UserId = user.Id,
+                        RegisterResponseResult = RegisterResponseResult.Success
+                    };
                 }
                 else
                 {
@@ -93,9 +143,14 @@ namespace BackEnd_Identity.Services
             }
             else
             {
-                throw new Exception($"Email {request.Email} already exists.");
+                return new RegisterResponse
+                {
+                    UserId = "",
+                    RegisterResponseResult = RegisterResponseResult.EmailExist
+                };
             }
         }
+
 
         private async Task<JwtSecurityToken> GenerateToken(ApplicationUser user)
         {
@@ -114,7 +169,7 @@ namespace BackEnd_Identity.Services
                 new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
-                new Claim(CustomClaimTypes.UserId, user.Id)
+                new Claim(CustomClaimTypes.UserId,user.Id)
             }
             .Union(userClaims)
             .Union(roleClaims);
@@ -129,6 +184,16 @@ namespace BackEnd_Identity.Services
                 expires: DateTime.UtcNow.AddMinutes(_jwtSettings.DurationInMinutes),
                 signingCredentials: signingCredentials);
             return jwtSecurityToken;
+        }
+
+        private string GetUserId(ClaimsPrincipal claimsPrincipal)
+        {
+            if (claimsPrincipal != null)
+            {
+                var result = claimsPrincipal.FindFirst(CustomClaimTypes.UserId).Value;
+                return result;
+            }
+            return default;
         }
     }
 }
