@@ -5,13 +5,14 @@ using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace BackEnd_API.Controllers.AuthControllers
 {
-
+    [AllowAnonymous]
     public class AccountController : AdminBaseController
     {
         private readonly IMediator _mediator;

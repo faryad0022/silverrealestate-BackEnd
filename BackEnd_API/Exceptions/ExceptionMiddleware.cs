@@ -37,21 +37,19 @@ namespace BackEnd_API.Exceptions
             {
                 var statusCode = httpContext.Response.StatusCode;
                 var msg = "";
-                if (statusCode == 401)
+                switch (statusCode)
                 {
-                    msg = "Unauthorize";
-                }
-                else if (statusCode == 404)
-                {
-                    msg = "NotFound";
-                }
-                else if (statusCode == 400)
-                {
-                    msg = "BadRequest";
-                }
-                else if (statusCode < 300)
-                {
-                    msg = "";
+                    case 401:
+                        msg = "Unauthorize";
+                        break;
+                    case 404:
+                        msg = "NotFound";
+                        break;
+                    case 400:
+                        msg = "BadRequest";
+                        break;
+                    default:
+                        break;
                 }
                 if (!string.IsNullOrWhiteSpace(msg))
                 {

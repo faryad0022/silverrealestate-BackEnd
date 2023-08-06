@@ -8,5 +8,7 @@ namespace Application.Contract.Identity
         Task<AuthResponse> Login(AuthRequest authRequest);
         Task<RegisterResponse> Register(RegisterRequest registerRequest);
         Task<AuthResponse> Authenticated();
+        string GetUserId();
+
     }
 }

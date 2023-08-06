@@ -5,7 +5,6 @@ using Application.features.GeneralInformations.AboutUsFeatures.Request.Queries;
 using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -21,10 +20,7 @@ namespace BackEnd_API.Controllers.PanelControllers
         }
         [HttpGet(ApiRouteV1.AboutUs_GetAll, Name = "GetAboutUsListAsync")]
         public async Task<ActionResult<ResponseResultDTO>> GetAboutUsListAsync()
-        {
-            throw new System.Exception("asd");
-        }
-//=> await _mediator.Send(new GetAboutUsListRequest());
+            => await _mediator.Send(new GetAboutUsListRequest());
 
 
         [HttpGet(ApiRouteV1.AboutUs_Get, Name = "GetAboutUsAsync")]

@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -15,7 +14,6 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Providers.Entities;
 
 namespace BackEnd_Identity.Services
 {
@@ -62,6 +60,13 @@ namespace BackEnd_Identity.Services
                 UserName = null,
                 AuthResponseResult = AuthResponseResult.NotLoggedIn
             }; ;
+        }
+
+        public string GetUserId()
+        {
+
+            return GetUserId(_httpContextAccessor.HttpContext.User);
+
         }
 
         public async Task<AuthResponse> Login(AuthRequest request)
@@ -118,6 +123,7 @@ namespace BackEnd_Identity.Services
             {
                 Email = request.Email.SanitizeText(),
                 UserName = request.UserName.SanitizeText(),
+                ImageName = "blank.png",
                 EmailConfirmed = true
             };
 

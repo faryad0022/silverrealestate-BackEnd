@@ -14,6 +14,7 @@ namespace Application.Const.PathUtility
         public static string PropertyGalleryServerPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/gallery/");
         public static string PropertyPlanServerPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/plan/");
         public static string BlogServerPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/blog/featurImage/");
+        public static string ProfileServerPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/profile/");
 
     }
 }
