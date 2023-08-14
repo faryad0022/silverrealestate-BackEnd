@@ -2,7 +2,7 @@
 
 namespace Application.Models.Identity
 {
-    public class RegisterRequest
+    public class RegisterRequestDTO
     {
         [Required]
         [EmailAddress]

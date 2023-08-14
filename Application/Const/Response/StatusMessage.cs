@@ -14,6 +14,7 @@
 
         public static string EmailExist = "Email_Exist";
         public static string UserExist = "User_Exist";
+        public static string UserHasRole = "User_Has_Role";
         public static string InvalidInputs = "Invalid_Inputs";
         public static string NotActive = "Not_Active";
         public static string NotLoggedIn = "Not_Logged_In";

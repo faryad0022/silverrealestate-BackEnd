@@ -22,7 +22,7 @@ namespace Application.features.GeneralInformations.PropfileFeatures.Handler.Comm
 
         public async Task<ResponseResultDTO> Handle(UpdateCurrentUserProfileRequest request, CancellationToken cancellationToken)
         {
-            var currentUser = await _userService.GetCurrentUserByIdAsync(_authService.GetUserId());
+            var currentUser = await _userService.GetUserByIdAsync(_authService.GetUserId());
             #region Upload Image
             if (request.currentUser.ImageName != "")
             {

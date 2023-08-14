@@ -5,9 +5,9 @@ namespace Application.Contract.Identity
 {
     public interface IAuthService
     {
-        Task<AuthResponse> Login(AuthRequest authRequest);
-        Task<RegisterResponse> Register(RegisterRequest registerRequest);
-        Task<AuthResponse> Authenticated();
+        Task<CurrentUserDTO> Login(AuthRequestDTO authRequest);
+        Task<RegisterResponseDTO> Register(RegisterRequestDTO registerRequest);
+        Task<CurrentUserDTO> Authenticated();
         string GetUserId();
 
     }

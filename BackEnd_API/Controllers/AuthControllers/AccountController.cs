@@ -22,10 +22,10 @@ namespace BackEnd_API.Controllers.AuthControllers
             _mediator = mediator;
         }
         [HttpPost(ApiRouteV1.Login, Name = "Login")]
-        public async Task<ActionResult<ResponseResultDTO>> Login([FromBody] AuthRequest authRequest)
+        public async Task<ActionResult<ResponseResultDTO>> Login([FromBody] AuthRequestDTO authRequest)
             => await _mediator.Send(new SignInRequest() { authRequest = authRequest });
         [HttpPost(ApiRouteV1.Register, Name = "Register")]
-        public async Task<ActionResult<ResponseResultDTO>> Register([FromBody] RegisterRequest registerRequest)
+        public async Task<ActionResult<ResponseResultDTO>> Register([FromBody] RegisterRequestDTO registerRequest)
             => await _mediator.Send(new RegisterationRequest() { registerRequest = registerRequest });
         [HttpPost(ApiRouteV1.Authenticated, Name = "CheckUserAuth")]
         public async Task<ActionResult<ResponseResultDTO>> CheckUserAuth()

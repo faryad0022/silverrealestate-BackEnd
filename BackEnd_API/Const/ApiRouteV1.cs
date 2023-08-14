@@ -9,6 +9,19 @@
         public const string Authenticated = "v1/account/authenticated";
         #endregion
 
+        #region UserManagement
+        public const string GetUsersList = "v1/user/manage/list";
+        public const string GetUsersInRole = "v1/user/manage/users-in-role";
+        public const string UpdateUserRole = "v1/user/manage/update-user-role";
+        public const string ChangeUserActivation = "v1/user/manage/activation";
+        public const string GetUserRoles = "v1/user/manage/user-roles";
+        public const string AddNewUser = "v1/user/manage/add";
+        public const string ChangePassword = "v1/user/manage/change-password";
+        public const string GetRolesList = "v1/user/manage/roles-list";
+
+
+        #endregion
+
         #region Profile
         public const string GetCurrentUserProfile = "v1/profile/get";
         public const string UpdateCurrentUserProfile = "v1/profile/update";

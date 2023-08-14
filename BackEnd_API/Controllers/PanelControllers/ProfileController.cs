@@ -27,7 +27,7 @@ namespace BackEnd_API.Controllers.PanelControllers
         public async Task<ActionResult<ResponseResultDTO>> GetCurrentUserProfile()
             => await _mediator.Send(new GetCurrentUserProfileRequest() { userId = _authService.GetUserId() });
         [HttpPost(ApiRouteV1.UpdateCurrentUserProfile, Name = "UpdateCurrentUserProfile")]
-        public async Task<ActionResult<ResponseResultDTO>> UpdateCurrentUserProfile([FromBody] CurrentUser currentUser)
+        public async Task<ActionResult<ResponseResultDTO>> UpdateCurrentUserProfile([FromBody] CurrentUserDTO currentUser)
             => await _mediator.Send(new UpdateCurrentUserProfileRequest() { currentUser = currentUser });
     }
 }

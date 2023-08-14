@@ -18,7 +18,7 @@ namespace Application.features.GeneralInformations.PropfileFeatures.Handler.Quer
 
         public async Task<ResponseResultDTO> Handle(GetCurrentUserProfileRequest request, CancellationToken cancellationToken)
         {
-            var currentUser = await _userService.GetCurrentUserByIdAsync(request.userId);
+            var currentUser = await _userService.GetUserByIdAsync(request.userId);
             return ResponseResultDTO.SetResult(currentUser, StatusMessage.Success, null);
 
         }

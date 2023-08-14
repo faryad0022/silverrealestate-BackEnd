@@ -19,6 +19,56 @@ namespace BackEnd_Identity.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("BackEnd_Identity.Models.ApplicationRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "cac43a6e-f7bb-4448-baaf-1add431ccbbf",
+                            ConcurrencyStamp = "21d11cc0-0455-4005-8be3-b0b026575a78",
+                            Name = "Employee",
+                            NormalizedName = "EMPLOYEE"
+                        },
+                        new
+                        {
+                            Id = "820e4264-c8e8-4223-be68-3bd00fd68389",
+                            ConcurrencyStamp = "c2a772a8-5b06-497d-a269-98f076d1d4e4",
+                            Name = "Blogger",
+                            NormalizedName = "BLOGGER"
+                        },
+                        new
+                        {
+                            Id = "cbc43a8e-f7bb-4445-baaf-1add431ffbbf",
+                            ConcurrencyStamp = "ca8ee764-e321-4266-b148-ee2ecc92e864",
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR"
+                        });
+                });
+
             modelBuilder.Entity("BackEnd_Identity.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -97,7 +147,7 @@ namespace BackEnd_Identity.Migrations
                         {
                             Id = "8e445865-a24d-4543-a6c6-9443d048cdb9",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "dc2cfd74-808c-46ea-88f6-33127476b033",
+                            ConcurrencyStamp = "78bd7fe0-d40b-441d-9f14-e86d5355a03f",
                             Email = "admin@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System",
@@ -105,9 +155,9 @@ namespace BackEnd_Identity.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGehLvTSfU1wFHkBuPp4eJerDyb0ik9IZe4DrIcZdb1ras2ogbDTYzR7Xxwt9CGRsg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEG7+S/HxmldmBQGsB5xGqN8jf/1NtaS3a69SdJaDOthL82NQKLebrL4xhb5XDH5vsQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a0774c18-c0b5-4c34-905d-212738ce993e",
+                            SecurityStamp = "3842bf9e-26cf-4db4-b871-7ab83a77fbc7",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com"
                         },
@@ -115,7 +165,7 @@ namespace BackEnd_Identity.Migrations
                         {
                             Id = "9e224968-33e4-4652-b7b7-8574d048cdb9",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2e1504bc-4d31-4064-9d3e-d2f8898b8fd9",
+                            ConcurrencyStamp = "b46c9ba5-0c5a-4174-aa05-c150b26026ef",
                             Email = "user@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System",
@@ -123,61 +173,43 @@ namespace BackEnd_Identity.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@LOCALHOST.COM",
                             NormalizedUserName = "USER@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAELZZkjlS1d1gfoqW0C6PVwNQ9vws5gggjnJmJZTyQNU3EncoalveeiDVjjNpZLa99Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPw4sauPpT2/WQBE0hM+Wvtn1+HgvACEbk2SBkh2KjJ8+FMrTJErK2FNvOxMCUf8Cw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4a309837-a9c1-40a4-9e67-1aba1d06a66d",
+                            SecurityStamp = "1012cf57-3154-43fa-9f6f-023197592ebc",
                             TwoFactorEnabled = false,
                             UserName = "user@localhost.com"
                         });
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+            modelBuilder.Entity("BackEnd_Identity.Models.ApplicationUserRole", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Name")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                    b.Property<string>("UserId1")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("NormalizedName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                    b.HasKey("UserId", "RoleId");
 
-                    b.HasKey("Id");
+                    b.HasIndex("RoleId");
 
-                    b.HasIndex("NormalizedName")
-                        .IsUnique()
-                        .HasDatabaseName("RoleNameIndex")
-                        .HasFilter("[NormalizedName] IS NOT NULL");
+                    b.HasIndex("UserId1");
 
-                    b.ToTable("AspNetRoles");
+                    b.ToTable("AspNetUserRoles");
 
                     b.HasData(
                         new
                         {
-                            Id = "cac43a6e-f7bb-4448-baaf-1add431ccbbf",
-                            ConcurrencyStamp = "d12d6edd-52d2-419d-a90a-38cf69c55d7d",
-                            Name = "Employee",
-                            NormalizedName = "EMPLOYEE"
+                            UserId = "8e445865-a24d-4543-a6c6-9443d048cdb9",
+                            RoleId = "cbc43a8e-f7bb-4445-baaf-1add431ffbbf"
                         },
                         new
                         {
-                            Id = "820e4264-c8e8-4223-be68-3bd00fd68389",
-                            ConcurrencyStamp = "3eca4e16-fa68-406d-8425-4332533380fb",
-                            Name = "Blogger",
-                            NormalizedName = "BLOGGER"
-                        },
-                        new
-                        {
-                            Id = "cbc43a8e-f7bb-4445-baaf-1add431ffbbf",
-                            ConcurrencyStamp = "73b3fb1e-d9c8-420a-aef3-aa87d51d1011",
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
+                            UserId = "9e224968-33e4-4652-b7b7-8574d048cdb9",
+                            RoleId = "cac43a6e-f7bb-4448-baaf-1add431ccbbf"
                         });
                 });
 
@@ -251,33 +283,6 @@ namespace BackEnd_Identity.Migrations
                     b.ToTable("AspNetUserLogins");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
-                {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("UserId", "RoleId");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("AspNetUserRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "8e445865-a24d-4543-a6c6-9443d048cdb9",
-                            RoleId = "cbc43a8e-f7bb-4445-baaf-1add431ffbbf"
-                        },
-                        new
-                        {
-                            UserId = "9e224968-33e4-4652-b7b7-8574d048cdb9",
-                            RoleId = "cac43a6e-f7bb-4448-baaf-1add431ccbbf"
-                        });
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.Property<string>("UserId")
@@ -297,9 +302,32 @@ namespace BackEnd_Identity.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("BackEnd_Identity.Models.ApplicationUserRole", b =>
+                {
+                    b.HasOne("BackEnd_Identity.Models.ApplicationRole", "Role")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BackEnd_Identity.Models.ApplicationUser", null)
+                        .WithMany("UserRoles")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BackEnd_Identity.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId1");
+
+                    b.Navigation("Role");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("BackEnd_Identity.Models.ApplicationRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -324,21 +352,6 @@ namespace BackEnd_Identity.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("BackEnd_Identity.Models.ApplicationUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.HasOne("BackEnd_Identity.Models.ApplicationUser", null)
@@ -346,6 +359,16 @@ namespace BackEnd_Identity.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("BackEnd_Identity.Models.ApplicationRole", b =>
+                {
+                    b.Navigation("UserRoles");
+                });
+
+            modelBuilder.Entity("BackEnd_Identity.Models.ApplicationUser", b =>
+                {
+                    b.Navigation("UserRoles");
                 });
 #pragma warning restore 612, 618
         }

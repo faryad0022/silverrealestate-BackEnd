@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System;
+using System.Reflection;
 using System.Text;
 
 namespace BackEnd_Identity
@@ -18,14 +19,17 @@ namespace BackEnd_Identity
     {
         public static IServiceCollection ConfigureIdentityServices(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
             services.Configure<JWTSettings>(configuration.GetSection("JwtSettings"));
 
             services.AddDbContext<IdentityDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("IdentityConnectionString"),
                 b => b.MigrationsAssembly(typeof(IdentityDbContext).Assembly.FullName)));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<IdentityDbContext>().AddDefaultTokenProviders();
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
+                .AddEntityFrameworkStores<IdentityDbContext>()
+                .AddDefaultTokenProviders();
 
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<IUserService, UserService>();

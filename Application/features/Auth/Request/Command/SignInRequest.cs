@@ -6,6 +6,6 @@ namespace Application.features.Auth.Request.Command
 {
     public class SignInRequest : IRequest<ResponseResultDTO>
     {
-        public AuthRequest authRequest { get; set; }
+        public AuthRequestDTO authRequest { get; set; }
     }
 }

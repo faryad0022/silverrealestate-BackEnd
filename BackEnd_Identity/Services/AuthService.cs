@@ -36,15 +36,19 @@ namespace BackEnd_Identity.Services
             _signInManager = signInManager;
         }
 
-        public async Task<AuthResponse> Authenticated()
+        public async Task<CurrentUserDTO> Authenticated()
         {
             if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
             {
                 var userId = GetUserId(_httpContextAccessor.HttpContext.User);
                 var user = await _userManager.FindByIdAsync(userId);
                 var token = await GenerateToken(user);
-                return new AuthResponse
+                return new CurrentUserDTO
                 {
+                    ImageName = user.ImageName.SanitizeText(),
+                    FirstName = user.FirstName.SanitizeText(),
+                    LastName = user.LastName.SanitizeText(),
+                    PhoneNumber = user.PhoneNumber.SanitizeText(),
                     Email = user.Email,
                     Id = userId,
                     Token = new JwtSecurityTokenHandler().WriteToken(token),
@@ -52,30 +56,23 @@ namespace BackEnd_Identity.Services
                     AuthResponseResult = AuthResponseResult.Success
                 };
             }
-            return new AuthResponse
+            return new CurrentUserDTO
             {
-                Email = null,
-                Id = null,
-                Token = null,
-                UserName = null,
                 AuthResponseResult = AuthResponseResult.NotLoggedIn
-            }; ;
+            };
         }
-
-        public string GetUserId()
-        {
-
-            return GetUserId(_httpContextAccessor.HttpContext.User);
-
-        }
-
-        public async Task<AuthResponse> Login(AuthRequest request)
+        public async Task<CurrentUserDTO> Login(AuthRequestDTO request)
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
+            if(!user.EmailConfirmed)
+                return new CurrentUserDTO
+                {
+                    AuthResponseResult = AuthResponseResult.NotActive
+                };
 
             if (user == null)
             {
-                return new AuthResponse
+                return new CurrentUserDTO
                 {
                     AuthResponseResult = AuthResponseResult.UserNotFound
                 };
@@ -86,7 +83,7 @@ namespace BackEnd_Identity.Services
 
             if (!result.Succeeded)
             {
-                return new AuthResponse
+                return new CurrentUserDTO
                 {
                     AuthResponseResult = AuthResponseResult.InvalidInputs
                 };
@@ -94,25 +91,29 @@ namespace BackEnd_Identity.Services
 
             JwtSecurityToken jwtSecurityToken = await GenerateToken(user);
 
-            AuthResponse response = new()
+            CurrentUserDTO response = new()
             {
                 Id = user.Id,
                 Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken),
                 Email = user.Email.SanitizeText(),
                 UserName = user.UserName.SanitizeText(),
+                ImageName = user.ImageName.SanitizeText(),
+                FirstName = user.FirstName.SanitizeText(),
+                LastName = user.LastName.SanitizeText(),
+                PhoneNumber = user.PhoneNumber.SanitizeText(),
+                EmailConfirmed = user.EmailConfirmed,
                 AuthResponseResult = AuthResponseResult.Success
             };
 
             return response;
         }
-
-        public async Task<RegisterResponse> Register(RegisterRequest request)
+        public async Task<RegisterResponseDTO> Register(RegisterRequestDTO request)
         {
             var existingUser = await _userManager.FindByEmailAsync(request.UserName);
 
             if (existingUser != null)
             {
-                return new RegisterResponse
+                return new RegisterResponseDTO
                 {
                     UserId = "",
                     RegisterResponseResult = RegisterResponseResult.UserExist
@@ -136,7 +137,7 @@ namespace BackEnd_Identity.Services
                 if (result.Succeeded)
                 {
                     await _userManager.AddToRoleAsync(user, "Employee");
-                    return new RegisterResponse
+                    return new RegisterResponseDTO
                     {
                         UserId = user.Id,
                         RegisterResponseResult = RegisterResponseResult.Success
@@ -149,15 +150,13 @@ namespace BackEnd_Identity.Services
             }
             else
             {
-                return new RegisterResponse
+                return new RegisterResponseDTO
                 {
                     UserId = "",
                     RegisterResponseResult = RegisterResponseResult.EmailExist
                 };
             }
         }
-
-
         private async Task<JwtSecurityToken> GenerateToken(ApplicationUser user)
         {
             var userClaims = await _userManager.GetClaimsAsync(user);
@@ -191,7 +190,6 @@ namespace BackEnd_Identity.Services
                 signingCredentials: signingCredentials);
             return jwtSecurityToken;
         }
-
         private string GetUserId(ClaimsPrincipal claimsPrincipal)
         {
             if (claimsPrincipal != null)
@@ -200,6 +198,10 @@ namespace BackEnd_Identity.Services
                 return result;
             }
             return default;
+        } 
+        public string GetUserId()
+        {
+            return GetUserId(_httpContextAccessor.HttpContext.User);
         }
     }
 }

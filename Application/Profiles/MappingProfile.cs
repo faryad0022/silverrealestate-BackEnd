@@ -21,6 +21,7 @@ using Application.DTOs.Project.PropertyPlans;
 using Application.DTOs.Project.PropertyType;
 using Application.DTOs.Project.PropertyVideos;
 using Application.Models.FilterModels;
+using Application.Models.Identity;
 using AutoMapper;
 using Domain.Entities.Blog;
 using Domain.Entities.GeneralSiteInformation;
@@ -32,6 +33,11 @@ namespace Application.Profiles
     {
         public MappingProfile()
         {
+            #region User
+            CreateMap<CurrentUserDTO, RegisteredUserDTO>().ReverseMap();
+            #endregion
+
+
             #region Blog Profile Section
             CreateMap<BlogGroup, BlogGroupDTO>().ReverseMap();
             CreateMap<BlogGroup, CreateBlogGroupDTO>().ReverseMap();

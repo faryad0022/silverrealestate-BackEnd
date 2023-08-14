@@ -6,6 +6,6 @@ namespace Application.features.GeneralInformations.PropfileFeatures.Request.Comm
 {
     public class UpdateCurrentUserProfileRequest : IRequest<ResponseResultDTO>
     {
-        public CurrentUser currentUser { get; set; }
+        public CurrentUserDTO currentUser { get; set; }
     }
 }
