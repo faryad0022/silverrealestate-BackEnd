@@ -2,12 +2,11 @@
 
 namespace RealEstateUI.Services.Base
 {
-    public class ApiResponse<T> where T : class
+    public class ApiResponse
     {
-        public string Status { get; set; }
         public List<string> Errors { get; set; }
-        public List<T> Tentities { get; set; }
-        public T Tentity { get; set; }
+        public string Status { get; set; }
+        public object Data { get; set; }
 
     }
 

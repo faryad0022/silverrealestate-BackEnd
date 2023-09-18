@@ -1,7 +1,7 @@
 ﻿using Application.Const.Response;
 using Application.DTOs.Project.Country;
-using Application.features.Projects.CountryFeatures.Request.Commands;
-using Application.features.Projects.CountryFeatures.Request.Queries;
+using Application.features.PanelAndSiteFeatures.Projects.CountryFeatures.Request.Commands;
+using Application.features.PanelAndSiteFeatures.Projects.CountryFeatures.Request.Queries;
 using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;

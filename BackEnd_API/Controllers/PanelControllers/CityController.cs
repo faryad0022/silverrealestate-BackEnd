@@ -1,7 +1,7 @@
 ﻿using Application.Const.Response;
 using Application.DTOs.Project.City;
-using Application.features.Projects.CityFeatures.Request.Commands;
-using Application.features.Projects.CityFeatures.Request.Queries;
+using Application.features.PanelAndSiteFeatures.Projects.CityFeatures.Request.Commands;
+using Application.features.PanelAndSiteFeatures.Projects.CityFeatures.Request.Queries;
 using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;

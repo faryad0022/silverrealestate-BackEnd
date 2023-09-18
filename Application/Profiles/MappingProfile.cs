@@ -264,7 +264,7 @@ namespace Application.Profiles
                 .ReverseMap();
             CreateMap<Property, UpdatePropertyDTO>().ReverseMap();
             CreateMap<Property, CreatePropertyDTO>().ReverseMap();
-            CreateMap<UpdatePropertyDTO,PropertyDTO >().ReverseMap();
+            CreateMap<UpdatePropertyDTO, PropertyDTO>().ReverseMap();
             CreateMap<PropertyDTO, CreatePropertyDTO>().ReverseMap();
             CreateMap<FilterProperty, FilterPropertyDTO>()
                 .ForMember(dest => dest.PropertyDTOs, opt =>

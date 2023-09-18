@@ -31,7 +31,8 @@ namespace RealEstateUI
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             services.AddControllersWithViews();
-            services.AddHttpClient<IClient, Client>(cl => cl.BaseAddress = new Uri("https://localhost:44300"));
+            services.AddHttpClient<IClient, Client>
+                (cl => cl.BaseAddress = new Uri(Configuration.GetSection("ApiAddress").Value));
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddSingleton<ILocalStorageService, LocalStorageService>();
             services.AddScoped<IAddressService, AddressService>();

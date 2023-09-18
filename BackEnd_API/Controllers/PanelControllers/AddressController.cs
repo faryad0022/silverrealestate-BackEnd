@@ -1,7 +1,7 @@
 ﻿using Application.Const.Response;
 using Application.DTOs.GeneralSiteInformationsDTO.Address;
-using Application.features.GeneralInformations.AddressFeatures.Request.Commands;
-using Application.features.GeneralInformations.AddressFeatures.Request.Queries;
+using Application.features.PanelAndSiteFeatures.GeneralInformations.AddressFeatures.Request.Commands;
+using Application.features.PanelAndSiteFeatures.GeneralInformations.AddressFeatures.Request.Queries;
 using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;

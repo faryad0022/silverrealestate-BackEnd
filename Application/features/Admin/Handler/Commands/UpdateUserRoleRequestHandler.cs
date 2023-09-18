@@ -2,9 +2,6 @@
 using Application.Contract.Identity;
 using Application.features.Admin.Request.Commands;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -21,8 +18,8 @@ namespace Application.features.Admin.Handler.Commands
 
         public async Task<ResponseResultDTO> Handle(UpdateUserRoleRequest request, CancellationToken cancellationToken)
         {
-            var user = await _userService.UpdateUserRoleAsync(request.userId,request.roleName);
-            return ResponseResultDTO.SetResult(user,StatusMessage.Success,null) ;
+            var user = await _userService.UpdateUserRoleAsync(request.userId, request.roleName);
+            return ResponseResultDTO.SetResult(user, StatusMessage.Success, null);
         }
     }
 }

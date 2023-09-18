@@ -1,11 +1,6 @@
-﻿using Application.Contract.Persistence;
-using Application.DTOs.Project.PropertyGalleries.Validators;
-using Application.DTOs.Project.PropertyGalleries;
+﻿using Application.Const.Response;
+using Application.Contract.Persistence;
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Application.Const.Response;
 
 namespace Application.DTOs.Project.PropertyVideos.Validatores
 {

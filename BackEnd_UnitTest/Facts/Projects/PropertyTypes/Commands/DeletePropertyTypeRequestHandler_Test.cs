@@ -1,7 +1,5 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.features.Projects.PropertyTypeFeatures.Handler.Commands;
-using Application.features.Projects.PropertyTypeFeatures.Request.Commands;
 using Application.Profiles;
 using AutoMapper;
 using BackEnd_UnitTest.Mocks;

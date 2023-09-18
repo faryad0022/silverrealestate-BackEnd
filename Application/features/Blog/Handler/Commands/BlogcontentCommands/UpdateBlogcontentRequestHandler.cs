@@ -6,7 +6,6 @@ using Application.DTOs.Blog.BlogContent.Validators;
 using Application.Extensions;
 using Application.features.Blog.Request.Commands.BlogContentCommands;
 using AutoMapper;
-using Domain.Entities.GeneralSiteInformation;
 using MediatR;
 using System.Linq;
 using System.Threading;

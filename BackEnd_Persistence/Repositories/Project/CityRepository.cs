@@ -38,7 +38,7 @@ namespace BackEnd_Persistence.Repositories.Project
 
         public async Task<City> GetCityWithDetailsAsync(long id)
         {
-            var city = await _dbContext.Cities.Include(c => c.Country).Where(x=>!x.IsDelete).SingleOrDefaultAsync(c => c.Id == id);
+            var city = await _dbContext.Cities.Include(c => c.Country).Where(x => !x.IsDelete).SingleOrDefaultAsync(c => c.Id == id);
             return city;
         }
     }

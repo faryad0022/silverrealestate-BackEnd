@@ -1,7 +1,7 @@
 ﻿using Application.Const.Response;
 using Application.DTOs.GeneralSiteInformationsDTO.SpectacularLocations;
-using Application.features.GeneralInformations.SpectacularLocationFeatures.Request.Commands;
-using Application.features.GeneralInformations.SpectacularLocationFeatures.Request.Queries;
+using Application.features.PanelAndSiteFeatures.GeneralInformations.SpectacularLocationFeatures.Request.Commands;
+using Application.features.PanelAndSiteFeatures.GeneralInformations.SpectacularLocationFeatures.Request.Queries;
 using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;

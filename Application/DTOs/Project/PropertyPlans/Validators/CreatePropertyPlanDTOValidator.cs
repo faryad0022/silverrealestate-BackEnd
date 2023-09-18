@@ -1,10 +1,6 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.DTOs.Project.PropertyGalleries.Validators;
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Application.DTOs.Project.PropertyPlans.Validators
 {

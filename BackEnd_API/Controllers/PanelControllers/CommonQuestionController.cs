@@ -1,7 +1,7 @@
 ﻿using Application.Const.Response;
 using Application.DTOs.GeneralSiteInformationsDTO.CommonQuestions;
-using Application.features.GeneralInformations.CommonQuestionFeatures.Request.Command;
-using Application.features.GeneralInformations.CommonQuestionFeatures.Request.Queries;
+using Application.features.PanelAndSiteFeatures.GeneralInformations.CommonQuestionFeatures.Request.Command;
+using Application.features.PanelAndSiteFeatures.GeneralInformations.CommonQuestionFeatures.Request.Queries;
 using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;

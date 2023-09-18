@@ -1,7 +1,5 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.features.GeneralInformations.TeamMemberFeatures.Hnadler.Commands;
-using Application.features.GeneralInformations.TeamMemberFeatures.Request.Commands;
 using Application.Profiles;
 using AutoMapper;
 using BackEnd_UnitTest.Mocks;

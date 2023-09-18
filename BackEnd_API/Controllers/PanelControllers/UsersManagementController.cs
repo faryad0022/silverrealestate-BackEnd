@@ -16,7 +16,7 @@ namespace BackEnd_API.Controllers.PanelControllers
         private readonly IMediator _mediator;
         private readonly IUserService _userService;
 
-        public UsersManagementController(IMediator mediator,IUserService userService)
+        public UsersManagementController(IMediator mediator, IUserService userService)
         {
             _mediator = mediator;
             _userService = userService;
@@ -39,14 +39,14 @@ namespace BackEnd_API.Controllers.PanelControllers
 
         [HttpPost(ApiRouteV1.AddNewUser, Name = "AddNewUser")]
         public async Task<ActionResult<ResponseResultDTO>> AddNewUser([FromBody] RegisterRequestDTO request)
-            => await _mediator.Send(new AddNewUserRequest() { request = request});
+            => await _mediator.Send(new AddNewUserRequest() { request = request });
 
         [HttpPut(ApiRouteV1.ChangeUserActivation, Name = "ChangeUserActivation")]
         public async Task<ActionResult<ResponseResultDTO>> ChangeUserActivation([FromBody] RegisteredUserDTO user)
             => await _mediator.Send(new ChangeUserActivationRequest() { userId = user.Id });
 
         [HttpPut(ApiRouteV1.ChangePassword, Name = "ChangePassword")]
-        public async Task<ActionResult<ResponseResultDTO>> ChangePassword([FromBody] string userId,string password)
+        public async Task<ActionResult<ResponseResultDTO>> ChangePassword([FromBody] string userId, string password)
             => await _mediator.Send(new ChangePasswordRequest() { userId = userId, newPassword = password });
 
         [HttpGet(ApiRouteV1.GetUserRoles, Name = "GetUserRoles")]

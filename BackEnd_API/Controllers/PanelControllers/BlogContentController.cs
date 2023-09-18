@@ -2,7 +2,6 @@
 using Application.DTOs.Blog.BlogContent;
 using Application.features.Blog.Request.Commands.BlogContentCommands;
 using Application.features.Blog.Request.Queries.BlogContent;
-using Application.features.Projects.CityFeatures.Request.Commands;
 using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;
@@ -52,6 +51,6 @@ namespace BackEnd_API.Controllers.PanelControllers
 
         [HttpPut(ApiRouteV1.BlogContent_ChangeStatus, Name = "ChangeBlogContentStatusAsync")]
         public async Task<ActionResult<ResponseResultDTO>> ChangeBlogContentIsSelectedAsync([FromBody] long id)
-            => await _mediator.Send(new ChangeStatusBlogContentRequest() { Id = id});
+            => await _mediator.Send(new ChangeStatusBlogContentRequest() { Id = id });
     }
 }

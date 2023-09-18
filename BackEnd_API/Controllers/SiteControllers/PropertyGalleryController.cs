@@ -1,7 +1,5 @@
 ﻿using Application.Const.Response;
-using Application.DTOs.Project.PropertyGalleries;
-using Application.features.Projects.PropertyGalleryFeatures.Request.Commands;
-using Application.features.Projects.PropertyGalleryFeatures.Request.Qureries;
+using Application.features.PanelAndSiteFeatures.Projects.PropertyGalleryFeatures.Request.Qureries;
 using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;

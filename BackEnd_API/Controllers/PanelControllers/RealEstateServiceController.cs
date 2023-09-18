@@ -1,7 +1,7 @@
 ﻿using Application.Const.Response;
 using Application.DTOs.GeneralSiteInformationsDTO.RealEstateServicess;
-using Application.features.GeneralInformations.RealEstateServicesFeatures.Request.Commands;
-using Application.features.GeneralInformations.RealEstateServicesFeatures.Request.Queries;
+using Application.features.PanelAndSiteFeatures.GeneralInformations.RealEstateServicesFeatures.Request.Commands;
+using Application.features.PanelAndSiteFeatures.GeneralInformations.RealEstateServicesFeatures.Request.Queries;
 using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;

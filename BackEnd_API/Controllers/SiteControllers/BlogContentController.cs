@@ -1,8 +1,6 @@
 ﻿using Application.Const.Response;
 using Application.DTOs.Blog.BlogContent;
-using Application.features.Blog.Request.Commands.BlogContentCommands;
 using Application.features.Blog.Request.Queries.BlogContent;
-using Application.features.Projects.CityFeatures.Request.Commands;
 using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;
@@ -34,6 +32,10 @@ namespace BackEnd_API.Controllers.SiteControllers
         [HttpGet(ApiRouteV1.BlogContent_GetAll_WithDetails, Name = "SiteGetWithDetailsList")]
         public async Task<ActionResult<ResponseResultDTO>> GetWithDetailsList()
             => await _mediator.Send(new GetBlogContentWithDetailsListRequest());
+
+        [HttpGet(ApiRouteV1.BlogContent_GetLatest, Name = "SiteGetLatest")]
+        public async Task<ActionResult<ResponseResultDTO>> GetLatestBlogContent()
+            => await _mediator.Send(new GetLatestBlogsRequest());
 
 
     }

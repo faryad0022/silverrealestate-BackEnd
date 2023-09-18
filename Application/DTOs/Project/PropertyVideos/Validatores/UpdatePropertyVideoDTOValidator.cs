@@ -1,11 +1,6 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.DTOs.Project.PropertyGalleries.Validators;
-using Application.DTOs.Project.PropertyGalleries;
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Application.DTOs.Project.PropertyVideos.Validatores
 {
@@ -20,7 +15,7 @@ namespace Application.DTOs.Project.PropertyVideos.Validatores
             RuleFor(x => x.PropertyId)
                  .MustAsync(async (id, token) =>
                  {
-                    return await _unitofWork.PropertyRepository.ExistAsync(id);
+                     return await _unitofWork.PropertyRepository.ExistAsync(id);
                  }).WithMessage(ValidatorMessages.NotExist);
             RuleFor(x => x.Id)
                 .GreaterThan(0).WithMessage(ValidatorMessages.GreaterThan)

@@ -1,7 +1,7 @@
 ﻿using Application.Const.Response;
 using Application.DTOs.Project.PropertyVideos;
-using Application.features.Projects.PropertyVideFeatures.Request.Commands;
-using Application.features.Projects.PropertyVideFeatures.Request.Queries;
+using Application.features.PanelAndSiteFeatures.Projects.PropertyVideFeatures.Request.Commands;
+using Application.features.PanelAndSiteFeatures.Projects.PropertyVideFeatures.Request.Queries;
 using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;

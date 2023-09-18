@@ -35,7 +35,7 @@ namespace BackEnd_API.Controllers.PanelControllers
             => await _mediator.Send(new CreateBlogGroupRequestCommand { createBlogGroupDTO = blogGroupDTO });
 
         [HttpPut(ApiRouteV1.BlogGroup_Update, Name = "UpdateBlogGroupAsync")]
-        public async Task<ActionResult<ResponseResultDTO>> UpdateBlogGroupAsync([FromBody] UpdateBlogGroupDTO updateBlogGroupDTO )
+        public async Task<ActionResult<ResponseResultDTO>> UpdateBlogGroupAsync([FromBody] UpdateBlogGroupDTO updateBlogGroupDTO)
             => await _mediator.Send(new UpdateBlogGroupRequest { updateBlogGroupDTO = updateBlogGroupDTO });
     }
 }

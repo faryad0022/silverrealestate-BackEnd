@@ -64,7 +64,7 @@ namespace BackEnd_Identity.Services
         public async Task<CurrentUserDTO> Login(AuthRequestDTO request)
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
-            if(!user.EmailConfirmed)
+            if (!user.EmailConfirmed)
                 return new CurrentUserDTO
                 {
                     AuthResponseResult = AuthResponseResult.NotActive
@@ -198,7 +198,7 @@ namespace BackEnd_Identity.Services
                 return result;
             }
             return default;
-        } 
+        }
         public string GetUserId()
         {
             return GetUserId(_httpContextAccessor.HttpContext.User);

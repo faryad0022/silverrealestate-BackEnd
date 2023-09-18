@@ -15,7 +15,7 @@ namespace BackEnd_Persistence.Repositories.Project
 
         public async Task<bool> CheckDuplicate(string countryName)
         {
-            var country = await _dbContext.Countries.FirstOrDefaultAsync(c=>c.CountryName == countryName);
+            var country = await _dbContext.Countries.FirstOrDefaultAsync(c => c.CountryName == countryName);
             if (country is null)
                 return true;
             return false;

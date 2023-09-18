@@ -1,7 +1,7 @@
 ﻿using Application.Const.Response;
 using Application.DTOs.GeneralSiteInformationsDTO.Social;
-using Application.features.GeneralInformations.SocialFeatures.Request.Commands;
-using Application.features.GeneralInformations.SocialFeatures.Request.Queries;
+using Application.features.PanelAndSiteFeatures.GeneralInformations.SocialFeatures.Request.Commands;
+using Application.features.PanelAndSiteFeatures.GeneralInformations.SocialFeatures.Request.Queries;
 using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;

@@ -1,7 +1,7 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Identity;
-using Application.features.GeneralInformations.PropfileFeatures.Request.Commands;
-using Application.features.GeneralInformations.PropfileFeatures.Request.Queries;
+using Application.features.PanelAndSiteFeatures.GeneralInformations.PropfileFeatures.Request.Commands;
+using Application.features.PanelAndSiteFeatures.GeneralInformations.PropfileFeatures.Request.Queries;
 using Application.Models.Identity;
 using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;

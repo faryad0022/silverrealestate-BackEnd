@@ -1,7 +1,7 @@
 ﻿using Application.Const.Response;
 using Application.DTOs.Project.PropertyContractType;
-using Application.features.Projects.PropertyContractTypeFeatures.Request.Commands;
-using Application.features.Projects.PropertyContractTypeFeatures.Request.Queries;
+using Application.features.PanelAndSiteFeatures.Projects.PropertyContractTypeFeatures.Request.Commands;
+using Application.features.PanelAndSiteFeatures.Projects.PropertyContractTypeFeatures.Request.Queries;
 using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;

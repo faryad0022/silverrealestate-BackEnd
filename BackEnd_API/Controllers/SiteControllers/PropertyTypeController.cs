@@ -1,7 +1,5 @@
 ﻿using Application.Const.Response;
-using Application.DTOs.Project.PropertyType;
-using Application.features.Projects.PropertyTypeFeatures.Request.Commands;
-using Application.features.Projects.PropertyTypeFeatures.Request.Queries;
+using Application.features.PanelAndSiteFeatures.Projects.PropertyTypeFeatures.Request.Queries;
 using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;
@@ -10,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BackEnd_API.Controllers.SiteControllers
 {
-    public class PropertyTypeController :   SiteBaseController
+    public class PropertyTypeController : SiteBaseController
     {
         private readonly IMediator _mediator;
 

@@ -1,7 +1,5 @@
 ﻿using Application.Const.Response;
 using Application.Contract.Persistence;
-using Application.features.Projects.PropertyGalleryFeatures.Handler.Qureries;
-using Application.features.Projects.PropertyGalleryFeatures.Request.Qureries;
 using Application.Profiles;
 using AutoMapper;
 using BackEnd_UnitTest.Mocks;

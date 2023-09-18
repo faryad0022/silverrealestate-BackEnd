@@ -2,6 +2,11 @@
 {
     public static class ApiRouteV1
     {
+        #region Home Controller
+        public const string HomePage = "v1/home-data/getall";
+
+        #endregion
+
         #region Account
         public const string Login = "v1/account/login";
         public const string Register = "v1/account/register";
@@ -58,6 +63,7 @@
 
         #region BlogContent
         public const string BlogContent_GetAll = "v1/blogcontent/getall";
+        public const string BlogContent_GetLatest = "v1/blogcontent/get-latest";
         public const string BlogContent_GetAll_WithDetails = "v1/blogcontent/getall/withdetails";
         public const string BlogContent_Get = "v1/blogcontent/get";
         public const string BlogContent_Get_WithDetails = "v1/blogcontent/get/withdetails";
@@ -196,6 +202,7 @@
 
         #region Property
         public const string Property_GetAll = "v1/property/getall";
+        public const string Property_GetLatest = "v1/property/get-latest";
         public const string Property_Get = "v1/property/get";
         public const string Property_GetFilter = "v1/property/filter-property";
         public const string Property_Add = "v1/property/add";

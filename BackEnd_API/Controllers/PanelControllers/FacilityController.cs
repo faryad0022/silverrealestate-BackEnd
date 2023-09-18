@@ -1,7 +1,7 @@
 ﻿using Application.Const.Response;
 using Application.DTOs.Project.Facility;
-using Application.features.Projects.FacilityFeatures.Request.Commands;
-using Application.features.Projects.FacilityFeatures.Request.Queries;
+using Application.features.PanelAndSiteFeatures.Projects.FacilityFeatures.Request.Commands;
+using Application.features.PanelAndSiteFeatures.Projects.FacilityFeatures.Request.Queries;
 using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;

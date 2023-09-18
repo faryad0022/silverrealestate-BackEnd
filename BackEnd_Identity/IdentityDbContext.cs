@@ -3,17 +3,12 @@ using BackEnd_Identity.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BackEnd_Identity
 {
-    public class IdentityDbContext : IdentityDbContext<ApplicationUser, ApplicationRole,string,
-        IdentityUserClaim<string>,ApplicationUserRole,
-        IdentityUserLogin<string>,IdentityRoleClaim<string>,
+    public class IdentityDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string,
+        IdentityUserClaim<string>, ApplicationUserRole,
+        IdentityUserLogin<string>, IdentityRoleClaim<string>,
         IdentityUserToken<string>>
     {
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
@@ -47,6 +42,6 @@ namespace BackEnd_Identity
             modelBuilder.ApplyConfiguration(new UserRoleConfiguration());
 
 
+        }
     }
-}
 }

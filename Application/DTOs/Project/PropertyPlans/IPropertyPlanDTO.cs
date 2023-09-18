@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Application.DTOs.Project.PropertyPlans
+﻿namespace Application.DTOs.Project.PropertyPlans
 {
     public interface IPropertyPlanDTO
     {

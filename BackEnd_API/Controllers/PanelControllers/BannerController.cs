@@ -1,7 +1,7 @@
 ﻿using Application.Const.Response;
 using Application.DTOs.GeneralSiteInformationsDTO.Banner;
-using Application.features.GeneralInformations.BannerFeatures.Request.Commands;
-using Application.features.GeneralInformations.BannerFeatures.Request.Queries;
+using Application.features.PanelAndSiteFeatures.GeneralInformations.BannerFeatures.Request.Commands;
+using Application.features.PanelAndSiteFeatures.GeneralInformations.BannerFeatures.Request.Queries;
 using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;

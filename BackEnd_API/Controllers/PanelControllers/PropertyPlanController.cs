@@ -1,7 +1,7 @@
 ﻿using Application.Const.Response;
 using Application.DTOs.Project.PropertyPlans;
-using Application.features.Projects.PropertyPlanFeatures.Request.Commands;
-using Application.features.Projects.PropertyPlanFeatures.Request.Queries;
+using Application.features.PanelAndSiteFeatures.Projects.PropertyPlanFeatures.Request.Commands;
+using Application.features.PanelAndSiteFeatures.Projects.PropertyPlanFeatures.Request.Queries;
 using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;
@@ -22,7 +22,7 @@ namespace BackEnd_API.Controllers.PanelControllers
 
         [HttpGet(ApiRouteV1.PropertyPlan_GetAll, Name = "GetAllPropertyPlans")]
         public async Task<ActionResult<ResponseResultDTO>> GetAllPropertyPlans([FromQuery] long propertyId)
-            => await _mediator.Send(new GetPropertyPlanListRequest() { PropertyId= propertyId });
+            => await _mediator.Send(new GetPropertyPlanListRequest() { PropertyId = propertyId });
 
 
         [HttpGet(ApiRouteV1.PropertyPlan_Get, Name = "GetPropertyPlan")]

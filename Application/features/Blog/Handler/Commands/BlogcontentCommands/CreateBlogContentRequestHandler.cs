@@ -6,11 +6,9 @@ using Application.DTOs.Blog.BlogContent;
 using Application.DTOs.Blog.BlogContent.Validators;
 using Application.Extensions;
 using Application.features.Blog.Request.Commands.BlogContentCommands;
-using Application.Models;
 using AutoMapper;
 using Domain.Entities.Blog;
 using MediatR;
-using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -43,7 +41,7 @@ namespace Application.features.Blog.Handler.Commands.BlogcontentCommands
                     null
                     );
             #endregion
-            
+
             var blogContent = _mapper.Map<BlogContent>(request.createBlogContentDTO);
             blogContent.ImageName = createdImageName;
             #region Validator

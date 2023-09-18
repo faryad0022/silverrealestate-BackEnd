@@ -1,7 +1,6 @@
 ﻿using Application.Const.Response;
 using Application.DTOs.GeneralSiteInformationsDTO.TeamMembers;
-using Application.features.GeneralInformations.TeamMemberFeatures.Request.Commands;
-using Application.features.GeneralInformations.TeamMemberFeatures.Request.Queries;
+using Application.features.PanelAndSiteFeatures.GeneralInformations.TeamMemberFeatures.Request.Queries;
 using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;

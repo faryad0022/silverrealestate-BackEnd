@@ -1,6 +1,4 @@
 ﻿using Application.Const.Response;
-using Application.DTOs.Blog.BlogGroup;
-using Application.features.Blog.Request.Commands.BlogGroupCommands;
 using Application.features.Blog.Request.Queries.BlogGroup;
 using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;

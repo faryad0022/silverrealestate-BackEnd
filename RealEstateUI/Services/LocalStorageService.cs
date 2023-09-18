@@ -13,7 +13,7 @@ namespace RealEstateUI.Services
             {
                 AutoLoad = true,
                 AutoSave = true,
-                Filename = "SilverNet_Estate"
+                Filename = "WeChsell"
             };
             _storage = new LocalStorage(config);
         }

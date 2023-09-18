@@ -1,5 +1,5 @@
 ﻿using Application.Const.Response;
-using Application.features.GeneralInformations.ConstructorInformations.Request.Queries;
+using Application.features.PanelAndSiteFeatures.GeneralInformations.ConstructorInformations.Request.Queries;
 using BackEnd_API.Const;
 using BackEnd_API.Controllers.CommonBaseController;
 using MediatR;
